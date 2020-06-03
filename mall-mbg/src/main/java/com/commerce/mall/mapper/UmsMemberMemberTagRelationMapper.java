@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.UmsMemberMemberTagRelation;
 import com.commerce.mall.model.UmsMemberMemberTagRelationExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface UmsMemberMemberTagRelationMapper {
+
     long countByExample(UmsMemberMemberTagRelationExample example);
 
     int deleteByExample(UmsMemberMemberTagRelationExample example);

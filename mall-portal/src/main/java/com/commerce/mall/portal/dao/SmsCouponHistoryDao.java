@@ -11,5 +11,6 @@ import java.util.List;
  * Created by commerce on 2018/8/29.
  */
 public interface SmsCouponHistoryDao {
+
     List<SmsCouponHistoryDetail> getDetailList(@Param("memberId") Long memberId);
 }

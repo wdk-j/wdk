@@ -25,6 +25,7 @@ import java.util.List;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
     private UmsAdminMapper umsAdminMapper;
 

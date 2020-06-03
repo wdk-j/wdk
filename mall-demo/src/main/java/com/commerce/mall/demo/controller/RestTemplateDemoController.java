@@ -31,8 +31,10 @@ import java.util.Map;
 @Controller
 @RequestMapping("/template")
 public class RestTemplateDemoController {
+
     @Autowired
     private RestTemplate restTemplate;
+
     @Value("${host.mall.admin}")
     private String HOST_MALL_ADMIN;
 
@@ -102,7 +104,7 @@ public class RestTemplateDemoController {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
         //构造表单参数
-        MultiValueMap<String, String> params= new LinkedMultiValueMap<>();
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("name", name);
         HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<>(params, headers);
         ResponseEntity<CommonResult> responseEntity = restTemplate.postForEntity(url, requestEntity, CommonResult.class);

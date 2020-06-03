@@ -11,6 +11,7 @@ import java.util.List;
  * Created by commerce on 2018/8/28.
  */
 public interface SmsCouponService {
+
     /**
      * 添加优惠券
      */
@@ -36,6 +37,7 @@ public interface SmsCouponService {
 
     /**
      * 获取优惠券详情
+     *
      * @param id 优惠券表id
      */
     SmsCouponParam getItem(Long id);

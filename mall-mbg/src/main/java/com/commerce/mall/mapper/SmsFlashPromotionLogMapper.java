@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.SmsFlashPromotionLog;
 import com.commerce.mall.model.SmsFlashPromotionLogExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface SmsFlashPromotionLogMapper {
+
     long countByExample(SmsFlashPromotionLogExample example);
 
     int deleteByExample(SmsFlashPromotionLogExample example);

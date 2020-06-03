@@ -11,6 +11,7 @@ import java.util.List;
  * Created by commerce on 2018/11/16.
  */
 public interface SmsFlashPromotionProductRelationDao {
+
     /**
      * 获取限时购及相关商品信息
      */

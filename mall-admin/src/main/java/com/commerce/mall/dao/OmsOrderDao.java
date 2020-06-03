@@ -16,6 +16,7 @@ import java.util.List;
  * Created by commerce on 2018/10/12.
  */
 public interface OmsOrderDao {
+
     /**
      * 条件查询订单
      */

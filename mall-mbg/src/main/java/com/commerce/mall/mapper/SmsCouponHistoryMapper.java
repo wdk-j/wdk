@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.SmsCouponHistory;
 import com.commerce.mall.model.SmsCouponHistoryExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface SmsCouponHistoryMapper {
+
     long countByExample(SmsCouponHistoryExample example);
 
     int deleteByExample(SmsCouponHistoryExample example);

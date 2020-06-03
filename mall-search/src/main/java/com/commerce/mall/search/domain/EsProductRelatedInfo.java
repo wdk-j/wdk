@@ -7,9 +7,12 @@ import java.util.List;
  * Created by macro on 2018/6/27.
  */
 public class EsProductRelatedInfo {
+
     private List<String> brandNames;
+
     private List<String> productCategoryNames;
-    private List<ProductAttr>   productAttrs;
+
+    private List<ProductAttr> productAttrs;
 
     public List<String> getBrandNames() {
         return brandNames;
@@ -35,9 +38,12 @@ public class EsProductRelatedInfo {
         this.productAttrs = productAttrs;
     }
 
-    public static class ProductAttr{
+    public static class ProductAttr {
+
         private Long attrId;
+
         private String attrName;
+
         private List<String> attrValues;
 
         public Long getAttrId() {

@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.PmsProductVertifyRecord;
 import com.commerce.mall.model.PmsProductVertifyRecordExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface PmsProductVertifyRecordMapper {
+
     long countByExample(PmsProductVertifyRecordExample example);
 
     int deleteByExample(PmsProductVertifyRecordExample example);

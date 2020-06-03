@@ -11,7 +11,9 @@ import java.util.List;
  * Created by commerce on 2018/8/2.
  */
 public class CartProduct extends PmsProduct {
+
     private List<PmsProductAttribute> productAttributeList;
+
     private List<PmsSkuStock> skuStockList;
 
     public List<PmsProductAttribute> getProductAttributeList() {

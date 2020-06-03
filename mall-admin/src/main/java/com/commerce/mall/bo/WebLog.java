@@ -5,6 +5,7 @@ package com.commerce.mall.bo;
  * Created by macro on 2018/4/26.
  */
 public class WebLog {
+
     /**
      * 操作描述
      */

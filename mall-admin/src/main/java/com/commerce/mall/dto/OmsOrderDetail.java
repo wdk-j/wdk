@@ -14,10 +14,12 @@ import java.util.List;
  * Created by commerce on 2018/10/11.
  */
 public class OmsOrderDetail extends OmsOrder {
+
     @Getter
     @Setter
     @ApiModelProperty("订单商品列表")
     private List<OmsOrderItem> orderItemList;
+
     @Getter
     @Setter
     @ApiModelProperty("订单操作记录列表")

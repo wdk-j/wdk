@@ -24,16 +24,22 @@ import java.util.List;
  */
 @Service
 public class PmsProductCategoryServiceImpl implements PmsProductCategoryService {
+
     @Autowired
     private PmsProductCategoryMapper productCategoryMapper;
+
     @Autowired
     private PmsProductMapper productMapper;
+
     @Autowired
     private PmsProductCategoryAttributeRelationDao productCategoryAttributeRelationDao;
+
     @Autowired
     private PmsProductCategoryAttributeRelationMapper productCategoryAttributeRelationMapper;
+
     @Autowired
     private PmsProductCategoryDao productCategoryDao;
+
     @Override
     public int create(PmsProductCategoryParam pmsProductCategoryParam) {
         PmsProductCategory productCategory = new PmsProductCategory();
@@ -44,7 +50,7 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
         int count = productCategoryMapper.insertSelective(productCategory);
         //创建筛选属性关联
         List<Long> productAttributeIdList = pmsProductCategoryParam.getProductAttributeIdList();
-        if(!CollectionUtils.isEmpty(productAttributeIdList)){
+        if (!CollectionUtils.isEmpty(productAttributeIdList)) {
             insertRelationList(productCategory.getId(), productAttributeIdList);
         }
         return count;
@@ -52,7 +58,8 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
 
     /**
      * 批量插入商品分类与筛选属性关系表
-     * @param productCategoryId 商品分类id
+     *
+     * @param productCategoryId      商品分类id
      * @param productAttributeIdList 相关商品筛选属性id集合
      */
     private void insertRelationList(Long productCategoryId, List<Long> productAttributeIdList) {
@@ -77,14 +84,14 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
         product.setProductCategoryName(productCategory.getName());
         PmsProductExample example = new PmsProductExample();
         example.createCriteria().andProductCategoryIdEqualTo(id);
-        productMapper.updateByExampleSelective(product,example);
+        productMapper.updateByExampleSelective(product, example);
         //同时更新筛选属性的信息
-        if(!CollectionUtils.isEmpty(pmsProductCategoryParam.getProductAttributeIdList())){
+        if (!CollectionUtils.isEmpty(pmsProductCategoryParam.getProductAttributeIdList())) {
             PmsProductCategoryAttributeRelationExample relationExample = new PmsProductCategoryAttributeRelationExample();
             relationExample.createCriteria().andProductCategoryIdEqualTo(id);
             productCategoryAttributeRelationMapper.deleteByExample(relationExample);
-            insertRelationList(id,pmsProductCategoryParam.getProductAttributeIdList());
-        }else{
+            insertRelationList(id, pmsProductCategoryParam.getProductAttributeIdList());
+        } else {
             PmsProductCategoryAttributeRelationExample relationExample = new PmsProductCategoryAttributeRelationExample();
             relationExample.createCriteria().andProductCategoryIdEqualTo(id);
             productCategoryAttributeRelationMapper.deleteByExample(relationExample);

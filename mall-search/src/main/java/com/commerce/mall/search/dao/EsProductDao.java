@@ -11,5 +11,6 @@ import java.util.List;
  * Created by commerce on 2018/6/19.
  */
 public interface EsProductDao {
+
     List<EsProduct> getAllEsProductList(@Param("id") Long id);
 }

@@ -28,12 +28,16 @@ import java.util.Date;
 public class MinioController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MinioController.class);
+
     @Value("${minio.endpoint}")
     private String ENDPOINT;
+
     @Value("${minio.bucketName}")
     private String BUCKET_NAME;
+
     @Value("${minio.accessKey}")
     private String ACCESS_KEY;
+
     @Value("${minio.secretKey}")
     private String SECRET_KEY;
 

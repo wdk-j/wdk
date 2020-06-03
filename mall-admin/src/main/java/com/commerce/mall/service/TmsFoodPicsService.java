@@ -11,21 +11,18 @@ import java.util.List;
 public interface TmsFoodPicsService {
 
     /**
-     *
      * @param foodId foodId
      * @return list
      */
     List<TmsFoodPics> getList(Integer foodId);
 
     /**
-     *
      * @param foodId foodId
      * @return one
      */
     TmsFoodPics getMainPic(Integer foodId);
 
     /**
-     *
      * @param tmsFoodPics tmsFoodPics
      */
     void add(TmsFoodPics tmsFoodPics);

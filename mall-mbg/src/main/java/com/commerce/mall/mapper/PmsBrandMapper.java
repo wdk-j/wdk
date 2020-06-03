@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.PmsBrand;
 import com.commerce.mall.model.PmsBrandExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface PmsBrandMapper {
+
     long countByExample(PmsBrandExample example);
 
     int deleteByExample(PmsBrandExample example);

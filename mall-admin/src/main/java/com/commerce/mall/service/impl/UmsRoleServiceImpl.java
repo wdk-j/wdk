@@ -24,20 +24,28 @@ import java.util.List;
  */
 @Service
 public class UmsRoleServiceImpl implements UmsRoleService {
+
     @Autowired
     private UmsRoleMapper roleMapper;
+
     @Autowired
     private UmsRolePermissionRelationMapper rolePermissionRelationMapper;
+
     @Autowired
     private UmsRoleMenuRelationMapper roleMenuRelationMapper;
+
     @Autowired
     private UmsRoleResourceRelationMapper roleResourceRelationMapper;
+
     @Autowired
     private UmsRolePermissionRelationDao rolePermissionRelationDao;
+
     @Autowired
     private UmsRoleDao roleDao;
+
     @Autowired
     private UmsAdminCacheService adminCacheService;
+
     @Override
     public int create(UmsRole role) {
         role.setCreateTime(new Date());
@@ -69,7 +77,7 @@ public class UmsRoleServiceImpl implements UmsRoleService {
     @Override
     public int updatePermission(Long roleId, List<Long> permissionIds) {
         //先删除原有关系
-        UmsRolePermissionRelationExample example=new UmsRolePermissionRelationExample();
+        UmsRolePermissionRelationExample example = new UmsRolePermissionRelationExample();
         example.createCriteria().andRoleIdEqualTo(roleId);
         rolePermissionRelationMapper.deleteByExample(example);
         //批量插入新关系
@@ -116,7 +124,7 @@ public class UmsRoleServiceImpl implements UmsRoleService {
     @Override
     public int allocMenu(Long roleId, List<Long> menuIds) {
         //先删除原有关系
-        UmsRoleMenuRelationExample example=new UmsRoleMenuRelationExample();
+        UmsRoleMenuRelationExample example = new UmsRoleMenuRelationExample();
         example.createCriteria().andRoleIdEqualTo(roleId);
         roleMenuRelationMapper.deleteByExample(example);
         //批量插入新关系
@@ -132,7 +140,7 @@ public class UmsRoleServiceImpl implements UmsRoleService {
     @Override
     public int allocResource(Long roleId, List<Long> resourceIds) {
         //先删除原有关系
-        UmsRoleResourceRelationExample example=new UmsRoleResourceRelationExample();
+        UmsRoleResourceRelationExample example = new UmsRoleResourceRelationExample();
         example.createCriteria().andRoleIdEqualTo(roleId);
         roleResourceRelationMapper.deleteByExample(example);
         //批量插入新关系

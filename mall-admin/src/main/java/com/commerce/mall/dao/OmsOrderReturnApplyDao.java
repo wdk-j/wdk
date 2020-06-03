@@ -14,6 +14,7 @@ import java.util.List;
  * Created by commerce on 2018/10/18.
  */
 public interface OmsOrderReturnApplyDao {
+
     /**
      * 查询申请列表
      */
@@ -22,5 +23,5 @@ public interface OmsOrderReturnApplyDao {
     /**
      * 获取申请详情
      */
-    OmsOrderReturnApplyResult getDetail(@Param("id")Long id);
+    OmsOrderReturnApplyResult getDetail(@Param("id") Long id);
 }

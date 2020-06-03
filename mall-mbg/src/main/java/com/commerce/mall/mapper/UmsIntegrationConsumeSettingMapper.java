@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.UmsIntegrationConsumeSetting;
 import com.commerce.mall.model.UmsIntegrationConsumeSettingExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface UmsIntegrationConsumeSettingMapper {
+
     long countByExample(UmsIntegrationConsumeSettingExample example);
 
     int deleteByExample(UmsIntegrationConsumeSettingExample example);

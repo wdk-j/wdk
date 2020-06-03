@@ -9,6 +9,7 @@ import java.util.List;
  * Created by commerce on 2018/11/16.
  */
 public interface SmsFlashPromotionService {
+
     /**
      * 添加活动
      */

@@ -9,6 +9,7 @@ import java.util.List;
  * Created by commerce on 2018/8/2.
  */
 public interface MemberAttentionService {
+
     /**
      * 添加关注
      */

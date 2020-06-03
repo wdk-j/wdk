@@ -24,12 +24,13 @@ import java.util.List;
 @Configuration
 @EnableSwagger2
 public class Swagger2Config {
+
     @Bean
-    public Docket createRestApi(){
+    public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.macro.mall.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.commerce.mall.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .securitySchemes(securitySchemes())
@@ -40,7 +41,7 @@ public class Swagger2Config {
         return new ApiInfoBuilder()
                 .title("mall后台系统")
                 .description("mall后台模块")
-                .contact("macro")
+                .contact("commerce")
                 .version("1.0")
                 .build();
     }
@@ -62,7 +63,7 @@ public class Swagger2Config {
         return result;
     }
 
-    private SecurityContext getContextByPath(String pathRegex){
+    private SecurityContext getContextByPath(String pathRegex) {
         return SecurityContext.builder()
                 .securityReferences(defaultAuth())
                 .forPaths(PathSelectors.regex(pathRegex))

@@ -18,6 +18,7 @@ import org.springframework.validation.FieldError;
 @Component
 @Order(2)
 public class BindingResultAspect {
+
     @Pointcut("execution(public * com.macro.mall.controller.*.*(..))")
     public void BindingResult() {
     }
@@ -30,9 +31,9 @@ public class BindingResultAspect {
                 BindingResult result = (BindingResult) arg;
                 if (result.hasErrors()) {
                     FieldError fieldError = result.getFieldError();
-                    if(fieldError!=null){
+                    if (fieldError != null) {
                         return CommonResult.validateFailed(fieldError.getDefaultMessage());
-                    }else{
+                    } else {
                         return CommonResult.validateFailed();
                     }
                 }

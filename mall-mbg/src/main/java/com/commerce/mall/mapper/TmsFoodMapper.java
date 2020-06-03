@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.TmsFood;
 import com.commerce.mall.model.TmsFoodExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface TmsFoodMapper {
+
     long countByExample(TmsFoodExample example);
 
     int deleteByExample(TmsFoodExample example);

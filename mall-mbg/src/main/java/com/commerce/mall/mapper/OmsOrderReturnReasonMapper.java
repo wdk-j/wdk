@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.OmsOrderReturnReason;
 import com.commerce.mall.model.OmsOrderReturnReasonExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface OmsOrderReturnReasonMapper {
+
     long countByExample(OmsOrderReturnReasonExample example);
 
     int deleteByExample(OmsOrderReturnReasonExample example);

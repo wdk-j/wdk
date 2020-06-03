@@ -11,6 +11,7 @@ import java.util.List;
  * Created by commerce on 2018/4/26.
  */
 public interface PmsBrandService {
+
     /**
      * 获取所有品牌
      */

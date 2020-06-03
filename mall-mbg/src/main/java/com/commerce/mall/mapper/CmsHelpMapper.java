@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.CmsHelp;
 import com.commerce.mall.model.CmsHelpExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface CmsHelpMapper {
+
     long countByExample(CmsHelpExample example);
 
     int deleteByExample(CmsHelpExample example);

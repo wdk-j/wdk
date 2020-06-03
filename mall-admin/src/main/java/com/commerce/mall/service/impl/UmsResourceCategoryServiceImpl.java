@@ -16,6 +16,7 @@ import java.util.List;
  */
 @Service
 public class UmsResourceCategoryServiceImpl implements UmsResourceCategoryService {
+
     @Autowired
     private UmsResourceCategoryMapper resourceCategoryMapper;
 

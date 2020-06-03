@@ -19,6 +19,7 @@ import java.util.List;
 @Api(tags = "UmsMemberReceiveAddressController", description = "会员收货地址管理")
 @RequestMapping("/member/address")
 public class UmsMemberReceiveAddressController {
+
     @Autowired
     private UmsMemberReceiveAddressService memberReceiveAddressService;
 

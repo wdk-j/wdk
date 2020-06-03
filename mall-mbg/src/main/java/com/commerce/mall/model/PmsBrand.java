@@ -1,9 +1,11 @@
 package com.commerce.mall.model;
 
 import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 
 public class PmsBrand implements Serializable {
+
     private Long id;
 
     private String name;

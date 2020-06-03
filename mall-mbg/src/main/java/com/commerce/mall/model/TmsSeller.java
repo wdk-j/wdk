@@ -1,10 +1,12 @@
 package com.commerce.mall.model;
 
 import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 public class TmsSeller implements Serializable {
+
     private Integer sellerId;
 
     private String sellerName;

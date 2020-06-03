@@ -15,6 +15,7 @@ import java.util.List;
  */
 @Service
 public class MemberAttentionServiceImpl implements MemberAttentionService {
+
     @Autowired
     private MemberBrandAttentionRepository memberBrandAttentionRepository;
 
@@ -31,7 +32,7 @@ public class MemberAttentionServiceImpl implements MemberAttentionService {
 
     @Override
     public int delete(Long memberId, Long brandId) {
-        return memberBrandAttentionRepository.deleteByMemberIdAndBrandId(memberId,brandId);
+        return memberBrandAttentionRepository.deleteByMemberIdAndBrandId(memberId, brandId);
     }
 
     @Override

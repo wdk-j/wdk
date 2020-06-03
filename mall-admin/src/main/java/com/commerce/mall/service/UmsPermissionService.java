@@ -10,6 +10,7 @@ import java.util.List;
  * Created by commerce on 2018/9/29.
  */
 public interface UmsPermissionService {
+
     /**
      * 添加权限
      */
@@ -18,7 +19,7 @@ public interface UmsPermissionService {
     /**
      * 修改权限
      */
-    int update(Long id,UmsPermission permission);
+    int update(Long id, UmsPermission permission);
 
     /**
      * 批量删除权限

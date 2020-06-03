@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 public class UmsGrowthChangeHistoryExample {
+
     protected String orderByClause;
 
     protected boolean distinct;
@@ -65,6 +66,7 @@ public class UmsGrowthChangeHistoryExample {
     }
 
     protected abstract static class GeneratedCriteria {
+
         protected List<Criterion> criteria;
 
         protected GeneratedCriteria() {
@@ -614,6 +616,7 @@ public class UmsGrowthChangeHistoryExample {
     }
 
     public static class Criterion {
+
         private String condition;
 
         private Object value;

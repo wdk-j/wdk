@@ -24,12 +24,13 @@ import java.util.List;
 @Configuration
 @EnableSwagger2
 public class Swagger2Config {
+
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.macro.mall.portal.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.commerce.mall.portal.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .securitySchemes(securitySchemes())
@@ -40,7 +41,7 @@ public class Swagger2Config {
         return new ApiInfoBuilder()
                 .title("mall前台系统")
                 .description("mall前台模块")
-                .contact("macro")
+                .contact("commerce")
                 .version("1.0")
                 .build();
     }

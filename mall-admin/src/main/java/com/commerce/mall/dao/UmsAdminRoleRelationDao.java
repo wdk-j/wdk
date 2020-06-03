@@ -13,6 +13,7 @@ import java.util.List;
  * Created by commerce on 2018/10/8.
  */
 public interface UmsAdminRoleRelationDao {
+
     /**
      * 批量插入用户角色关系
      */

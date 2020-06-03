@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.CmsSubjectProductRelation;
 import com.commerce.mall.model.CmsSubjectProductRelationExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface CmsSubjectProductRelationMapper {
+
     long countByExample(CmsSubjectProductRelationExample example);
 
     int deleteByExample(CmsSubjectProductRelationExample example);

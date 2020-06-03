@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.PmsProductCategoryAttributeRelation;
 import com.commerce.mall.model.PmsProductCategoryAttributeRelationExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface PmsProductCategoryAttributeRelationMapper {
+
     long countByExample(PmsProductCategoryAttributeRelationExample example);
 
     int deleteByExample(PmsProductCategoryAttributeRelationExample example);

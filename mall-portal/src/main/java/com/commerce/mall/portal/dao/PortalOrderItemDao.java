@@ -10,5 +10,6 @@ import java.util.List;
  * Created by commerce on 2018/9/3.
  */
 public interface PortalOrderItemDao {
+
     int insertList(@Param("list") List<OmsOrderItem> list);
 }

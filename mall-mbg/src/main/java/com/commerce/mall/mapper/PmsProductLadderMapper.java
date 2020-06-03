@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.PmsProductLadder;
 import com.commerce.mall.model.PmsProductLadderExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface PmsProductLadderMapper {
+
     long countByExample(PmsProductLadderExample example);
 
     int deleteByExample(PmsProductLadderExample example);

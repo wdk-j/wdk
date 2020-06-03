@@ -7,6 +7,7 @@ import com.commerce.mall.model.UmsMember;
  * Created by commerce on 2020/3/14.
  */
 public interface UmsMemberCacheService {
+
     /**
      * 删除会员用户缓存
      */

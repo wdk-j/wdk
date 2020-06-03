@@ -9,6 +9,7 @@ import java.util.List;
  * Created by commerce on 2018/6/1.
  */
 public interface CmsSubjectService {
+
     /**
      * 查询所有专题
      */

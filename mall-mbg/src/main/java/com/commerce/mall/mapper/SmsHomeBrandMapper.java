@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.SmsHomeBrand;
 import com.commerce.mall.model.SmsHomeBrandExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface SmsHomeBrandMapper {
+
     long countByExample(SmsHomeBrandExample example);
 
     int deleteByExample(SmsHomeBrandExample example);

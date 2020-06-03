@@ -11,6 +11,7 @@ import java.util.List;
  * Created by commerce on 2018/5/23.
  */
 public interface PmsProductAttributeDao {
+
     /**
      * 获取商品属性信息
      */

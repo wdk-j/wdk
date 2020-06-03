@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.CmsPrefrenceArea;
 import com.commerce.mall.model.CmsPrefrenceAreaExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface CmsPrefrenceAreaMapper {
+
     long countByExample(CmsPrefrenceAreaExample example);
 
     int deleteByExample(CmsPrefrenceAreaExample example);

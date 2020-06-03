@@ -10,6 +10,7 @@ import java.util.List;
  * Created by commerce on 2018/10/8.
  */
 public interface UmsAdminPermissionRelationDao {
+
     /**
      * 批量创建
      */

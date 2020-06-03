@@ -10,6 +10,7 @@ import java.util.List;
  * Created by commerce on 2018/5/24.
  */
 public class PmsProductAttributeCategoryItem extends PmsProductAttributeCategory {
+
     private List<PmsProductAttribute> productAttributeList;
 
     public List<PmsProductAttribute> getProductAttributeList() {

@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.UmsMemberLoginLog;
 import com.commerce.mall.model.UmsMemberLoginLogExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface UmsMemberLoginLogMapper {
+
     long countByExample(UmsMemberLoginLogExample example);
 
     int deleteByExample(UmsMemberLoginLogExample example);

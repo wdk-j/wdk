@@ -1,10 +1,12 @@
 package com.commerce.mall.model;
 
 import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 public class TmsFood implements Serializable {
+
     private Integer foodId;
 
     @ApiModelProperty(value = "食物名称")

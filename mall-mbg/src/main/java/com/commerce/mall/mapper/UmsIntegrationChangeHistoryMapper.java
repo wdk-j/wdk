@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.UmsIntegrationChangeHistory;
 import com.commerce.mall.model.UmsIntegrationChangeHistoryExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface UmsIntegrationChangeHistoryMapper {
+
     long countByExample(UmsIntegrationChangeHistoryExample example);
 
     int deleteByExample(UmsIntegrationChangeHistoryExample example);

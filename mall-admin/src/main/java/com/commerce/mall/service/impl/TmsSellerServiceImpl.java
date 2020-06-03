@@ -1,5 +1,6 @@
 package com.commerce.mall.service.impl;
 
+import com.commerce.mall.dao.TmsFoodInHomeDao;
 import com.commerce.mall.dto.TmsFoodInHome;
 import com.commerce.mall.mapper.TmsSellerMapper;
 import com.commerce.mall.service.TmsSellerService;
@@ -22,6 +23,9 @@ public class TmsSellerServiceImpl implements TmsSellerService {
     @Autowired
     private TmsSellerMapper tmsSellerMapper;
 
+    @Autowired
+    private TmsFoodInHomeDao tmsFoodInHomeDao;
+
     /**
      * 某卖家首页食品列表
      *
@@ -30,6 +34,7 @@ public class TmsSellerServiceImpl implements TmsSellerService {
      */
     @Override
     public List<TmsFoodInHome> getHomeFoodList(Integer sellerId) {
-        return null;
+        return tmsFoodInHomeDao.selectFoods(sellerId);
     }
+
 }

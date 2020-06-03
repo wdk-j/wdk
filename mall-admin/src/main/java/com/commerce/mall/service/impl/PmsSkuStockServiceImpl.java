@@ -17,8 +17,10 @@ import java.util.List;
  */
 @Service
 public class PmsSkuStockServiceImpl implements PmsSkuStockService {
+
     @Autowired
     private PmsSkuStockMapper skuStockMapper;
+
     @Autowired
     private PmsSkuStockDao skuStockDao;
 

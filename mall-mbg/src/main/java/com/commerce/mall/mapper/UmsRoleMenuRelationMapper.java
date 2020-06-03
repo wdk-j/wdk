@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.UmsRoleMenuRelation;
 import com.commerce.mall.model.UmsRoleMenuRelationExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface UmsRoleMenuRelationMapper {
+
     long countByExample(UmsRoleMenuRelationExample example);
 
     int deleteByExample(UmsRoleMenuRelationExample example);

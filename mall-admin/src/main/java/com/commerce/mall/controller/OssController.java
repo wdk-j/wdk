@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 @Api(tags = "OssController", description = "Oss管理")
 @RequestMapping("/aliyun/oss")
 public class OssController {
+
     @Autowired
     private OssServiceImpl ossService;
 

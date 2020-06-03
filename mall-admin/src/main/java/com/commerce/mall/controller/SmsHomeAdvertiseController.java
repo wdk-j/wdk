@@ -20,6 +20,7 @@ import java.util.List;
 @Api(tags = "SmsHomeAdvertiseController", description = "首页轮播广告管理")
 @RequestMapping("/home/advertise")
 public class SmsHomeAdvertiseController {
+
     @Autowired
     private SmsHomeAdvertiseService advertiseService;
 

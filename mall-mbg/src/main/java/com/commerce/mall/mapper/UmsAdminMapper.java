@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.UmsAdmin;
 import com.commerce.mall.model.UmsAdminExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface UmsAdminMapper {
+
     long countByExample(UmsAdminExample example);
 
     int deleteByExample(UmsAdminExample example);

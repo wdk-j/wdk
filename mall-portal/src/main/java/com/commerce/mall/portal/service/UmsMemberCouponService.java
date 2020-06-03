@@ -12,6 +12,7 @@ import java.util.List;
  * Created by commerce on 2018/8/29.
  */
 public interface UmsMemberCouponService {
+
     /**
      * 会员添加优惠券
      */
@@ -20,6 +21,7 @@ public interface UmsMemberCouponService {
 
     /**
      * 获取优惠券列表
+     *
      * @param useStatus 优惠券的使用状态
      */
     List<SmsCouponHistory> list(Integer useStatus);

@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.PmsMemberPrice;
 import com.commerce.mall.model.PmsMemberPriceExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface PmsMemberPriceMapper {
+
     long countByExample(PmsMemberPriceExample example);
 
     int deleteByExample(PmsMemberPriceExample example);

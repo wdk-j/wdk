@@ -12,8 +12,11 @@ import java.math.BigDecimal;
  */
 @Getter
 @Setter
-public class FlashPromotionProduct extends PmsProduct{
+public class FlashPromotionProduct extends PmsProduct {
+
     private BigDecimal flashPromotionPrice;
+
     private Integer flashPromotionCount;
+
     private Integer flashPromotionLimit;
 }

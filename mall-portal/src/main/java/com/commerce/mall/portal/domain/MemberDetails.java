@@ -13,6 +13,7 @@ import java.util.Collection;
  * Created by commerce on 2018/8/3.
  */
 public class MemberDetails implements UserDetails {
+
     private UmsMember umsMember;
 
     public MemberDetails(UmsMember umsMember) {
@@ -52,7 +53,7 @@ public class MemberDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return umsMember.getStatus()==1;
+        return umsMember.getStatus() == 1;
     }
 
     public UmsMember getUmsMember() {

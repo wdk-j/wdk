@@ -22,6 +22,7 @@ import java.util.List;
 @Api(tags = "HomeController", description = "首页内容管理")
 @RequestMapping("/home")
 public class HomeController {
+
     @Autowired
     private HomeService homeService;
 
@@ -56,7 +57,7 @@ public class HomeController {
     public CommonResult<List<CmsSubject>> getSubjectList(@RequestParam(required = false) Long cateId,
                                                          @RequestParam(value = "pageSize", defaultValue = "4") Integer pageSize,
                                                          @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-        List<CmsSubject> subjectList = homeService.getSubjectList(cateId,pageSize,pageNum);
+        List<CmsSubject> subjectList = homeService.getSubjectList(cateId, pageSize, pageNum);
         return CommonResult.success(subjectList);
     }
 }

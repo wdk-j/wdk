@@ -10,18 +10,28 @@ import java.util.Date;
  * Created by macro on 2018/8/2.
  */
 public class MemberProductCollection {
+
     @Id
     private String id;
+
     @Indexed
     private Long memberId;
+
     private String memberNickname;
+
     private String memberIcon;
+
     @Indexed
     private Long productId;
+
     private String productName;
+
     private String productPic;
+
     private String productSubTitle;
+
     private String productPrice;
+
     private Date createTime;
 
     public String getId() {

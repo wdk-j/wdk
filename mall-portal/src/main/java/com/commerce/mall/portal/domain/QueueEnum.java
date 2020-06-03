@@ -21,10 +21,12 @@ public enum QueueEnum {
      * 交换名称
      */
     private String exchange;
+
     /**
      * 队列名称
      */
     private String name;
+
     /**
      * 路由键
      */

@@ -15,10 +15,11 @@ import java.util.List;
  * Created by commerce on 2018/4/26.
  */
 public interface PmsProductService {
+
     /**
      * 创建商品
      */
-    @Transactional(isolation = Isolation.DEFAULT,propagation = Propagation.REQUIRED)
+    @Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.REQUIRED)
     int create(PmsProductParam productParam);
 
     /**
@@ -39,9 +40,10 @@ public interface PmsProductService {
 
     /**
      * 批量修改审核状态
-     * @param ids 产品id
+     *
+     * @param ids          产品id
      * @param verifyStatus 审核状态
-     * @param detail 审核详情
+     * @param detail       审核详情
      */
     @Transactional
     int updateVerifyStatus(List<Long> ids, Integer verifyStatus, String detail);

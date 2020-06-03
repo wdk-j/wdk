@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
  */
 @Service
 public class UmsMenuServiceImpl implements UmsMenuService {
+
     @Autowired
     private UmsMenuMapper menuMapper;
 

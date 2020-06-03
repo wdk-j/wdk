@@ -12,18 +12,28 @@ import java.util.Date;
  */
 @Document
 public class MemberBrandAttention {
+
     @Id
     private String id;
+
     @Indexed
     private Long memberId;
+
     private String memberNickname;
+
     private String memberIcon;
+
     @Indexed
     private Long brandId;
+
     private String brandName;
+
     private String brandLogo;
+
     private String brandCity;
+
     private Integer brandAttentionCount;
+
     private Date createTime;
 
     public String getId() {

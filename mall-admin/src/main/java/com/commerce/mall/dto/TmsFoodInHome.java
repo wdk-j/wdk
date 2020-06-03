@@ -8,6 +8,7 @@ import com.commerce.mall.model.TmsFoodPics;
  * @date 2020.06.03
  */
 public class TmsFoodInHome extends TmsFood {
+
     private static final long serialVersionUID = 1591171709422390836L;
 
     private TmsFoodPics mainPic;
@@ -18,7 +19,7 @@ public class TmsFoodInHome extends TmsFood {
 
     @Override
     public String toString() {
-        return super.toString()+"TmsFoodInHome{" +
+        return super.toString() + "TmsFoodInHome{" +
                 "tmsFoodPic=" + mainPic +
                 '}';
     }

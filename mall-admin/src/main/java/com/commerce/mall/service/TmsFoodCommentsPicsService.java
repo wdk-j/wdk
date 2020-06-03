@@ -20,6 +20,7 @@ public interface TmsFoodCommentsPicsService {
 
     /**
      * 添加一张评论图
+     *
      * @param tmsFoodCommentsPic tmsFoodCommentsPic
      */
     void add(TmsFoodCommentsPics tmsFoodCommentsPic);

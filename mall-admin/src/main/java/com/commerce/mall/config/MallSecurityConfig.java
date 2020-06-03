@@ -32,6 +32,7 @@ public class MallSecurityConfig extends SecurityConfig {
 
     @Autowired
     private UmsAdminService adminService;
+
     @Autowired
     private UmsResourceService resourceService;
 

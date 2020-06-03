@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 public class CmsTopicExample {
+
     protected String orderByClause;
 
     protected boolean distinct;
@@ -65,6 +66,7 @@ public class CmsTopicExample {
     }
 
     protected abstract static class GeneratedCriteria {
+
         protected List<Criterion> criteria;
 
         protected GeneratedCriteria() {
@@ -804,6 +806,7 @@ public class CmsTopicExample {
     }
 
     public static class Criterion {
+
         private String condition;
 
         private Object value;

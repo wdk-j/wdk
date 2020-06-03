@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.CmsTopicCategory;
 import com.commerce.mall.model.CmsTopicCategoryExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface CmsTopicCategoryMapper {
+
     long countByExample(CmsTopicCategoryExample example);
 
     int deleteByExample(CmsTopicCategoryExample example);
