@@ -7,13 +7,13 @@
         <result column="user_id" jdbcType="INTEGER" property="userId" />
         <result column="food_id" jdbcType="INTEGER" property="foodId" />
         <result column="reply" jdbcType="VARCHAR" property="reply" />
-        <association property="tmsFoodCommentsPics" column="{commId=comm_id}"
+        <collection property="tmsFoodCommentsPics" column="{commId=comm_id}" ofType="list"
                      select="com.commerce.mall.service.TmsFoodCommentsPicsService.getList"/>
     </resultMap>
     <sql id="Base_Column_List">
         comm_id, content, post_time, user_id, food_id, reply
     </sql>
-    <select id="selectContent" parameterType="Integer" resultMap="ContentResultMap">
+    <select id="selectContent" parameterType="integer" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"></include>
         from tms_food_comments

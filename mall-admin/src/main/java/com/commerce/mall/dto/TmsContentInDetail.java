@@ -3,11 +3,13 @@ package com.commerce.mall.dto;
 import com.commerce.mall.model.TmsFoodComments;
 import com.commerce.mall.model.TmsFoodCommentsPics;
 
+import java.util.List;
+
 public class TmsContentInDetail extends TmsFoodComments {
 
     private static final long serialVersionUID = 470704436347727463L;
 
-    private TmsFoodCommentsPics tmsFoodCommentsPics;
+    private List<TmsFoodCommentsPics> tmsFoodCommentsPics;
 
     public TmsContentInDetail(){
         super();
@@ -20,11 +22,11 @@ public class TmsContentInDetail extends TmsFoodComments {
                 '}';
     }
 
-    public TmsFoodCommentsPics getTmsFoodCommentsPics(){
+    public List<TmsFoodCommentsPics> getTmsFoodCommentsPics(){
         return tmsFoodCommentsPics;
     }
 
-    public void setTmsFoodCommentsPics(TmsFoodCommentsPics tmsFoodCommentsPics){
+    public void setTmsFoodCommentsPics(List<TmsFoodCommentsPics> tmsFoodCommentsPics){
         this.tmsFoodCommentsPics = tmsFoodCommentsPics;
     }
 }
