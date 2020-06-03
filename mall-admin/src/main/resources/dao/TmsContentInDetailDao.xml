@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.commerce.mall.mapper.TmsFoodCommentsMapper">
-    <resultMap id="BaseResultMap" type="com.commerce.mall.model.TmsFoodComments">
+<mapper namespace="com.commerce.mall.dao.TmsContentInDetailDao">
+    <resultMap id="BaseResultMap" type="com.commerce.mall.dto.TmsContentInDetail">
         <id column="comm_id" jdbcType="INTEGER" property="commId" />
         <result column="post_time" jdbcType="TIMESTAMP" property="postTime" />
         <result column="user_id" jdbcType="INTEGER" property="userId" />
