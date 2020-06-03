@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.commerce.mall.mapper.TmsFoodCommentsMapper">
+    <resultMap id="BaseResultMap" type="com.commerce.mall.model.TmsFoodComments">
+        <id column="comm_id" jdbcType="INTEGER" property="commId" />
+        <result column="post_time" jdbcType="TIMESTAMP" property="postTime" />
+        <result column="user_id" jdbcType="INTEGER" property="userId" />
+        <result column="food_id" jdbcType="INTEGER" property="foodId" />
+        <result column="reply" jdbcType="VARCHAR" property="reply" />
+        <association property="tmsFoodCommentsPics" column="{commId=comm_id}"
+                     select="com.commerce.mall.service.TmsFoodCommentsPicsService.getList"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        comm_id, content, post_time, user_id, food_id, reply
+    </sql>
+    <select id="selectContent" parameterType="Integer" resultMap="ContentResultMap">
+        select
+        <include refid="Base_Column_List"></include>
+        from tms_food_comments
+        where food_id=#{foodId} order by comm_id desc
+    </select>
+</mapper>
