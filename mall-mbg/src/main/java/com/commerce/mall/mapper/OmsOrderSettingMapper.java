@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.OmsOrderSetting;
 import com.commerce.mall.model.OmsOrderSettingExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface OmsOrderSettingMapper {
+
     long countByExample(OmsOrderSettingExample example);
 
     int deleteByExample(OmsOrderSettingExample example);

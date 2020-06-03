@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.PmsAlbumPic;
 import com.commerce.mall.model.PmsAlbumPicExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface PmsAlbumPicMapper {
+
     long countByExample(PmsAlbumPicExample example);
 
     int deleteByExample(PmsAlbumPicExample example);

@@ -1,9 +1,11 @@
 package com.commerce.mall.model;
 
 import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 
 public class TmsFoodPics implements Serializable {
+
     private Integer picId;
 
     @ApiModelProperty(value = "图片网络地址")

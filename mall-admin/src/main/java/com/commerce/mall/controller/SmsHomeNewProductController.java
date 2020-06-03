@@ -20,6 +20,7 @@ import java.util.List;
 @Api(tags = "SmsHomeNewProductController", description = "首页新品管理")
 @RequestMapping("/home/newProduct")
 public class SmsHomeNewProductController {
+
     @Autowired
     private SmsHomeNewProductService homeNewProductService;
 

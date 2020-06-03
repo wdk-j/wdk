@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Param;
  * Created by commerce on 2018/4/26.
  */
 public interface PmsProductDao {
+
     /**
      * 获取商品编辑信息
      */

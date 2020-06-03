@@ -17,6 +17,7 @@ import java.util.List;
  */
 @Service
 public class CmsSubjectServiceImpl implements CmsSubjectService {
+
     @Autowired
     private CmsSubjectMapper subjectMapper;
 

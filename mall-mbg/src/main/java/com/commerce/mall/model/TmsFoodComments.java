@@ -1,10 +1,12 @@
 package com.commerce.mall.model;
 
 import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.util.Date;
 
 public class TmsFoodComments implements Serializable {
+
     private Integer commId;
 
     private Date postTime;

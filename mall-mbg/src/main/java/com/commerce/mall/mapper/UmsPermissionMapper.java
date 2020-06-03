@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.UmsPermission;
 import com.commerce.mall.model.UmsPermissionExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface UmsPermissionMapper {
+
     long countByExample(UmsPermissionExample example);
 
     int deleteByExample(UmsPermissionExample example);

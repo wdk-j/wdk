@@ -7,6 +7,7 @@ import com.commerce.mall.model.OmsOrderSetting;
  * Created by commerce on 2018/10/16.
  */
 public interface OmsOrderSettingService {
+
     /**
      * 获取指定订单设置
      */

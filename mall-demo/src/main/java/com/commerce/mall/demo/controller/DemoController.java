@@ -27,6 +27,7 @@ import java.util.List;
 @Api(tags = "DemoController", description = "品牌管理示例接口")
 @Controller
 public class DemoController {
+
     @Autowired
     private DemoService demoService;
 
@@ -61,8 +62,8 @@ public class DemoController {
     @ApiOperation(value = "更新品牌")
     @RequestMapping(value = "/brand/update/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult updateBrand(@PathVariable("id") Long id, @Validated @RequestBody PmsBrandDto pmsBrandDto,BindingResult result) {
-        if(result.hasErrors()){
+    public CommonResult updateBrand(@PathVariable("id") Long id, @Validated @RequestBody PmsBrandDto pmsBrandDto, BindingResult result) {
+        if (result.hasErrors()) {
             return CommonResult.validateFailed(result.getFieldError().getDefaultMessage());
         }
         CommonResult commonResult;

@@ -15,8 +15,10 @@ import java.util.List;
  */
 @Service
 public class OmsCompanyAddressServiceImpl implements OmsCompanyAddressService {
+
     @Autowired
     private OmsCompanyAddressMapper companyAddressMapper;
+
     @Override
     public List<OmsCompanyAddress> list() {
         return companyAddressMapper.selectByExample(new OmsCompanyAddressExample());

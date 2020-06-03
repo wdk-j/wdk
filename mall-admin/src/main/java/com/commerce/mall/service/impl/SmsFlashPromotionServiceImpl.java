@@ -18,6 +18,7 @@ import java.util.List;
  */
 @Service
 public class SmsFlashPromotionServiceImpl implements SmsFlashPromotionService {
+
     @Autowired
     private SmsFlashPromotionMapper flashPromotionMapper;
 

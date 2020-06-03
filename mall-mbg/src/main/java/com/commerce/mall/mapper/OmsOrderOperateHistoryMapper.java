@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.OmsOrderOperateHistory;
 import com.commerce.mall.model.OmsOrderOperateHistoryExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface OmsOrderOperateHistoryMapper {
+
     long countByExample(OmsOrderOperateHistoryExample example);
 
     int deleteByExample(OmsOrderOperateHistoryExample example);

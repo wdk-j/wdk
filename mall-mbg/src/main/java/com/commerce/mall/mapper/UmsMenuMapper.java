@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.UmsMenu;
 import com.commerce.mall.model.UmsMenuExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface UmsMenuMapper {
+
     long countByExample(UmsMenuExample example);
 
     int deleteByExample(UmsMenuExample example);

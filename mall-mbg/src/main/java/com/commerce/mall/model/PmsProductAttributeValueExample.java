@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PmsProductAttributeValueExample {
+
     protected String orderByClause;
 
     protected boolean distinct;
@@ -64,6 +65,7 @@ public class PmsProductAttributeValueExample {
     }
 
     protected abstract static class GeneratedCriteria {
+
         protected List<Criterion> criteria;
 
         protected GeneratedCriteria() {
@@ -363,6 +365,7 @@ public class PmsProductAttributeValueExample {
     }
 
     public static class Criterion {
+
         private String condition;
 
         private Object value;

@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.SmsHomeAdvertise;
 import com.commerce.mall.model.SmsHomeAdvertiseExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface SmsHomeAdvertiseMapper {
+
     long countByExample(SmsHomeAdvertiseExample example);
 
     int deleteByExample(SmsHomeAdvertiseExample example);

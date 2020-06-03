@@ -10,6 +10,7 @@ import java.util.List;
  * Created by macro on 2018/4/26.
  */
 public interface CmsPrefrenceAreaProductRelationDao {
+
     /**
      * 批量创建
      */

@@ -10,6 +10,7 @@ import java.util.List;
  * Created by commerce on 2020/3/13.
  */
 public interface UmsAdminCacheService {
+
     /**
      * 删除后台用户缓存
      */

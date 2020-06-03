@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.UmsRolePermissionRelation;
 import com.commerce.mall.model.UmsRolePermissionRelationExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface UmsRolePermissionRelationMapper {
+
     long countByExample(UmsRolePermissionRelationExample example);
 
     int deleteByExample(UmsRolePermissionRelationExample example);

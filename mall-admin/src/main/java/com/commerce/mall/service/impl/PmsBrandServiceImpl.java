@@ -22,8 +22,10 @@ import java.util.List;
  */
 @Service
 public class PmsBrandServiceImpl implements PmsBrandService {
+
     @Autowired
     private PmsBrandMapper brandMapper;
+
     @Autowired
     private PmsProductMapper productMapper;
 
@@ -57,7 +59,7 @@ public class PmsBrandServiceImpl implements PmsBrandService {
         product.setBrandName(pmsBrand.getName());
         PmsProductExample example = new PmsProductExample();
         example.createCriteria().andBrandIdEqualTo(id);
-        productMapper.updateByExampleSelective(product,example);
+        productMapper.updateByExampleSelective(product, example);
         return brandMapper.updateByPrimaryKeySelective(pmsBrand);
     }
 

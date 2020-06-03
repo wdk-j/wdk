@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.UmsMemberReceiveAddress;
 import com.commerce.mall.model.UmsMemberReceiveAddressExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface UmsMemberReceiveAddressMapper {
+
     long countByExample(UmsMemberReceiveAddressExample example);
 
     int deleteByExample(UmsMemberReceiveAddressExample example);

@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class UmsMemberExample {
+
     protected String orderByClause;
 
     protected boolean distinct;
@@ -66,6 +67,7 @@ public class UmsMemberExample {
     }
 
     protected abstract static class GeneratedCriteria {
+
         protected List<Criterion> criteria;
 
         protected GeneratedCriteria() {
@@ -1361,6 +1363,7 @@ public class UmsMemberExample {
     }
 
     public static class Criterion {
+
         private String condition;
 
         private Object value;

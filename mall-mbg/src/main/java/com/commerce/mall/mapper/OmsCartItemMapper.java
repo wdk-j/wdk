@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.OmsCartItem;
 import com.commerce.mall.model.OmsCartItemExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface OmsCartItemMapper {
+
     long countByExample(OmsCartItemExample example);
 
     int deleteByExample(OmsCartItemExample example);

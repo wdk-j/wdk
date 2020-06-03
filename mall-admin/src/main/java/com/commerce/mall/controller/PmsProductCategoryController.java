@@ -24,6 +24,7 @@ import java.util.List;
 @Api(tags = "PmsProductCategoryController", description = "商品分类管理")
 @RequestMapping("/productCategory")
 public class PmsProductCategoryController {
+
     @Autowired
     private PmsProductCategoryService productCategoryService;
 
@@ -31,7 +32,7 @@ public class PmsProductCategoryController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult create(@Validated @RequestBody PmsProductCategoryParam productCategoryParam,
-                         BindingResult result) {
+                               BindingResult result) {
         int count = productCategoryService.create(productCategoryParam);
         if (count > 0) {
             return CommonResult.success(count);
@@ -44,9 +45,9 @@ public class PmsProductCategoryController {
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult update(@PathVariable Long id,
-                         @Validated
-                         @RequestBody PmsProductCategoryParam productCategoryParam,
-                         BindingResult result) {
+                               @Validated
+                               @RequestBody PmsProductCategoryParam productCategoryParam,
+                               BindingResult result) {
         int count = productCategoryService.update(id, productCategoryParam);
         if (count > 0) {
             return CommonResult.success(count);

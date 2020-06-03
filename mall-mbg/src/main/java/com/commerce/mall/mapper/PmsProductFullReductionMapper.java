@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.PmsProductFullReduction;
 import com.commerce.mall.model.PmsProductFullReductionExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface PmsProductFullReductionMapper {
+
     long countByExample(PmsProductFullReductionExample example);
 
     int deleteByExample(PmsProductFullReductionExample example);

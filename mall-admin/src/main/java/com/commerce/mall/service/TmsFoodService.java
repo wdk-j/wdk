@@ -14,7 +14,7 @@ public interface TmsFoodService {
     /**
      * 添加食品
      *
-     * @param tmsFood  tms food
+     * @param tmsFood tms food
      */
     void add(TmsFood tmsFood);
 }

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @Api(tags = "OmsOrderSettingController", description = "订单设置管理")
 @RequestMapping("/orderSetting")
 public class OmsOrderSettingController {
+
     @Autowired
     private OmsOrderSettingService orderSettingService;
 
@@ -32,8 +33,8 @@ public class OmsOrderSettingController {
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult update(@PathVariable Long id, @RequestBody OmsOrderSetting orderSetting) {
-        int count = orderSettingService.update(id,orderSetting);
-        if(count>0){
+        int count = orderSettingService.update(id, orderSetting);
+        if (count > 0) {
             return CommonResult.success(count);
         }
         return CommonResult.failed();

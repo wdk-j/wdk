@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class SmsFlashPromotionSessionExample {
+
     protected String orderByClause;
 
     protected boolean distinct;
@@ -66,6 +67,7 @@ public class SmsFlashPromotionSessionExample {
     }
 
     protected abstract static class GeneratedCriteria {
+
         protected List<Criterion> criteria;
 
         protected GeneratedCriteria() {
@@ -511,6 +513,7 @@ public class SmsFlashPromotionSessionExample {
     }
 
     public static class Criterion {
+
         private String condition;
 
         private Object value;

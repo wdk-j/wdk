@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TmsSellerExample {
+
     protected String orderByClause;
 
     protected boolean distinct;
@@ -65,6 +66,7 @@ public class TmsSellerExample {
     }
 
     protected abstract static class GeneratedCriteria {
+
         protected List<Criterion> criteria;
 
         protected GeneratedCriteria() {
@@ -584,6 +586,7 @@ public class TmsSellerExample {
     }
 
     public static class Criterion {
+
         private String condition;
 
         private Object value;

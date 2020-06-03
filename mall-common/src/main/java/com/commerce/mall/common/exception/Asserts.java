@@ -8,6 +8,7 @@ import com.commerce.mall.common.api.IErrorCode;
  * Created by commerce on 2020/2/27.
  */
 public class Asserts {
+
     public static void fail(String message) {
         throw new ApiException(message);
     }

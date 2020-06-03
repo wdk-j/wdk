@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.PmsComment;
 import com.commerce.mall.model.PmsCommentExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface PmsCommentMapper {
+
     long countByExample(PmsCommentExample example);
 
     int deleteByExample(PmsCommentExample example);

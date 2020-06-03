@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Api(tags = "OmsPortalOrderReturnApplyController", description = "申请退货管理")
 @RequestMapping("/returnApply")
 public class OmsPortalOrderReturnApplyController {
+
     @Autowired
     private OmsPortalOrderReturnApplyService returnApplyService;
 

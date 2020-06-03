@@ -9,6 +9,7 @@ import lombok.Setter;
  * Created by commerce on 2018/11/19.
  */
 public class SmsFlashPromotionSessionDetail extends SmsFlashPromotionSession {
+
     @Setter
     @Getter
     private Long productCount;

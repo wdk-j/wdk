@@ -9,6 +9,7 @@ import java.util.List;
  * Created by commerce on 2018/8/3.
  */
 public interface MemberReadHistoryService {
+
     /**
      * 生成浏览记录
      */

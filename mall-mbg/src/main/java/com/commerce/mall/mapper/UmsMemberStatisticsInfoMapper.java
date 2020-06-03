@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.UmsMemberStatisticsInfo;
 import com.commerce.mall.model.UmsMemberStatisticsInfoExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface UmsMemberStatisticsInfoMapper {
+
     long countByExample(UmsMemberStatisticsInfoExample example);
 
     int deleteByExample(UmsMemberStatisticsInfoExample example);

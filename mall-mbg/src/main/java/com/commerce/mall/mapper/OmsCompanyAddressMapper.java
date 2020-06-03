@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.OmsCompanyAddress;
 import com.commerce.mall.model.OmsCompanyAddressExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface OmsCompanyAddressMapper {
+
     long countByExample(OmsCompanyAddressExample example);
 
     int deleteByExample(OmsCompanyAddressExample example);

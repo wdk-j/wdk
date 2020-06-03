@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.PmsFeightTemplate;
 import com.commerce.mall.model.PmsFeightTemplateExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface PmsFeightTemplateMapper {
+
     long countByExample(PmsFeightTemplateExample example);
 
     int deleteByExample(PmsFeightTemplateExample example);

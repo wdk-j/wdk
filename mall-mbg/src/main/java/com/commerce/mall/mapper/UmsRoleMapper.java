@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.UmsRole;
 import com.commerce.mall.model.UmsRoleExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface UmsRoleMapper {
+
     long countByExample(UmsRoleExample example);
 
     int deleteByExample(UmsRoleExample example);

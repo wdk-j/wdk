@@ -10,6 +10,7 @@ import java.util.List;
  * Created by commerce on 2018/10/12.
  */
 public interface OmsOrderOperateHistoryDao {
+
     /**
      * 批量创建
      */

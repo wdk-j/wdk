@@ -19,6 +19,7 @@ import java.util.List;
 @Api(tags = "MemberCollectionController", description = "会员收藏管理")
 @RequestMapping("/member/collection")
 public class MemberCollectionController {
+
     @Autowired
     private MemberCollectionService memberCollectionService;
 

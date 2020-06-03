@@ -18,8 +18,10 @@ import java.util.List;
  */
 @Service
 public class PmsProductAttributeCategoryServiceImpl implements PmsProductAttributeCategoryService {
+
     @Autowired
     private PmsProductAttributeCategoryMapper productAttributeCategoryMapper;
+
     @Autowired
     private PmsProductAttributeCategoryDao productAttributeCategoryDao;
 
@@ -50,7 +52,7 @@ public class PmsProductAttributeCategoryServiceImpl implements PmsProductAttribu
 
     @Override
     public List<PmsProductAttributeCategory> getList(Integer pageSize, Integer pageNum) {
-        PageHelper.startPage(pageNum,pageSize);
+        PageHelper.startPage(pageNum, pageSize);
         return productAttributeCategoryMapper.selectByExample(new PmsProductAttributeCategoryExample());
     }
 

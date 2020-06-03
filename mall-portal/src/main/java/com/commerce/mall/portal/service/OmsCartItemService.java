@@ -12,6 +12,7 @@ import java.util.List;
  * Created by commerce on 2018/8/2.
  */
 public interface OmsCartItemService {
+
     /**
      * 查询购物车中是否包含该商品，有增加数量，无添加到购物车
      */
@@ -36,10 +37,10 @@ public interface OmsCartItemService {
     /**
      * 批量删除购物车中的商品
      */
-    int delete(Long memberId,List<Long> ids);
+    int delete(Long memberId, List<Long> ids);
 
     /**
-     *获取购物车中用于选择商品规格的商品信息
+     * 获取购物车中用于选择商品规格的商品信息
      */
     CartProduct getCartProduct(Long productId);
 

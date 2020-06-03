@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.CmsSubjectComment;
 import com.commerce.mall.model.CmsSubjectCommentExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface CmsSubjectCommentMapper {
+
     long countByExample(CmsSubjectCommentExample example);
 
     int deleteByExample(CmsSubjectCommentExample example);

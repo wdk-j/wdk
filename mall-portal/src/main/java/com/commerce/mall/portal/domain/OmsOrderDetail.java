@@ -10,6 +10,7 @@ import java.util.List;
  * Created by commerce on 2018/9/4.
  */
 public class OmsOrderDetail extends OmsOrder {
+
     private List<OmsOrderItem> orderItemList;
 
     public List<OmsOrderItem> getOrderItemList() {

@@ -1,10 +1,12 @@
 package com.commerce.mall.model;
 
 import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.util.Date;
 
 public class UmsResourceCategory implements Serializable {
+
     private Long id;
 
     @ApiModelProperty(value = "创建时间")

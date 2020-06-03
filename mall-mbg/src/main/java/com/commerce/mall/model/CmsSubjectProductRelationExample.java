@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CmsSubjectProductRelationExample {
+
     protected String orderByClause;
 
     protected boolean distinct;
@@ -64,6 +65,7 @@ public class CmsSubjectProductRelationExample {
     }
 
     protected abstract static class GeneratedCriteria {
+
         protected List<Criterion> criteria;
 
         protected GeneratedCriteria() {
@@ -293,6 +295,7 @@ public class CmsSubjectProductRelationExample {
     }
 
     public static class Criterion {
+
         private String condition;
 
         private Object value;

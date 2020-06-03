@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.SmsCouponProductRelation;
 import com.commerce.mall.model.SmsCouponProductRelationExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface SmsCouponProductRelationMapper {
+
     long countByExample(SmsCouponProductRelationExample example);
 
     int deleteByExample(SmsCouponProductRelationExample example);

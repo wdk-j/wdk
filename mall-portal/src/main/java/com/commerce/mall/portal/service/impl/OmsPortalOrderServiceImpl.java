@@ -28,38 +28,55 @@ import java.util.*;
  */
 @Service
 public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
+
     @Autowired
     private UmsMemberService memberService;
+
     @Autowired
     private OmsCartItemService cartItemService;
+
     @Autowired
     private UmsMemberReceiveAddressService memberReceiveAddressService;
+
     @Autowired
     private UmsMemberCouponService memberCouponService;
+
     @Autowired
     private UmsIntegrationConsumeSettingMapper integrationConsumeSettingMapper;
+
     @Autowired
     private PmsSkuStockMapper skuStockMapper;
+
     @Autowired
     private SmsCouponHistoryDao couponHistoryDao;
+
     @Autowired
     private OmsOrderMapper orderMapper;
+
     @Autowired
     private PortalOrderItemDao orderItemDao;
+
     @Autowired
     private SmsCouponHistoryMapper couponHistoryMapper;
+
     @Autowired
     private RedisService redisService;
+
     @Value("${redis.key.orderId}")
     private String REDIS_KEY_ORDER_ID;
+
     @Value("${redis.database}")
     private String REDIS_DATABASE;
+
     @Autowired
     private PortalOrderDao portalOrderDao;
+
     @Autowired
     private OmsOrderSettingMapper orderSettingMapper;
+
     @Autowired
     private OmsOrderItemMapper orderItemMapper;
+
     @Autowired
     private CancelOrderSender cancelOrderSender;
 
@@ -250,7 +267,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
 
     @Override
     public Integer cancelTimeOutOrder() {
-        Integer count=0;
+        Integer count = 0;
         OmsOrderSetting orderSetting = orderSettingMapper.selectByPrimaryKey(1L);
         //查询超时、未支付的订单及订单详情
         List<OmsOrderDetail> timeOutOrders = portalOrderDao.getTimeOutOrders(orderSetting.getNormalOrderOvertime());
@@ -323,7 +340,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
     private String generateOrderSn(OmsOrder order) {
         StringBuilder sb = new StringBuilder();
         String date = new SimpleDateFormat("yyyyMMdd").format(new Date());
-        String key = REDIS_DATABASE+":"+ REDIS_KEY_ORDER_ID + date;
+        String key = REDIS_DATABASE + ":" + REDIS_KEY_ORDER_ID + date;
         Long increment = redisService.incr(key, 1);
         sb.append(date);
         sb.append(String.format("%02d", order.getSourceType()));
@@ -621,7 +638,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
      */
     private boolean hasStock(List<CartPromotionItem> cartPromotionItemList) {
         for (CartPromotionItem cartPromotionItem : cartPromotionItemList) {
-            if (cartPromotionItem.getRealStock()==null||cartPromotionItem.getRealStock() <= 0) {
+            if (cartPromotionItem.getRealStock() == null || cartPromotionItem.getRealStock() <= 0) {
                 return false;
             }
         }

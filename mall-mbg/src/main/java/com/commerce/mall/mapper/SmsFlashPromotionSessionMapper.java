@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.SmsFlashPromotionSession;
 import com.commerce.mall.model.SmsFlashPromotionSessionExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface SmsFlashPromotionSessionMapper {
+
     long countByExample(SmsFlashPromotionSessionExample example);
 
     int deleteByExample(SmsFlashPromotionSessionExample example);

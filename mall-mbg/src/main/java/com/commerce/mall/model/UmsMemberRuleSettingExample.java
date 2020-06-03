@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UmsMemberRuleSettingExample {
+
     protected String orderByClause;
 
     protected boolean distinct;
@@ -65,6 +66,7 @@ public class UmsMemberRuleSettingExample {
     }
 
     protected abstract static class GeneratedCriteria {
+
         protected List<Criterion> criteria;
 
         protected GeneratedCriteria() {
@@ -534,6 +536,7 @@ public class UmsMemberRuleSettingExample {
     }
 
     public static class Criterion {
+
         private String condition;
 
         private Object value;

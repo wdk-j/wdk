@@ -6,7 +6,9 @@ package com.commerce.mall.dto;
  * Created by macro on 2018/5/23.
  */
 public class ProductAttrInfo {
+
     private Long attributeId;
+
     private Long attributeCategoryId;
 
     public Long getAttributeId() {

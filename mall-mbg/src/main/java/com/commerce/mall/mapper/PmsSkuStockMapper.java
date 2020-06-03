@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.PmsSkuStock;
 import com.commerce.mall.model.PmsSkuStockExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface PmsSkuStockMapper {
+
     long countByExample(PmsSkuStockExample example);
 
     int deleteByExample(PmsSkuStockExample example);

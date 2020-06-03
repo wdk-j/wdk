@@ -10,6 +10,7 @@ import java.util.List;
  * Created by commerce on 2018/11/6.
  */
 public interface SmsHomeNewProductService {
+
     /**
      * 添加首页推荐
      */

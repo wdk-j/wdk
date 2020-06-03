@@ -22,6 +22,7 @@ import java.util.List;
 @Api(tags = "UmsMemberLevelController", description = "会员等级管理")
 @RequestMapping("/memberLevel")
 public class UmsMemberLevelController {
+
     @Autowired
     private UmsMemberLevelService memberLevelService;
 

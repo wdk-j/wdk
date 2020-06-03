@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.UmsResourceCategory;
 import com.commerce.mall.model.UmsResourceCategoryExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface UmsResourceCategoryMapper {
+
     long countByExample(UmsResourceCategoryExample example);
 
     int deleteByExample(UmsResourceCategoryExample example);

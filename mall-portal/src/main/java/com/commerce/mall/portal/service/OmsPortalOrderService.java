@@ -11,6 +11,7 @@ import java.util.Map;
  * Created by commerce on 2018/8/30.
  */
 public interface OmsPortalOrderService {
+
     /**
      * 根据用户购物车信息生成确认单信息
      */

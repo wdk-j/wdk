@@ -26,7 +26,7 @@ public class TmsFoodServiceImpl implements TmsFoodService {
     /**
      * 添加食品
      *
-     * @param tmsFood  tms food
+     * @param tmsFood tms food
      */
     @Override
     public void add(TmsFood tmsFood) {

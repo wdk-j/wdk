@@ -2,10 +2,13 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.PmsProductOperateLog;
 import com.commerce.mall.model.PmsProductOperateLogExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface PmsProductOperateLogMapper {
+
     long countByExample(PmsProductOperateLogExample example);
 
     int deleteByExample(PmsProductOperateLogExample example);

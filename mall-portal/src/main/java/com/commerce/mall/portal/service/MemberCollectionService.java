@@ -9,6 +9,7 @@ import java.util.List;
  * Created by commerce on 2018/8/2.
  */
 public interface MemberCollectionService {
+
     int addProduct(MemberProductCollection productCollection);
 
     int deleteProduct(Long memberId, Long productId);

@@ -18,10 +18,13 @@ import java.util.List;
  */
 @Service
 public class SmsFlashPromotionProductRelationServiceImpl implements SmsFlashPromotionProductRelationService {
+
     @Autowired
     private SmsFlashPromotionProductRelationMapper relationMapper;
+
     @Autowired
     private SmsFlashPromotionProductRelationDao relationDao;
+
     @Override
     public int create(List<SmsFlashPromotionProductRelation> relationList) {
         for (SmsFlashPromotionProductRelation relation : relationList) {
@@ -48,8 +51,8 @@ public class SmsFlashPromotionProductRelationServiceImpl implements SmsFlashProm
 
     @Override
     public List<SmsFlashPromotionProduct> list(Long flashPromotionId, Long flashPromotionSessionId, Integer pageSize, Integer pageNum) {
-        PageHelper.startPage(pageNum,pageSize);
-        return relationDao.getList(flashPromotionId,flashPromotionSessionId);
+        PageHelper.startPage(pageNum, pageSize);
+        return relationDao.getList(flashPromotionId, flashPromotionSessionId);
     }
 
     @Override

@@ -9,6 +9,7 @@ import java.util.List;
  * Created by commerce on 2020/2/2.
  */
 public interface UmsResourceService {
+
     /**
      * 添加资源
      */

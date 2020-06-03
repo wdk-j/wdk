@@ -7,6 +7,7 @@ import com.commerce.mall.common.api.IErrorCode;
  * Created by commerce on 2020/2/27.
  */
 public class ApiException extends RuntimeException {
+
     private IErrorCode errorCode;
 
     public ApiException(IErrorCode errorCode) {

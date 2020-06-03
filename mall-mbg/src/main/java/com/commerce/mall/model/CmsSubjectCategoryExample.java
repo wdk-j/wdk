@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CmsSubjectCategoryExample {
+
     protected String orderByClause;
 
     protected boolean distinct;
@@ -64,6 +65,7 @@ public class CmsSubjectCategoryExample {
     }
 
     protected abstract static class GeneratedCriteria {
+
         protected List<Criterion> criteria;
 
         protected GeneratedCriteria() {
@@ -493,6 +495,7 @@ public class CmsSubjectCategoryExample {
     }
 
     public static class Criterion {
+
         private String condition;
 
         private Object value;

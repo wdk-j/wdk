@@ -10,6 +10,7 @@ import java.util.List;
  * Created by commerce on 2018/5/23.
  */
 public interface PmsProductCategoryAttributeRelationDao {
+
     /**
      * 批量创建
      */
