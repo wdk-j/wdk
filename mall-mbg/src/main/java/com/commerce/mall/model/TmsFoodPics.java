@@ -11,7 +11,7 @@ public class TmsFoodPics implements Serializable {
 
     private String picDesc;
 
-    @ApiModelProperty(value = "是否为主图")
+    @ApiModelProperty(value = "是否为主图，1为是")
     private String isMain;
 
     private Integer foodId;

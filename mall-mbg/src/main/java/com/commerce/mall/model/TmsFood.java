@@ -13,6 +13,12 @@ public class TmsFood implements Serializable {
     @ApiModelProperty(value = "价格")
     private BigDecimal price;
 
+    @ApiModelProperty(value = "食品评分")
+    private BigDecimal mark;
+
+    @ApiModelProperty(value = "销售量")
+    private Integer sales;
+
     @ApiModelProperty(value = "主料")
     private String mainMaterials;
 
@@ -49,6 +55,22 @@ public class TmsFood implements Serializable {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public BigDecimal getMark() {
+        return mark;
+    }
+
+    public void setMark(BigDecimal mark) {
+        this.mark = mark;
+    }
+
+    public Integer getSales() {
+        return sales;
+    }
+
+    public void setSales(Integer sales) {
+        this.sales = sales;
     }
 
     public String getMainMaterials() {
@@ -92,6 +114,8 @@ public class TmsFood implements Serializable {
         sb.append(", foodId=").append(foodId);
         sb.append(", foodName=").append(foodName);
         sb.append(", price=").append(price);
+        sb.append(", mark=").append(mark);
+        sb.append(", sales=").append(sales);
         sb.append(", mainMaterials=").append(mainMaterials);
         sb.append(", hasMeat=").append(hasMeat);
         sb.append(", weight=").append(weight);

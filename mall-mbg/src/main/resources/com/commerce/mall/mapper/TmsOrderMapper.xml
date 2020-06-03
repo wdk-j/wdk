@@ -103,19 +103,22 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.commerce.mall.model.TmsOrder">
-    insert into tms_order (order_id, post_time, address_id, 
-      user_id, pack_fee, delivery_fee, 
-      payment, memo)
-    values (#{orderId,jdbcType=INTEGER}, #{postTime,jdbcType=TIMESTAMP}, #{addressId,jdbcType=INTEGER}, 
-      #{userId,jdbcType=INTEGER}, #{packFee,jdbcType=DOUBLE}, #{deliveryFee,jdbcType=DOUBLE}, 
-      #{payment,jdbcType=DOUBLE}, #{memo,jdbcType=VARCHAR})
+    <selectKey keyProperty="orderId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into tms_order (post_time, address_id, user_id, 
+      pack_fee, delivery_fee, payment, 
+      memo)
+    values (#{postTime,jdbcType=TIMESTAMP}, #{addressId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{packFee,jdbcType=DOUBLE}, #{deliveryFee,jdbcType=DOUBLE}, #{payment,jdbcType=DOUBLE}, 
+      #{memo,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.commerce.mall.model.TmsOrder">
+    <selectKey keyProperty="orderId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into tms_order
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="orderId != null">
-        order_id,
-      </if>
       <if test="postTime != null">
         post_time,
       </if>
@@ -139,9 +142,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="orderId != null">
-        #{orderId,jdbcType=INTEGER},
-      </if>
       <if test="postTime != null">
         #{postTime,jdbcType=TIMESTAMP},
       </if>

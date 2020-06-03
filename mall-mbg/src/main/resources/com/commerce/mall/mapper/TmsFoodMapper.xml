@@ -5,6 +5,8 @@
     <id column="food_id" jdbcType="INTEGER" property="foodId" />
     <result column="food_name" jdbcType="VARCHAR" property="foodName" />
     <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="mark" jdbcType="DECIMAL" property="mark" />
+    <result column="sales" jdbcType="INTEGER" property="sales" />
     <result column="main_materials" jdbcType="VARCHAR" property="mainMaterials" />
     <result column="has_meat" jdbcType="VARCHAR" property="hasMeat" />
     <result column="weight" jdbcType="DOUBLE" property="weight" />
@@ -69,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    food_id, food_name, price, main_materials, has_meat, weight, seller_id
+    food_id, food_name, price, mark, sales, main_materials, has_meat, weight, seller_id
   </sql>
   <select id="selectByExample" parameterType="com.commerce.mall.model.TmsFoodExample" resultMap="BaseResultMap">
     select
@@ -102,24 +104,33 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.commerce.mall.model.TmsFood">
-    insert into tms_food (food_id, food_name, price, 
-      main_materials, has_meat, weight, 
-      seller_id)
-    values (#{foodId,jdbcType=INTEGER}, #{foodName,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
-      #{mainMaterials,jdbcType=VARCHAR}, #{hasMeat,jdbcType=VARCHAR}, #{weight,jdbcType=DOUBLE}, 
-      #{sellerId,jdbcType=INTEGER})
+    <selectKey keyProperty="foodId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into tms_food (food_name, price, mark, 
+      sales, main_materials, has_meat, 
+      weight, seller_id)
+    values (#{foodName,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{mark,jdbcType=DECIMAL}, 
+      #{sales,jdbcType=INTEGER}, #{mainMaterials,jdbcType=VARCHAR}, #{hasMeat,jdbcType=VARCHAR}, 
+      #{weight,jdbcType=DOUBLE}, #{sellerId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.commerce.mall.model.TmsFood">
+    <selectKey keyProperty="foodId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into tms_food
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="foodId != null">
-        food_id,
-      </if>
       <if test="foodName != null">
         food_name,
       </if>
       <if test="price != null">
         price,
+      </if>
+      <if test="mark != null">
+        mark,
+      </if>
+      <if test="sales != null">
+        sales,
       </if>
       <if test="mainMaterials != null">
         main_materials,
@@ -135,14 +146,17 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="foodId != null">
-        #{foodId,jdbcType=INTEGER},
-      </if>
       <if test="foodName != null">
         #{foodName,jdbcType=VARCHAR},
       </if>
       <if test="price != null">
         #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="mark != null">
+        #{mark,jdbcType=DECIMAL},
+      </if>
+      <if test="sales != null">
+        #{sales,jdbcType=INTEGER},
       </if>
       <if test="mainMaterials != null">
         #{mainMaterials,jdbcType=VARCHAR},
@@ -176,6 +190,12 @@
       <if test="record.price != null">
         price = #{record.price,jdbcType=DECIMAL},
       </if>
+      <if test="record.mark != null">
+        mark = #{record.mark,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sales != null">
+        sales = #{record.sales,jdbcType=INTEGER},
+      </if>
       <if test="record.mainMaterials != null">
         main_materials = #{record.mainMaterials,jdbcType=VARCHAR},
       </if>
@@ -198,6 +218,8 @@
     set food_id = #{record.foodId,jdbcType=INTEGER},
       food_name = #{record.foodName,jdbcType=VARCHAR},
       price = #{record.price,jdbcType=DECIMAL},
+      mark = #{record.mark,jdbcType=DECIMAL},
+      sales = #{record.sales,jdbcType=INTEGER},
       main_materials = #{record.mainMaterials,jdbcType=VARCHAR},
       has_meat = #{record.hasMeat,jdbcType=VARCHAR},
       weight = #{record.weight,jdbcType=DOUBLE},
@@ -214,6 +236,12 @@
       </if>
       <if test="price != null">
         price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="mark != null">
+        mark = #{mark,jdbcType=DECIMAL},
+      </if>
+      <if test="sales != null">
+        sales = #{sales,jdbcType=INTEGER},
       </if>
       <if test="mainMaterials != null">
         main_materials = #{mainMaterials,jdbcType=VARCHAR},
@@ -234,6 +262,8 @@
     update tms_food
     set food_name = #{foodName,jdbcType=VARCHAR},
       price = #{price,jdbcType=DECIMAL},
+      mark = #{mark,jdbcType=DECIMAL},
+      sales = #{sales,jdbcType=INTEGER},
       main_materials = #{mainMaterials,jdbcType=VARCHAR},
       has_meat = #{hasMeat,jdbcType=VARCHAR},
       weight = #{weight,jdbcType=DOUBLE},
