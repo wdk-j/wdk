@@ -1,4 +1,4 @@
-package com.commerce.mall.dto;
+package com.commerce.mall.portal.domain;
 
 import com.commerce.mall.model.TmsFoodComments;
 import com.commerce.mall.model.TmsFoodCommentsPics;
