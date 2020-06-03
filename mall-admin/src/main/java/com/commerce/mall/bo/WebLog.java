@@ -2,7 +2,7 @@ package com.commerce.mall.bo;
 
 /**
  * Controller层的日志封装类
- * Created by macro on 2018/4/26.
+ * Created by commerce on 2018/4/26.
  */
 public class WebLog {
     /**

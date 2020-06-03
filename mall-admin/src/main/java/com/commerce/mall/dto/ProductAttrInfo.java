@@ -3,7 +3,7 @@ package com.commerce.mall.dto;
 
 /**
  * 商品分类对应属性信息
- * Created by macro on 2018/5/23.
+ * Created by commerce on 2018/5/23.
  */
 public class ProductAttrInfo {
     private Long attributeId;

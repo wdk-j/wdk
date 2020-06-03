@@ -19,7 +19,7 @@ import java.util.List;
 
 /**
  * Swagger2API文档的配置
- * Created by macro on 2018/4/26.
+ * Created by commerce on 2018/4/26.
  */
 @Configuration
 @EnableSwagger2
@@ -29,7 +29,7 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.macro.mall.portal.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.commerce.mall.portal.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .securitySchemes(securitySchemes())
@@ -40,7 +40,7 @@ public class Swagger2Config {
         return new ApiInfoBuilder()
                 .title("mall前台系统")
                 .description("mall前台模块")
-                .contact("macro")
+                .contact("commerce")
                 .version("1.0")
                 .build();
     }

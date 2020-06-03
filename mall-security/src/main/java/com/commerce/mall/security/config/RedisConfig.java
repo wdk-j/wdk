@@ -21,7 +21,7 @@ import java.time.Duration;
 
 /**
  * Redis配置类
- * Created by macro on 2020/3/2.
+ * Created by commerce on 2020/3/2.
  */
 @EnableCaching
 @Configuration
