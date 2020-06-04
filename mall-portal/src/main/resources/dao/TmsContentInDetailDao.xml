@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.commerce.mall.dao.TmsContentInDetailDao">
-    <resultMap id="BaseResultMap" type="com.commerce.mall.dto.TmsContentInDetail">
+<mapper namespace="com.commerce.mall.portal.dao.TmsContentInDetailDao">
+    <resultMap id="BaseResultMap" type="com.commerce.mall.portal.domain.TmsContentInDetail">
         <id column="comm_id" jdbcType="INTEGER" property="commId" />
         <result column="post_time" jdbcType="TIMESTAMP" property="postTime" />
         <result column="user_id" jdbcType="INTEGER" property="userId" />
         <result column="food_id" jdbcType="INTEGER" property="foodId" />
         <result column="reply" jdbcType="VARCHAR" property="reply" />
-        <collection property="tmsFoodCommentsPics" column="{commId=comm_id}"
-                     select="listFoodCommPics"/>
+        <collection property="tmsFoodCommentsPics" column="{commId=comm_id}" ofType="list"
+                     select="com.commerce.mall.service.TmsFoodCommentsPicsService.getList"/>
     </resultMap>
     <sql id="Base_Column_List">
         comm_id, content, post_time, user_id, food_id, reply
     </sql>
-    <select id="selectContent" parameterType="Integer" resultMap="BaseResultMap">
+    <select id="selectContent" parameterType="integer" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from tms_food_comments

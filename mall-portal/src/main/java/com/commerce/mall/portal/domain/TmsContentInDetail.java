@@ -1,4 +1,4 @@
-package com.commerce.mall.dto;
+package com.commerce.mall.portal.domain;
 
 import com.commerce.mall.model.TmsFoodComments;
 import com.commerce.mall.model.TmsFoodCommentsPics;
@@ -26,7 +26,7 @@ public class TmsContentInDetail extends TmsFoodComments {
         return tmsFoodCommentsPics;
     }
 
-    public void setTmsFoodCommentsPics(List<TmsFoodCommentsPics> tmsFoodCommentsPics) {
+    public void setTmsFoodCommentsPics(List<TmsFoodCommentsPics> tmsFoodCommentsPics){
         this.tmsFoodCommentsPics = tmsFoodCommentsPics;
     }
 }

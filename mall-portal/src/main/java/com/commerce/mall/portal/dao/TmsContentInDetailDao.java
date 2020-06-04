@@ -1,4 +1,4 @@
-package com.commerce.mall.dao;
+package com.commerce.mall.portal.dao;
 
 public interface TmsContentInDetailDao {
     /**
