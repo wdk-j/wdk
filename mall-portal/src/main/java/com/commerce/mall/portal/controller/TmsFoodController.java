@@ -2,12 +2,14 @@ package com.commerce.mall.portal.controller;
 
 import cn.hutool.core.collection.CollUtil;
 import com.commerce.mall.common.api.CommonResult;
+import com.commerce.mall.model.TmsFoodPics;
 import com.commerce.mall.portal.domain.TmsFoodCommentDetail;
 import com.commerce.mall.portal.domain.TmsFoodDetail;
 import com.commerce.mall.portal.service.TmsFoodCommentDetailService;
 import com.commerce.mall.portal.service.TmsFoodService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author jiangyong
@@ -26,6 +26,7 @@ import java.util.Map;
 @Controller
 @Api(tags = {"TmsFoodController"},description = "外卖的食品管理")
 @RequestMapping("/food")
+@Slf4j
 public class TmsFoodController {
 
     @Autowired
@@ -45,5 +46,4 @@ public class TmsFoodController {
         map.put("comments", comments);
         return CommonResult.success(map);
     }
-
 }

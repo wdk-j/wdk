@@ -15,7 +15,7 @@
         <result column="weight" jdbcType="DOUBLE" property="weight"/>
         <result column="seller_id" jdbcType="INTEGER" property="sellerId"/>
         <result column="is_delete" jdbcType="VARCHAR" property="isDelete"/>
-        <collection property="tmsFoodPicsList" column="{foodId=food_id}"
+        <collection property="pics" column="{foodId=food_id}"
                     select="com.commerce.mall.mapper.TmsFoodPicsMapper.selectAllPics"/>
     </resultMap>
     <sql id="Base_Column_List">

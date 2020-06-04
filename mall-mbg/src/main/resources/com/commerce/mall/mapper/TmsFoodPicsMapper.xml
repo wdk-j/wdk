@@ -95,7 +95,7 @@
     from tms_food_pics
     where food_id = #{foodId,jdbcType=INTEGER} and is_main='1'
   </select>
-  <select id="selectAllPics" resultType="com.commerce.mall.model.TmsFoodPics">
+  <select id="selectAllPics" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from tms_food_pics

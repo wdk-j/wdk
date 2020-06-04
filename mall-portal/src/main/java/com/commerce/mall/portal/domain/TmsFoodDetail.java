@@ -3,6 +3,7 @@ package com.commerce.mall.portal.domain;
 import com.commerce.mall.model.TmsFood;
 import com.commerce.mall.model.TmsFoodPics;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ public class TmsFoodDetail extends TmsFood {
 
     private static final long serialVersionUID = 5788675020116388439L;
 
-    private List<TmsFoodPics> tmsFoodPicsList;
+    private List<TmsFoodPics> pics;
 
     public TmsFoodDetail() {
         super();
@@ -22,15 +23,15 @@ public class TmsFoodDetail extends TmsFood {
     @Override
     public String toString() {
         return super.toString()+"TmsFoodDetail{" +
-                "tmsFoodPicsList=" + tmsFoodPicsList +
+                "pics=" + pics +
                 '}';
     }
 
-    public List<TmsFoodPics> getTmsFoodPicsList() {
-        return tmsFoodPicsList;
+    public List<TmsFoodPics> getPics() {
+        return pics;
     }
 
-    public void setTmsFoodPicsList(List<TmsFoodPics> tmsFoodPicsList) {
-        this.tmsFoodPicsList = tmsFoodPicsList;
+    public void setPics(List<TmsFoodPics> pics) {
+        this.pics = pics;
     }
 }
