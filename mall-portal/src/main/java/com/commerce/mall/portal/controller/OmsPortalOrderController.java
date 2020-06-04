@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -54,6 +55,20 @@ public class OmsPortalOrderController {
         portalOrderService.cancelTimeOutOrder();
         return CommonResult.success(null);
     }
+//    @ApiOperation("获取订单列表")
+//    @RequestMapping(value = "/getOrderList", method = RequestMethod.POST)
+//    @ResponseBody
+//    public CommonResult getOrderList(){
+//        portalOrderService.getOrderList();
+//    }
+
+    @ApiOperation("手动删除订单")
+    @RequestMapping(value = "/deleteOrder", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult deleteOrder(Long OrderId){
+        portalOrderService.deleteOrder(OrderId);
+        return CommonResult.success(null);
+    }
 
     @ApiOperation("取消单个超时订单")
     @RequestMapping(value = "/cancelOrder", method = RequestMethod.POST)
@@ -62,4 +77,5 @@ public class OmsPortalOrderController {
         portalOrderService.sendDelayMessageCancelOrder(orderId);
         return CommonResult.success(null);
     }
+
 }

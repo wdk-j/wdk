@@ -44,4 +44,9 @@ public interface OmsPortalOrderService {
      * 发送延迟消息取消订单
      */
     void sendDelayMessageCancelOrder(Long orderId);
+
+    /*
+    * 删除订单
+     */
+    void deleteOrder(Long orderId);
 }

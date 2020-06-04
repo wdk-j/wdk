@@ -88,4 +88,9 @@
             #{item.productSkuId}
         </foreach>
     </update>
+    <update id="deleteOrder">
+        UPDATE oms_order
+        SET
+        delete_status=1
+    </update>
 </mapper>

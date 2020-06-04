@@ -38,4 +38,8 @@ public interface PortalOrderDao {
      */
     int releaseSkuStockLock(@Param("itemList") List<OmsOrderItem> orderItemList);
 
+    /**
+     * 删除订单
+     */
+    void deleteOrder(Long orderId);
 }
