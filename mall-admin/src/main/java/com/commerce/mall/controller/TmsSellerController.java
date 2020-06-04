@@ -47,7 +47,7 @@ public class TmsSellerController {
     @ResponseBody
     public CommonResult<Object> updateSeller(@Validated @PathVariable("sellerId") TmsSeller tmsSeller){
         int i = tmsSellerService.updateTmsSeller(tmsSeller);
-        return CommonResult.success(1);
+        return CommonResult.success(i);
     }
 
 }
