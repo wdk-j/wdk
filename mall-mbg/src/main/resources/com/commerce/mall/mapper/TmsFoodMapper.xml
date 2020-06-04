@@ -12,6 +12,7 @@
     <result column="has_meat" jdbcType="VARCHAR" property="hasMeat" />
     <result column="weight" jdbcType="DOUBLE" property="weight" />
     <result column="seller_id" jdbcType="INTEGER" property="sellerId" />
+    <result column="packing_fee" jdbcType="DOUBLE" property="packingFee" />
     <result column="is_delete" jdbcType="VARCHAR" property="isDelete" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -74,7 +75,7 @@
   </sql>
   <sql id="Base_Column_List">
     food_id, food_name, price, mark, sales, discount, main_materials, has_meat, weight, 
-    seller_id, is_delete
+    seller_id, packing_fee, is_delete
   </sql>
   <select id="selectByExample" parameterType="com.commerce.mall.model.TmsFoodExample" resultMap="BaseResultMap">
     select
@@ -113,11 +114,11 @@
     insert into tms_food (food_name, price, mark, 
       sales, discount, main_materials, 
       has_meat, weight, seller_id, 
-      is_delete)
+      packing_fee, is_delete)
     values (#{foodName,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{mark,jdbcType=DECIMAL}, 
       #{sales,jdbcType=INTEGER}, #{discount,jdbcType=DECIMAL}, #{mainMaterials,jdbcType=VARCHAR}, 
       #{hasMeat,jdbcType=VARCHAR}, #{weight,jdbcType=DOUBLE}, #{sellerId,jdbcType=INTEGER}, 
-      #{isDelete,jdbcType=VARCHAR})
+      #{packingFee,jdbcType=DOUBLE}, #{isDelete,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.commerce.mall.model.TmsFood">
     <selectKey keyProperty="foodId" order="AFTER" resultType="java.lang.Integer">
@@ -152,6 +153,9 @@
       <if test="sellerId != null">
         seller_id,
       </if>
+      <if test="packingFee != null">
+        packing_fee,
+      </if>
       <if test="isDelete != null">
         is_delete,
       </if>
@@ -183,6 +187,9 @@
       </if>
       <if test="sellerId != null">
         #{sellerId,jdbcType=INTEGER},
+      </if>
+      <if test="packingFee != null">
+        #{packingFee,jdbcType=DOUBLE},
       </if>
       <if test="isDelete != null">
         #{isDelete,jdbcType=VARCHAR},
@@ -228,6 +235,9 @@
       <if test="record.sellerId != null">
         seller_id = #{record.sellerId,jdbcType=INTEGER},
       </if>
+      <if test="record.packingFee != null">
+        packing_fee = #{record.packingFee,jdbcType=DOUBLE},
+      </if>
       <if test="record.isDelete != null">
         is_delete = #{record.isDelete,jdbcType=VARCHAR},
       </if>
@@ -248,6 +258,7 @@
       has_meat = #{record.hasMeat,jdbcType=VARCHAR},
       weight = #{record.weight,jdbcType=DOUBLE},
       seller_id = #{record.sellerId,jdbcType=INTEGER},
+      packing_fee = #{record.packingFee,jdbcType=DOUBLE},
       is_delete = #{record.isDelete,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -283,6 +294,9 @@
       <if test="sellerId != null">
         seller_id = #{sellerId,jdbcType=INTEGER},
       </if>
+      <if test="packingFee != null">
+        packing_fee = #{packingFee,jdbcType=DOUBLE},
+      </if>
       <if test="isDelete != null">
         is_delete = #{isDelete,jdbcType=VARCHAR},
       </if>
@@ -300,6 +314,7 @@
       has_meat = #{hasMeat,jdbcType=VARCHAR},
       weight = #{weight,jdbcType=DOUBLE},
       seller_id = #{sellerId,jdbcType=INTEGER},
+      packing_fee = #{packingFee,jdbcType=DOUBLE},
       is_delete = #{isDelete,jdbcType=VARCHAR}
     where food_id = #{foodId,jdbcType=INTEGER}
   </update>

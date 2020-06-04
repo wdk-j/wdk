@@ -735,6 +735,66 @@ public class TmsFoodExample {
             return (Criteria) this;
         }
 
+        public Criteria andPackingFeeIsNull() {
+            addCriterion("packing_fee is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPackingFeeIsNotNull() {
+            addCriterion("packing_fee is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPackingFeeEqualTo(Double value) {
+            addCriterion("packing_fee =", value, "packingFee");
+            return (Criteria) this;
+        }
+
+        public Criteria andPackingFeeNotEqualTo(Double value) {
+            addCriterion("packing_fee <>", value, "packingFee");
+            return (Criteria) this;
+        }
+
+        public Criteria andPackingFeeGreaterThan(Double value) {
+            addCriterion("packing_fee >", value, "packingFee");
+            return (Criteria) this;
+        }
+
+        public Criteria andPackingFeeGreaterThanOrEqualTo(Double value) {
+            addCriterion("packing_fee >=", value, "packingFee");
+            return (Criteria) this;
+        }
+
+        public Criteria andPackingFeeLessThan(Double value) {
+            addCriterion("packing_fee <", value, "packingFee");
+            return (Criteria) this;
+        }
+
+        public Criteria andPackingFeeLessThanOrEqualTo(Double value) {
+            addCriterion("packing_fee <=", value, "packingFee");
+            return (Criteria) this;
+        }
+
+        public Criteria andPackingFeeIn(List<Double> values) {
+            addCriterion("packing_fee in", values, "packingFee");
+            return (Criteria) this;
+        }
+
+        public Criteria andPackingFeeNotIn(List<Double> values) {
+            addCriterion("packing_fee not in", values, "packingFee");
+            return (Criteria) this;
+        }
+
+        public Criteria andPackingFeeBetween(Double value1, Double value2) {
+            addCriterion("packing_fee between", value1, value2, "packingFee");
+            return (Criteria) this;
+        }
+
+        public Criteria andPackingFeeNotBetween(Double value1, Double value2) {
+            addCriterion("packing_fee not between", value1, value2, "packingFee");
+            return (Criteria) this;
+        }
+
         public Criteria andIsDeleteIsNull() {
             addCriterion("is_delete is null");
             return (Criteria) this;

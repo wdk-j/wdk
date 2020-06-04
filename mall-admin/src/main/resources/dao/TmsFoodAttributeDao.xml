@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.commerce.mall.dao.TmsFoodAttributeDao">
+
+    <resultMap id="BaseResultMap" type="com.commerce.mall.dto.TmsFoodWithMainPic">
+        <id column="food_id" jdbcType="INTEGER" property="foodId"/>
+        <result column="food_name" jdbcType="VARCHAR" property="foodName"/>
+        <result column="price" jdbcType="DECIMAL" property="price"/>
+        <result column="mark" jdbcType="DECIMAL" property="mark"/>
+        <result column="sales" jdbcType="INTEGER" property="sales"/>
+        <result column="main_materials" jdbcType="VARCHAR" property="mainMaterials"/>
+        <result column="has_meat" jdbcType="VARCHAR" property="hasMeat"/>
+        <result column="weight" jdbcType="DOUBLE" property="weight"/>
+        <result column="seller_id" jdbcType="INTEGER" property="sellerId"/>
+        <association property="mainPic" column="{foodId=food_id}"
+                     select="com.commerce.mall.mapper.TmsFoodPicsMapper.selectMainPic"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        food_id, food_name, price, mark, sales, main_materials, has_meat, weight, seller_id
+    </sql>
+    <select id="selectByKeyword" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tms_food
+        <if test="keyword!=null">
+            where food_name like '%'+#{keyword}+'%'
+        </if>
+        order by food_id
+    </select>
+    <update id="updateIsDelete">
+    update tms_food
+    set is_delete=#{isDelete}
+    where food_id = #{foodId};
+</update>
+</mapper>

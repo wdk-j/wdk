@@ -32,6 +32,7 @@ public class TmsFoodPicsServiceImpl implements TmsFoodPicsService {
     public List<TmsFoodPics> getList(Integer foodId) {
         TmsFoodPicsExample example = new TmsFoodPicsExample();
         example.createCriteria().andFoodIdEqualTo(foodId);
+
         return tmsFoodPicsMapper.selectByExample(example);
     }
 

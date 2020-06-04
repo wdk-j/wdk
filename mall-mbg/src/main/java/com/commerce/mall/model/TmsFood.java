@@ -34,6 +34,9 @@ public class TmsFood implements Serializable {
     @ApiModelProperty(value = "外键")
     private Integer sellerId;
 
+    @ApiModelProperty(value = "包装费")
+    private Double packingFee;
+
     @ApiModelProperty(value = "上下架 1为下架")
     private String isDelete;
 
@@ -119,6 +122,14 @@ public class TmsFood implements Serializable {
         this.sellerId = sellerId;
     }
 
+    public Double getPackingFee() {
+        return packingFee;
+    }
+
+    public void setPackingFee(Double packingFee) {
+        this.packingFee = packingFee;
+    }
+
     public String getIsDelete() {
         return isDelete;
     }
@@ -143,6 +154,7 @@ public class TmsFood implements Serializable {
         sb.append(", hasMeat=").append(hasMeat);
         sb.append(", weight=").append(weight);
         sb.append(", sellerId=").append(sellerId);
+        sb.append(", packingFee=").append(packingFee);
         sb.append(", isDelete=").append(isDelete);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
