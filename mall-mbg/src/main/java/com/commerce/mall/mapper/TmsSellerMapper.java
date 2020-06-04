@@ -36,4 +36,5 @@ public interface TmsSellerMapper {
     int updateByPrimaryKeyWithBLOBs(TmsSeller record);
 
     int updateByPrimaryKey(TmsSeller record);
+
 }
