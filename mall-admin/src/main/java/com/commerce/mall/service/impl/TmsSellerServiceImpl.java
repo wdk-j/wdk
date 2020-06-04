@@ -1,14 +1,19 @@
 package com.commerce.mall.service.impl;
 
+import cn.hutool.core.util.StrUtil;
+import com.commerce.mall.dao.TmsSellerDao;
 import com.commerce.mall.mapper.TmsSellerMapper;
 import com.commerce.mall.model.TmsSeller;
 import com.commerce.mall.model.TmsSellerExample;
 import com.commerce.mall.service.TmsSellerService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author jiangyong
@@ -22,9 +27,11 @@ public class TmsSellerServiceImpl implements TmsSellerService {
     @Autowired
     private TmsSellerMapper tmsSellerMapper;
 
+    @Autowired
+    TmsSellerDao tmsSellerDao;
+
     /**
      * 根据seller_id查找商家
-     *
      * @param sellerId
      * @return
      */
@@ -33,16 +40,21 @@ public class TmsSellerServiceImpl implements TmsSellerService {
         return tmsSellerMapper.selectByPrimaryKey(sellerId);
     }
 
+    /**
+     * 添加商家
+     * @param tmsSeller
+     * @return
+     */
     @Override
-    public void addTmsSeller(TmsSeller tmsSeller) {
+    public int addTmsSeller(TmsSeller tmsSeller) {
         tmsSeller.setClosed("0");
         tmsSeller.setIsDelete("0");
-        tmsSellerMapper.insertSelective(tmsSeller);
+        int i = tmsSellerMapper.insertSelective(tmsSeller);
+        return i;
     }
 
     /**
      * 更改商家信息
-     *
      * @param tmsSeller
      * @return
      */
@@ -50,16 +62,68 @@ public class TmsSellerServiceImpl implements TmsSellerService {
     public int updateTmsSeller(TmsSeller tmsSeller) {
         TmsSellerExample tmsSellerExample = new TmsSellerExample();
         tmsSellerExample.createCriteria().andSellerIdEqualTo(tmsSeller.getSellerId());
-        return tmsSellerMapper.updateByExampleSelective(tmsSeller,tmsSellerExample);
+        return tmsSellerMapper.updateByExampleSelective(tmsSeller, tmsSellerExample);
     }
 
     /**
-     * 根据seller_id删除商家
+     * 获取商家列表
+     * @return
+     */
+    @Override
+    public List<TmsSeller> list() {
+        TmsSellerExample tmsSellerExample = new TmsSellerExample();
+        return tmsSellerMapper.selectByExample(tmsSellerExample);
+    }
+
+    /**
+     * 分页显示图书列表
+     * @param pageNum
+     * @param pageSize
+     * @param keyWord
+     * @return
+     */
+    @Override
+    public PageInfo<TmsSeller> pagedList(int pageNum, int pageSize, String keyWord) {
+        PageHelper.startPage(pageNum, pageSize);
+        TmsSellerExample tmsSellerExample = new TmsSellerExample();
+        TmsSellerExample.Criteria criteria = tmsSellerExample.createCriteria();
+        if (!StrUtil.isEmpty(keyWord))
+            criteria.andSellerNameLike(keyWord);
+        tmsSellerExample.setOrderByClause("seller_id asc");
+        List<TmsSeller> tmsSellers = tmsSellerMapper.selectByExample(tmsSellerExample);
+        return new PageInfo<>(tmsSellers);
+    }
+
+    /**
+     * 根据seller_id删除商家信息
      *
      * @param sellerId
      */
     @Override
-    public void deleteTmsSellerById(Integer sellerId) {
-        tmsSellerMapper.deleteByPrimaryKey(sellerId);
+    public int deleteTmsSellerById(Integer sellerId) {
+        int i = tmsSellerMapper.deleteByPrimaryKey(sellerId);
+        return i;
+    }
+
+    /**
+     * 更改商家isDelete
+     * @param sellerId
+     * @param isDelete
+     * @return
+     */
+    @Override
+    public int updateAttrIsDelete(Integer sellerId, String isDelete) {
+        return tmsSellerDao.updateAttrIsDelete(sellerId, isDelete);
+    }
+
+    /**
+     * 更改商家closed
+     * @param sellerId
+     * @param closed
+     * @return
+     */
+    @Override
+    public int updateAttrClosed(Integer sellerId, String closed) {
+        return tmsSellerDao.updateAttrClosed(sellerId , closed);
     }
 }
