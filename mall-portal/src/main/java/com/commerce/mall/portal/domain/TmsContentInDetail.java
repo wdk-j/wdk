@@ -23,7 +23,7 @@ public class TmsContentInDetail extends TmsFoodComments {
                 '}';
     }
 
-    public List<TmsFoodCommentsPics> getTmsFoodCommentsPics(){
+    public List<TmsFoodCommentsPics> getTmsFoodCommentsPics() {
         return tmsFoodCommentsPics;
     }
 

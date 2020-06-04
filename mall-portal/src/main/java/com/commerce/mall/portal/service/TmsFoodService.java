@@ -1,9 +1,6 @@
-package com.commerce.mall.service;
+package com.commerce.mall.portal.service;
 
-import com.commerce.mall.dto.TmsFoodInHome;
 import com.commerce.mall.model.TmsFood;
-
-import java.util.List;
 
 /**
  * @author jy

@@ -15,7 +15,7 @@
     </sql>
     <select id="selectContent" parameterType="integer" resultMap="BaseResultMap">
         select
-        <include refid="Base_Column_List"></include>
+        <include refid="Base_Column_List"/>
         from tms_food_comments
         where food_id=#{foodId} order by comm_id desc
     </select>

@@ -1,9 +1,9 @@
-package com.commerce.mall.service.impl;
+package com.commerce.mall.portal.service.impl;
 
 import com.commerce.mall.mapper.TmsFoodCommentsPicsMapper;
 import com.commerce.mall.model.TmsFoodCommentsPics;
 import com.commerce.mall.model.TmsFoodCommentsPicsExample;
-import com.commerce.mall.service.TmsFoodCommentsPicsService;
+import com.commerce.mall.portal.service.TmsFoodCommentsPicsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class TmsFoodCommentsPicsServiceImpl implements TmsFoodCommentsPicsServic
      * @return pics
      */
     @Override
-    public List<TmsFoodCommentsPics> getList(Integer commId) {
+    public List<TmsFoodCommentsPics> listFoodCommPics(Integer commId) {
         TmsFoodCommentsPicsExample example = new TmsFoodCommentsPicsExample();
         example.createCriteria().andCommIdEqualTo(commId);
         return tmsFoodCommentsPicsMapper.selectByExample(example);

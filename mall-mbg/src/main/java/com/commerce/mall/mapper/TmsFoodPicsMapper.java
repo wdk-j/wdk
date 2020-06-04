@@ -1,5 +1,6 @@
 package com.commerce.mall.mapper;
 
+import com.commerce.mall.model.TmsFood;
 import com.commerce.mall.model.TmsFoodPics;
 import com.commerce.mall.model.TmsFoodPicsExample;
 
@@ -22,6 +23,8 @@ public interface TmsFoodPicsMapper {
     List<TmsFoodPics> selectByExample(TmsFoodPicsExample example);
 
     TmsFoodPics selectByPrimaryKey(Integer picId);
+
+    TmsFoodPics selectMainPic(Integer foodId);
 
     int updateByExampleSelective(@Param("record") TmsFoodPics record, @Param("example") TmsFoodPicsExample example);
 
