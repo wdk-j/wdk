@@ -2,6 +2,7 @@ package com.commerce.mall.portal.domain;
 
 import com.commerce.mall.model.TmsFoodComments;
 import com.commerce.mall.model.TmsFoodCommentsPics;
+import com.commerce.mall.model.UmsMember;
 
 import java.util.List;
 
