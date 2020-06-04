@@ -5,6 +5,7 @@ import com.commerce.mall.model.TmsFoodCommentsPicsExample;
 
 import java.util.List;
 
+import com.commerce.mall.model.TmsFoodPics;
 import org.apache.ibatis.annotations.Param;
 
 public interface TmsFoodCommentsPicsMapper {
@@ -20,6 +21,14 @@ public interface TmsFoodCommentsPicsMapper {
     int insertSelective(TmsFoodCommentsPics record);
 
     List<TmsFoodCommentsPics> selectByExample(TmsFoodCommentsPicsExample example);
+
+    /**
+     * 查找某条评论的所有配图
+     *
+     * @param commId comment id
+     * @return list
+     */
+    List<TmsFoodCommentsPics> selectByCommId(Integer commId);
 
     TmsFoodCommentsPics selectByPrimaryKey(Integer picId);
 

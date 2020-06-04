@@ -30,13 +30,13 @@ public class TmsSellerController {
     private TmsSellerServiceImpl tmsSellerService;
 
     @ApiOperation(value = "获取一家店的所有商品", notes = "what is notes?")
-    @GetMapping("/foods")
+    @GetMapping("/foods/{sellerId}")
     @ResponseBody
-    public CommonResult<Object> getFoodsList(@Validated @RequestParam("sellerId") Integer sellerId) {
+    public CommonResult<Object> getFoodsList(@Validated @PathVariable("sellerId") Integer sellerId) {
         // 强制
         // sellerId=1;
-        LOGGER.info("seller id: " + sellerId + "homeFoodList".toString());
         List<TmsFoodInHome> homeFoodList = tmsSellerService.listHomeFoods(sellerId);
+        LOGGER.info("seller id: " + sellerId + homeFoodList.toString());
         return CommonResult.success(homeFoodList);
     }
 }

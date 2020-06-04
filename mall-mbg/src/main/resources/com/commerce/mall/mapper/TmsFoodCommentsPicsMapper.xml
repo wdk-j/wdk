@@ -82,6 +82,13 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectByCommId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tms_food_comments_pics
+    where comm_id=#{commId}
+    order by pic_id
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

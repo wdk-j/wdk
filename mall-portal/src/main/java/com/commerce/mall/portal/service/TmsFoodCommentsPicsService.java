@@ -11,14 +11,6 @@ import java.util.List;
 public interface TmsFoodCommentsPicsService {
 
     /**
-     * 获取某评论的配图列表
-     *
-     * @param commId comment id
-     * @return pics
-     */
-    List<TmsFoodCommentsPics> listFoodCommPics(Integer commId);
-
-    /**
      * 添加一张评论图
      *
      * @param tmsFoodCommentsPic tmsFoodCommentsPic
