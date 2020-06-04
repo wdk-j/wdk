@@ -1,12 +1,10 @@
 package com.commerce.mall.model;
 
 import io.swagger.annotations.ApiModelProperty;
-
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 public class TmsSeller implements Serializable {
-
     private Integer sellerId;
 
     private String sellerName;
@@ -18,6 +16,9 @@ public class TmsSeller implements Serializable {
     private String address;
 
     private BigDecimal minPrice;
+
+    @ApiModelProperty(value = "是否打烊，1为是，0为否")
+    private String closed;
 
     private String isDelete;
 
@@ -73,6 +74,14 @@ public class TmsSeller implements Serializable {
         this.minPrice = minPrice;
     }
 
+    public String getClosed() {
+        return closed;
+    }
+
+    public void setClosed(String closed) {
+        this.closed = closed;
+    }
+
     public String getIsDelete() {
         return isDelete;
     }
@@ -101,6 +110,7 @@ public class TmsSeller implements Serializable {
         sb.append(", logoUrl=").append(logoUrl);
         sb.append(", address=").append(address);
         sb.append(", minPrice=").append(minPrice);
+        sb.append(", closed=").append(closed);
         sb.append(", isDelete=").append(isDelete);
         sb.append(", intro=").append(intro);
         sb.append(", serialVersionUID=").append(serialVersionUID);

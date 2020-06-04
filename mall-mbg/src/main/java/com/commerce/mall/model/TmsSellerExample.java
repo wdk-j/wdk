@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TmsSellerExample {
-
     protected String orderByClause;
 
     protected boolean distinct;
@@ -66,7 +65,6 @@ public class TmsSellerExample {
     }
 
     protected abstract static class GeneratedCriteria {
-
         protected List<Criterion> criteria;
 
         protected GeneratedCriteria() {
@@ -507,6 +505,76 @@ public class TmsSellerExample {
             return (Criteria) this;
         }
 
+        public Criteria andClosedIsNull() {
+            addCriterion("closed is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andClosedIsNotNull() {
+            addCriterion("closed is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andClosedEqualTo(String value) {
+            addCriterion("closed =", value, "closed");
+            return (Criteria) this;
+        }
+
+        public Criteria andClosedNotEqualTo(String value) {
+            addCriterion("closed <>", value, "closed");
+            return (Criteria) this;
+        }
+
+        public Criteria andClosedGreaterThan(String value) {
+            addCriterion("closed >", value, "closed");
+            return (Criteria) this;
+        }
+
+        public Criteria andClosedGreaterThanOrEqualTo(String value) {
+            addCriterion("closed >=", value, "closed");
+            return (Criteria) this;
+        }
+
+        public Criteria andClosedLessThan(String value) {
+            addCriterion("closed <", value, "closed");
+            return (Criteria) this;
+        }
+
+        public Criteria andClosedLessThanOrEqualTo(String value) {
+            addCriterion("closed <=", value, "closed");
+            return (Criteria) this;
+        }
+
+        public Criteria andClosedLike(String value) {
+            addCriterion("closed like", value, "closed");
+            return (Criteria) this;
+        }
+
+        public Criteria andClosedNotLike(String value) {
+            addCriterion("closed not like", value, "closed");
+            return (Criteria) this;
+        }
+
+        public Criteria andClosedIn(List<String> values) {
+            addCriterion("closed in", values, "closed");
+            return (Criteria) this;
+        }
+
+        public Criteria andClosedNotIn(List<String> values) {
+            addCriterion("closed not in", values, "closed");
+            return (Criteria) this;
+        }
+
+        public Criteria andClosedBetween(String value1, String value2) {
+            addCriterion("closed between", value1, value2, "closed");
+            return (Criteria) this;
+        }
+
+        public Criteria andClosedNotBetween(String value1, String value2) {
+            addCriterion("closed not between", value1, value2, "closed");
+            return (Criteria) this;
+        }
+
         public Criteria andIsDeleteIsNull() {
             addCriterion("is_delete is null");
             return (Criteria) this;
@@ -586,7 +654,6 @@ public class TmsSellerExample {
     }
 
     public static class Criterion {
-
         private String condition;
 
         private Object value;
