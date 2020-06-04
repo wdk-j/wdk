@@ -1,15 +1,12 @@
-package com.commerce.mall.service.impl;
+package com.commerce.mall.portal.service.impl;
 
-import com.commerce.mall.dto.TmsFoodInHome;
 import com.commerce.mall.mapper.TmsFoodMapper;
 import com.commerce.mall.model.TmsFood;
-import com.commerce.mall.service.TmsFoodService;
+import com.commerce.mall.portal.service.TmsFoodService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * @author jiangyong

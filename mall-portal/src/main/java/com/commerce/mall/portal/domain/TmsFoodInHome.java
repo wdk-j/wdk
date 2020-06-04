@@ -1,4 +1,4 @@
-package com.commerce.mall.dto;
+package com.commerce.mall.portal.domain;
 
 import com.commerce.mall.model.TmsFood;
 import com.commerce.mall.model.TmsFoodPics;
@@ -12,10 +12,6 @@ public class TmsFoodInHome extends TmsFood {
     private static final long serialVersionUID = 1591171709422390836L;
 
     private TmsFoodPics mainPic;
-
-    public TmsFoodInHome() {
-        super();
-    }
 
     @Override
     public String toString() {

@@ -1,9 +1,9 @@
-package com.commerce.mall.controller;
+package com.commerce.mall.portal.controller;
 
 
 import com.commerce.mall.common.api.CommonResult;
-import com.commerce.mall.dto.TmsFoodInHome;
-import com.commerce.mall.service.TmsSellerService;
+import com.commerce.mall.portal.domain.TmsFoodInHome;
+import com.commerce.mall.portal.service.impl.TmsSellerServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -11,10 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,14 +27,16 @@ public class TmsSellerController {
     private static final Logger LOGGER = LoggerFactory.getLogger(TmsSellerController.class);
 
     @Autowired
-    private TmsSellerService tmsSellerService;
+    private TmsSellerServiceImpl tmsSellerService;
 
     @ApiOperation(value = "获取一家店的所有商品", notes = "what is notes?")
-    @GetMapping("/foods/{sellerId}")
+    @GetMapping("/foods")
     @ResponseBody
-    public CommonResult<Object> getFoodsList(@Validated @PathVariable Integer sellerId) {
-        List<TmsFoodInHome> homeFoodList = tmsSellerService.getHomeFoodList(sellerId);
-        LOGGER.info("seller id: " + sellerId + homeFoodList.toString());
+    public CommonResult<Object> getFoodsList(@Validated @RequestParam("sellerId") Integer sellerId) {
+        // 强制
+        // sellerId=1;
+        LOGGER.info("seller id: " + sellerId + "homeFoodList".toString());
+        List<TmsFoodInHome> homeFoodList = tmsSellerService.listHomeFoods(sellerId);
         return CommonResult.success(homeFoodList);
     }
 }

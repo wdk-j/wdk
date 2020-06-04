@@ -1,4 +1,4 @@
-package com.commerce.mall.service;
+package com.commerce.mall.portal.service;
 
 import com.commerce.mall.model.TmsFoodCommentsPics;
 
@@ -16,7 +16,7 @@ public interface TmsFoodCommentsPicsService {
      * @param commId comment id
      * @return pics
      */
-    List<TmsFoodCommentsPics> getList(Integer commId);
+    List<TmsFoodCommentsPics> listFoodCommPics(Integer commId);
 
     /**
      * 添加一张评论图

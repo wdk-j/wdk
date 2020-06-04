@@ -1,6 +1,7 @@
-package com.commerce.mall.service;
+package com.commerce.mall.portal.service;
 
-import com.commerce.mall.dto.TmsFoodInHome;
+
+import com.commerce.mall.portal.domain.TmsFoodInHome;
 
 import java.util.List;
 
@@ -16,5 +17,5 @@ public interface TmsSellerService {
      * @param sellerId seller id
      * @return list
      */
-    List<TmsFoodInHome> getHomeFoodList(Integer sellerId);
+    List<TmsFoodInHome> listHomeFoods(Integer sellerId);
 }

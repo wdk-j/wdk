@@ -1,4 +1,4 @@
-package com.commerce.mall.service;
+package com.commerce.mall.portal.service;
 
 import com.commerce.mall.model.TmsFoodPics;
 

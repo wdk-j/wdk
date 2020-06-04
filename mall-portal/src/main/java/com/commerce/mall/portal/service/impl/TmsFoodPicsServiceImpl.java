@@ -1,10 +1,10 @@
-package com.commerce.mall.service.impl;
+package com.commerce.mall.portal.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
 import com.commerce.mall.mapper.TmsFoodPicsMapper;
 import com.commerce.mall.model.TmsFoodPics;
 import com.commerce.mall.model.TmsFoodPicsExample;
-import com.commerce.mall.service.TmsFoodPicsService;
+import com.commerce.mall.portal.service.TmsFoodPicsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

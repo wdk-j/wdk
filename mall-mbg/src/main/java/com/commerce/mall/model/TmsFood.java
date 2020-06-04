@@ -35,6 +35,9 @@ public class TmsFood implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public TmsFood() {
+    }
+
     public Integer getFoodId() {
         return foodId;
     }

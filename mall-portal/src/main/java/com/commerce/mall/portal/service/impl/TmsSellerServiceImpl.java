@@ -1,9 +1,10 @@
-package com.commerce.mall.service.impl;
+package com.commerce.mall.portal.service.impl;
 
-import com.commerce.mall.dao.TmsFoodInHomeDao;
-import com.commerce.mall.dto.TmsFoodInHome;
+
 import com.commerce.mall.mapper.TmsSellerMapper;
-import com.commerce.mall.service.TmsSellerService;
+import com.commerce.mall.portal.dao.TmsFoodInHomeDao;
+import com.commerce.mall.portal.domain.TmsFoodInHome;
+import com.commerce.mall.portal.service.TmsSellerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,8 @@ public class TmsSellerServiceImpl implements TmsSellerService {
      * @return list
      */
     @Override
-    public List<TmsFoodInHome> getHomeFoodList(Integer sellerId) {
-        return tmsFoodInHomeDao.selectFoods(sellerId);
+    public List<TmsFoodInHome> listHomeFoods(Integer sellerId) {
+        return tmsFoodInHomeDao.listFoods(sellerId);
     }
 
 }
