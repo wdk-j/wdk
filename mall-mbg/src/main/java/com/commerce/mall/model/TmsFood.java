@@ -1,12 +1,10 @@
 package com.commerce.mall.model;
 
 import io.swagger.annotations.ApiModelProperty;
-
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 public class TmsFood implements Serializable {
-
     private Integer foodId;
 
     @ApiModelProperty(value = "食物名称")
@@ -20,6 +18,9 @@ public class TmsFood implements Serializable {
 
     @ApiModelProperty(value = "销售量")
     private Integer sales;
+
+    @ApiModelProperty(value = "折扣")
+    private BigDecimal discount;
 
     @ApiModelProperty(value = "主料")
     private String mainMaterials;
@@ -78,6 +79,14 @@ public class TmsFood implements Serializable {
         this.sales = sales;
     }
 
+    public BigDecimal getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(BigDecimal discount) {
+        this.discount = discount;
+    }
+
     public String getMainMaterials() {
         return mainMaterials;
     }
@@ -129,6 +138,7 @@ public class TmsFood implements Serializable {
         sb.append(", price=").append(price);
         sb.append(", mark=").append(mark);
         sb.append(", sales=").append(sales);
+        sb.append(", discount=").append(discount);
         sb.append(", mainMaterials=").append(mainMaterials);
         sb.append(", hasMeat=").append(hasMeat);
         sb.append(", weight=").append(weight);

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TmsFoodExample {
-
     protected String orderByClause;
 
     protected boolean distinct;
@@ -66,7 +65,6 @@ public class TmsFoodExample {
     }
 
     protected abstract static class GeneratedCriteria {
-
         protected List<Criterion> criteria;
 
         protected GeneratedCriteria() {
@@ -417,6 +415,66 @@ public class TmsFoodExample {
             return (Criteria) this;
         }
 
+        public Criteria andDiscountIsNull() {
+            addCriterion("discount is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountIsNotNull() {
+            addCriterion("discount is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountEqualTo(BigDecimal value) {
+            addCriterion("discount =", value, "discount");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountNotEqualTo(BigDecimal value) {
+            addCriterion("discount <>", value, "discount");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountGreaterThan(BigDecimal value) {
+            addCriterion("discount >", value, "discount");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("discount >=", value, "discount");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountLessThan(BigDecimal value) {
+            addCriterion("discount <", value, "discount");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("discount <=", value, "discount");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountIn(List<BigDecimal> values) {
+            addCriterion("discount in", values, "discount");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountNotIn(List<BigDecimal> values) {
+            addCriterion("discount not in", values, "discount");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("discount between", value1, value2, "discount");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("discount not between", value1, value2, "discount");
+            return (Criteria) this;
+        }
+
         public Criteria andMainMaterialsIsNull() {
             addCriterion("main_materials is null");
             return (Criteria) this;
@@ -756,7 +814,6 @@ public class TmsFoodExample {
     }
 
     public static class Criterion {
-
         private String condition;
 
         private Object value;

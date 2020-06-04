@@ -7,6 +7,7 @@
     <result column="price" jdbcType="DECIMAL" property="price" />
     <result column="mark" jdbcType="DECIMAL" property="mark" />
     <result column="sales" jdbcType="INTEGER" property="sales" />
+    <result column="discount" jdbcType="DECIMAL" property="discount" />
     <result column="main_materials" jdbcType="VARCHAR" property="mainMaterials" />
     <result column="has_meat" jdbcType="VARCHAR" property="hasMeat" />
     <result column="weight" jdbcType="DOUBLE" property="weight" />
@@ -72,8 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    food_id, food_name, price, mark, sales, main_materials, has_meat, weight, seller_id, 
-    is_delete
+    food_id, food_name, price, mark, sales, discount, main_materials, has_meat, weight, 
+    seller_id, is_delete
   </sql>
   <select id="selectByExample" parameterType="com.commerce.mall.model.TmsFoodExample" resultMap="BaseResultMap">
     select
@@ -110,13 +111,13 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into tms_food (food_name, price, mark, 
-      sales, main_materials, has_meat, 
-      weight, seller_id, is_delete
-      )
+      sales, discount, main_materials, 
+      has_meat, weight, seller_id, 
+      is_delete)
     values (#{foodName,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{mark,jdbcType=DECIMAL}, 
-      #{sales,jdbcType=INTEGER}, #{mainMaterials,jdbcType=VARCHAR}, #{hasMeat,jdbcType=VARCHAR}, 
-      #{weight,jdbcType=DOUBLE}, #{sellerId,jdbcType=INTEGER}, #{isDelete,jdbcType=VARCHAR}
-      )
+      #{sales,jdbcType=INTEGER}, #{discount,jdbcType=DECIMAL}, #{mainMaterials,jdbcType=VARCHAR}, 
+      #{hasMeat,jdbcType=VARCHAR}, #{weight,jdbcType=DOUBLE}, #{sellerId,jdbcType=INTEGER}, 
+      #{isDelete,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.commerce.mall.model.TmsFood">
     <selectKey keyProperty="foodId" order="AFTER" resultType="java.lang.Integer">
@@ -135,6 +136,9 @@
       </if>
       <if test="sales != null">
         sales,
+      </if>
+      <if test="discount != null">
+        discount,
       </if>
       <if test="mainMaterials != null">
         main_materials,
@@ -164,6 +168,9 @@
       </if>
       <if test="sales != null">
         #{sales,jdbcType=INTEGER},
+      </if>
+      <if test="discount != null">
+        #{discount,jdbcType=DECIMAL},
       </if>
       <if test="mainMaterials != null">
         #{mainMaterials,jdbcType=VARCHAR},
@@ -206,6 +213,9 @@
       <if test="record.sales != null">
         sales = #{record.sales,jdbcType=INTEGER},
       </if>
+      <if test="record.discount != null">
+        discount = #{record.discount,jdbcType=DECIMAL},
+      </if>
       <if test="record.mainMaterials != null">
         main_materials = #{record.mainMaterials,jdbcType=VARCHAR},
       </if>
@@ -233,6 +243,7 @@
       price = #{record.price,jdbcType=DECIMAL},
       mark = #{record.mark,jdbcType=DECIMAL},
       sales = #{record.sales,jdbcType=INTEGER},
+      discount = #{record.discount,jdbcType=DECIMAL},
       main_materials = #{record.mainMaterials,jdbcType=VARCHAR},
       has_meat = #{record.hasMeat,jdbcType=VARCHAR},
       weight = #{record.weight,jdbcType=DOUBLE},
@@ -256,6 +267,9 @@
       </if>
       <if test="sales != null">
         sales = #{sales,jdbcType=INTEGER},
+      </if>
+      <if test="discount != null">
+        discount = #{discount,jdbcType=DECIMAL},
       </if>
       <if test="mainMaterials != null">
         main_materials = #{mainMaterials,jdbcType=VARCHAR},
@@ -281,6 +295,7 @@
       price = #{price,jdbcType=DECIMAL},
       mark = #{mark,jdbcType=DECIMAL},
       sales = #{sales,jdbcType=INTEGER},
+      discount = #{discount,jdbcType=DECIMAL},
       main_materials = #{mainMaterials,jdbcType=VARCHAR},
       has_meat = #{hasMeat,jdbcType=VARCHAR},
       weight = #{weight,jdbcType=DOUBLE},

@@ -24,19 +24,6 @@ public class TmsFoodCommentsPicsServiceImpl implements TmsFoodCommentsPicsServic
     private TmsFoodCommentsPicsMapper tmsFoodCommentsPicsMapper;
 
     /**
-     * 获取某评论的配图列表
-     *
-     * @param commId comment id
-     * @return pics
-     */
-    @Override
-    public List<TmsFoodCommentsPics> listFoodCommPics(Integer commId) {
-        TmsFoodCommentsPicsExample example = new TmsFoodCommentsPicsExample();
-        example.createCriteria().andCommIdEqualTo(commId);
-        return tmsFoodCommentsPicsMapper.selectByExample(example);
-    }
-
-    /**
      * 添加一张评论图
      *
      * @param tmsFoodCommentsPic tmsFoodCommentsPic
