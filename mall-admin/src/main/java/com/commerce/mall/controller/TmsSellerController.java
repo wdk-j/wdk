@@ -26,24 +26,24 @@ public class TmsSellerController {
     private TmsSellerServiceImpl tmsSellerService;
 
     @ApiOperation(value = "根据商家id查询商家信息")
-    @GetMapping("/seller/{sellerId}")
+    @GetMapping("/{sellerId}")
     @ResponseBody
     public CommonResult<Object> getSellers(@Validated @PathVariable("sellerId") Integer sellerId){
         TmsSeller tmsSellerById = tmsSellerService.getTmsSellerById(sellerId);
-        LOGGER.info("seller id: " + sellerId + tmsSellerById.toString());
         return CommonResult.success(tmsSellerById);
     }
 
 
     @ApiOperation(value = "添加商家")
-    @PostMapping("/seller/add")
+    @PostMapping("/add")
     @ResponseBody
-    public void addSeller(@Validated @PathVariable("tmsSeller") TmsSeller tmsSeller){
+    public Integer addSeller(@Validated @PathVariable("tmsSeller") TmsSeller tmsSeller){
         tmsSellerService.addTmsSeller(tmsSeller);
+        return null;
     }
 
     @ApiOperation(value = "根据商家Id修改商家信息")
-    @PostMapping("/seller/update/{sellerId}")
+    @PostMapping("/update/{sellerId}")
     @ResponseBody
     public CommonResult<Object> updateSeller(@Validated @PathVariable("sellerId") TmsSeller tmsSeller){
         int i = tmsSellerService.updateTmsSeller(tmsSeller);
