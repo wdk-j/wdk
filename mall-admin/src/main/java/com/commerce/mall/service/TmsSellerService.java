@@ -18,9 +18,10 @@ public interface TmsSellerService {
     int updateTmsSeller(TmsSeller tmsSeller);
 
     List<TmsSeller> list();
-    PageInfo<TmsSeller> pagedList(int pageNum , int pageSize ,String keyWord);
 
-    int updateAttrIsDelete(Integer sellerId ,String isDelete);
+    PageInfo<TmsSeller> pagedList(int pageNum, int pageSize, String keyWord);
+
+    int updateAttrIsDelete(Integer sellerId, String isDelete);
 
     int deleteTmsSellerById(Integer sellerId);
 
