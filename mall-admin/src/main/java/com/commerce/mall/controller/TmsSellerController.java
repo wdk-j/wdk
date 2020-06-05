@@ -36,7 +36,7 @@ public class TmsSellerController {
     @ApiOperation(value = "添加商家")
     @PostMapping("/add")
     @ResponseBody
-    public CommonResult<Object> addSeller(TmsSeller tmsSeller) {
+    public CommonResult<Object> addSeller(@RequestBody TmsSeller tmsSeller) {
         int rows = tmsSellerService.addTmsSeller(tmsSeller);
         if (rows > 0) {
             return CommonResult.success(null);
@@ -60,7 +60,7 @@ public class TmsSellerController {
     @ApiOperation(value = "根据商家Id修改商家信息")
     @PostMapping("/update/{sellerId}")
     @ResponseBody
-    public CommonResult<Object> updateSeller(@PathVariable("sellerId") Integer sellerId, TmsSeller tmsSeller) {
+    public CommonResult<Object> updateSeller(@PathVariable("sellerId") Integer sellerId, @RequestBody TmsSeller tmsSeller) {
         tmsSeller.setSellerId(sellerId);
         int rows = tmsSellerService.updateTmsSeller(tmsSeller);
         if (rows > 0) {
