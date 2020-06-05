@@ -31,14 +31,17 @@ public class TmsFood implements Serializable {
     @ApiModelProperty(value = "重量")
     private Double weight;
 
-    @ApiModelProperty(value = "外键")
-    private Integer sellerId;
+    @ApiModelProperty(value = "食物描述")
+    private String foodIntro;
 
     @ApiModelProperty(value = "包装费")
     private Double packingFee;
 
     @ApiModelProperty(value = "上下架 1为下架")
     private String isDelete;
+
+    @ApiModelProperty(value = "外键")
+    private Integer sellerId;
 
     private static final long serialVersionUID = 1L;
 
@@ -114,12 +117,12 @@ public class TmsFood implements Serializable {
         this.weight = weight;
     }
 
-    public Integer getSellerId() {
-        return sellerId;
+    public String getFoodIntro() {
+        return foodIntro;
     }
 
-    public void setSellerId(Integer sellerId) {
-        this.sellerId = sellerId;
+    public void setFoodIntro(String foodIntro) {
+        this.foodIntro = foodIntro;
     }
 
     public Double getPackingFee() {
@@ -138,6 +141,14 @@ public class TmsFood implements Serializable {
         this.isDelete = isDelete;
     }
 
+    public Integer getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(Integer sellerId) {
+        this.sellerId = sellerId;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -153,9 +164,10 @@ public class TmsFood implements Serializable {
         sb.append(", mainMaterials=").append(mainMaterials);
         sb.append(", hasMeat=").append(hasMeat);
         sb.append(", weight=").append(weight);
-        sb.append(", sellerId=").append(sellerId);
+        sb.append(", foodIntro=").append(foodIntro);
         sb.append(", packingFee=").append(packingFee);
         sb.append(", isDelete=").append(isDelete);
+        sb.append(", sellerId=").append(sellerId);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
