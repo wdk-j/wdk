@@ -9,6 +9,7 @@ mybatis:
   mapper-locations:
     - classpath:dao/*.xml
     - classpath*:com/**/mapper/*.xml
+    - classpath*:com/**/dao/*.xml
 
 logging:
   level:
