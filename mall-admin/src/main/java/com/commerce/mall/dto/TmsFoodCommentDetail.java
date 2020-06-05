@@ -13,9 +13,7 @@ public class TmsFoodCommentDetail extends TmsFoodComments {
 
     private String nickname;
 
-    private String icon;
-
-    private List<TmsFoodCommentsPics> tmsFoodCommentsPics;
+    private List<TmsFoodCommentsPics> commPics;
 
     private static final long serialVersionUID = -5850708712994633469L;
 
@@ -23,8 +21,7 @@ public class TmsFoodCommentDetail extends TmsFoodComments {
     public String toString() {
         return super.toString()+"TmsFoodCommentDetail{" +
                 "nickname='" + nickname + '\'' +
-                ", icon='" + icon + '\'' +
-                ", tmsFoodCommentsPics=" + tmsFoodCommentsPics +
+                ", commPics=" + commPics +
                 '}';
     }
 
@@ -36,19 +33,11 @@ public class TmsFoodCommentDetail extends TmsFoodComments {
         this.nickname = nickname;
     }
 
-    public String getIcon() {
-        return icon;
+    public List<TmsFoodCommentsPics> getCommPics() {
+        return commPics;
     }
 
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
-
-    public List<TmsFoodCommentsPics> getTmsFoodCommentsPics() {
-        return tmsFoodCommentsPics;
-    }
-
-    public void setTmsFoodCommentsPics(List<TmsFoodCommentsPics> tmsFoodCommentsPics) {
-        this.tmsFoodCommentsPics = tmsFoodCommentsPics;
+    public void setCommPics(List<TmsFoodCommentsPics> commPics) {
+        this.commPics = commPics;
     }
 }

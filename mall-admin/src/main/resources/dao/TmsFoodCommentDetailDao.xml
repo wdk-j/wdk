@@ -4,23 +4,41 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.commerce.mall.dao.TmsFoodCommentDetailDao">
     <resultMap id="BaseResultMap" type="com.commerce.mall.dto.TmsFoodCommentDetail">
-        <id column="comm_id" jdbcType="INTEGER" property="commId" />
-        <result column="post_time" jdbcType="TIMESTAMP" property="postTime" />
-        <result column="user_id" jdbcType="INTEGER" property="userId" />
-        <result column="food_id" jdbcType="INTEGER" property="foodId" />
-        <result column="reply" jdbcType="VARCHAR" property="reply" />
+        <id column="comm_id" jdbcType="INTEGER" property="commId"/>
+        <result column="post_time" jdbcType="TIMESTAMP" property="postTime"/>
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="food_id" jdbcType="INTEGER" property="foodId"/>
+        <result column="reply" jdbcType="VARCHAR" property="reply"/>
         <result column="nickname" jdbcType="VARCHAR" property="nickname"/>
-        <result column="icon" jdbcType="VARCHAR" property="icon"/>
-        <collection property="tmsFoodCommentsPics" column="{commId=comm_id}"
+        <collection property="commPics" column="{commId=comm_id}"
                     select="com.commerce.mall.mapper.TmsFoodCommentsPicsMapper.selectByCommId"/>
     </resultMap>
     <sql id="Base_Column_List">
         comm_id, content, post_time, user_id, food_id, reply
     </sql>
+    <update id="updateReplyByPrimaryKey">
+        update tms_food_comments
+        set reply=#{reply,jdbcType=VARCHAR}
+        where comm_id = #{commId}
+    </update>
     <select id="selectCommentsDetailed" parameterType="integer" resultMap="BaseResultMap">
         select
-        <include refid="Base_Column_List"/>, m.nickname, m.icon
+        <include refid="Base_Column_List"/>, m.nickname
         from tms_food_comments f left join ums_member m on f.user_id=m.id
-        where food_id=#{foodId} order by post_time desc
+        <where>
+            <if test="keyword!=null">
+                and food_name like '%'+#{keyword}+'%'
+            </if>
+            <if test="foodId!=null">
+                and food_id=#{foodId}
+            </if>
+        </where>
+        order by post_time desc
+    </select>
+    <select id="selectByPrimaryKey" resultType="com.commerce.mall.dto.TmsFoodCommentDetail">
+        select
+        <include refid="Base_Column_List"/>, m.nickname
+        from tms_food_comments f left join ums_member m on f.user_id=m.id
+        where comm_id=#{commId}
     </select>
 </mapper>
