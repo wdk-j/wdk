@@ -73,6 +73,17 @@ public class TmsFoodServiceImpl implements TmsFoodService {
     }
 
     /**
+     * 获取一个商品
+     *
+     * @param foodId foodId
+     * @return food
+     */
+    @Override
+    public TmsFoodWithMainPic get(Integer foodId) {
+        return tmsFoodAttributeDao.selectByPrimaryKey(foodId);
+    }
+
+    /**
      * 更新isDelete字段
      *
      * @param isDelete is delete
@@ -82,5 +93,16 @@ public class TmsFoodServiceImpl implements TmsFoodService {
     @Override
     public int updateAttrIsDelete(String isDelete, Integer foodId) {
         return tmsFoodAttributeDao.updateIsDelete(isDelete,foodId);
+    }
+
+    /**
+     * 更新食品
+     *
+     * @param tmsFood food
+     * @return code status
+     */
+    @Override
+    public int update(TmsFood tmsFood){
+        return tmsFoodMapper.updateByPrimaryKey(tmsFood);
     }
 }

@@ -25,13 +25,29 @@ public interface TmsFoodService {
     PageInfo<TmsFoodWithMainPic> listFoods(int pageNum, int pageSize, String keyword);
 
     /**
+     * 获取一个商品
+     *
+     * @param foodId foodId
+     * @return food
+     */
+    TmsFoodWithMainPic get(Integer foodId);
+
+    /**
      * 更新isDelete字段
      *
      * @param isDelete is delete
-     * @param foodId food id
+     * @param foodId   food id
      * @return code
      */
-    int updateAttrIsDelete(String isDelete,Integer foodId);
+    int updateAttrIsDelete(String isDelete, Integer foodId);
+
+    /**
+     * 更新食品
+     *
+     * @param tmsFood food
+     * @return code status
+     */
+    int update(TmsFood tmsFood);
 
     /**
      * 添加食品

@@ -21,6 +21,14 @@ public interface TmsFoodAttributeDao {
     List<TmsFoodWithMainPic> selectByKeyword(String keyword);
 
     /**
+     * 逐渐查找
+     *
+     * @param foodId foodId
+     * @return food
+     */
+    TmsFoodWithMainPic selectByPrimaryKey(Integer foodId);
+
+    /**
      * 修改isDelete字段
      *
      * @param isDelete is_delete

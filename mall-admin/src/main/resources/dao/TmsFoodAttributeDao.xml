@@ -29,6 +29,12 @@
         </if>
         order by food_id
     </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tms_food
+        where food_id=#{foodId}
+    </select>
     <update id="updateIsDelete">
     update tms_food
     set is_delete=#{isDelete}

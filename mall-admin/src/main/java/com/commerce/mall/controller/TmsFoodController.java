@@ -15,8 +15,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author jiangyong
@@ -31,7 +32,6 @@ public class TmsFoodController {
     @Autowired
     private TmsFoodService tmsFoodService;
 
-
     @ApiOperation(value = "获取商品列表，可带关键字")
     @GetMapping("/list")
     @ResponseBody
@@ -45,11 +45,14 @@ public class TmsFoodController {
         return CommonResult.success(pagedFoods);
     }
 
+
     @ApiOperation(value = "添加商品")
     @PostMapping("/add")
     @ResponseBody
     public CommonResult<Object> addFood(@RequestParam(name = "files") MultipartFile[] files,
-                                        TmsFood tmsFood, HttpServletRequest req) {
+                                        TmsFood tmsFood) {
+        List<String> urls = new ArrayList<>();
+        //TODO 新增商品 图片上传
         for (MultipartFile file : files) {
             try {
                 FileUtil.upload(file, "foods");
@@ -62,5 +65,25 @@ public class TmsFoodController {
             return CommonResult.success(null);
         }
         return CommonResult.failed("添加失败");
+    }
+
+    @ApiOperation(value = "添加商品")
+    @PostMapping("/update/{foodId}")
+    @ResponseBody
+    public CommonResult<Object> update(@PathVariable("foodId")Integer foodId, TmsFood tmsFood) {
+        tmsFood.setFoodId(foodId);
+        int i = tmsFoodService.update(tmsFood);
+        if (i > 0) {
+            return CommonResult.success(null);
+        }
+        return CommonResult.failed("更新失败");
+    }
+
+    @ApiOperation(value = "根据id获取商品信息")
+    @GetMapping("/{foodId}")
+    @ResponseBody
+    public CommonResult<Object> getOne(@PathVariable("foodId") Integer foodId) {
+        TmsFoodWithMainPic food = tmsFoodService.get(foodId);
+        return CommonResult.success(food);
     }
 }

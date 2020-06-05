@@ -13,10 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @Controller
-@Api(tags = {"TmsSellerController"},description = "商家管理")
+@Api(tags = {"TmsSellerController"}, description = "商家管理")
 @RequestMapping("/seller")
 public class TmsSellerController {
 
@@ -28,7 +27,7 @@ public class TmsSellerController {
     @ApiOperation(value = "根据商家id查询商家信息")
     @GetMapping("/{sellerId}")
     @ResponseBody
-    public CommonResult<Object> getSellers(@PathVariable("sellerId") Integer sellerId){
+    public CommonResult<Object> getSellers(@PathVariable("sellerId") Integer sellerId) {
         TmsSeller tmsSellerById = tmsSellerService.getTmsSellerById(sellerId);
         return CommonResult.success(tmsSellerById);
     }
@@ -37,11 +36,11 @@ public class TmsSellerController {
     @ApiOperation(value = "添加商家")
     @PostMapping("/add")
     @ResponseBody
-    public CommonResult<Object> addSeller(TmsSeller tmsSeller){
+    public CommonResult<Object> addSeller(TmsSeller tmsSeller) {
         int rows = tmsSellerService.addTmsSeller(tmsSeller);
-        if(rows>0){
+        if (rows > 0) {
             return CommonResult.success(null);
-        }else{
+        } else {
             return CommonResult.failed();
         }
     }
@@ -49,11 +48,11 @@ public class TmsSellerController {
     @ApiOperation(value = "根据商家id删除商家")
     @PostMapping("/delete/{sellerId}")
     @ResponseBody
-    public CommonResult<Object> deleteSeller(@PathVariable("sellerId") Integer sellerId){
+    public CommonResult<Object> deleteSeller(@PathVariable("sellerId") Integer sellerId) {
         int rows = tmsSellerService.deleteTmsSellerById(sellerId);
-        if(rows>0){
+        if (rows > 0) {
             return CommonResult.success(null);
-        }else{
+        } else {
             return CommonResult.failed();
         }
     }
@@ -61,22 +60,22 @@ public class TmsSellerController {
     @ApiOperation(value = "根据商家Id修改商家信息")
     @PostMapping("/update/{sellerId}")
     @ResponseBody
-    public CommonResult<Object> updateSeller(@PathVariable("sellerId")Integer sellerId, TmsSeller tmsSeller){
+    public CommonResult<Object> updateSeller(@PathVariable("sellerId") Integer sellerId, TmsSeller tmsSeller) {
         tmsSeller.setSellerId(sellerId);
         int rows = tmsSellerService.updateTmsSeller(tmsSeller);
-        if(rows>0){
+        if (rows > 0) {
             return CommonResult.success(null);
         }
-            return CommonResult.failed();
+        return CommonResult.failed();
     }
 
 
     @ApiOperation(value = "分页查询商家列表")
     @GetMapping("/list")
     @ResponseBody
-    public CommonResult<Object> pagedList(@RequestParam(required = false ,defaultValue = "1" )int pageNum,
-                                          @RequestParam(required = false ,defaultValue = "5" )int pageSize,
-                                          @RequestParam(required = false )String keyWord){
+    public CommonResult<Object> pagedList(@RequestParam(required = false, defaultValue = "1") int pageNum,
+                                          @RequestParam(required = false, defaultValue = "5") int pageSize,
+                                          @RequestParam(required = false) String keyWord) {
         PageInfo<TmsSeller> tmsSellerPageInfo = tmsSellerService.pagedList(pageNum, pageSize, keyWord);
         return CommonResult.success(tmsSellerPageInfo);
     }
@@ -84,23 +83,23 @@ public class TmsSellerController {
     @ApiOperation(value = "修改商家isDelete")
     @PostMapping("/update/isDelete")
     @ResponseBody
-    public CommonResult<Object> updateAttrIsDelete(Integer sellerId , String isDelete){
+    public CommonResult<Object> updateAttrIsDelete(Integer sellerId, String isDelete) {
         int rows = tmsSellerService.updateAttrIsDelete(sellerId, isDelete);
-        if(rows>0){
+        if (rows > 0) {
             return CommonResult.success(null);
         }
-            return CommonResult.failed();
+        return CommonResult.failed();
     }
 
     @ApiOperation(value = "修改商家closed")
-    @PostMapping("/update/closed")
+    @PostMapping("/update/closed/{sellerId}")
     @ResponseBody
-    public CommonResult<Object> updateAttrClosed(@Validated @PathVariable("sellerId") Integer sellerId ,@Validated @PathVariable("closed") String closed){
+    public CommonResult<Object> updateAttrClosed(@PathVariable("sellerId") Integer sellerId, @RequestParam("closed") String closed) {
         int rows = tmsSellerService.updateAttrClosed(sellerId, closed);
-        if(rows>0){
+        if (rows > 0) {
             return CommonResult.success(null);
         }
-            return CommonResult.failed();
+        return CommonResult.failed();
     }
 
 }

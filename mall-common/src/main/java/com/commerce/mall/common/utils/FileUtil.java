@@ -40,15 +40,11 @@ public class FileUtil {
     public static String upload(MultipartFile file, String path) throws IOException {
 //        命名格式
 //        20200603142533_84678.jpg
-
-        log.info(BASE_DIR);
         String filename = fullFilename(file.getOriginalFilename());
         String compressedFilename = fullFilename(file.getOriginalFilename());
 
         // 保存压缩文件的路径
         String savePath = BASE_DIR + "upload" + File.separator + path;
-
-        log.info("3");
 
         String tempFileSavePath = savePath + File.separator + filename;
         log.info(tempFileSavePath);
@@ -57,11 +53,9 @@ public class FileUtil {
             tempFile.getParentFile().mkdirs();
         }
         file.transferTo(tempFile);
-        log.info("2");
 
-        String compressedFileSavePath = savePath + File.separator + filename;
+        String compressedFileSavePath = savePath + File.separator + compressedFilename;
 
-        log.info("1");
         String s = zipFile(file, tempFile, compressedFileSavePath, tempFileSavePath);
         log.info(s.replace(BASE_DIR, ""));
         return s.replace(BASE_DIR, "");
