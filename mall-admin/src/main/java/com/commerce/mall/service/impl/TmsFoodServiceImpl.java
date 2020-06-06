@@ -64,11 +64,11 @@ public class TmsFoodServiceImpl implements TmsFoodService {
      */
     @Override
     public PageInfo<TmsFoodWithMainPic> listFoods(int pageNum, int pageSize, Integer sellerId, String keyword) {
-        PageHelper.startPage(pageNum, pageSize);
         // 如果为''算为null
         if (StrUtil.isEmpty(keyword)) {
             keyword = null;
         }
+        PageHelper.startPage(pageNum, pageSize);
         List<TmsFoodWithMainPic> foods = tmsFoodAboutDao.selectByKeyword(sellerId,keyword);
         return new PageInfo<>(foods);
     }

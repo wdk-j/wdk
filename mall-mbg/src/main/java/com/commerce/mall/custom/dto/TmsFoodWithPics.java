@@ -1,23 +1,21 @@
-package com.commerce.mall.portal.domain;
+package com.commerce.mall.custom.dto;
 
 import com.commerce.mall.model.TmsFood;
 import com.commerce.mall.model.TmsFoodPics;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author jiangyong
  * @date 2020.06.04
  */
-@Deprecated
-public class TmsFoodDetail extends TmsFood {
+public class TmsFoodWithPics extends TmsFood {
 
     private static final long serialVersionUID = 5788675020116388439L;
 
     private List<TmsFoodPics> pics;
 
-    public TmsFoodDetail() {
+    public TmsFoodWithPics() {
         super();
     }
 

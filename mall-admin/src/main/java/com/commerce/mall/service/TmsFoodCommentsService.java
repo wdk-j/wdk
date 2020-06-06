@@ -16,9 +16,10 @@ public interface TmsFoodCommentsService {
      * @param pageNum  page number
      * @param pageSize page size
      * @param keyword  keyword
+     * @param sellerId seller id
      * @return list
      */
-    PageInfo<TmsFoodCommentDetail> pagedList(int pageNum, int pageSize, String keyword);
+    PageInfo<TmsFoodCommentDetail> pagedList(int pageNum, int pageSize, String keyword,Integer sellerId);
 
     /**
      * 获取某条评论

@@ -36,15 +36,16 @@ public class TmsFoodCommentsServiceImpl implements TmsFoodCommentsService {
      * @param pageNum  page number
      * @param pageSize page size
      * @param keyword  keyword
+     * @param sellerId seller id
      * @return list
      */
     @Override
-    public PageInfo<TmsFoodCommentDetail> pagedList(int pageNum, int pageSize, String keyword) {
+    public PageInfo<TmsFoodCommentDetail> pagedList(int pageNum, int pageSize, String keyword, Integer sellerId) {
         PageHelper.startPage(pageNum, pageSize);
         if (StrUtil.isEmpty(keyword)) {
-            throw new IllegalArgumentException("参数格式不正确");
+            keyword = null;
         }
-        List<TmsFoodCommentDetail> list = tmsFoodCommentDetailDao.selectCommentsDetailed(null, keyword);
+        List<TmsFoodCommentDetail> list = tmsFoodCommentDetailDao.selectCommentsDetailed(null, keyword, sellerId);
         return new PageInfo<>(list);
     }
 

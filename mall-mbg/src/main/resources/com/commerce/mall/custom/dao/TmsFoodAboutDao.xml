@@ -19,6 +19,22 @@
         <association property="mainPic" column="{foodId=food_id}"
                      select="com.commerce.mall.mapper.TmsFoodPicsMapper.selectMainPic"/>
     </resultMap>
+    <resultMap id="BaseResultMap_pics" type="com.commerce.mall.custom.dto.TmsFoodWithPics">
+        <id column="food_id" jdbcType="INTEGER" property="foodId"/>
+        <result column="food_name" jdbcType="VARCHAR" property="foodName"/>
+        <result column="price" jdbcType="DECIMAL" property="price"/>
+        <result column="mark" jdbcType="DECIMAL" property="mark"/>
+        <result column="discount" jdbcType="DECIMAL" property="discount"/>
+        <result column="main_materials" jdbcType="VARCHAR" property="mainMaterials"/>
+        <result column="has_meat" jdbcType="VARCHAR" property="hasMeat"/>
+        <result column="weight" jdbcType="DOUBLE" property="weight"/>
+        <result column="intro" jdbcType="VARCHAR" property="intro"/>
+        <result column="packing_fee" jdbcType="DOUBLE" property="packingFee"/>
+        <result column="seller_id" jdbcType="INTEGER" property="sellerId"/>
+        <result column="is_delete" jdbcType="VARCHAR" property="isDelete"/>
+        <collection property="pics" column="{foodId=food_id}"
+                    select="com.commerce.mall.mapper.TmsFoodPicsMapper.selectAllPics"/>
+    </resultMap>
     <sql id="Base_Column_List">
         food_id, food_name, price, mark, discount, main_materials, has_meat, weight, intro,
         packing_fee, seller_id, is_delete
@@ -29,13 +45,20 @@
         from tms_food
         <where>
             <if test="keyword!=null">
-                and food_name like '%'+#{keyword}+'%'
+            <bind name="keyword" value="'%'+keyword+'%'"/>
+                and food_name like #{keyword}
             </if>
             and seller_id=#{sellerId}
         </where>
         order by mark desc
     </select>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tms_food
+        where food_id=#{foodId}
+    </select>
+    <select id="selectFoodInPortalHomeByPrimaryKey" resultMap="BaseResultMap_pics">
         select
         <include refid="Base_Column_List"/>
         from tms_food

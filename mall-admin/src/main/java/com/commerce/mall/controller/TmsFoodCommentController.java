@@ -9,10 +9,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author jiangyong
@@ -30,8 +27,12 @@ public class TmsFoodCommentController {
     @ApiOperation("分页-以关键词获取食物评论")
     @GetMapping("/comment/list")
     @ResponseBody
-    public CommonResult<Object> pagedList(int pageNum, int pageSize, String keyword) {
-        PageInfo<TmsFoodCommentDetail> list = tmsFoodCommentsService.pagedList(pageNum, pageSize, keyword);
+    public CommonResult<Object> pagedList(@RequestParam(required = false,defaultValue = "1")Integer sellerId,
+                                          @RequestParam(required = false,defaultValue = "1")int pageNum,
+                                          @RequestParam(required = false,defaultValue = "1")int pageSize,
+                                          @RequestParam(required = false) String keyword) {
+        sellerId=1;
+        PageInfo<TmsFoodCommentDetail> list = tmsFoodCommentsService.pagedList(pageNum, pageSize, keyword, sellerId);
         return CommonResult.success(list);
     }
 

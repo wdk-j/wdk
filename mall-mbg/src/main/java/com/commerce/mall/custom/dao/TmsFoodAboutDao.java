@@ -1,6 +1,7 @@
 package com.commerce.mall.custom.dao;
 
 import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
+import com.commerce.mall.custom.dto.TmsFoodWithPics;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public interface TmsFoodAboutDao {
 
     /**
      * 查找含有关键字的食品
-     * id升序
+     * mark降序
      *
      * @param keyword keyword
      * @return list
@@ -27,6 +28,14 @@ public interface TmsFoodAboutDao {
      * @return food
      */
     TmsFoodWithMainPic selectByPrimaryKey(Integer foodId);
+
+    /**
+     * 逐渐查找
+     *
+     * @param foodId foodId
+     * @return food
+     */
+    TmsFoodWithPics selectFoodInPortalHomeByPrimaryKey(Integer foodId);
 
     /**
      * 修改isDelete字段

@@ -1,15 +1,17 @@
 package com.commerce.mall.portal.service.impl;
 
+import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
+import com.commerce.mall.custom.dto.TmsFoodWithPics;
 import com.commerce.mall.mapper.TmsFoodMapper;
 import com.commerce.mall.model.TmsFood;
-import com.commerce.mall.portal.dao.TmsFoodCommentDetailDao;
-import com.commerce.mall.portal.dao.TmsFoodDetailDao;
-import com.commerce.mall.portal.domain.TmsFoodDetail;
+import com.commerce.mall.custom.dao.TmsFoodAboutDao;
 import com.commerce.mall.portal.service.TmsFoodService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author jiangyong
@@ -24,7 +26,7 @@ public class TmsFoodServiceImpl implements TmsFoodService {
     private TmsFoodMapper tmsFoodMapper;
 
     @Autowired
-    private TmsFoodDetailDao tmsFoodDetailDao;
+    private TmsFoodAboutDao tmsFoodAboutDao;
 
     /**
      * 添加食品
@@ -43,7 +45,18 @@ public class TmsFoodServiceImpl implements TmsFoodService {
      * @return food in detail
      */
     @Override
-    public TmsFoodDetail getFoodDetail(Integer foodId) {
-        return tmsFoodDetailDao.selectFoodInDetail(foodId);
+    public TmsFoodWithPics getFoodDetail(Integer foodId) {
+        return tmsFoodAboutDao.selectFoodInPortalHomeByPrimaryKey(foodId);
+    }
+
+    /**
+     * 某卖家首页食品列表
+     *
+     * @param sellerId seller id
+     * @return list
+     */
+    @Override
+    public List<TmsFoodWithMainPic> listHomeFoods(Integer sellerId) {
+        return tmsFoodAboutDao.selectByKeyword(sellerId, null);
     }
 }

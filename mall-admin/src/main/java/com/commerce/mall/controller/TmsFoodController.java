@@ -2,7 +2,6 @@ package com.commerce.mall.controller;
 
 import cn.hutool.core.collection.CollUtil;
 import com.commerce.mall.common.api.CommonResult;
-import com.commerce.mall.common.utils.FileUtil;
 import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
 import com.commerce.mall.model.TmsFood;
 import com.commerce.mall.service.TmsFoodService;
@@ -15,7 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +38,7 @@ public class TmsFoodController {
                                                  @RequestParam(required = false, defaultValue = "1") int pageNum,
                                                  @RequestParam(required = false, defaultValue = "5") int pageSize,
                                                  @RequestParam(required = false) String keyword) {
+        log.info("keyword: " + keyword);
         PageInfo<TmsFoodWithMainPic> pagedFoods = tmsFoodService.listFoods(pageNum, pageSize, sellerId, keyword);
         if (CollUtil.isEmpty(pagedFoods.getList())) {
             return CommonResult.failed("结果为空");
@@ -47,21 +47,20 @@ public class TmsFoodController {
     }
 
     @ApiOperation(value = "添加商品")
-    @PostMapping("/add")
+    @PostMapping(value = "/add")
     @ResponseBody
-    public CommonResult<Object> addFood(@RequestParam(required = false, defaultValue = "1") Integer sellerId,
-                                        @RequestParam(name = "files") MultipartFile[] files,
-                                         TmsFood tmsFood) {
-        tmsFood.setSellerId(sellerId);
+    public CommonResult<Object> addFood(@RequestParam(required = true) MultipartFile files[],HttpServletRequest req,
+                                        TmsFood tmsFood) {
+        tmsFood.setSellerId(1);
         List<String> urls = new ArrayList<>();
         //TODO 新增商品 图片上传
-        for (MultipartFile file : files) {
-            try {
-                FileUtil.upload(file, "foods");
-            } catch (IOException e) {
-                return CommonResult.failed("文件上传错误");
-            }
-        }
+//        for (MultipartFile file : files) {
+//            try {
+//                FileUtil.upload(file, "foods");
+//            } catch (IOException e) {
+//                return CommonResult.failed("文件上传错误");
+//            }
+//        }
         int i = tmsFoodService.add(tmsFood);
         if (i > 0) {
             return CommonResult.success(null);

@@ -22,6 +22,7 @@ import java.util.List;
 @Controller
 @Api(tags = {"TmsSellerController"}, description = "卖家店铺管理")
 @RequestMapping("/seller")
+@Deprecated
 public class TmsSellerController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TmsSellerController.class);
@@ -32,7 +33,7 @@ public class TmsSellerController {
     @ApiOperation(value = "获取一家店的所有商品", notes = "what is notes?")
     @GetMapping("/foods/{sellerId}")
     @ResponseBody
-    public CommonResult<Object> getFoodsList(@Validated @PathVariable("sellerId") Integer sellerId) {
+    public CommonResult<Object> getFoodsList(@PathVariable("sellerId") Integer sellerId) {
         // 强制
          sellerId=1;
         List<TmsFoodWithMainPic> homeFoodList = tmsSellerService.listHomeFoods(sellerId);

@@ -21,17 +21,19 @@
         set reply=#{reply,jdbcType=VARCHAR}
         where comm_id = #{commId}
     </update>
-    <select id="selectCommentsDetailed" parameterType="integer" resultMap="BaseResultMap">
+    <select id="selectCommentsDetailed" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>, m.nickname
         from tms_food_comments f left join ums_member m on f.user_id=m.id
         <where>
             <if test="keyword!=null">
-                and food_name like '%'+#{keyword}+'%'
+                <bind name="keyword" value="'%'+keyword+'%'"/>
+                and food_name like #{keyword}
             </if>
             <if test="foodId!=null">
                 and food_id=#{foodId}
             </if>
+            and seller_id=#{sellerId}
         </where>
         order by post_time desc
     </select>

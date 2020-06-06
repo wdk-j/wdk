@@ -1,7 +1,11 @@
 package com.commerce.mall.portal.service;
 
+import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
+import com.commerce.mall.custom.dto.TmsFoodWithPics;
 import com.commerce.mall.model.TmsFood;
 import com.commerce.mall.portal.domain.TmsFoodDetail;
+
+import java.util.List;
 
 /**
  * food 以及 food detail
@@ -24,5 +28,13 @@ public interface TmsFoodService {
      * @param foodId food id
      * @return food in detail
      */
-    TmsFoodDetail getFoodDetail(Integer foodId);
+    TmsFoodWithPics getFoodDetail(Integer foodId);
+
+    /**
+     * 某卖家首页食品列表
+     *
+     * @param sellerId seller id
+     * @return list
+     */
+    List<TmsFoodWithMainPic> listHomeFoods(Integer sellerId);
 }

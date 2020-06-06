@@ -1,6 +1,7 @@
 package com.commerce.mall.portal.service.impl;
 
 
+import com.commerce.mall.custom.dao.TmsFoodAboutDao;
 import com.commerce.mall.mapper.TmsSellerMapper;
 import com.commerce.mall.portal.dao.TmsFoodInHomeDao;
 import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
@@ -17,6 +18,7 @@ import java.util.List;
  * @date 2020.06.03
  */
 @Service
+@Deprecated
 public class TmsSellerServiceImpl implements TmsSellerService {
 
     private Logger log = LoggerFactory.getLogger(TmsSellerServiceImpl.class);
@@ -25,7 +27,7 @@ public class TmsSellerServiceImpl implements TmsSellerService {
     private TmsSellerMapper tmsSellerMapper;
 
     @Autowired
-    private TmsFoodInHomeDao tmsFoodInHomeDao;
+    private TmsFoodAboutDao tmsFoodAboutDao;
 
     /**
      * 某卖家首页食品列表
@@ -35,7 +37,7 @@ public class TmsSellerServiceImpl implements TmsSellerService {
      */
     @Override
     public List<TmsFoodWithMainPic> listHomeFoods(Integer sellerId) {
-        return tmsFoodInHomeDao.listFoods(sellerId);
+        return tmsFoodAboutDao.selectByKeyword(sellerId, null);
     }
 
 }

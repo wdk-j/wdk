@@ -17,9 +17,11 @@ public interface TmsFoodCommentDetailDao {
      *
      * @param foodId  food id
      * @param keyword keyword
+     * @param sellerId
      * @return comments
      */
-    List<TmsFoodCommentDetail> selectCommentsDetailed(@Param("foodId") Integer foodId, @Param("keyword") String keyword);
+    List<TmsFoodCommentDetail> selectCommentsDetailed(@Param("foodId") Integer foodId,
+                                                      @Param("keyword") String keyword,@Param("sellerId")Integer sellerId);
 
     /**
      * 主键查找评论
