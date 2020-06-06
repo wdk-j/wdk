@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8748828f-77d9-4f38-b6b8-b4d29ea45364" name="Default" comment="修改信息">
+    <list default="true" id="8748828f-77d9-4f38-b6b8-b4d29ea45364" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__cn_hutool_hutool_all_4_5_7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__cn_hutool_hutool_all_4_5_7.xml" afterDir="false" />
@@ -201,333 +201,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_6_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_6_3.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_23.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_23.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__xpp3_xpp3_1_1_4c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xpp3_xpp3_1_1_4c.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/MallAdminApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/bo/AdminUserDetails.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/bo/WebLog.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/component/BindingResultAspect.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/component/WebLogAspect.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/config/GlobalCorsConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/config/MallSecurityConfig$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/config/MallSecurityConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/config/MyBatisConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/config/OssConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/config/Swagger2Config.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/CmsPrefrenceAreaController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/CmsSubjectController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/MinioController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/OmsCompanyAddressController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/OmsOrderController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/OmsOrderReturnApplyController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/OmsOrderReturnReasonController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/OmsOrderSettingController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/OssController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/PmsBrandController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/PmsProductAttributeCategoryController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/PmsProductAttributeController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/PmsProductCategoryController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/PmsProductController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/PmsSkuStockController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/SmsCouponController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/SmsCouponHistoryController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/SmsFlashPromotionController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/SmsFlashPromotionProductRelationController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/SmsFlashPromotionSessionController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/SmsHomeAdvertiseController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/SmsHomeBrandController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/SmsHomeNewProductController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/SmsHomeRecommendProductController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/SmsHomeRecommendSubjectController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/UmsAdminController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/UmsMemberLevelController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/UmsMenuController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/UmsPermissionController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/UmsResourceCategoryController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/UmsResourceController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/controller/UmsRoleController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dao/CmsPrefrenceAreaProductRelationDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dao/CmsSubjectProductRelationDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dao/OmsOrderDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dao/OmsOrderOperateHistoryDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dao/OmsOrderReturnApplyDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dao/PmsMemberPriceDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dao/PmsProductAttributeCategoryDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dao/PmsProductAttributeDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dao/PmsProductAttributeValueDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dao/PmsProductCategoryAttributeRelationDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dao/PmsProductCategoryDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dao/PmsProductDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dao/PmsProductFullReductionDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dao/PmsProductLadderDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dao/PmsProductVertifyRecordDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dao/PmsSkuStockDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dao/SmsCouponDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dao/SmsCouponProductCategoryRelationDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dao/SmsCouponProductRelationDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dao/SmsFlashPromotionProductRelationDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dao/UmsAdminPermissionRelationDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dao/UmsAdminRoleRelationDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dao/UmsRoleDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dao/UmsRolePermissionRelationDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/MinioUploadDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/OmsMoneyInfoParam.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/OmsOrderDeliveryParam.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/OmsOrderDetail.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/OmsOrderQueryParam.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/OmsOrderReturnApplyResult.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/OmsReceiverInfoParam.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/OmsReturnApplyQueryParam.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/OmsUpdateStatusParam.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/OssCallbackParam.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/OssCallbackResult.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/OssPolicyResult.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/PmsBrandParam.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/PmsProductAttributeCategoryItem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/PmsProductAttributeParam.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/PmsProductCategoryParam.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/PmsProductCategoryWithChildrenItem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/PmsProductParam.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/PmsProductQueryParam.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/PmsProductResult.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/ProductAttrInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/SmsCouponParam.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/SmsFlashPromotionProduct.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/SmsFlashPromotionSessionDetail.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/UmsAdminLoginParam.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/UmsAdminParam.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/UmsMenuNode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/UmsPermissionNode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/dto/UpdateAdminPasswordParam.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/CmsPrefrenceAreaService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/CmsSubjectService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/OmsCompanyAddressService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/OmsOrderReturnApplyService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/OmsOrderReturnReasonService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/OmsOrderService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/OmsOrderSettingService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/OssService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/PmsBrandService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/PmsProductAttributeCategoryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/PmsProductAttributeService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/PmsProductCategoryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/PmsProductService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/PmsSkuStockService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/SmsCouponHistoryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/SmsCouponService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/SmsFlashPromotionProductRelationService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/SmsFlashPromotionService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/SmsFlashPromotionSessionService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/SmsHomeAdvertiseService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/SmsHomeBrandService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/SmsHomeNewProductService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/SmsHomeRecommendProductService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/SmsHomeRecommendSubjectService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/UmsAdminCacheService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/UmsAdminService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/UmsMemberLevelService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/UmsMenuService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/UmsPermissionService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/UmsResourceCategoryService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/UmsResourceService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/UmsRoleService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/CmsPrefrenceAreaServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/CmsSubjectServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/OmsCompanyAddressServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/OmsOrderReturnApplyServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/OmsOrderReturnReasonServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/OmsOrderServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/OmsOrderSettingServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/OssServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/PmsBrandServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/PmsProductAttributeCategoryServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/PmsProductAttributeServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/PmsProductCategoryServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/PmsProductServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/PmsSkuStockServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/SmsCouponHistoryServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/SmsCouponServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/SmsFlashPromotionProductRelationServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/SmsFlashPromotionServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/SmsFlashPromotionSessionServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/SmsHomeAdvertiseServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/SmsHomeBrandServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/SmsHomeNewProductServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/SmsHomeRecommendProductServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/SmsHomeRecommendSubjectServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/UmsAdminCacheServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/UmsAdminServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/UmsMemberLevelServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/UmsMenuServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/UmsPermissionServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/UmsResourceCategoryServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/UmsResourceServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/service/impl/UmsRoleServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/validator/FlagValidator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/com/commerce/mall/validator/FlagValidatorClass.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/CommentGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/CommentGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/Generator.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/Generator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsHelpCategoryExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsHelpCategoryExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsHelpCategoryExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsHelpCategoryExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsHelpExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsHelpExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsHelpExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsHelpExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsMemberReportExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsMemberReportExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsMemberReportExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsMemberReportExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsPrefrenceAreaExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsPrefrenceAreaExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsPrefrenceAreaExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsPrefrenceAreaExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsPrefrenceAreaProductRelationExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsPrefrenceAreaProductRelationExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsPrefrenceAreaProductRelationExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsPrefrenceAreaProductRelationExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsSubjectCategoryExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsSubjectCategoryExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsSubjectCategoryExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsSubjectCategoryExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsSubjectCommentExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsSubjectCommentExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsSubjectCommentExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsSubjectCommentExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsSubjectExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsSubjectExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsSubjectExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsSubjectExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsSubjectProductRelationExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsSubjectProductRelationExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsSubjectProductRelationExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsSubjectProductRelationExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsTopicCategoryExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsTopicCategoryExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsTopicCategoryExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsTopicCategoryExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsTopicCommentExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsTopicCommentExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsTopicCommentExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsTopicCommentExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsTopicExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsTopicExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsTopicExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/CmsTopicExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsCartItemExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsCartItemExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsCartItemExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsCartItemExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsCompanyAddressExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsCompanyAddressExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsCompanyAddressExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsCompanyAddressExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsOrderExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsOrderExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsOrderExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsOrderExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsOrderItemExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsOrderItemExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsOrderItemExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsOrderItemExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsOrderOperateHistoryExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsOrderOperateHistoryExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsOrderOperateHistoryExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsOrderOperateHistoryExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsOrderReturnApplyExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsOrderReturnApplyExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsOrderReturnApplyExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsOrderReturnApplyExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsOrderReturnReasonExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsOrderReturnReasonExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsOrderReturnReasonExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsOrderReturnReasonExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsOrderSettingExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsOrderSettingExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsOrderSettingExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/OmsOrderSettingExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsAlbumExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsAlbumExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsAlbumExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsAlbumExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsAlbumPicExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsAlbumPicExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsAlbumPicExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsAlbumPicExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsBrandExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsBrandExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsBrandExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsBrandExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsCommentExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsCommentExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsCommentExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsCommentExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsCommentReplayExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsCommentReplayExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsCommentReplayExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsCommentReplayExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsFeightTemplateExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsFeightTemplateExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsFeightTemplateExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsFeightTemplateExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsMemberPriceExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsMemberPriceExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsMemberPriceExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsMemberPriceExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductAttributeCategoryExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductAttributeCategoryExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductAttributeCategoryExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductAttributeCategoryExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductAttributeExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductAttributeExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductAttributeExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductAttributeExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductAttributeValueExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductAttributeValueExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductAttributeValueExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductAttributeValueExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductCategoryAttributeRelationExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductCategoryAttributeRelationExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductCategoryAttributeRelationExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductCategoryAttributeRelationExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductCategoryExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductCategoryExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductCategoryExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductCategoryExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductFullReductionExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductFullReductionExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductFullReductionExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductFullReductionExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductLadderExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductLadderExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductLadderExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductLadderExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductOperateLogExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductOperateLogExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductOperateLogExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductOperateLogExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductVertifyRecordExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductVertifyRecordExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductVertifyRecordExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsProductVertifyRecordExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsSkuStockExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsSkuStockExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsSkuStockExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/PmsSkuStockExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsCouponExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsCouponExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsCouponExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsCouponExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsCouponHistoryExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsCouponHistoryExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsCouponHistoryExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsCouponHistoryExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsCouponProductCategoryRelationExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsCouponProductCategoryRelationExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsCouponProductCategoryRelationExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsCouponProductCategoryRelationExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsCouponProductRelationExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsCouponProductRelationExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsCouponProductRelationExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsCouponProductRelationExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsFlashPromotionExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsFlashPromotionExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsFlashPromotionExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsFlashPromotionExample$GeneratedCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsFlashPromotionExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsFlashPromotionExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsFlashPromotionLogExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsFlashPromotionLogExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsFlashPromotionLogExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsFlashPromotionLogExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsFlashPromotionProductRelationExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsFlashPromotionProductRelationExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsFlashPromotionProductRelationExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsFlashPromotionProductRelationExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsFlashPromotionSessionExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsFlashPromotionSessionExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsFlashPromotionSessionExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsFlashPromotionSessionExample$GeneratedCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsFlashPromotionSessionExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsFlashPromotionSessionExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsHomeAdvertiseExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsHomeAdvertiseExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsHomeAdvertiseExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsHomeAdvertiseExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsHomeBrandExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsHomeBrandExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsHomeBrandExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsHomeBrandExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsHomeNewProductExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsHomeNewProductExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsHomeNewProductExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsHomeNewProductExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsHomeRecommendProductExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsHomeRecommendProductExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsHomeRecommendProductExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsHomeRecommendProductExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsHomeRecommendSubjectExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsHomeRecommendSubjectExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsHomeRecommendSubjectExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/SmsHomeRecommendSubjectExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsAdminExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsAdminExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsAdminExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsAdminExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsAdminLoginLogExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsAdminLoginLogExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsAdminLoginLogExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsAdminLoginLogExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsAdminPermissionRelationExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsAdminPermissionRelationExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsAdminPermissionRelationExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsAdminPermissionRelationExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsAdminRoleRelationExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsAdminRoleRelationExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsAdminRoleRelationExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsAdminRoleRelationExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsGrowthChangeHistoryExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsGrowthChangeHistoryExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsGrowthChangeHistoryExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsGrowthChangeHistoryExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsIntegrationChangeHistoryExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsIntegrationChangeHistoryExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsIntegrationChangeHistoryExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsIntegrationChangeHistoryExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsIntegrationConsumeSettingExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsIntegrationConsumeSettingExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsIntegrationConsumeSettingExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsIntegrationConsumeSettingExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberExample$GeneratedCriteria.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberExample$GeneratedCriteria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberLevelExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberLevelExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberLevelExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberLevelExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberLoginLogExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberLoginLogExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberLoginLogExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberLoginLogExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberMemberTagRelationExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberMemberTagRelationExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberMemberTagRelationExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberMemberTagRelationExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberProductCategoryRelationExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberProductCategoryRelationExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberProductCategoryRelationExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberProductCategoryRelationExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberReceiveAddressExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberReceiveAddressExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberReceiveAddressExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberReceiveAddressExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberRuleSettingExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberRuleSettingExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberRuleSettingExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberRuleSettingExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberStatisticsInfoExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberStatisticsInfoExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberStatisticsInfoExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberStatisticsInfoExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberTagExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberTagExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberTagExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberTagExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberTaskExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberTaskExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberTaskExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMemberTaskExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMenuExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMenuExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMenuExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsMenuExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsPermissionExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsPermissionExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsPermissionExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsPermissionExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsResourceCategoryExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsResourceCategoryExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsResourceCategoryExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsResourceCategoryExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsResourceExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsResourceExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsResourceExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsResourceExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsRoleExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsRoleExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsRoleExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsRoleExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsRoleMenuRelationExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsRoleMenuRelationExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsRoleMenuRelationExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsRoleMenuRelationExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsRolePermissionRelationExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsRolePermissionRelationExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsRolePermissionRelationExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsRolePermissionRelationExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsRoleResourceRelationExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsRoleResourceRelationExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsRoleResourceRelationExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-mbg/target/classes/com/commerce/mall/model/UmsRoleResourceRelationExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-portal/src/main/java/com/commerce/mall/portal/controller/OmsPortalOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-portal/src/main/java/com/commerce/mall/portal/controller/OmsPortalOrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-portal/src/main/java/com/commerce/mall/portal/dao/PortalOrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-portal/src/main/java/com/commerce/mall/portal/dao/PortalOrderDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-portal/src/main/java/com/commerce/mall/portal/service/OmsPortalOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-portal/src/main/java/com/commerce/mall/portal/service/OmsPortalOrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-portal/src/main/java/com/commerce/mall/portal/service/impl/OmsPortalOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-portal/src/main/java/com/commerce/mall/portal/service/impl/OmsPortalOrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-portal/src/main/resources/dao/PortalOrderDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-portal/src/main/resources/dao/PortalOrderDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin/target/classes/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin/target/classes/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-portal/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-portal/src/main/resources/application-dev.yml" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -562,7 +241,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="aoligei" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -596,7 +275,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mall" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -609,13 +288,24 @@
     <property name="project.structure.side.proportion" value="0.5260274" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
-  <component name="RunManager" selected="Spring Boot.MallAdminApplication">
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.MallPortalApplication">
+    <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <module />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="MallAdminApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.commerce.mall.MallAdminApplication" />
@@ -641,6 +331,53 @@
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <module name="mall-admin" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <module name="mall-admin" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -702,8 +439,14 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.MallAdminApplication" />
+        <item itemvalue="Application.MallAdminApplication" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SpringBeansView">
+    <option name="showFilesets" value="false" />
+    <option name="showImplicitBeans" value="false" />
+    <option name="showInfrastructureBeans" value="false" />
   </component>
   <component name="StructuralSearchPlugin">
     <replaceConfiguration name="user defined" created="1591126874718" text="macro" recursive="false" caseInsensitive="true" type="JAVA" pattern_context="default" scope_type="PROJECT" scope_descriptor="" reformatAccordingToStyle="false" shortenFQN="false" replacement="commerce" history="1">
@@ -742,6 +485,8 @@
       <workItem from="1591124872866" duration="2627000" />
       <workItem from="1591127519405" duration="33000" />
       <workItem from="1591187613943" duration="931000" />
+      <workItem from="1591333338414" duration="2770000" />
+      <workItem from="1591432052120" duration="3435000" />
     </task>
     <task id="LOCAL-00001" summary="修改信息">
       <created>1590320043934</created>
@@ -761,7 +506,47 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="date">
+                    <value>
+                      <list>
+                        <option value="1590829406872" />
+                        <option value="" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/aoligei" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
@@ -771,82 +556,37 @@
     <option name="LAST_COMMIT_MESSAGE" value="修改信息" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="526" y="169" key="#com.intellij.ide.util.MemberChooser" timestamp="1591281015549">
-      <screen x="0" y="0" width="1440" height="920" />
-    </state>
-    <state x="526" y="169" key="#com.intellij.ide.util.MemberChooser/0.0.1440.920@0.0.1440.920" timestamp="1591281015549" />
-    <state width="941" height="524" key="#com.intellij.structuralsearch.plugin.ui.StructuralReplaceDialog" timestamp="1591126874706">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="941" height="524" key="#com.intellij.structuralsearch.plugin.ui.StructuralReplaceDialog/0.0.1536.864@0.0.1536.864" timestamp="1591126874706" />
-    <state x="297" y="170" key="#com.intellij.structuralsearch.plugin.ui.StructuralSearchDialog" timestamp="1591126874706">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="297" y="170" key="#com.intellij.structuralsearch.plugin.ui.StructuralSearchDialog/0.0.1536.864@0.0.1536.864" timestamp="1591126874706" />
-    <state x="207" y="55" key="CommitChangelistDialog2" timestamp="1591283379181">
-      <screen x="0" y="0" width="1440" height="920" />
-    </state>
-    <state x="207" y="55" key="CommitChangelistDialog2/0.0.1440.920@0.0.1440.920" timestamp="1591283379181" />
-    <state x="263" y="154" key="FileChooserDialogImpl" timestamp="1591125352441">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="263" y="154" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1591125352441" />
-    <state width="1493" height="194" key="GridCell.Tab.0.bottom" timestamp="1591127505482">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="194" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1591127505482" />
-    <state width="1493" height="194" key="GridCell.Tab.0.center" timestamp="1591127505481">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="194" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1591127505481" />
-    <state width="1493" height="194" key="GridCell.Tab.0.left" timestamp="1591127505481">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="194" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1591127505481" />
-    <state width="1493" height="194" key="GridCell.Tab.0.right" timestamp="1591127505481">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="194" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1591127505481" />
-    <state width="1493" height="194" key="GridCell.Tab.1.bottom" timestamp="1591127505482">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="194" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1591127505482" />
-    <state width="1493" height="194" key="GridCell.Tab.1.center" timestamp="1591127505482">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="194" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1591127505482" />
-    <state width="1493" height="194" key="GridCell.Tab.1.left" timestamp="1591127505482">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="194" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1591127505482" />
-    <state width="1493" height="194" key="GridCell.Tab.1.right" timestamp="1591127505482">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="194" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1591127505482" />
-    <state x="351" y="174" key="RollbackChangesDialog" timestamp="1591283303232">
-      <screen x="0" y="0" width="1440" height="920" />
-    </state>
-    <state x="351" y="174" key="RollbackChangesDialog/0.0.1440.920@0.0.1440.920" timestamp="1591283303232" />
-    <state x="270" y="76" key="SettingsEditor" timestamp="1591127397123">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="270" y="76" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1591127397123" />
-    <state x="313" y="197" key="Vcs.Push.Dialog.v2" timestamp="1591283491189">
-      <screen x="0" y="0" width="1440" height="920" />
-    </state>
-    <state x="313" y="197" key="Vcs.Push.Dialog.v2/0.0.1440.920@0.0.1440.920" timestamp="1591283491189" />
-    <state x="723" y="176" width="713" height="688" key="find.popup" timestamp="1591188216762">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="723" y="176" width="713" height="688" key="find.popup/0.0.1536.864@0.0.1536.864" timestamp="1591188216762" />
-    <state x="438" y="263" key="git4idea.merge.GitPullDialog" timestamp="1591283350456">
-      <screen x="0" y="0" width="1440" height="920" />
-    </state>
-    <state x="438" y="263" key="git4idea.merge.GitPullDialog/0.0.1440.920@0.0.1440.920" timestamp="1591283350456" />
-    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1591127080622">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1591127080622" />
+    <state width="941" height="524" key="#com.intellij.structuralsearch.plugin.ui.StructuralReplaceDialog" />
+    <state width="941" height="524" key="#com.intellij.structuralsearch.plugin.ui.StructuralReplaceDialog/0.0.1536.864@0.0.1536.864" />
+    <state x="297" y="170" key="#com.intellij.structuralsearch.plugin.ui.StructuralSearchDialog" />
+    <state x="297" y="170" key="#com.intellij.structuralsearch.plugin.ui.StructuralSearchDialog/0.0.1536.864@0.0.1536.864" />
+    <state x="263" y="154" key="FileChooserDialogImpl" />
+    <state x="263" y="154" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" />
+    <state width="200" height="250" key="Git.Branch.Popup" />
+    <state width="200" height="250" key="Git.Branch.Popup/1366.768/1920.1080" />
+    <state width="200" height="250" key="Git.Branch.Popup@1920.1080" />
+    <state width="1493" height="194" key="GridCell.Tab.0.bottom" />
+    <state width="1493" height="194" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" />
+    <state width="1493" height="194" key="GridCell.Tab.0.center" />
+    <state width="1493" height="194" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" />
+    <state width="1493" height="194" key="GridCell.Tab.0.left" />
+    <state width="1493" height="194" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" />
+    <state width="1493" height="194" key="GridCell.Tab.0.right" />
+    <state width="1493" height="194" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" />
+    <state width="1493" height="194" key="GridCell.Tab.1.bottom" />
+    <state width="1493" height="194" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" />
+    <state width="1493" height="194" key="GridCell.Tab.1.center" />
+    <state width="1493" height="194" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" />
+    <state width="1493" height="194" key="GridCell.Tab.1.left" />
+    <state width="1493" height="194" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" />
+    <state width="1493" height="194" key="GridCell.Tab.1.right" />
+    <state width="1493" height="194" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" />
+    <state x="270" y="76" key="SettingsEditor" />
+    <state x="270" y="76" key="SettingsEditor/0.0.1536.864@0.0.1536.864" />
+    <state x="723" y="176" width="713" height="688" key="find.popup" />
+    <state x="723" y="176" width="713" height="688" key="find.popup/0.0.1536.864@0.0.1536.864" />
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" />
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" />
   </component>
   <component name="masterDetails">
     <states>
