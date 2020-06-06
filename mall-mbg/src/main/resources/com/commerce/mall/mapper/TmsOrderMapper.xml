@@ -10,6 +10,7 @@
     <result column="delivery_fee" jdbcType="DOUBLE" property="deliveryFee" />
     <result column="payment" jdbcType="DOUBLE" property="payment" />
     <result column="memo" jdbcType="VARCHAR" property="memo" />
+    <result column="coupon_id" jdbcType="INTEGER" property="couponId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -70,7 +71,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    order_id, post_time, address_id, user_id, pack_fee, delivery_fee, payment, memo
+    order_id, post_time, address_id, user_id, pack_fee, delivery_fee, payment, memo, 
+    coupon_id
   </sql>
   <select id="selectByExample" parameterType="com.commerce.mall.model.TmsOrderExample" resultMap="BaseResultMap">
     select
@@ -108,10 +110,10 @@
     </selectKey>
     insert into tms_order (post_time, address_id, user_id, 
       pack_fee, delivery_fee, payment, 
-      memo)
+      memo, coupon_id)
     values (#{postTime,jdbcType=TIMESTAMP}, #{addressId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
       #{packFee,jdbcType=DOUBLE}, #{deliveryFee,jdbcType=DOUBLE}, #{payment,jdbcType=DOUBLE}, 
-      #{memo,jdbcType=VARCHAR})
+      #{memo,jdbcType=VARCHAR}, #{couponId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.commerce.mall.model.TmsOrder">
     <selectKey keyProperty="orderId" order="AFTER" resultType="java.lang.Integer">
@@ -140,6 +142,9 @@
       <if test="memo != null">
         memo,
       </if>
+      <if test="couponId != null">
+        coupon_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="postTime != null">
@@ -162,6 +167,9 @@
       </if>
       <if test="memo != null">
         #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="couponId != null">
+        #{couponId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -198,6 +206,9 @@
       <if test="record.memo != null">
         memo = #{record.memo,jdbcType=VARCHAR},
       </if>
+      <if test="record.couponId != null">
+        coupon_id = #{record.couponId,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -212,7 +223,8 @@
       pack_fee = #{record.packFee,jdbcType=DOUBLE},
       delivery_fee = #{record.deliveryFee,jdbcType=DOUBLE},
       payment = #{record.payment,jdbcType=DOUBLE},
-      memo = #{record.memo,jdbcType=VARCHAR}
+      memo = #{record.memo,jdbcType=VARCHAR},
+      coupon_id = #{record.couponId,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -241,6 +253,9 @@
       <if test="memo != null">
         memo = #{memo,jdbcType=VARCHAR},
       </if>
+      <if test="couponId != null">
+        coupon_id = #{couponId,jdbcType=INTEGER},
+      </if>
     </set>
     where order_id = #{orderId,jdbcType=INTEGER}
   </update>
@@ -252,7 +267,8 @@
       pack_fee = #{packFee,jdbcType=DOUBLE},
       delivery_fee = #{deliveryFee,jdbcType=DOUBLE},
       payment = #{payment,jdbcType=DOUBLE},
-      memo = #{memo,jdbcType=VARCHAR}
+      memo = #{memo,jdbcType=VARCHAR},
+      coupon_id = #{couponId,jdbcType=INTEGER}
     where order_id = #{orderId,jdbcType=INTEGER}
   </update>
 </mapper>

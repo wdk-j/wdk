@@ -2,6 +2,7 @@ package com.commerce.mall.dao;
 
 import org.apache.ibatis.annotations.Param;
 
+@Deprecated
 public interface TmsSellerDao {
 
     /**
@@ -21,5 +22,4 @@ public interface TmsSellerDao {
      */
 
     int updateAttrClosed(@Param("sellerId") Integer sellerId , @Param("closed") String closed);
-
 }

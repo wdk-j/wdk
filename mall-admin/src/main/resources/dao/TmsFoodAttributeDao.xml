@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.commerce.mall.dao.TmsFoodAttributeDao">
 
-    <resultMap id="BaseResultMap" type="com.commerce.mall.dto.TmsFoodWithMainPic">
+    <resultMap id="BaseResultMap" type="com.commerce.mall.custom.dto.TmsFoodWithMainPic">
         <id column="food_id" jdbcType="INTEGER" property="foodId"/>
         <result column="food_name" jdbcType="VARCHAR" property="foodName"/>
         <result column="price" jdbcType="DECIMAL" property="price"/>
@@ -36,8 +36,8 @@
         where food_id=#{foodId}
     </select>
     <update id="updateIsDelete">
-    update tms_food
-    set is_delete=#{isDelete}
-    where food_id = #{foodId};
-</update>
+        update tms_food
+        set is_delete=#{isDelete}
+        where food_id = #{foodId};
+    </update>
 </mapper>

@@ -1,7 +1,7 @@
 package com.commerce.mall.portal.dao;
 
 
-import com.commerce.mall.portal.domain.TmsFoodInHome;
+import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -10,6 +10,7 @@ import java.util.List;
  * @author jiangyong
  * @date 2020.06.03
  */
+@Deprecated
 public interface TmsFoodInHomeDao {
 
     /**
@@ -18,5 +19,5 @@ public interface TmsFoodInHomeDao {
      * @param sellerId seller id
      * @return list
      */
-    List<TmsFoodInHome> listFoods(@Param("sellerId") Integer sellerId);
+    List<TmsFoodWithMainPic> listFoods(@Param("sellerId") Integer sellerId);
 }

@@ -2,7 +2,7 @@ package com.commerce.mall.portal.controller;
 
 
 import com.commerce.mall.common.api.CommonResult;
-import com.commerce.mall.portal.domain.TmsFoodInHome;
+import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
 import com.commerce.mall.portal.service.impl.TmsSellerServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -34,8 +34,8 @@ public class TmsSellerController {
     @ResponseBody
     public CommonResult<Object> getFoodsList(@Validated @PathVariable("sellerId") Integer sellerId) {
         // 强制
-        // sellerId=1;
-        List<TmsFoodInHome> homeFoodList = tmsSellerService.listHomeFoods(sellerId);
+         sellerId=1;
+        List<TmsFoodWithMainPic> homeFoodList = tmsSellerService.listHomeFoods(sellerId);
         LOGGER.info("seller id: " + sellerId + homeFoodList.toString());
         return CommonResult.success(homeFoodList);
     }

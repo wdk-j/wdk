@@ -6,7 +6,7 @@
     <result column="seller_name" jdbcType="VARCHAR" property="sellerName" />
     <result column="tel" jdbcType="VARCHAR" property="tel" />
     <result column="logo_url" jdbcType="VARCHAR" property="logoUrl" />
-    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="addr_id" jdbcType="BIGINT" property="addrId" />
     <result column="min_price" jdbcType="DECIMAL" property="minPrice" />
     <result column="closed" jdbcType="VARCHAR" property="closed" />
     <result column="is_delete" jdbcType="VARCHAR" property="isDelete" />
@@ -73,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    seller_id, seller_name, tel, logo_url, address, min_price, closed, is_delete
+    seller_id, seller_name, tel, logo_url, addr_id, min_price, closed, is_delete
   </sql>
   <sql id="Blob_Column_List">
     intro
@@ -131,10 +131,10 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into tms_seller (seller_name, tel, logo_url, 
-      address, min_price, closed, 
+      addr_id, min_price, closed, 
       is_delete, intro)
     values (#{sellerName,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{logoUrl,jdbcType=VARCHAR}, 
-      #{address,jdbcType=VARCHAR}, #{minPrice,jdbcType=DECIMAL}, #{closed,jdbcType=VARCHAR}, 
+      #{addrId,jdbcType=BIGINT}, #{minPrice,jdbcType=DECIMAL}, #{closed,jdbcType=VARCHAR}, 
       #{isDelete,jdbcType=VARCHAR}, #{intro,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.commerce.mall.model.TmsSeller">
@@ -152,8 +152,8 @@
       <if test="logoUrl != null">
         logo_url,
       </if>
-      <if test="address != null">
-        address,
+      <if test="addrId != null">
+        addr_id,
       </if>
       <if test="minPrice != null">
         min_price,
@@ -178,8 +178,8 @@
       <if test="logoUrl != null">
         #{logoUrl,jdbcType=VARCHAR},
       </if>
-      <if test="address != null">
-        #{address,jdbcType=VARCHAR},
+      <if test="addrId != null">
+        #{addrId,jdbcType=BIGINT},
       </if>
       <if test="minPrice != null">
         #{minPrice,jdbcType=DECIMAL},
@@ -216,8 +216,8 @@
       <if test="record.logoUrl != null">
         logo_url = #{record.logoUrl,jdbcType=VARCHAR},
       </if>
-      <if test="record.address != null">
-        address = #{record.address,jdbcType=VARCHAR},
+      <if test="record.addrId != null">
+        addr_id = #{record.addrId,jdbcType=BIGINT},
       </if>
       <if test="record.minPrice != null">
         min_price = #{record.minPrice,jdbcType=DECIMAL},
@@ -242,7 +242,7 @@
       seller_name = #{record.sellerName,jdbcType=VARCHAR},
       tel = #{record.tel,jdbcType=VARCHAR},
       logo_url = #{record.logoUrl,jdbcType=VARCHAR},
-      address = #{record.address,jdbcType=VARCHAR},
+      addr_id = #{record.addrId,jdbcType=BIGINT},
       min_price = #{record.minPrice,jdbcType=DECIMAL},
       closed = #{record.closed,jdbcType=VARCHAR},
       is_delete = #{record.isDelete,jdbcType=VARCHAR},
@@ -257,7 +257,7 @@
       seller_name = #{record.sellerName,jdbcType=VARCHAR},
       tel = #{record.tel,jdbcType=VARCHAR},
       logo_url = #{record.logoUrl,jdbcType=VARCHAR},
-      address = #{record.address,jdbcType=VARCHAR},
+      addr_id = #{record.addrId,jdbcType=BIGINT},
       min_price = #{record.minPrice,jdbcType=DECIMAL},
       closed = #{record.closed,jdbcType=VARCHAR},
       is_delete = #{record.isDelete,jdbcType=VARCHAR}
@@ -277,8 +277,8 @@
       <if test="logoUrl != null">
         logo_url = #{logoUrl,jdbcType=VARCHAR},
       </if>
-      <if test="address != null">
-        address = #{address,jdbcType=VARCHAR},
+      <if test="addrId != null">
+        addr_id = #{addrId,jdbcType=BIGINT},
       </if>
       <if test="minPrice != null">
         min_price = #{minPrice,jdbcType=DECIMAL},
@@ -300,7 +300,7 @@
     set seller_name = #{sellerName,jdbcType=VARCHAR},
       tel = #{tel,jdbcType=VARCHAR},
       logo_url = #{logoUrl,jdbcType=VARCHAR},
-      address = #{address,jdbcType=VARCHAR},
+      addr_id = #{addrId,jdbcType=BIGINT},
       min_price = #{minPrice,jdbcType=DECIMAL},
       closed = #{closed,jdbcType=VARCHAR},
       is_delete = #{isDelete,jdbcType=VARCHAR},
@@ -312,7 +312,7 @@
     set seller_name = #{sellerName,jdbcType=VARCHAR},
       tel = #{tel,jdbcType=VARCHAR},
       logo_url = #{logoUrl,jdbcType=VARCHAR},
-      address = #{address,jdbcType=VARCHAR},
+      addr_id = #{addrId,jdbcType=BIGINT},
       min_price = #{minPrice,jdbcType=DECIMAL},
       closed = #{closed,jdbcType=VARCHAR},
       is_delete = #{isDelete,jdbcType=VARCHAR}

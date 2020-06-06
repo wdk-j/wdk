@@ -7,7 +7,7 @@ import com.commerce.mall.model.TmsFoodPics;
  * @author jiangyong
  * @date 2020.06.03
  */
-public class TmsFoodInHome extends TmsFood {
+public class TmsFoodWithMainPic extends TmsFood {
 
     private static final long serialVersionUID = 1591171709422390836L;
 
