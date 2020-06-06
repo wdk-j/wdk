@@ -1,6 +1,6 @@
 package com.commerce.mall.dao;
 
-import com.commerce.mall.dto.TmsFoodWithMainPic;
+import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -9,6 +9,7 @@ import java.util.List;
  * @author jiangyong
  * @date 2020.06.04
  */
+@Deprecated
 public interface TmsFoodAttributeDao {
 
     /**

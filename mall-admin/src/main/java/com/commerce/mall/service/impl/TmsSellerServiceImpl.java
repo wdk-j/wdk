@@ -1,6 +1,8 @@
 package com.commerce.mall.service.impl;
 
 import cn.hutool.core.util.StrUtil;
+import com.commerce.mall.custom.dao.TmsSellerDetailDao;
+import com.commerce.mall.custom.dto.TmsSellerDetail;
 import com.commerce.mall.dao.TmsSellerDao;
 import com.commerce.mall.mapper.TmsSellerMapper;
 import com.commerce.mall.model.TmsSeller;
@@ -28,38 +30,43 @@ public class TmsSellerServiceImpl implements TmsSellerService {
     private TmsSellerMapper tmsSellerMapper;
 
     @Autowired
-    TmsSellerDao tmsSellerDao;
+    private TmsSellerDetailDao tmsSellerDetailDao;
 
     /**
      * 根据seller_id查找商家
+     *
      * @param sellerId
      * @return
      */
     @Override
-    public TmsSeller getTmsSellerById(Integer sellerId) {
-        return tmsSellerMapper.selectByPrimaryKey(sellerId);
+    public TmsSellerDetail getById(Integer sellerId) {
+        return tmsSellerDetailDao.selectByPrimaryKey(sellerId);
     }
 
     /**
      * 添加商家
+     *
      * @param tmsSeller
      * @return
      */
     @Override
-    public int addTmsSeller(TmsSeller tmsSeller) {
+    public int add(TmsSeller tmsSeller) {
         tmsSeller.setClosed("0");
         tmsSeller.setIsDelete("0");
+        //todo TmsSellerParam UmsMemberReceiveAddress
         int i = tmsSellerMapper.insertSelective(tmsSeller);
         return i;
     }
 
     /**
      * 更改商家信息
+     *
      * @param tmsSeller
      * @return
      */
     @Override
-    public int updateTmsSeller(TmsSeller tmsSeller) {
+    public int update(TmsSeller tmsSeller) {
+        //todo TmsSellerParam UmsMemberReceiveAddress
         TmsSellerExample tmsSellerExample = new TmsSellerExample();
         tmsSellerExample.createCriteria().andSellerIdEqualTo(tmsSeller.getSellerId());
         return tmsSellerMapper.updateByExampleSelective(tmsSeller, tmsSellerExample);
@@ -67,63 +74,56 @@ public class TmsSellerServiceImpl implements TmsSellerService {
 
     /**
      * 获取商家列表
+     *
      * @return
      */
     @Override
-    public List<TmsSeller> list() {
-        TmsSellerExample tmsSellerExample = new TmsSellerExample();
-        return tmsSellerMapper.selectByExample(tmsSellerExample);
+    public List<TmsSellerDetail> list() {
+        return null;
     }
 
     /**
-     * 分页显示图书列表
+     * 分页显示卖家列表
+     *
      * @param pageNum
      * @param pageSize
      * @param keyWord
      * @return
      */
     @Override
-    public PageInfo<TmsSeller> pagedList(int pageNum, int pageSize, String keyWord) {
+    public PageInfo<TmsSellerDetail> pagedList(int pageNum, int pageSize, String keyWord) {
         PageHelper.startPage(pageNum, pageSize);
         TmsSellerExample tmsSellerExample = new TmsSellerExample();
         TmsSellerExample.Criteria criteria = tmsSellerExample.createCriteria();
-        if (!StrUtil.isEmpty(keyWord))
+        if (!StrUtil.isEmpty(keyWord)) {
             criteria.andSellerNameLike(keyWord);
+        }
         tmsSellerExample.setOrderByClause("seller_id asc");
-        List<TmsSeller> tmsSellers = tmsSellerMapper.selectByExample(tmsSellerExample);
+        List<TmsSellerDetail> tmsSellers = tmsSellerDetailDao.selectByExampleWithBLOBs(tmsSellerExample);
         return new PageInfo<>(tmsSellers);
     }
 
     /**
-     * 根据seller_id删除商家信息
-     *
-     * @param sellerId
-     */
-    @Override
-    public int deleteTmsSellerById(Integer sellerId) {
-        int i = tmsSellerMapper.deleteByPrimaryKey(sellerId);
-        return i;
-    }
-
-    /**
      * 更改商家isDelete
+     *
      * @param sellerId
      * @param isDelete
      * @return
      */
     @Override
     public int updateAttrIsDelete(Integer sellerId, String isDelete) {
-        return tmsSellerDao.updateAttrIsDelete(sellerId, isDelete);
+        return tmsSellerDetailDao.updateAttrIsDelete(sellerId, isDelete);
     }
 
     /**
      * 更改商家closed
+     *
      * @param sellerId
      * @param closed
      * @return
      */
     @Override
     public int updateAttrClosed(Integer sellerId, String closed) {
-        return tmsSellerDao.updateAttrClosed(sellerId , closed);
+        return tmsSellerDetailDao.updateAttrClosed(sellerId, closed);
     }
 }

@@ -3,7 +3,7 @@ package com.commerce.mall.controller;
 import cn.hutool.core.collection.CollUtil;
 import com.commerce.mall.common.api.CommonResult;
 import com.commerce.mall.common.utils.FileUtil;
-import com.commerce.mall.dto.TmsFoodWithMainPic;
+import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
 import com.commerce.mall.model.TmsFood;
 import com.commerce.mall.service.TmsFoodService;
 import com.github.pagehelper.PageInfo;
@@ -35,22 +35,24 @@ public class TmsFoodController {
     @ApiOperation(value = "获取商品列表，可带关键字")
     @GetMapping("/list")
     @ResponseBody
-    public CommonResult<Object> listAllByKeyword(@RequestParam(required = false,defaultValue = "1") int pageNum,
-                                                 @RequestParam(required = false,defaultValue = "5") int pageSize,
+    public CommonResult<Object> listAllByKeyword(@RequestParam(required = false, defaultValue = "1") Integer sellerId,
+                                                 @RequestParam(required = false, defaultValue = "1") int pageNum,
+                                                 @RequestParam(required = false, defaultValue = "5") int pageSize,
                                                  @RequestParam(required = false) String keyword) {
-        PageInfo<TmsFoodWithMainPic> pagedFoods = tmsFoodService.listFoods(pageNum, pageSize, keyword);
+        PageInfo<TmsFoodWithMainPic> pagedFoods = tmsFoodService.listFoods(pageNum, pageSize, sellerId, keyword);
         if (CollUtil.isEmpty(pagedFoods.getList())) {
             return CommonResult.failed("结果为空");
         }
         return CommonResult.success(pagedFoods);
     }
 
-
     @ApiOperation(value = "添加商品")
     @PostMapping("/add")
     @ResponseBody
-    public CommonResult<Object> addFood(@RequestParam(name = "files") MultipartFile[] files,
-                                        TmsFood tmsFood) {
+    public CommonResult<Object> addFood(@RequestParam(required = false, defaultValue = "1") Integer sellerId,
+                                        @RequestParam(name = "files") MultipartFile[] files,
+                                         TmsFood tmsFood) {
+        tmsFood.setSellerId(sellerId);
         List<String> urls = new ArrayList<>();
         //TODO 新增商品 图片上传
         for (MultipartFile file : files) {
@@ -67,10 +69,11 @@ public class TmsFoodController {
         return CommonResult.failed("添加失败");
     }
 
-    @ApiOperation(value = "添加商品")
+    @ApiOperation(value = "更新商品")
     @PostMapping("/update/{foodId}")
     @ResponseBody
-    public CommonResult<Object> update(@PathVariable("foodId")Integer foodId, TmsFood tmsFood) {
+    public CommonResult<Object> update(@PathVariable("foodId") Integer foodId, @RequestBody TmsFood tmsFood) {
+        tmsFood.setSellerId(1);
         tmsFood.setFoodId(foodId);
         int i = tmsFoodService.update(tmsFood);
         if (i > 0) {

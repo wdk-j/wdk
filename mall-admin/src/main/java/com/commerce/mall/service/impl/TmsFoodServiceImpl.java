@@ -1,8 +1,8 @@
 package com.commerce.mall.service.impl;
 
 import cn.hutool.core.util.StrUtil;
-import com.commerce.mall.dao.TmsFoodAttributeDao;
-import com.commerce.mall.dto.TmsFoodWithMainPic;
+import com.commerce.mall.custom.dao.TmsFoodAboutDao;
+import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
 import com.commerce.mall.mapper.TmsFoodMapper;
 import com.commerce.mall.model.TmsFood;
 import com.commerce.mall.service.TmsFoodService;
@@ -28,7 +28,7 @@ public class TmsFoodServiceImpl implements TmsFoodService {
     private TmsFoodMapper tmsFoodMapper;
 
     @Autowired
-    private TmsFoodAttributeDao tmsFoodAttributeDao;
+    private TmsFoodAboutDao tmsFoodAboutDao;
 
     /**
      * 添加食品
@@ -58,17 +58,18 @@ public class TmsFoodServiceImpl implements TmsFoodService {
      *
      * @param pageNum  page number
      * @param pageSize page size
+     * @param sellerId seller id
      * @param keyword  keyword
      * @return a page of food
      */
     @Override
-    public PageInfo<TmsFoodWithMainPic> listFoods(int pageNum, int pageSize, String keyword) {
+    public PageInfo<TmsFoodWithMainPic> listFoods(int pageNum, int pageSize, Integer sellerId, String keyword) {
         PageHelper.startPage(pageNum, pageSize);
         // 如果为''算为null
         if (StrUtil.isEmpty(keyword)) {
             keyword = null;
         }
-        List<TmsFoodWithMainPic> foods = tmsFoodAttributeDao.selectByKeyword(keyword);
+        List<TmsFoodWithMainPic> foods = tmsFoodAboutDao.selectByKeyword(sellerId,keyword);
         return new PageInfo<>(foods);
     }
 
@@ -80,7 +81,7 @@ public class TmsFoodServiceImpl implements TmsFoodService {
      */
     @Override
     public TmsFoodWithMainPic get(Integer foodId) {
-        return tmsFoodAttributeDao.selectByPrimaryKey(foodId);
+        return tmsFoodAboutDao.selectByPrimaryKey(foodId);
     }
 
     /**
@@ -92,7 +93,7 @@ public class TmsFoodServiceImpl implements TmsFoodService {
      */
     @Override
     public int updateAttrIsDelete(String isDelete, Integer foodId) {
-        return tmsFoodAttributeDao.updateIsDelete(isDelete,foodId);
+        return tmsFoodAboutDao.updateIsDelete(isDelete,foodId);
     }
 
     /**

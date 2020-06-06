@@ -3,7 +3,7 @@ package com.commerce.mall.portal.service.impl;
 
 import com.commerce.mall.mapper.TmsSellerMapper;
 import com.commerce.mall.portal.dao.TmsFoodInHomeDao;
-import com.commerce.mall.portal.domain.TmsFoodInHome;
+import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
 import com.commerce.mall.portal.service.TmsSellerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +34,7 @@ public class TmsSellerServiceImpl implements TmsSellerService {
      * @return list
      */
     @Override
-    public List<TmsFoodInHome> listHomeFoods(Integer sellerId) {
+    public List<TmsFoodWithMainPic> listHomeFoods(Integer sellerId) {
         return tmsFoodInHomeDao.listFoods(sellerId);
     }
 

@@ -1,7 +1,7 @@
 package com.commerce.mall.service;
 
 
-import com.commerce.mall.dto.TmsFoodWithMainPic;
+import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
 import com.commerce.mall.model.TmsFood;
 import com.github.pagehelper.PageInfo;
 
@@ -15,14 +15,15 @@ public interface TmsFoodService {
 
     /**
      * 分页
-     * 获取商品列表
+     * 获取某卖家商品列表
      *
      * @param pageNum  page number
      * @param pageSize page size
+     * @param sellerId seller id
      * @param keyword  keyword
      * @return a page of food
      */
-    PageInfo<TmsFoodWithMainPic> listFoods(int pageNum, int pageSize, String keyword);
+    PageInfo<TmsFoodWithMainPic> listFoods(int pageNum, int pageSize,Integer sellerId, String keyword);
 
     /**
      * 获取一个商品

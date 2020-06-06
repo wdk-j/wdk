@@ -1,27 +1,35 @@
 package com.commerce.mall.model;
 
 import io.swagger.annotations.ApiModelProperty;
-
 import java.io.Serializable;
 import java.util.Date;
 
 public class TmsOrder implements Serializable {
-
     private Integer orderId;
 
+    @ApiModelProperty(value = "提交时间")
     private Date postTime;
 
+    @ApiModelProperty(value = "配送地址外键")
     private Integer addressId;
 
+    @ApiModelProperty(value = "用户ID")
     private Integer userId;
 
+    @ApiModelProperty(value = "包装费")
     private Double packFee;
 
+    @ApiModelProperty(value = "配送费")
     private Double deliveryFee;
 
+    @ApiModelProperty(value = "实付金额")
     private Double payment;
 
+    @ApiModelProperty(value = "备注")
     private String memo;
+
+    @ApiModelProperty(value = "优惠券外键")
+    private Integer couponId;
 
     private static final long serialVersionUID = 1L;
 
@@ -89,6 +97,14 @@ public class TmsOrder implements Serializable {
         this.memo = memo;
     }
 
+    public Integer getCouponId() {
+        return couponId;
+    }
+
+    public void setCouponId(Integer couponId) {
+        this.couponId = couponId;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -103,6 +119,7 @@ public class TmsOrder implements Serializable {
         sb.append(", deliveryFee=").append(deliveryFee);
         sb.append(", payment=").append(payment);
         sb.append(", memo=").append(memo);
+        sb.append(", couponId=").append(couponId);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

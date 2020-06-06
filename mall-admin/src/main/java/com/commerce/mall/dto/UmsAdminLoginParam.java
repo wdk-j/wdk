@@ -18,6 +18,7 @@ public class UmsAdminLoginParam {
     @NotEmpty(message = "密码不能为空")
     private String password;
 
+
     public String getUsername() {
         return username;
     }

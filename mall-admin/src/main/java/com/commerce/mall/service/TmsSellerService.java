@@ -1,5 +1,6 @@
 package com.commerce.mall.service;
 
+import com.commerce.mall.custom.dto.TmsSellerDetail;
 import com.commerce.mall.model.TmsSeller;
 import com.github.pagehelper.PageInfo;
 
@@ -11,19 +12,17 @@ import java.util.List;
  */
 public interface TmsSellerService {
 
-    TmsSeller getTmsSellerById(Integer sellerId);
+    TmsSellerDetail getById(Integer sellerId);
 
-    int addTmsSeller(TmsSeller tmsSeller);
+    int add(TmsSeller tmsSeller);
 
-    int updateTmsSeller(TmsSeller tmsSeller);
+    int update(TmsSeller tmsSeller);
 
-    List<TmsSeller> list();
+    List<TmsSellerDetail> list();
 
-    PageInfo<TmsSeller> pagedList(int pageNum, int pageSize, String keyWord);
+    PageInfo<TmsSellerDetail> pagedList(int pageNum, int pageSize, String keyWord);
 
     int updateAttrIsDelete(Integer sellerId, String isDelete);
-
-    int deleteTmsSellerById(Integer sellerId);
 
     int updateAttrClosed(Integer sellerId, String closed);
 }
