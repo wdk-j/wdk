@@ -18,7 +18,20 @@ import java.util.Date;
 @Slf4j
 public class FileUtil {
 
+    /**
+     * 这里上传指定的文件到此module所属的project目录
+     */
     private static final String BASE_DIR = System.getProperty("user.dir") + File.separator;
+
+    /**
+     * 一级目录
+     */
+    private static final String FIRST_DIR = "uploads";
+
+    /**
+     * 默认二级目录
+     */
+    private static final String SECOND_DIR_DEFAULT = "default";
 
     public static String fullFilename(String originalFilename) {
         long currentMillions = DateUtil.current(false);
@@ -30,7 +43,9 @@ public class FileUtil {
     }
 
     /**
-     * 上传指定的文件
+     *
+     * 一级目录: upload
+     * 二级目录: 请提供
      *
      * @param file file
      * @param path path，不带分隔符
@@ -63,7 +78,8 @@ public class FileUtil {
 
     /**
      * 文件删除
-     * @param url url
+     *
+     * @param url  url
      * @param path path
      * @return code
      */
