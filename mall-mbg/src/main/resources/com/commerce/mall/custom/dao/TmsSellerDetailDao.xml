@@ -58,7 +58,7 @@
         select<include refid="Base_Column_List"/>,
         <include refid="Blob_Column_List"/>
         from tms_seller
-        where id=#{sellerId}
+        where seller_id=#{sellerId}
     </select>
     <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs">
         select
