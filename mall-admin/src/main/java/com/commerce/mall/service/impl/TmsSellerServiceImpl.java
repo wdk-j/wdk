@@ -92,14 +92,12 @@ public class TmsSellerServiceImpl implements TmsSellerService {
      */
     @Override
     public PageInfo<TmsSellerDetail> pagedList(int pageNum, int pageSize, String keyWord) {
-        PageHelper.startPage(pageNum, pageSize);
-        TmsSellerExample tmsSellerExample = new TmsSellerExample();
-        TmsSellerExample.Criteria criteria = tmsSellerExample.createCriteria();
-        if (!StrUtil.isEmpty(keyWord)) {
-            criteria.andSellerNameLike(keyWord);
+        if (StrUtil.isEmpty(keyWord)) {
+            keyWord = null;
         }
-        tmsSellerExample.setOrderByClause("seller_id asc");
-        List<TmsSellerDetail> tmsSellers = tmsSellerDetailDao.selectByExampleWithBLOBs(tmsSellerExample);
+        String orderByClause = "seller_id asc";
+        PageHelper.startPage(pageNum, pageSize);
+        List<TmsSellerDetail> tmsSellers = tmsSellerDetailDao.selectByExampleWithBLOBs(keyWord, orderByClause);
         return new PageInfo<>(tmsSellers);
     }
 

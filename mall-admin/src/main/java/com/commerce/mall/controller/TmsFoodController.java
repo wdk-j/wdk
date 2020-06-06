@@ -68,6 +68,17 @@ public class TmsFoodController {
         return CommonResult.failed("添加失败");
     }
 
+    @ApiOperation(value = "上下架食品，更新isDelete")
+    @PostMapping("/update/isDelete")
+    @ResponseBody
+    public CommonResult<Object> updateIsDelete(@RequestParam("foodId") Integer foodId, @RequestParam("isDelete") String isDelete) {
+        int i = tmsFoodService.updateAttrIsDelete(isDelete, foodId);
+        if (i > 0) {
+            return CommonResult.success(null);
+        }
+        return CommonResult.failed("修改失败");
+    }
+
     @ApiOperation(value = "更新商品")
     @PostMapping("/update/{foodId}")
     @ResponseBody

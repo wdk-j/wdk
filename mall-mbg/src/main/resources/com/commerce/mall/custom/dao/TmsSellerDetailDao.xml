@@ -8,14 +8,14 @@
         <result column="seller_name" jdbcType="VARCHAR" property="sellerName"/>
         <result column="tel" jdbcType="VARCHAR" property="tel"/>
         <result column="logo_url" jdbcType="VARCHAR" property="logoUrl"/>
-        <result column="addr_id" jdbcType="BIGINT" property="addrId"/>
         <result column="min_price" jdbcType="DECIMAL" property="minPrice"/>
         <result column="closed" jdbcType="VARCHAR" property="closed"/>
         <result column="is_delete" jdbcType="VARCHAR" property="isDelete"/>
-        <association property="address" column="{id=sellerId}"
+        <result column="addr_id" jdbcType="BIGINT" property="addrId"/>
+        <association property="address" column="{id=addr_id}"
                      select="com.commerce.mall.mapper.UmsMemberReceiveAddressMapper.selectByPrimaryKey"/>
     </resultMap>
-    <resultMap id="ResultMapWithBLOBs" extends="BaseResultMap" type="com.commerce.mall.model.TmsSeller">
+    <resultMap id="ResultMapWithBLOBs" extends="BaseResultMap" type="com.commerce.mall.custom.dto.TmsSellerDetail">
         <result column="intro" jdbcType="LONGVARCHAR" property="intro"/>
     </resultMap>
     <sql id="Example_Where_Clause">
@@ -62,16 +62,16 @@
     </select>
     <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs">
         select
-        <if test="distinct">
-            distinct
-        </if>
         <include refid="Base_Column_List"/>
         ,
         <include refid="Blob_Column_List"/>
         from tms_seller
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
+        <where>
+            <if test="keyword!=null">
+            <bind name="keyword" value="'%'+keyword+'%'"/>
+                and seller_name like #{keyword}
+            </if>
+        </where>
         <if test="orderByClause != null">
             order by ${orderByClause}
         </if>

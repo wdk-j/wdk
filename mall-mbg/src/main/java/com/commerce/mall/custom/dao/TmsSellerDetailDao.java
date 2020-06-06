@@ -24,10 +24,10 @@ public interface TmsSellerDetailDao {
     /**
      * 模糊查所有字段
      *
-     * @param example
+     * @param keyword
      * @return
      */
-    List<TmsSellerDetail> selectByExampleWithBLOBs(TmsSellerExample example);
+    List<TmsSellerDetail> selectByExampleWithBLOBs(@Param("keyword") String keyword,@Param("orderByClause")String orderByClause);
 
     /**
      * 修改商家的is_delete
