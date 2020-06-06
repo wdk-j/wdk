@@ -92,5 +92,61 @@
         UPDATE oms_order
         SET
         delete_status=1
+        WHERE
+        id=#{OrderId}
     </update>
+    <select id="getNoPayList" resultMap="com.commerce.mall.mapper.OmsOrderMapper.BaseResultMap">
+        SELECT *
+        FROM
+        oms_order
+        WHERE
+        delete_status = 0
+        and
+        status=0
+        and
+        member_id=#{userId}
+        order by
+        modify_time
+        desc
+    </select>
+    <select id="getAllList" resultMap="com.commerce.mall.mapper.OmsOrderMapper.BaseResultMap">
+        SELECT *
+        FROM
+        oms_order
+        WHERE
+        delete_status = 0
+        and
+        member_id=#{userId}
+        order by
+        modify_time
+        desc
+    </select>
+    <select id="getNoReceivedList" resultMap="com.commerce.mall.mapper.OmsOrderMapper.BaseResultMap">
+        SELECT *
+        FROM
+        oms_order
+        WHERE
+        delete_status = 0
+        and
+        status=2
+        and
+        member_id=#{userId}
+        order by
+        modify_time
+        desc
+    </select>
+    <select id="getNoEvaluateList" resultMap="com.commerce.mall.mapper.OmsOrderMapper.BaseResultMap">
+        SELECT *
+        FROM
+        oms_order
+        WHERE
+        delete_status = 0
+        and
+        status=3
+        and
+        member_id=#{userId}
+        order by
+        modify_time
+        desc
+    </select>
 </mapper>

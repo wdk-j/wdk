@@ -1,5 +1,6 @@
 package com.commerce.mall.portal.dao;
 
+import com.commerce.mall.model.OmsOrder;
 import com.commerce.mall.portal.domain.OmsOrderDetail;
 import com.commerce.mall.model.OmsOrderItem;
 import com.commerce.mall.portal.domain.OmsOrderDetail;
@@ -42,4 +43,15 @@ public interface PortalOrderDao {
      * 删除订单
      */
     void deleteOrder(Long orderId);
+
+    /**
+     * 查询订单操作
+     */
+    List<OmsOrder> getNoPayList(Long user_id);
+
+    List<OmsOrder> getAllList(Long userId);
+
+    List<OmsOrder> getNoReceivedList(Long userId);
+
+    List<OmsOrder> getNoEvaluateList(Long userId);
 }

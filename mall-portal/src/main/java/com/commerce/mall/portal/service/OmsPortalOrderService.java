@@ -1,9 +1,11 @@
 package com.commerce.mall.portal.service;
 
+import com.commerce.mall.model.OmsOrder;
 import com.commerce.mall.portal.domain.ConfirmOrderResult;
 import com.commerce.mall.portal.domain.OrderParam;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -49,4 +51,14 @@ public interface OmsPortalOrderService {
     * 删除订单
      */
     void deleteOrder(Long orderId);
+    /*
+     * 查询订单操做
+     */
+    List<OmsOrder> getNoPayList(Long userId, Integer pageSize, Integer pageNum);
+
+    List<OmsOrder> getAllList(Long userId, Integer pageSize, Integer pageNum);
+
+    List<OmsOrder> getNoReceivedList(Long userId, Integer pageSize, Integer pageNum);
+
+    List<OmsOrder> getNoEvaluateList(Long userId, Integer pageSize, Integer pageNum);
 }

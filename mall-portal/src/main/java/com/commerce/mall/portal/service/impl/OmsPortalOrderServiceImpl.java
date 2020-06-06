@@ -12,6 +12,7 @@ import com.commerce.mall.portal.dao.SmsCouponHistoryDao;
 import com.commerce.mall.portal.domain.*;
 import com.commerce.mall.portal.service.*;
 import com.commerce.mall.security.service.RedisService;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -320,6 +321,30 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
     @Override
     public void deleteOrder(Long orderId) {
         portalOrderDao.deleteOrder(orderId);
+    }
+
+    @Override
+    public List<OmsOrder> getNoPayList(Long userId, Integer pageSize, Integer pageNum) {
+        PageHelper.startPage(pageNum, pageSize);
+        return portalOrderDao.getNoPayList(userId);
+    }
+
+    @Override
+    public List<OmsOrder> getAllList(Long userId, Integer pageSize, Integer pageNum) {
+        PageHelper.startPage(pageNum, pageSize);
+        return portalOrderDao.getAllList(userId);
+    }
+
+    @Override
+    public List<OmsOrder> getNoReceivedList(Long userId, Integer pageSize, Integer pageNum) {
+        PageHelper.startPage(pageNum, pageSize);
+        return portalOrderDao.getNoReceivedList(userId);
+    }
+
+    @Override
+    public List<OmsOrder> getNoEvaluateList(Long userId, Integer pageSize, Integer pageNum) {
+        PageHelper.startPage(pageNum, pageSize);
+        return portalOrderDao.getNoEvaluateList(userId);
     }
 
     /**
