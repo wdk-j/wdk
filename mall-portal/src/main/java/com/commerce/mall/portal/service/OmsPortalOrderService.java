@@ -61,4 +61,11 @@ public interface OmsPortalOrderService {
     List<OmsOrder> getNoReceivedList(Long userId, Integer pageSize, Integer pageNum);
 
     List<OmsOrder> getNoEvaluateList(Long userId, Integer pageSize, Integer pageNum);
+
+    /*
+     * 确认收货
+     */
+    void Received(Long orderId);
+
+    void cancelOneOrder(Long orderId);
 }

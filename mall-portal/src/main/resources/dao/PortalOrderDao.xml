@@ -98,6 +98,20 @@
         WHERE
         id=#{OrderId}
     </update>
+    <update id="Received">
+        UPDATE oms_order
+        SET
+        status=3
+        WHERE
+        id=#{OrderId}
+    </update>
+    <update id="cancelOneOrder">
+        UPDATE oms_order
+        SET
+        status=4
+        WHERE
+        id=#{OrderId}
+    </update>
 
     <!--订单状态：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单
 -->

@@ -54,4 +54,8 @@ public interface PortalOrderDao {
     List<OmsOrder> getNoReceivedList(Long userId);
 
     List<OmsOrder> getNoEvaluateList(Long userId);
+
+    void Received(Long orderId);
+
+    void cancelOneOrder(Long orderId);
 }

@@ -76,8 +76,7 @@ public class OmsPortalOrderController {
     @ApiOperation("查询待收货订单")
     @RequestMapping(value = "/getNoReceivedList", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult<CommonPage<OmsOrder>> getNoReceived(Long userId,@RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
-                                                           @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
+    public CommonResult<CommonPage<OmsOrder>> getNoReceived(Long userId,@RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize, @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
         List<OmsOrder> orderList = portalOrderService.getNoReceivedList(userId,pageSize, pageNum);
         return CommonResult.success(CommonPage.restPage(orderList));
     }
@@ -96,6 +95,22 @@ public class OmsPortalOrderController {
         portalOrderService.deleteOrder(OrderId);
         return CommonResult.success(null);
     }
+    @ApiOperation("确认收货")
+    @RequestMapping(value = "/Received", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult Received(Long OrderId){
+        portalOrderService.Received(OrderId);
+        return CommonResult.success(null);
+    }
+
+    @ApiOperation("确认收货")
+    @RequestMapping(value = "/cancelOneOrder", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult cancelOneOrder(Long OrderId){
+        portalOrderService.cancelOneOrder(OrderId);
+        return CommonResult.success(null);
+    }
+
 
     @ApiOperation("取消单个超时订单")
     @RequestMapping(value = "/cancelOrder", method = RequestMethod.POST)
