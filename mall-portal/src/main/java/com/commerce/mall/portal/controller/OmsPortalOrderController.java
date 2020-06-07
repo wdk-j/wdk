@@ -103,7 +103,7 @@ public class OmsPortalOrderController {
         return CommonResult.success(null);
     }
 
-    @ApiOperation("确认收货")
+    @ApiOperation("取消订单")
     @RequestMapping(value = "/cancelOneOrder", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult cancelOneOrder(Long OrderId){
