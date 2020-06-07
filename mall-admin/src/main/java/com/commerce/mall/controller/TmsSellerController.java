@@ -70,7 +70,7 @@ public class TmsSellerController {
     @ApiOperation(value = "修改商家isDelete")
     @PostMapping("/update/isDelete")
     @ResponseBody
-    public CommonResult<Object> updateAttrIsDelete(Integer sellerId, String isDelete) {
+    public CommonResult<Object> updateAttrIsDelete(@RequestParam(required = false,defaultValue = "1") Integer sellerId, @RequestParam String isDelete) {
         int rows = tmsSellerService.updateAttrIsDelete(sellerId, isDelete);
         if (rows > 0) {
             return CommonResult.success(rows);
@@ -90,9 +90,9 @@ public class TmsSellerController {
     }
 
     @ApiOperation(value = "修改商家closed")
-    @PostMapping("/update/closed/{sellerId}")
+    @PostMapping("/update/closed")
     @ResponseBody
-    public CommonResult<Object> updateAttrClosed(@PathVariable("sellerId") Integer sellerId, @RequestParam("closed") String closed) {
+    public CommonResult<Object> updateAttrClosed(@RequestParam(required = false,defaultValue = "1") Integer sellerId, @RequestParam String closed) {
         int rows = tmsSellerService.updateAttrClosed(sellerId, closed);
         if (rows > 0) {
             return CommonResult.success(null);
