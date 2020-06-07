@@ -1444,6 +1444,76 @@ public class OmsOrderItemExample {
             addCriterion("product_attr not between", value1, value2, "productAttr");
             return (Criteria) this;
         }
+
+        public Criteria andDetailTitleIsNull() {
+            addCriterion("detail_title is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailTitleIsNotNull() {
+            addCriterion("detail_title is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailTitleEqualTo(String value) {
+            addCriterion("detail_title =", value, "detailTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailTitleNotEqualTo(String value) {
+            addCriterion("detail_title <>", value, "detailTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailTitleGreaterThan(String value) {
+            addCriterion("detail_title >", value, "detailTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailTitleGreaterThanOrEqualTo(String value) {
+            addCriterion("detail_title >=", value, "detailTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailTitleLessThan(String value) {
+            addCriterion("detail_title <", value, "detailTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailTitleLessThanOrEqualTo(String value) {
+            addCriterion("detail_title <=", value, "detailTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailTitleLike(String value) {
+            addCriterion("detail_title like", value, "detailTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailTitleNotLike(String value) {
+            addCriterion("detail_title not like", value, "detailTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailTitleIn(List<String> values) {
+            addCriterion("detail_title in", values, "detailTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailTitleNotIn(List<String> values) {
+            addCriterion("detail_title not in", values, "detailTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailTitleBetween(String value1, String value2) {
+            addCriterion("detail_title between", value1, value2, "detailTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andDetailTitleNotBetween(String value1, String value2) {
+            addCriterion("detail_title not between", value1, value2, "detailTitle");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

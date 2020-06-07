@@ -109,6 +109,9 @@ public class PmsProduct implements Serializable {
     @ApiModelProperty(value = "商品分类名称")
     private String productCategoryName;
 
+    @ApiModelProperty(value = "更新时间")
+    private Date updateTime;
+
     @ApiModelProperty(value = "商品描述")
     private String description;
 
@@ -426,6 +429,14 @@ public class PmsProduct implements Serializable {
         this.productCategoryName = productCategoryName;
     }
 
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -502,6 +513,7 @@ public class PmsProduct implements Serializable {
         sb.append(", promotionType=").append(promotionType);
         sb.append(", brandName=").append(brandName);
         sb.append(", productCategoryName=").append(productCategoryName);
+        sb.append(", updateTime=").append(updateTime);
         sb.append(", description=").append(description);
         sb.append(", detailDesc=").append(detailDesc);
         sb.append(", detailHtml=").append(detailHtml);

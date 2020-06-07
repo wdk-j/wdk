@@ -60,6 +60,8 @@ public class OmsOrderItem implements Serializable {
     @ApiModelProperty(value = "商品销售属性:[{'key':'颜色','value':'颜色'},{'key':'容量','value':'4G'}]")
     private String productAttr;
 
+    private String detailTitle;
+
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
@@ -230,6 +232,14 @@ public class OmsOrderItem implements Serializable {
         this.productAttr = productAttr;
     }
 
+    public String getDetailTitle() {
+        return detailTitle;
+    }
+
+    public void setDetailTitle(String detailTitle) {
+        this.detailTitle = detailTitle;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -257,6 +267,7 @@ public class OmsOrderItem implements Serializable {
         sb.append(", giftIntegration=").append(giftIntegration);
         sb.append(", giftGrowth=").append(giftGrowth);
         sb.append(", productAttr=").append(productAttr);
+        sb.append(", detailTitle=").append(detailTitle);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
