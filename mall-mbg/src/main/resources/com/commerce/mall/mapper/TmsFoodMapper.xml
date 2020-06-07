@@ -120,7 +120,7 @@
       #{weight,jdbcType=DOUBLE}, #{intro,jdbcType=VARCHAR}, #{packingFee,jdbcType=DOUBLE}, 
       #{sellerId,jdbcType=INTEGER}, #{isDelete,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.commerce.mall.model.TmsFood">
+  <insert id="insertSelective" keyColumn="food_id" keyProperty="foodId" parameterType="com.commerce.mall.model.TmsFood">
     <selectKey keyProperty="foodId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>

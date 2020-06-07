@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.util.Date;
 
 /**
+ * 自定义文件上传工具类，文件存放的位置为project目录
+ *
  * @author jiangyong
  * @date 2020.06.04
  */
@@ -19,61 +21,83 @@ import java.util.Date;
 public class FileUtil {
 
     /**
+     * 系统文件分隔符 File.separator
+     */
+    private static final String SEPARATOR = "/";
+
+    /**
      * 这里上传指定的文件到此module所属的project目录
      */
-    private static final String BASE_DIR = System.getProperty("user.dir") + File.separator;
+    private static final String BASE_DIR = System.getProperty("user.dir") + SEPARATOR;
 
     /**
      * 一级目录
      */
-    private static final String FIRST_DIR = "uploads";
+    private static final String FIRST_LEVEL_DIR = "uploads";
 
     /**
      * 默认二级目录
      */
-    private static final String SECOND_DIR_DEFAULT = "default";
+    private static final String SECOND_LEVEL_DIR_DEFAULT = "default";
 
-    public static String fullFilename(String originalFilename) {
-        long currentMillions = DateUtil.current(false);
-        String prefix = DateUtil.format(new Date(currentMillions), "yyyyMMddHHmmss");
-        String suffix = RandomUtil.randomNumbers(5);
-        String newFileName = prefix + "_" + suffix;
-        String extensionName = FilenameUtils.getExtension(originalFilename);
-        return newFileName + "." + extensionName;
+    /**
+     * @param file file
+     * @return relative path
+     * @throws IOException IOException
+     */
+    public static String upload(MultipartFile file) throws IOException {
+        return upload(file, SECOND_LEVEL_DIR_DEFAULT);
     }
 
     /**
+     * 按相对路径删除文件
+     * @param relativePath relative path
+     * @return status
+     */
+    public static boolean delete(String relativePath) {
+        File file = new File(BASE_DIR + relativePath);
+        return file.delete();
+    }
+
+    /**
+     * <p>
+     * 一级目录: {@code upload}
+     * 二级目录: {@code 请提供}
+     * </p><p>
+     * 命名格式 {@link com.commerce.mall.common.utils.FileUtil#fullFilename(java.lang.String)}
+     * <pre>
+     * {@code 20200603142533_84678.jpg}
+     * </pre>
+     * </p>
      *
-     * 一级目录: upload
-     * 二级目录: 请提供
-     *
-     * @param file file
-     * @param path path，不带分隔符
-     * @return 相对url
+     * @param file        file
+     * @param secondLPath second level directory
+     * @return relative path
      * @throws IOException IOException
      */
-    public static String upload(MultipartFile file, String path) throws IOException {
-//        命名格式
-//        20200603142533_84678.jpg
+    public static String upload(MultipartFile file, String secondLPath) throws IOException {
         String filename = fullFilename(file.getOriginalFilename());
         String compressedFilename = fullFilename(file.getOriginalFilename());
 
-        // 保存压缩文件的路径
-        String savePath = BASE_DIR + "upload" + File.separator + path;
+        // 保存文件的路径，后跟full filename即可
+        String savePath = BASE_DIR + FIRST_LEVEL_DIR + SEPARATOR + secondLPath + SEPARATOR;
 
-        String tempFileSavePath = savePath + File.separator + filename;
-        log.info(tempFileSavePath);
-        File tempFile = new File(tempFileSavePath);
-        if (!tempFile.getParentFile().exists()) {
-            tempFile.getParentFile().mkdirs();
+        // 文件和枷锁文件
+        String fileSavePath = savePath + filename;
+        String compressedFileSavePath = savePath + compressedFilename;
+
+        File originFile = new File(fileSavePath);
+        if (!originFile.getParentFile().exists()) {
+            originFile.getParentFile().mkdirs();
         }
-        file.transferTo(tempFile);
+        // 写入，multipartFile只能写一次，流就关闭
+        file.transferTo(originFile);
 
-        String compressedFileSavePath = savePath + File.separator + compressedFilename;
-
-        String s = zipFile(file, tempFile, compressedFileSavePath, tempFileSavePath);
-        log.info(s.replace(BASE_DIR, ""));
-        return s.replace(BASE_DIR, "");
+        // 压缩选择，返回最终的filepath
+        String relativePath = zipFile(file, originFile, compressedFileSavePath, fileSavePath);
+        relativePath = relativePath.replace(BASE_DIR, "");
+        log.info("writing a file: " + fileSavePath + " | " + "its relative path to BASE DIR: " + relativePath);
+        return relativePath;
     }
 
     /**
@@ -90,6 +114,7 @@ public class FileUtil {
 
     public static String zipFile(MultipartFile file, File tempFile, String zipFileSavePath, String tempFileSavePath) {
         try {
+            // 转KB
             long size = file.getSize() / 1024;
             // 判断文件大小对图片质量进行压缩,尺寸不变，
             // 范围0.01~1.0,值越低压缩效率越高。图片低于600K不进行压缩
@@ -116,5 +141,22 @@ public class FileUtil {
         }
         // 低于600K不进行压缩
         return tempFileSavePath;
+    }
+
+    /**
+     * 按照文件本身的扩展名，生成满足格式的新文件名
+     *
+     * @param originalFilename originalFilename
+     * @return full filename
+     */
+    public static String fullFilename(String originalFilename) {
+        // 当前毫秒数
+        long currentMillions = DateUtil.current(false);
+        // 前后缀
+        String prefix = DateUtil.format(new Date(currentMillions), "yyyyMMddHHmmss");
+        String suffix = RandomUtil.randomNumbers(5);
+        String newFileName = prefix + "_" + suffix;
+        String extensionName = FilenameUtils.getExtension(originalFilename);
+        return newFileName + "." + extensionName;
     }
 }

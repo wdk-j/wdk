@@ -4,6 +4,7 @@ import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
 import com.commerce.mall.custom.dto.TmsFoodWithPics;
 import com.commerce.mall.model.TmsFood;
 import com.commerce.mall.portal.domain.TmsFoodDetail;
+import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
@@ -37,4 +38,14 @@ public interface TmsFoodService {
      * @return list
      */
     List<TmsFoodWithMainPic> listHomeFoods(Integer sellerId);
+
+    /**
+     * 分页查首页食品
+     *
+     * @param pageNum  page number
+     * @param pageSize page size
+     * @param sellerId seller id
+     * @return page
+     */
+    PageInfo<TmsFoodWithMainPic> pagedHomeFoods(int pageNum, int pageSize, Integer sellerId);
 }

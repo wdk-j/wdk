@@ -4,6 +4,9 @@ package com.commerce.mall.service;
 import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
 import com.commerce.mall.model.TmsFood;
 import com.github.pagehelper.PageInfo;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 /**
  * pc端service基本按照table本身来的，没有app的detail环节
@@ -53,10 +56,12 @@ public interface TmsFoodService {
     /**
      * 添加食品
      *
+     *
+     * @param files images
      * @param tmsFood food
      * @return code
      */
-    int add(TmsFood tmsFood);
+    int add(MultipartFile[] files,TmsFood tmsFood);
 
     /**
      * 删除商品

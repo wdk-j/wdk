@@ -1,14 +1,11 @@
 package com.commerce.mall.config;
 
-import cn.hutool.core.io.resource.ResourceUtil;
-import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 
 /**
  * @author jiangyong
@@ -30,9 +27,9 @@ public class ImgConfig extends WebMvcConfigurerAdapter {
 //            registry.addResourceHandler("/image/**").
 //                    addResourceLocations(ResourceUtils.FILE_URL_PREFIX + ResourceUtils.getURL("classpath:")
 //                            .getPath() + "images" + File.separator + "upload" + File.separator);
-        registry.addResourceHandler("/upload/**").
-                addResourceLocations(ResourceUtils.FILE_URL_PREFIX + System.getProperty("user.dir") + File.separator
-                        + "upload" + File.separator);
+        registry.addResourceHandler("/uploads/**").
+                addResourceLocations(ResourceUtils.FILE_URL_PREFIX + System.getProperty("user.dir") + "/"
+                        + "uploads" + "/");
 
     }
 }

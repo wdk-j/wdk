@@ -1,28 +1,34 @@
 package com.commerce.mall.service.impl;
 
 import cn.hutool.core.util.StrUtil;
+import com.commerce.mall.common.utils.FileUtil;
 import com.commerce.mall.custom.dao.TmsFoodAboutDao;
 import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
+import com.commerce.mall.dao.TmsFoodPicsDao;
 import com.commerce.mall.mapper.TmsFoodMapper;
 import com.commerce.mall.model.TmsFood;
+import com.commerce.mall.model.TmsFoodPics;
 import com.commerce.mall.service.TmsFoodService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author jiangyong
  * @date 2020.06.04
  */
+@Transactional
 @Service
+@Slf4j
 public class TmsFoodServiceImpl implements TmsFoodService {
-
-    private Logger log = LoggerFactory.getLogger(TmsFoodServiceImpl.class);
 
     @Autowired
     private TmsFoodMapper tmsFoodMapper;
@@ -30,15 +36,38 @@ public class TmsFoodServiceImpl implements TmsFoodService {
     @Autowired
     private TmsFoodAboutDao tmsFoodAboutDao;
 
+    @Autowired
+    private TmsFoodPicsDao tmsFoodPicsDao;
+
     /**
      * 添加食品
      *
+     * @param files   images
      * @param tmsFood tms food
      * @return code
      */
+    @Transactional(rollbackFor = {Exception.class})
     @Override
-    public int add(TmsFood tmsFood) {
-        return tmsFoodMapper.insertSelective(tmsFood);
+    public int add(MultipartFile[] files, TmsFood tmsFood) {
+        int r = tmsFoodMapper.insertSelective(tmsFood);
+        List<TmsFoodPics> pics = new ArrayList<>();
+
+        TmsFoodPics p;
+        Integer foodId = tmsFood.getFoodId();
+        try {
+            for (MultipartFile file : files) {
+                String relativePath = null;
+                relativePath = FileUtil.upload(file, "foods");
+
+                p = new TmsFoodPics(relativePath, null, "0", foodId);
+                pics.add(p);
+            }
+        } catch (IOException e) {
+            log.info(e.getMessage());
+        }
+        pics.get(0).setIsMain("1");
+        tmsFoodPicsDao.insertSelectiveInBatch(pics);
+        return r;
     }
 
     /**
@@ -69,7 +98,7 @@ public class TmsFoodServiceImpl implements TmsFoodService {
             keyword = null;
         }
         PageHelper.startPage(pageNum, pageSize);
-        List<TmsFoodWithMainPic> foods = tmsFoodAboutDao.selectByKeyword(sellerId,keyword);
+        List<TmsFoodWithMainPic> foods = tmsFoodAboutDao.selectByKeyword(sellerId, keyword);
         return new PageInfo<>(foods);
     }
 
@@ -88,12 +117,12 @@ public class TmsFoodServiceImpl implements TmsFoodService {
      * 更新isDelete字段
      *
      * @param isDelete is delete
-     * @param foodId food id
+     * @param foodId   food id
      * @return code
      */
     @Override
     public int updateAttrIsDelete(String isDelete, Integer foodId) {
-        return tmsFoodAboutDao.updateIsDelete(isDelete,foodId);
+        return tmsFoodAboutDao.updateIsDelete(isDelete, foodId);
     }
 
     /**
@@ -103,7 +132,7 @@ public class TmsFoodServiceImpl implements TmsFoodService {
      * @return code status
      */
     @Override
-    public int update(TmsFood tmsFood){
+    public int update(TmsFood tmsFood) {
         return tmsFoodMapper.updateByPrimaryKey(tmsFood);
     }
 }

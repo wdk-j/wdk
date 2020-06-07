@@ -24,7 +24,7 @@ public class TmsFoodCommentController {
     @Autowired
     private TmsFoodCommentsService tmsFoodCommentsService;
 
-    @ApiOperation("分页-以关键词获取食物评论")
+    @ApiOperation("分页-以关键词获取某家店食物评论")
     @GetMapping("/comment/list")
     @ResponseBody
     public CommonResult<Object> pagedList(@RequestParam(required = false,defaultValue = "1")Integer sellerId,

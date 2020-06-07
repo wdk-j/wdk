@@ -30,6 +30,7 @@ secure:
       - /actuator/**
       - /sso/**
       - /home/**
+      - /food/**
 
 # 自定义redis key
 redis:

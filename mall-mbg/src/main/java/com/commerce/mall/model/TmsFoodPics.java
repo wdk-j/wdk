@@ -20,6 +20,16 @@ public class TmsFoodPics implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public TmsFoodPics() {
+    }
+
+    public TmsFoodPics(String picUrl, String picDesc, String isMain, Integer foodId) {
+        this.picUrl = picUrl;
+        this.picDesc = picDesc;
+        this.isMain = isMain;
+        this.foodId = foodId;
+    }
+
     public Integer getPicId() {
         return picId;
     }

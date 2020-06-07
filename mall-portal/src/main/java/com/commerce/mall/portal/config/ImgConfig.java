@@ -20,7 +20,7 @@ public class ImgConfig extends WebMvcConfigurerAdapter {
      * <p>
      * 这里采用第二种方式
      *
-     * @param registry
+     * @param registry registry
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -28,8 +28,8 @@ public class ImgConfig extends WebMvcConfigurerAdapter {
 //                    addResourceLocations(ResourceUtils.FILE_URL_PREFIX + ResourceUtils.getURL("classpath:")
 //                            .getPath() + "images" + File.separator + "upload" + File.separator);
         registry.addResourceHandler("/upload/**").
-                addResourceLocations(ResourceUtils.FILE_URL_PREFIX + System.getProperty("user.dir") + File.separator
-                        + "upload" + File.separator);
+                addResourceLocations(ResourceUtils.FILE_URL_PREFIX + System.getProperty("user.dir") + "/"
+                        + "upload/");
 
     }
 }

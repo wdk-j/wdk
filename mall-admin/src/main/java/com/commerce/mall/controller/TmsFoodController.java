@@ -4,6 +4,7 @@ import cn.hutool.core.collection.CollUtil;
 import com.commerce.mall.common.api.CommonResult;
 import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
 import com.commerce.mall.model.TmsFood;
+import com.commerce.mall.service.TmsFoodPicsService;
 import com.commerce.mall.service.TmsFoodService;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
@@ -13,10 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author jiangyong
@@ -30,6 +27,9 @@ public class TmsFoodController {
 
     @Autowired
     private TmsFoodService tmsFoodService;
+
+    @Autowired
+    private TmsFoodPicsService tmsFoodPicsService;
 
     @ApiOperation(value = "获取商品列表，可带关键字")
     @GetMapping("/list")
@@ -49,21 +49,12 @@ public class TmsFoodController {
     @ApiOperation(value = "添加商品")
     @PostMapping(value = "/add")
     @ResponseBody
-    public CommonResult<Object> addFood(@RequestParam(required = true) MultipartFile files[],HttpServletRequest req,
+    public CommonResult<Object> addFood(@RequestParam("files") MultipartFile[] files,
                                         TmsFood tmsFood) {
         tmsFood.setSellerId(1);
-        List<String> urls = new ArrayList<>();
-        //TODO 新增商品 图片上传
-//        for (MultipartFile file : files) {
-//            try {
-//                FileUtil.upload(file, "foods");
-//            } catch (IOException e) {
-//                return CommonResult.failed("文件上传错误");
-//            }
-//        }
-        int i = tmsFoodService.add(tmsFood);
+        int i = tmsFoodService.add(files, tmsFood);
         if (i > 0) {
-            return CommonResult.success(null);
+            return CommonResult.success(i);
         }
         return CommonResult.failed("添加失败");
     }

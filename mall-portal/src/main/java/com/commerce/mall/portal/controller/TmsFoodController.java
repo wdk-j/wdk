@@ -1,14 +1,12 @@
 package com.commerce.mall.portal.controller;
 
-import cn.hutool.core.collection.CollUtil;
 import com.commerce.mall.common.api.CommonResult;
 import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
 import com.commerce.mall.custom.dto.TmsFoodWithPics;
-import com.commerce.mall.model.TmsFoodPics;
 import com.commerce.mall.portal.domain.TmsFoodCommentDetail;
-import com.commerce.mall.portal.domain.TmsFoodDetail;
 import com.commerce.mall.portal.service.TmsFoodCommentDetailService;
 import com.commerce.mall.portal.service.TmsFoodService;
+import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -55,5 +53,16 @@ public class TmsFoodController {
         List<TmsFoodWithMainPic> homeFoodList = tmsFoodService.listHomeFoods(sellerId);
         log.info("seller id: " + sellerId + homeFoodList.toString());
         return CommonResult.success(homeFoodList);
+    }
+
+    @ApiOperation(value = "分页获取一家店的商品")
+    @GetMapping("/page")
+    @ResponseBody
+    public CommonResult<Object> pagedFoods(@RequestParam(required = false,defaultValue = "1")int pageNum) {
+        // 强制
+        int pageSize=6;
+        Integer sellerId=1;
+        PageInfo<TmsFoodWithMainPic> page = tmsFoodService.pagedHomeFoods(pageNum, pageSize, sellerId);
+        return CommonResult.success(page);
     }
 }
