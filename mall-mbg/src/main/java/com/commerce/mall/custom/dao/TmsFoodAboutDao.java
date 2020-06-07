@@ -45,4 +45,13 @@ public interface TmsFoodAboutDao {
      * @return affect
      */
     int updateIsDelete(@Param("isDelete") String isDelete, @Param("foodId") Integer foodId);
+
+    /**
+     * 批量修改isDelete字段
+     *
+     * @param isDelete is_delete
+     * @param foodIds food id
+     * @return affect
+     */
+    int updateIsDeleteInBatch(@Param("isDelete") String isDelete, @Param("foodIds") List<Integer> foodIds);
 }

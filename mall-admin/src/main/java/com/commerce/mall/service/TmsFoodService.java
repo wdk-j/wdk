@@ -6,7 +6,7 @@ import com.commerce.mall.model.TmsFood;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
+import java.util.List;
 
 /**
  * pc端service基本按照table本身来的，没有app的detail环节
@@ -44,6 +44,15 @@ public interface TmsFoodService {
      * @return code
      */
     int updateAttrIsDelete(String isDelete, Integer foodId);
+
+    /**
+     * 批量更新isDelete字段
+     *
+     * @param isDelete is delete
+     * @param foodIds   food id
+     * @return code
+     */
+    int updateAttrIsDeleteInBatch(String isDelete, List<Integer> foodIds);
 
     /**
      * 更新食品

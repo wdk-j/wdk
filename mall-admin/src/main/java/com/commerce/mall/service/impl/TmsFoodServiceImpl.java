@@ -126,6 +126,19 @@ public class TmsFoodServiceImpl implements TmsFoodService {
     }
 
     /**
+     * 批量更新isDelete字段
+     *
+     * @param isDelete is delete
+     * @param foodIds   food ids
+     * @return code
+     */
+    @Override
+    public int updateAttrIsDeleteInBatch(String isDelete, List<Integer> foodIds) {
+
+        return tmsFoodAboutDao.updateIsDeleteInBatch(isDelete, foodIds);
+    }
+
+    /**
      * 更新食品
      *
      * @param tmsFood food

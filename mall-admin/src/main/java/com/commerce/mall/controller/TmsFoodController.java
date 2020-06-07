@@ -15,6 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 /**
  * @author jiangyong
  * @date 2020.06.04
@@ -27,9 +29,6 @@ public class TmsFoodController {
 
     @Autowired
     private TmsFoodService tmsFoodService;
-
-    @Autowired
-    private TmsFoodPicsService tmsFoodPicsService;
 
     @ApiOperation(value = "获取商品列表，可带关键字")
     @GetMapping("/list")
@@ -65,9 +64,20 @@ public class TmsFoodController {
     public CommonResult<Object> updateIsDelete(@RequestParam("foodId") Integer foodId, @RequestParam("isDelete") String isDelete) {
         int i = tmsFoodService.updateAttrIsDelete(isDelete, foodId);
         if (i > 0) {
-            return CommonResult.success(null);
+            return CommonResult.success(i);
         }
         return CommonResult.failed("修改失败");
+    }
+
+    @ApiOperation(value = "批量上下架食品，更新isDelete")
+    @PostMapping("/update/isDelete/batch")
+    @ResponseBody
+    public CommonResult<Object> updateIsDeleteInBatch(@RequestParam("foodIds") List<Integer> foodIds, @RequestParam("isDelete") String isDelete) {
+        int i = tmsFoodService.updateAttrIsDeleteInBatch(isDelete, foodIds);
+        if (i == foodIds.size()) {
+            return CommonResult.success(i);
+        }
+        return CommonResult.failed("批量修改失败");
     }
 
     @ApiOperation(value = "更新商品")
@@ -78,7 +88,7 @@ public class TmsFoodController {
         tmsFood.setFoodId(foodId);
         int i = tmsFoodService.update(tmsFood);
         if (i > 0) {
-            return CommonResult.success(null);
+            return CommonResult.success(i);
         }
         return CommonResult.failed("更新失败");
     }
@@ -90,4 +100,6 @@ public class TmsFoodController {
         TmsFoodWithMainPic food = tmsFoodService.get(foodId);
         return CommonResult.success(food);
     }
+
+
 }

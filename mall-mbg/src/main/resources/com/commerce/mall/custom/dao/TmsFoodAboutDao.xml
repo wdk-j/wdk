@@ -45,7 +45,7 @@
         from tms_food
         <where>
             <if test="keyword!=null">
-            <bind name="keyword" value="'%'+keyword+'%'"/>
+                <bind name="keyword" value="'%'+keyword+'%'"/>
                 and food_name like #{keyword}
             </if>
             and seller_id=#{sellerId}
@@ -67,6 +67,14 @@
     <update id="updateIsDelete">
         update tms_food
         set is_delete=#{isDelete}
-        where food_id = #{foodId};
+        where food_id = #{foodId}
+    </update>
+    <update id="updateIsDeleteInBatch">
+        update tms_food
+        set is_delete=#{isDelete}
+        where food_id in
+        <foreach collection="foodIds" item="id" index="idx" open="(" separator="," close=")">
+            #{id}
+        </foreach>
     </update>
 </mapper>
