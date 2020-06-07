@@ -91,4 +91,12 @@
         </set>
         where seller_id = #{sellerId,jdbcType=INTEGER}
     </update>
+    <update id="updateAttrIsDeleteInBatch">
+        update tms_seller
+        set is_delete=#{isDelete}
+        where seller_id in
+        <foreach collection="sellerIds" separator="," item="id" open="(" close=")" index="idx">
+            #{id}
+        </foreach>
+    </update>
 </mapper>

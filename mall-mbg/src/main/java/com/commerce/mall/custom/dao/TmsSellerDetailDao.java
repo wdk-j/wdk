@@ -27,7 +27,7 @@ public interface TmsSellerDetailDao {
      * @param keyword
      * @return
      */
-    List<TmsSellerDetail> selectByExampleWithBLOBs(@Param("keyword") String keyword,@Param("orderByClause")String orderByClause);
+    List<TmsSellerDetail> selectByExampleWithBLOBs(@Param("keyword") String keyword, @Param("orderByClause") String orderByClause);
 
     /**
      * 修改商家的is_delete
@@ -36,8 +36,16 @@ public interface TmsSellerDetailDao {
      * @param isDelete
      * @return
      */
-
     int updateAttrIsDelete(@Param("sellerId") Integer sellerId, @Param("isDelete") String isDelete);
+
+    /**
+     * 批量修改isDelete字段
+     *
+     * @param sellerIds
+     * @param isDelete
+     * @return
+     */
+    int updateAttrIsDeleteInBatch(@Param("sellerIds") List<Integer> sellerIds, @Param("isDelete") String isDelete);
 
     /**
      * 修改商家的closed
@@ -46,6 +54,5 @@ public interface TmsSellerDetailDao {
      * @param closed
      * @return
      */
-
     int updateAttrClosed(@Param("sellerId") Integer sellerId, @Param("closed") String closed);
 }

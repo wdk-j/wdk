@@ -24,5 +24,7 @@ public interface TmsSellerService {
 
     int updateAttrIsDelete(Integer sellerId, String isDelete);
 
+    int updateAttrIsDeleteInBatch(List<Integer> sellerIds, String isDelete);
+
     int updateAttrClosed(Integer sellerId, String closed);
 }

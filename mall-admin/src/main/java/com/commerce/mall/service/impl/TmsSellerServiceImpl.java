@@ -113,6 +113,11 @@ public class TmsSellerServiceImpl implements TmsSellerService {
         return tmsSellerDetailDao.updateAttrIsDelete(sellerId, isDelete);
     }
 
+    @Override
+    public int updateAttrIsDeleteInBatch(List<Integer> sellerIds, String isDelete) {
+        return tmsSellerDetailDao.updateAttrIsDeleteInBatch(sellerIds, isDelete);
+    }
+
     /**
      * 更改商家closed
      *
