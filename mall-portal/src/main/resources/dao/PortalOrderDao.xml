@@ -141,7 +141,7 @@
     <select id="getAllList" resultMap="orderDetailMap">
         SELECT
         o.create_time ,
-        o.id oid,
+        o.id,
         o.`status`,
         ooi.product_pic ot_product_pic,
         ooi.detail_title ot_detail_title,
