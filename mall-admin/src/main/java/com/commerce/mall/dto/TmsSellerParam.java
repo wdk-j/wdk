@@ -28,6 +28,9 @@ public class TmsSellerParam {
     @ApiModelProperty(value = "卖家Logo")
     private String logoUrl;
 
+    @ApiModelProperty(value = "卖家地址id")
+    private Long addrId;
+
     @ApiModelProperty(value = "卖家详细地址")
     private String detailAddress;
 

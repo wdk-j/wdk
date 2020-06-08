@@ -90,8 +90,8 @@ public class TmsSellerServiceImpl implements TmsSellerService {
 
         String address = tmsSellerParam.getDetailAddress();
         UmsMemberReceiveAddress receiveAddress = new UmsMemberReceiveAddress();
-        Long addrId = tmsSellerMapper.selectByPrimaryKey(tmsSellerParam.getSellerId()).getAddrId();
-        receiveAddress.setId(addrId);
+
+        receiveAddress.setId(tmsSellerParam.getAddrId());
         receiveAddress.setDetailAddress(address);
 
         umsMemberReceiveAddressMapper.updateByPrimaryKey(receiveAddress);
