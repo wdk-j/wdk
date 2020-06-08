@@ -3,6 +3,7 @@ package com.commerce.mall.controller;
 import com.commerce.mall.common.api.CommonResult;
 import com.commerce.mall.custom.dto.TmsSellerDetail;
 import com.commerce.mall.model.TmsSeller;
+import com.commerce.mall.service.TmsSellerService;
 import com.commerce.mall.service.impl.TmsSellerServiceImpl;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
@@ -23,7 +24,7 @@ public class TmsSellerController {
     private static final Logger LOGGER = LoggerFactory.getLogger(TmsSellerController.class);
 
     @Autowired
-    private TmsSellerServiceImpl tmsSellerService;
+    private TmsSellerService tmsSellerService;
 
     @ApiOperation(value = "根据商家id查询商家信息")
     @GetMapping("/{sellerId}")

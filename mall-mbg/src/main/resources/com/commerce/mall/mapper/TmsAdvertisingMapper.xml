@@ -5,6 +5,7 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="ad_desc" jdbcType="VARCHAR" property="adDesc" />
     <result column="pic_url" jdbcType="VARCHAR" property="picUrl" />
+    <result column="is_delete" jdbcType="VARCHAR" property="isDelete" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, ad_desc, pic_url
+    id, ad_desc, pic_url, is_delete
   </sql>
   <select id="selectByExample" parameterType="com.commerce.mall.model.TmsAdvertisingExample" resultMap="BaseResultMap">
     select
@@ -101,8 +102,10 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into tms_advertising (ad_desc, pic_url)
-    values (#{adDesc,jdbcType=VARCHAR}, #{picUrl,jdbcType=VARCHAR})
+    insert into tms_advertising (ad_desc, pic_url, is_delete
+      )
+    values (#{adDesc,jdbcType=VARCHAR}, #{picUrl,jdbcType=VARCHAR}, #{isDelete,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.commerce.mall.model.TmsAdvertising">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -116,6 +119,9 @@
       <if test="picUrl != null">
         pic_url,
       </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="adDesc != null">
@@ -123,6 +129,9 @@
       </if>
       <if test="picUrl != null">
         #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -144,6 +153,9 @@
       <if test="record.picUrl != null">
         pic_url = #{record.picUrl,jdbcType=VARCHAR},
       </if>
+      <if test="record.isDelete != null">
+        is_delete = #{record.isDelete,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -153,10 +165,24 @@
     update tms_advertising
     set id = #{record.id,jdbcType=INTEGER},
       ad_desc = #{record.adDesc,jdbcType=VARCHAR},
-      pic_url = #{record.picUrl,jdbcType=VARCHAR}
+      pic_url = #{record.picUrl,jdbcType=VARCHAR},
+      is_delete = #{record.isDelete,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateIsDelete">
+    update tms_advertising
+    set is_delete=#{isDelete}
+    where id = #{id}
+  </update>
+  <update id="updateIsDeleteInBatch">
+    update tms_advertising
+    set is_delete=#{isDelete}
+    where id in
+    <foreach collection="ids" item="id" index="idx" open="(" separator="," close=")">
+      #{id}
+    </foreach>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.commerce.mall.model.TmsAdvertising">
     update tms_advertising
@@ -167,13 +193,17 @@
       <if test="picUrl != null">
         pic_url = #{picUrl,jdbcType=VARCHAR},
       </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.commerce.mall.model.TmsAdvertising">
     update tms_advertising
     set ad_desc = #{adDesc,jdbcType=VARCHAR},
-      pic_url = #{picUrl,jdbcType=VARCHAR}
+      pic_url = #{picUrl,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

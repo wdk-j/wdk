@@ -12,6 +12,9 @@ public class TmsAdvertising implements Serializable {
     @ApiModelProperty(value = "图片url")
     private String picUrl;
 
+    @ApiModelProperty(value = "是否删除，1为删除")
+    private String isDelete;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -38,6 +41,14 @@ public class TmsAdvertising implements Serializable {
         this.picUrl = picUrl;
     }
 
+    public String getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(String isDelete) {
+        this.isDelete = isDelete;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -47,6 +58,7 @@ public class TmsAdvertising implements Serializable {
         sb.append(", id=").append(id);
         sb.append(", adDesc=").append(adDesc);
         sb.append(", picUrl=").append(picUrl);
+        sb.append(", isDelete=").append(isDelete);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
