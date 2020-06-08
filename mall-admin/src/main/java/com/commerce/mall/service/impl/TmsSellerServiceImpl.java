@@ -66,6 +66,9 @@ public class TmsSellerServiceImpl implements TmsSellerService {
         // bean转接
         BeanUtils.copyProperties(tmsSellerParam,tmsSeller);
         String address = tmsSellerParam.getDetailAddress();
+        if (address == null) {
+            address = "未填写";
+        }
         UmsMemberReceiveAddress receiveAddress = new UmsMemberReceiveAddress();
         receiveAddress.setDetailAddress(address);
         // 插入地址
@@ -89,6 +92,9 @@ public class TmsSellerServiceImpl implements TmsSellerService {
         BeanUtils.copyProperties(tmsSellerParam,tmsSeller);
 
         String address = tmsSellerParam.getDetailAddress();
+        if (address == null) {
+            address = "未填写";
+        }
         UmsMemberReceiveAddress receiveAddress = new UmsMemberReceiveAddress();
 
         receiveAddress.setId(tmsSellerParam.getAddrId());
