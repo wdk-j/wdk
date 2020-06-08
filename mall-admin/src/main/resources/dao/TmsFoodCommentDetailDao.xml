@@ -23,8 +23,10 @@
     </update>
     <select id="selectCommentsDetailed" resultMap="BaseResultMap">
         select
-        <include refid="Base_Column_List"/>, m.nickname
-        from tms_food_comments f left join ums_member m on f.user_id=m.id
+        <include refid="Base_Column_List"/>,f.seller_id m.nickname
+        from tms_food_comments fc
+        left join tms_food f on fc.food_id=f.food_id
+        left join ums_member m on fc.user_id=m.id
         <where>
             <if test="keyword!=null">
                 <bind name="keyword" value="'%'+keyword+'%'"/>

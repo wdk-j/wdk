@@ -165,6 +165,76 @@ public class TmsFoodCommentsExample {
             return (Criteria) this;
         }
 
+        public Criteria andNiceIsNull() {
+            addCriterion("nice is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNiceIsNotNull() {
+            addCriterion("nice is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNiceEqualTo(String value) {
+            addCriterion("nice =", value, "nice");
+            return (Criteria) this;
+        }
+
+        public Criteria andNiceNotEqualTo(String value) {
+            addCriterion("nice <>", value, "nice");
+            return (Criteria) this;
+        }
+
+        public Criteria andNiceGreaterThan(String value) {
+            addCriterion("nice >", value, "nice");
+            return (Criteria) this;
+        }
+
+        public Criteria andNiceGreaterThanOrEqualTo(String value) {
+            addCriterion("nice >=", value, "nice");
+            return (Criteria) this;
+        }
+
+        public Criteria andNiceLessThan(String value) {
+            addCriterion("nice <", value, "nice");
+            return (Criteria) this;
+        }
+
+        public Criteria andNiceLessThanOrEqualTo(String value) {
+            addCriterion("nice <=", value, "nice");
+            return (Criteria) this;
+        }
+
+        public Criteria andNiceLike(String value) {
+            addCriterion("nice like", value, "nice");
+            return (Criteria) this;
+        }
+
+        public Criteria andNiceNotLike(String value) {
+            addCriterion("nice not like", value, "nice");
+            return (Criteria) this;
+        }
+
+        public Criteria andNiceIn(List<String> values) {
+            addCriterion("nice in", values, "nice");
+            return (Criteria) this;
+        }
+
+        public Criteria andNiceNotIn(List<String> values) {
+            addCriterion("nice not in", values, "nice");
+            return (Criteria) this;
+        }
+
+        public Criteria andNiceBetween(String value1, String value2) {
+            addCriterion("nice between", value1, value2, "nice");
+            return (Criteria) this;
+        }
+
+        public Criteria andNiceNotBetween(String value1, String value2) {
+            addCriterion("nice not between", value1, value2, "nice");
+            return (Criteria) this;
+        }
+
         public Criteria andPostTimeIsNull() {
             addCriterion("post_time is null");
             return (Criteria) this;

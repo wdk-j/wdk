@@ -7,10 +7,16 @@ import java.util.Date;
 public class TmsFoodComments implements Serializable {
     private Integer commId;
 
+    @ApiModelProperty(value = "是否好评，1为好评")
+    private String nice;
+
+    @ApiModelProperty(value = "评论时间")
     private Date postTime;
 
+    @ApiModelProperty(value = "评论人ID")
     private Integer userId;
 
+    @ApiModelProperty(value = "食物ID")
     private Integer foodId;
 
     @ApiModelProperty(value = "答复")
@@ -27,6 +33,14 @@ public class TmsFoodComments implements Serializable {
 
     public void setCommId(Integer commId) {
         this.commId = commId;
+    }
+
+    public String getNice() {
+        return nice;
+    }
+
+    public void setNice(String nice) {
+        this.nice = nice;
     }
 
     public Date getPostTime() {
@@ -76,6 +90,7 @@ public class TmsFoodComments implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", commId=").append(commId);
+        sb.append(", nice=").append(nice);
         sb.append(", postTime=").append(postTime);
         sb.append(", userId=").append(userId);
         sb.append(", foodId=").append(foodId);

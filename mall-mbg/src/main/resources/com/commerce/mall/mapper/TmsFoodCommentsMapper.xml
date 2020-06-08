@@ -3,6 +3,7 @@
 <mapper namespace="com.commerce.mall.mapper.TmsFoodCommentsMapper">
   <resultMap id="BaseResultMap" type="com.commerce.mall.model.TmsFoodComments">
     <id column="comm_id" jdbcType="INTEGER" property="commId" />
+    <result column="nice" jdbcType="VARCHAR" property="nice" />
     <result column="post_time" jdbcType="TIMESTAMP" property="postTime" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="food_id" jdbcType="INTEGER" property="foodId" />
@@ -70,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    comm_id, post_time, user_id, food_id, reply
+    comm_id, nice, post_time, user_id, food_id, reply
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -127,10 +128,12 @@
     <selectKey keyProperty="commId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into tms_food_comments (post_time, user_id, food_id, 
-      reply, content)
-    values (#{postTime,jdbcType=TIMESTAMP}, #{userId,jdbcType=INTEGER}, #{foodId,jdbcType=INTEGER}, 
-      #{reply,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR})
+    insert into tms_food_comments (nice, post_time, user_id, 
+      food_id, reply, content
+      )
+    values (#{nice,jdbcType=VARCHAR}, #{postTime,jdbcType=TIMESTAMP}, #{userId,jdbcType=INTEGER}, 
+      #{foodId,jdbcType=INTEGER}, #{reply,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.commerce.mall.model.TmsFoodComments">
     <selectKey keyProperty="commId" order="AFTER" resultType="java.lang.Integer">
@@ -138,6 +141,9 @@
     </selectKey>
     insert into tms_food_comments
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="nice != null">
+        nice,
+      </if>
       <if test="postTime != null">
         post_time,
       </if>
@@ -155,6 +161,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="nice != null">
+        #{nice,jdbcType=VARCHAR},
+      </if>
       <if test="postTime != null">
         #{postTime,jdbcType=TIMESTAMP},
       </if>
@@ -184,6 +193,9 @@
       <if test="record.commId != null">
         comm_id = #{record.commId,jdbcType=INTEGER},
       </if>
+      <if test="record.nice != null">
+        nice = #{record.nice,jdbcType=VARCHAR},
+      </if>
       <if test="record.postTime != null">
         post_time = #{record.postTime,jdbcType=TIMESTAMP},
       </if>
@@ -207,6 +219,7 @@
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update tms_food_comments
     set comm_id = #{record.commId,jdbcType=INTEGER},
+      nice = #{record.nice,jdbcType=VARCHAR},
       post_time = #{record.postTime,jdbcType=TIMESTAMP},
       user_id = #{record.userId,jdbcType=INTEGER},
       food_id = #{record.foodId,jdbcType=INTEGER},
@@ -219,6 +232,7 @@
   <update id="updateByExample" parameterType="map">
     update tms_food_comments
     set comm_id = #{record.commId,jdbcType=INTEGER},
+      nice = #{record.nice,jdbcType=VARCHAR},
       post_time = #{record.postTime,jdbcType=TIMESTAMP},
       user_id = #{record.userId,jdbcType=INTEGER},
       food_id = #{record.foodId,jdbcType=INTEGER},
@@ -230,6 +244,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.commerce.mall.model.TmsFoodComments">
     update tms_food_comments
     <set>
+      <if test="nice != null">
+        nice = #{nice,jdbcType=VARCHAR},
+      </if>
       <if test="postTime != null">
         post_time = #{postTime,jdbcType=TIMESTAMP},
       </if>
@@ -250,7 +267,8 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.commerce.mall.model.TmsFoodComments">
     update tms_food_comments
-    set post_time = #{postTime,jdbcType=TIMESTAMP},
+    set nice = #{nice,jdbcType=VARCHAR},
+      post_time = #{postTime,jdbcType=TIMESTAMP},
       user_id = #{userId,jdbcType=INTEGER},
       food_id = #{foodId,jdbcType=INTEGER},
       reply = #{reply,jdbcType=VARCHAR},
@@ -259,7 +277,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.commerce.mall.model.TmsFoodComments">
     update tms_food_comments
-    set post_time = #{postTime,jdbcType=TIMESTAMP},
+    set nice = #{nice,jdbcType=VARCHAR},
+      post_time = #{postTime,jdbcType=TIMESTAMP},
       user_id = #{userId,jdbcType=INTEGER},
       food_id = #{foodId,jdbcType=INTEGER},
       reply = #{reply,jdbcType=VARCHAR}
