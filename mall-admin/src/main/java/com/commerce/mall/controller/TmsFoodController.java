@@ -5,6 +5,7 @@ import com.commerce.mall.common.api.CommonResult;
 import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
 import com.commerce.mall.custom.dto.TmsFoodWithPics;
 import com.commerce.mall.model.TmsFood;
+import com.commerce.mall.model.TmsFoodPics;
 import com.commerce.mall.service.TmsFoodService;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
@@ -48,8 +49,8 @@ public class TmsFoodController {
     @ApiOperation(value = "添加商品")
     @PostMapping(value = "/add")
     @ResponseBody
-    public CommonResult<Object> addFood(@RequestParam("pics") List<String> pics,
-                                        TmsFood tmsFood) {
+    public CommonResult<Object> addFood(@RequestBody List<TmsFoodPics> pics,
+                                        @RequestBody TmsFood tmsFood) {
         tmsFood.setSellerId(1);
         int i = tmsFoodService.add(pics, tmsFood);
         if (i > 0) {

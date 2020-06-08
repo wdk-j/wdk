@@ -4,6 +4,7 @@ package com.commerce.mall.service;
 import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
 import com.commerce.mall.custom.dto.TmsFoodWithPics;
 import com.commerce.mall.model.TmsFood;
+import com.commerce.mall.model.TmsFoodPics;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;
@@ -66,11 +67,11 @@ public interface TmsFoodService {
      * 添加食品
      *
      *
-     * @param urls images
+     * @param pics images
      * @param tmsFood food
      * @return code
      */
-    int add(List<String> urls,TmsFood tmsFood);
+    int add(List<TmsFoodPics> pics, TmsFood tmsFood);
 
     /**
      * 删除商品

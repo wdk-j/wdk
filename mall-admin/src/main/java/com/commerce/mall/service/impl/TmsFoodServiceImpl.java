@@ -19,7 +19,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,23 +46,19 @@ public class TmsFoodServiceImpl implements TmsFoodService {
     /**
      * 添加食品
      *
-     * @param urls   pics
+     * @param pics   pics
      * @param tmsFood tms food
      * @return code
      */
     @Transactional(rollbackFor = {Exception.class})
     @Override
-    public int add(List<String> urls, TmsFood tmsFood) {
+    public int add(List<TmsFoodPics> pics, TmsFood tmsFood) {
         int r = tmsFoodMapper.insertSelective(tmsFood);
         Integer foodId = tmsFood.getFoodId();
-
-        List<TmsFoodPics> pics = new ArrayList<>();
-        TmsFoodPics p;
-        for (String url : urls) {
-            p = new TmsFoodPics(url, null, "0", foodId);
-            pics.add(p);
-        }
         pics.get(0).setIsMain("1");
+        pics.forEach(pic->{
+            pic.setFoodId(foodId);
+        });
         tmsFoodPicsDao.insertSelectiveInBatch(pics);
         return r;
     }
@@ -164,6 +159,9 @@ public class TmsFoodServiceImpl implements TmsFoodService {
                 }
                 pic.setFoodId(tmsFoodWithPics.getFoodId());
                 tmsFoodPicsMapper.insertSelective(pic);
+            }
+            else if (StrUtil.isEmpty(pic.getPicUrl())) {
+                tmsFoodPicsMapper.deleteByPrimaryKey(pic.getPicId());
             }
         }
         return tmsFoodMapper.updateByPrimaryKey(tmsFood);
