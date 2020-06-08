@@ -1,0 +1,105 @@
+package com.commerce.mall.service.impl;
+
+import cn.hutool.core.util.StrUtil;
+import com.commerce.mall.mapper.TmsAdvertisingMapper;
+import com.commerce.mall.model.TmsAdvertising;
+import com.commerce.mall.model.TmsAdvertisingExample;
+import com.commerce.mall.service.TmsAdvertisingService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+
+public class TmsAdvertisingServiceImpl implements TmsAdvertisingService {
+
+    private Logger log = LoggerFactory.getLogger(TmsAdvertisingServiceImpl.class);
+
+    @Autowired
+    TmsAdvertisingMapper tmsAdvertisingMapper;
+
+    /**
+     * 添加广告
+     * @param tmsAdvertising
+     * @return
+     */
+    @Override
+    public int add(TmsAdvertising tmsAdvertising) {
+        tmsAdvertising.setIsDelete("0");
+        return tmsAdvertisingMapper.insertSelective(tmsAdvertising);
+    }
+
+    /**
+     * 修改广告
+     * @param tmsAdvertising
+     * @return
+     */
+    @Override
+    public int update(TmsAdvertising tmsAdvertising) {
+        TmsAdvertisingExample tmsAdvertisingExample = new TmsAdvertisingExample();
+        tmsAdvertisingExample.createCriteria().andIdEqualTo(tmsAdvertising.getId());
+        return tmsAdvertisingMapper.updateByExampleSelective(tmsAdvertising , tmsAdvertisingExample);
+    }
+
+    /**
+     * 删除广告
+     * @param id
+     * @return
+     */
+    @Override
+    public int delete(Integer id) {
+        return tmsAdvertisingMapper.deleteByPrimaryKey(id);
+    }
+
+    /**
+     * 根据id获取广告信息
+     * @param id
+     * @return
+     */
+    @Override
+    public TmsAdvertising get(Integer id) {
+        return tmsAdvertisingMapper.selectByPrimaryKey(id);
+    }
+
+    /**
+     * ，上下架广告，更新isDelete
+     * @param isDelete
+     * @param id
+     * @return
+     */
+    @Override
+    public int updateAdIsDelete(String isDelete, Integer id) {
+        return tmsAdvertisingMapper.updateIsDelete(isDelete , id);
+    }
+
+    /**
+     * 批量上下架，更新isDelete
+     * @param isDelete
+     * @param ids
+     * @return
+     */
+    @Override
+    public int updateAdIsDeleteInBatch(String isDelete, List<Integer> ids) {
+        return tmsAdvertisingMapper.updateIsDeleteInBatch(isDelete , ids);
+    }
+
+    /**
+     * 分页显示广告列表
+     * @param pageNum
+     * @param pageSize
+     * @param keyWord
+     * @return
+     */
+    @Override
+    public PageInfo<TmsAdvertising> listAdvertising(int pageNum, int pageSize, String keyWord) {
+        if (StrUtil.isEmpty(keyWord)) {
+            keyWord = null;
+        }
+        String orderByClause = "id asc";
+        PageHelper.startPage(pageNum, pageSize);
+        List<TmsAdvertising> advertising = tmsAdvertisingMapper.selectByExample(new TmsAdvertisingExample());
+        return new PageInfo<>(advertising);
+    }
+}

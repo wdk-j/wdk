@@ -20,6 +20,10 @@ public interface TmsAdvertisingMapper {
 
     TmsAdvertising selectByPrimaryKey(Integer id);
 
+    int updateIsDelete(@Param("isDelete") String isDelete, @Param("id") Integer id);
+
+    int updateIsDeleteInBatch(@Param("isDelete") String isDelete, @Param("ids") List<Integer> ids);
+
     int updateByExampleSelective(@Param("record") TmsAdvertising record, @Param("example") TmsAdvertisingExample example);
 
     int updateByExample(@Param("record") TmsAdvertising record, @Param("example") TmsAdvertisingExample example);
