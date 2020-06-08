@@ -1,6 +1,7 @@
 package com.commerce.mall.service.impl;
 
 import cn.hutool.core.util.StrUtil;
+import com.commerce.mall.custom.dao.TmsAdvertisingAboutDao;
 import com.commerce.mall.mapper.TmsAdvertisingMapper;
 import com.commerce.mall.model.TmsAdvertising;
 import com.commerce.mall.model.TmsAdvertisingExample;
@@ -10,15 +11,20 @@ import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TmsAdvertisingServiceImpl implements TmsAdvertisingService {
 
     private Logger log = LoggerFactory.getLogger(TmsAdvertisingServiceImpl.class);
 
     @Autowired
     private TmsAdvertisingMapper tmsAdvertisingMapper;
+
+    @Autowired
+    private TmsAdvertisingAboutDao tmsAdvertisingAboutDao;
 
     /**
      * 添加广告
@@ -76,7 +82,7 @@ public class TmsAdvertisingServiceImpl implements TmsAdvertisingService {
      */
     @Override
     public int updateAdIsDelete(String isDelete, Integer id) {
-        return tmsAdvertisingMapper.updateIsDelete(isDelete, id);
+        return tmsAdvertisingAboutDao.updateIsDelete(isDelete, id);
     }
 
     /**
@@ -88,7 +94,7 @@ public class TmsAdvertisingServiceImpl implements TmsAdvertisingService {
      */
     @Override
     public int updateAdIsDeleteInBatch(String isDelete, List<Integer> ids) {
-        return tmsAdvertisingMapper.updateIsDeleteInBatch(isDelete, ids);
+        return tmsAdvertisingAboutDao.updateIsDeleteInBatch(isDelete, ids);
     }
 
     /**

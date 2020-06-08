@@ -2,8 +2,10 @@ package com.commerce.mall.service;
 
 import com.commerce.mall.model.TmsAdvertising;
 import com.github.pagehelper.PageInfo;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 
 public interface TmsAdvertisingService {
 

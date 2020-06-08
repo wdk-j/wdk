@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,9 +27,9 @@ public class FileOperationController {
 
     @ApiOperation("单文件上传")
     @PostMapping("/single")
-    public CommonResult<Object> singleFileUpload(MultipartFile file) {
+    public CommonResult<Object> singleFileUpload(MultipartFile file,@RequestParam("dir") String directory) {
         try {
-            String url = FileUtil.upload(file, "test");
+            String url = FileUtil.upload(file, directory);
             return CommonResult.success(url);
         } catch (IOException e) {
             e.printStackTrace();
@@ -38,11 +39,12 @@ public class FileOperationController {
 
     @ApiOperation("多文件上传")
     @PostMapping("/multi")
-    public CommonResult<Object> multiFileUpload(MultipartFile[] files) {
+    @Deprecated
+    public CommonResult<Object> multiFileUpload(MultipartFile[] files,String directory) {
         List<String> urls = new ArrayList<>();
         try {
             for (MultipartFile file : files) {
-                String url = FileUtil.upload(file, "test");
+                String url = FileUtil.upload(file, directory);
                 urls.add(url);
             }
             return CommonResult.success(urls);
