@@ -21,7 +21,7 @@ import java.util.*;
  * @date 2020.06.04
  */
 @Controller
-@Api(tags = {"TmsFoodController"},description = "外卖的食品管理")
+@Api(tags = {"TmsFoodController"}, description = "外卖的食品管理")
 @RequestMapping("/food")
 @Slf4j
 public class TmsFoodController {
@@ -32,36 +32,42 @@ public class TmsFoodController {
     @Autowired
     private TmsFoodService tmsFoodService;
 
-    @ApiOperation(value = "获取一个商品的详情和它的所有评论")
+    @ApiOperation(value = "获取一个商品的详情")
     @GetMapping("/{foodId}")
     @ResponseBody
-    public CommonResult<Object> foodDetails(@PathVariable("foodId")Integer foodId) {
+    public CommonResult<Object> foodDetails(@PathVariable("foodId") Integer foodId) {
         TmsFoodWithPics food = tmsFoodService.getFoodDetail(foodId);
-        List<TmsFoodCommentDetail> comments = tmsFoodCommentDetailService.listFoodCommentsInDetail(foodId);
-        Map<String, Object> map = new HashMap<>(2);
-        map.put("food", food);
-        map.put("comments", comments);
-        return CommonResult.success(map);
+        return CommonResult.success(food);
     }
 
     @ApiOperation(value = "获取一家店的所有商品", notes = "what is notes?")
     @GetMapping("/list")
     @ResponseBody
-    public CommonResult<Object> getFoodsList(@RequestParam(required = false,defaultValue = "1")Integer sellerId) {
+    public CommonResult<Object> getFoodsList(@RequestParam(required = false, defaultValue = "1") Integer sellerId) {
         // 强制
-        sellerId=1;
+        sellerId = 1;
         List<TmsFoodWithMainPic> homeFoodList = tmsFoodService.listHomeFoods(sellerId);
         log.info("seller id: " + sellerId + homeFoodList.toString());
         return CommonResult.success(homeFoodList);
     }
 
+    @ApiOperation("分页获取评论")
+    @GetMapping("/comment/page")
+    @ResponseBody
+    public CommonResult<Object> pagedComments(@RequestParam(required = false, defaultValue = "1") int pageNum,
+                                              @RequestParam Integer foodId) {
+        int pageSize = 6;
+        PageInfo<TmsFoodCommentDetail> list = tmsFoodCommentDetailService.pagedFoodCommentsInDetail(pageNum, pageSize, foodId);
+        return CommonResult.success(list);
+    }
+
     @ApiOperation(value = "分页获取一家店的商品")
     @GetMapping("/page")
     @ResponseBody
-    public CommonResult<Object> pagedFoods(@RequestParam(required = false,defaultValue = "1")int pageNum) {
+    public CommonResult<Object> pagedFoods(@RequestParam(required = false, defaultValue = "1") int pageNum) {
         // 强制
-        int pageSize=6;
-        Integer sellerId=1;
+        int pageSize = 6;
+        Integer sellerId = 1;
         PageInfo<TmsFoodWithMainPic> page = tmsFoodService.pagedHomeFoods(pageNum, pageSize, sellerId);
         return CommonResult.success(page);
     }

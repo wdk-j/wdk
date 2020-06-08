@@ -62,8 +62,8 @@ public class TmsSellerController {
     @ResponseBody
     public CommonResult<Object> pagedList(@RequestParam(required = false, defaultValue = "1") int pageNum,
                                           @RequestParam(required = false, defaultValue = "5") int pageSize,
-                                          @RequestParam(required = false) String keyWord) {
-        PageInfo<TmsSellerDetail> tmsSellerPageInfo = tmsSellerService.pagedList(pageNum, pageSize, keyWord);
+                                          @RequestParam(required = false) String keyword) {
+        PageInfo<TmsSellerDetail> tmsSellerPageInfo = tmsSellerService.pagedList(pageNum, pageSize, keyword);
         return CommonResult.success(tmsSellerPageInfo);
     }
 
