@@ -4,6 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import com.commerce.mall.common.utils.FileUtil;
 import com.commerce.mall.custom.dao.TmsFoodAboutDao;
 import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
+import com.commerce.mall.custom.dto.TmsFoodWithPics;
 import com.commerce.mall.dao.TmsFoodPicsDao;
 import com.commerce.mall.mapper.TmsFoodMapper;
 import com.commerce.mall.model.TmsFood;
@@ -15,7 +16,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -42,28 +42,21 @@ public class TmsFoodServiceImpl implements TmsFoodService {
     /**
      * 添加食品
      *
-     * @param files   images
+     * @param urls   pics
      * @param tmsFood tms food
      * @return code
      */
     @Transactional(rollbackFor = {Exception.class})
     @Override
-    public int add(MultipartFile[] files, TmsFood tmsFood) {
+    public int add(List<String> urls, TmsFood tmsFood) {
         int r = tmsFoodMapper.insertSelective(tmsFood);
-        List<TmsFoodPics> pics = new ArrayList<>();
-
-        TmsFoodPics p;
         Integer foodId = tmsFood.getFoodId();
-        try {
-            for (MultipartFile file : files) {
-                String relativePath = null;
-                relativePath = FileUtil.upload(file, "foods");
 
-                p = new TmsFoodPics(relativePath, null, "0", foodId);
-                pics.add(p);
-            }
-        } catch (IOException e) {
-            log.info(e.getMessage());
+        List<TmsFoodPics> pics = new ArrayList<>();
+        TmsFoodPics p;
+        for (String url : urls) {
+            p = new TmsFoodPics(url, null, "0", foodId);
+            pics.add(p);
         }
         pics.get(0).setIsMain("1");
         tmsFoodPicsDao.insertSelectiveInBatch(pics);
@@ -109,8 +102,8 @@ public class TmsFoodServiceImpl implements TmsFoodService {
      * @return food
      */
     @Override
-    public TmsFoodWithMainPic get(Integer foodId) {
-        return tmsFoodAboutDao.selectByPrimaryKey(foodId);
+    public TmsFoodWithPics get(Integer foodId) {
+        return tmsFoodAboutDao.selectFoodWithPicsByPrimaryKey(foodId);
     }
 
     /**

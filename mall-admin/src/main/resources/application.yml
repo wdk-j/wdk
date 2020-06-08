@@ -37,6 +37,7 @@ secure:
       - /**/*.css
       - /**/*.png
       - /**/*.jpg
+      - /**/*/jpeg
       - /**/*.ico
       - /webjars/springfox-swagger-ui/**
       - /actuator/**

@@ -1,5 +1,6 @@
 package com.commerce.mall.portal.service.impl;
 
+import com.commerce.mall.custom.dao.TmsFoodCommentAboutDao;
 import com.commerce.mall.portal.dao.TmsFoodCommentDetailDao;
 import com.commerce.mall.portal.domain.TmsFoodCommentDetail;
 import com.commerce.mall.portal.service.TmsFoodCommentDetailService;
@@ -10,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -24,6 +26,9 @@ public class TmsFoodCommentDetailServiceImpl implements TmsFoodCommentDetailServ
     @Autowired
     private TmsFoodCommentDetailDao tmsFoodCommentDetailDao;
 
+    @Autowired
+    private TmsFoodCommentAboutDao tmsFoodCommentAboutDao;
+
 
     /**
      * 获取某食品的所有评论，评论时间降序
@@ -33,7 +38,11 @@ public class TmsFoodCommentDetailServiceImpl implements TmsFoodCommentDetailServ
      */
     @Override
     public List<TmsFoodCommentDetail> listFoodCommentsInDetail(Integer foodId) {
-        return tmsFoodCommentDetailDao.selectCommentsDetailed(foodId);
+        List<TmsFoodCommentDetail> foodCommentDetails = tmsFoodCommentDetailDao.selectCommentsDetailed(foodId);
+        foodCommentDetails.forEach(fc -> {
+            fc.setPositiveRate(calculatePositiveRate(fc.getFoodId()));
+        });
+        return foodCommentDetails;
     }
 
     /**
@@ -48,6 +57,18 @@ public class TmsFoodCommentDetailServiceImpl implements TmsFoodCommentDetailServ
     @Override
     public PageInfo<TmsFoodCommentDetail> pagedFoodCommentsInDetail(int pageNum, int pageSize, Integer foodId) {
         PageHelper.startPage(pageNum, pageSize);
-        return new PageInfo<>(tmsFoodCommentDetailDao.selectCommentsDetailed(foodId));
+        List<TmsFoodCommentDetail> foodCommentDetails = tmsFoodCommentDetailDao.selectCommentsDetailed(foodId);
+        foodCommentDetails.forEach(fc -> {
+            fc.setPositiveRate(calculatePositiveRate(fc.getFoodId()));
+        });
+        return new PageInfo<>(foodCommentDetails);
+    }
+
+    private Double calculatePositiveRate(Integer foodId) {
+        int positive = tmsFoodCommentAboutDao.countNiceEqualTo("1", foodId);
+        int navigate = tmsFoodCommentAboutDao.countNiceEqualTo("0", foodId);
+        DecimalFormat df = new DecimalFormat("#.00");
+        String format = df.format(positive * 100 / (positive + navigate));
+        return Double.parseDouble(format);
     }
 }

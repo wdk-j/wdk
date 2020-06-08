@@ -6,4 +6,10 @@ package com.commerce.mall.custom.dao;
  */
 public interface TmsOrderDetailAboutDao {
 
+    /**
+     * 计算某食物的销量
+     * @param foodId food id
+     * @return sales
+     */
+    int countSales(String foodId);
 }

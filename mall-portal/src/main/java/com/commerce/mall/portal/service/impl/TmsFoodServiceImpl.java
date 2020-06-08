@@ -48,7 +48,7 @@ public class TmsFoodServiceImpl implements TmsFoodService {
      */
     @Override
     public TmsFoodWithPics getFoodDetail(Integer foodId) {
-        return tmsFoodAboutDao.selectFoodInPortalHomeByPrimaryKey(foodId);
+        return tmsFoodAboutDao.selectFoodWithPicsByPrimaryKey(foodId);
     }
 
     /**

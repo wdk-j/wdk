@@ -12,6 +12,8 @@ public class TmsFoodWithMainPic extends TmsFood {
 
     private TmsFoodPics mainPic;
 
+    private Integer sales;
+
     public TmsFoodWithMainPic() {
         super();
     }
@@ -29,5 +31,13 @@ public class TmsFoodWithMainPic extends TmsFood {
 
     public void setMainPic(TmsFoodPics mainPic) {
         this.mainPic = mainPic;
+    }
+
+    public Integer getSales() {
+        return sales;
+    }
+
+    public void setSales(Integer sales) {
+        this.sales = sales;
     }
 }

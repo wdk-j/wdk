@@ -2,6 +2,7 @@ package com.commerce.mall.controller;
 
 import com.commerce.mall.common.api.CommonResult;
 import com.commerce.mall.custom.dto.TmsSellerDetail;
+import com.commerce.mall.dto.TmsSellerParam;
 import com.commerce.mall.model.TmsSeller;
 import com.commerce.mall.service.impl.TmsSellerServiceImpl;
 import com.github.pagehelper.PageInfo;
@@ -11,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,8 +38,8 @@ public class TmsSellerController {
     @ApiOperation(value = "添加商家")
     @PostMapping("/add")
     @ResponseBody
-    public CommonResult<Object> addSeller(@RequestBody TmsSeller tmsSeller) {
-        int rows = tmsSellerService.add(tmsSeller);
+    public CommonResult<Object> addSeller(@Validated @RequestBody TmsSellerParam tmsSellerParam) {
+        int rows = tmsSellerService.add(tmsSellerParam);
         if (rows > 0) {
             return CommonResult.success(rows);
         } else {
@@ -48,9 +50,9 @@ public class TmsSellerController {
     @ApiOperation(value = "根据商家Id修改商家信息")
     @PostMapping("/update/{sellerId}")
     @ResponseBody
-    public CommonResult<Object> updateSeller(@PathVariable("sellerId") Integer sellerId, @RequestBody TmsSeller tmsSeller) {
-        tmsSeller.setSellerId(sellerId);
-        int rows = tmsSellerService.update(tmsSeller);
+    public CommonResult<Object> updateSeller(@PathVariable("sellerId") Integer sellerId, @RequestBody TmsSellerParam tmsSellerParam) {
+        tmsSellerParam.setSellerId(sellerId);
+        int rows = tmsSellerService.update(tmsSellerParam);
         if (rows > 0) {
             return CommonResult.success(rows);
         }

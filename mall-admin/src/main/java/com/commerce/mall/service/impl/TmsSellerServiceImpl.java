@@ -3,17 +3,22 @@ package com.commerce.mall.service.impl;
 import cn.hutool.core.util.StrUtil;
 import com.commerce.mall.custom.dao.TmsSellerDetailDao;
 import com.commerce.mall.custom.dto.TmsSellerDetail;
-import com.commerce.mall.dao.TmsSellerDao;
+import com.commerce.mall.dto.TmsSellerParam;
 import com.commerce.mall.mapper.TmsSellerMapper;
+import com.commerce.mall.mapper.UmsMemberReceiveAddressMapper;
 import com.commerce.mall.model.TmsSeller;
 import com.commerce.mall.model.TmsSellerExample;
+import com.commerce.mall.model.UmsMemberReceiveAddress;
+import com.commerce.mall.model.UmsMemberReceiveAddressExample;
 import com.commerce.mall.service.TmsSellerService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -32,6 +37,9 @@ public class TmsSellerServiceImpl implements TmsSellerService {
     @Autowired
     private TmsSellerDetailDao tmsSellerDetailDao;
 
+    @Autowired
+    private UmsMemberReceiveAddressMapper umsMemberReceiveAddressMapper;
+
     /**
      * 根据seller_id查找商家
      *
@@ -46,30 +54,48 @@ public class TmsSellerServiceImpl implements TmsSellerService {
     /**
      * 添加商家
      *
-     * @param tmsSeller
+     * @param tmsSellerParam
      * @return
      */
+    @Transactional(rollbackFor = Exception.class)
     @Override
-    public int add(TmsSeller tmsSeller) {
-        tmsSeller.setClosed("0");
-        tmsSeller.setIsDelete("0");
+    public int add(TmsSellerParam tmsSellerParam) {
+        tmsSellerParam.setClosed("0");
+        tmsSellerParam.setIsDelete("0");
+        TmsSeller tmsSeller = new TmsSeller();
+        // bean转接
+        BeanUtils.copyProperties(tmsSellerParam,tmsSeller);
+        String address = tmsSellerParam.getDetailAddress();
+        UmsMemberReceiveAddress receiveAddress = new UmsMemberReceiveAddress();
+        receiveAddress.setDetailAddress(address);
+        // 插入地址
+        umsMemberReceiveAddressMapper.insertSelective(receiveAddress);
+        // 设定返回的addrId
+        tmsSeller.setAddrId(receiveAddress.getId());
         //todo TmsSellerParam UmsMemberReceiveAddress
-        int i = tmsSellerMapper.insertSelective(tmsSeller);
-        return i;
+        return tmsSellerMapper.insertSelective(tmsSeller);
     }
 
     /**
      * 更改商家信息
      *
-     * @param tmsSeller
+     * @param tmsSellerParam
      * @return
      */
     @Override
-    public int update(TmsSeller tmsSeller) {
-        //todo TmsSellerParam UmsMemberReceiveAddress
-        TmsSellerExample tmsSellerExample = new TmsSellerExample();
-        tmsSellerExample.createCriteria().andSellerIdEqualTo(tmsSeller.getSellerId());
-        return tmsSellerMapper.updateByExampleSelective(tmsSeller, tmsSellerExample);
+    public int update(TmsSellerParam tmsSellerParam) {
+        TmsSeller tmsSeller = new TmsSeller();
+        // bean转接
+        BeanUtils.copyProperties(tmsSellerParam,tmsSeller);
+
+        String address = tmsSellerParam.getDetailAddress();
+        UmsMemberReceiveAddress receiveAddress = new UmsMemberReceiveAddress();
+        Long addrId = tmsSellerMapper.selectByPrimaryKey(tmsSellerParam.getSellerId()).getAddrId();
+        receiveAddress.setId(addrId);
+        receiveAddress.setDetailAddress(address);
+
+        umsMemberReceiveAddressMapper.updateByPrimaryKey(receiveAddress);
+        return tmsSellerMapper.updateByPrimaryKey(tmsSeller);
     }
 
     /**

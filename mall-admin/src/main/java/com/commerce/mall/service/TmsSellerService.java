@@ -1,6 +1,7 @@
 package com.commerce.mall.service;
 
 import com.commerce.mall.custom.dto.TmsSellerDetail;
+import com.commerce.mall.dto.TmsSellerParam;
 import com.commerce.mall.model.TmsSeller;
 import com.github.pagehelper.PageInfo;
 
@@ -14,9 +15,9 @@ public interface TmsSellerService {
 
     TmsSellerDetail getById(Integer sellerId);
 
-    int add(TmsSeller tmsSeller);
+    int add(TmsSellerParam tmsSellerParam);
 
-    int update(TmsSeller tmsSeller);
+    int update(TmsSellerParam tmsSellerParam);
 
     List<TmsSellerDetail> list();
 

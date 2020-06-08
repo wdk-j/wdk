@@ -3,6 +3,7 @@ package com.commerce.mall.controller;
 import cn.hutool.core.collection.CollUtil;
 import com.commerce.mall.common.api.CommonResult;
 import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
+import com.commerce.mall.custom.dto.TmsFoodWithPics;
 import com.commerce.mall.model.TmsFood;
 import com.commerce.mall.service.TmsFoodService;
 import com.github.pagehelper.PageInfo;
@@ -47,10 +48,10 @@ public class TmsFoodController {
     @ApiOperation(value = "添加商品")
     @PostMapping(value = "/add")
     @ResponseBody
-    public CommonResult<Object> addFood(@RequestParam("files") MultipartFile[] files,
+    public CommonResult<Object> addFood(@RequestParam("pics") List<String> pics,
                                         TmsFood tmsFood) {
         tmsFood.setSellerId(1);
-        int i = tmsFoodService.add(files, tmsFood);
+        int i = tmsFoodService.add(pics, tmsFood);
         if (i > 0) {
             return CommonResult.success(i);
         }
@@ -96,7 +97,8 @@ public class TmsFoodController {
     @GetMapping("/{foodId}")
     @ResponseBody
     public CommonResult<Object> getOne(@PathVariable("foodId") Integer foodId) {
-        TmsFoodWithMainPic food = tmsFoodService.get(foodId);
+        //todo 传所有图片
+        TmsFoodWithPics food = tmsFoodService.get(foodId);
         return CommonResult.success(food);
     }
 

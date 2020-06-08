@@ -15,6 +15,8 @@ public class TmsFoodWithPics extends TmsFood {
 
     private List<TmsFoodPics> pics;
 
+    private Integer sales;
+
     public TmsFoodWithPics() {
         super();
     }
@@ -32,5 +34,13 @@ public class TmsFoodWithPics extends TmsFood {
 
     public void setPics(List<TmsFoodPics> pics) {
         this.pics = pics;
+    }
+
+    public Integer getSales() {
+        return sales;
+    }
+
+    public void setSales(Integer sales) {
+        this.sales = sales;
     }
 }

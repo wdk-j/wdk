@@ -15,6 +15,8 @@ public class TmsFoodCommentDetail extends TmsFoodComments {
 
     private String icon;
 
+    private Double positiveRate;
+
     private List<TmsFoodCommentsPics> commPics;
 
     private static final long serialVersionUID = -5850708712994633469L;
@@ -50,5 +52,13 @@ public class TmsFoodCommentDetail extends TmsFoodComments {
 
     public void setCommPics(List<TmsFoodCommentsPics> commPics) {
         this.commPics = commPics;
+    }
+
+    public Double getPositiveRate() {
+        return positiveRate;
+    }
+
+    public void setPositiveRate(Double positiveRate) {
+        this.positiveRate = positiveRate;
     }
 }

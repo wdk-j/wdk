@@ -2,9 +2,9 @@ package com.commerce.mall.service;
 
 
 import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
+import com.commerce.mall.custom.dto.TmsFoodWithPics;
 import com.commerce.mall.model.TmsFood;
 import com.github.pagehelper.PageInfo;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -34,7 +34,7 @@ public interface TmsFoodService {
      * @param foodId foodId
      * @return food
      */
-    TmsFoodWithMainPic get(Integer foodId);
+    TmsFoodWithPics get(Integer foodId);
 
     /**
      * 更新isDelete字段
@@ -66,11 +66,11 @@ public interface TmsFoodService {
      * 添加食品
      *
      *
-     * @param files images
+     * @param urls images
      * @param tmsFood food
      * @return code
      */
-    int add(MultipartFile[] files,TmsFood tmsFood);
+    int add(List<String> urls,TmsFood tmsFood);
 
     /**
      * 删除商品

@@ -16,6 +16,8 @@
         <result column="packing_fee" jdbcType="DOUBLE" property="packingFee"/>
         <result column="seller_id" jdbcType="INTEGER" property="sellerId"/>
         <result column="is_delete" jdbcType="VARCHAR" property="isDelete"/>
+        <association property="sales" column="{foodId=food_id}"
+                     select="com.commerce.mall.custom.dao.TmsOrderDetailAboutDao.countSales"/>
         <association property="mainPic" column="{foodId=food_id}"
                      select="com.commerce.mall.mapper.TmsFoodPicsMapper.selectMainPic"/>
     </resultMap>
@@ -32,6 +34,8 @@
         <result column="packing_fee" jdbcType="DOUBLE" property="packingFee"/>
         <result column="seller_id" jdbcType="INTEGER" property="sellerId"/>
         <result column="is_delete" jdbcType="VARCHAR" property="isDelete"/>
+        <association property="sales" column="{foodId=food_id}"
+                     select="com.commerce.mall.custom.dao.TmsOrderDetailAboutDao.countSales"/>
         <collection property="pics" column="{foodId=food_id}"
                     select="com.commerce.mall.mapper.TmsFoodPicsMapper.selectAllPics"/>
     </resultMap>
@@ -58,12 +62,13 @@
         from tms_food
         where food_id=#{foodId}
     </select>
-    <select id="selectFoodInPortalHomeByPrimaryKey" resultMap="BaseResultMap_pics">
+    <select id="selectFoodWithPicsByPrimaryKey" resultMap="BaseResultMap_pics">
         select
         <include refid="Base_Column_List"/>
         from tms_food
         where food_id=#{foodId}
     </select>
+
     <update id="updateIsDelete">
         update tms_food
         set is_delete=#{isDelete}

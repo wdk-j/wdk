@@ -3,5 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.commerce.mall.custom.dao.TmsFoodCommentAboutDao">
-    $END$
+    <select id="countNiceEqualTo" resultType="java.lang.Integer">
+        select count(*) sales from tms_food_comments where food_id= #{foodId} and nice= #{keyword}
+    </select>
 </mapper>

@@ -19,7 +19,7 @@ public interface TmsFoodAboutDao {
      * @param keyword keyword
      * @return list
      */
-    List<TmsFoodWithMainPic> selectByKeyword(@Param("sellerId") Integer sellerId,@Param("keyword") String keyword);
+    List<TmsFoodWithMainPic> selectByKeyword(@Param("sellerId") Integer sellerId, @Param("keyword") String keyword);
 
     /**
      * 逐渐查找
@@ -35,13 +35,13 @@ public interface TmsFoodAboutDao {
      * @param foodId foodId
      * @return food
      */
-    TmsFoodWithPics selectFoodInPortalHomeByPrimaryKey(Integer foodId);
+    TmsFoodWithPics selectFoodWithPicsByPrimaryKey(Integer foodId);
 
     /**
      * 修改isDelete字段
      *
      * @param isDelete is_delete
-     * @param foodId food id
+     * @param foodId   food id
      * @return affect
      */
     int updateIsDelete(@Param("isDelete") String isDelete, @Param("foodId") Integer foodId);
@@ -50,7 +50,7 @@ public interface TmsFoodAboutDao {
      * 批量修改isDelete字段
      *
      * @param isDelete is_delete
-     * @param foodIds food id
+     * @param foodIds  food id
      * @return affect
      */
     int updateIsDeleteInBatch(@Param("isDelete") String isDelete, @Param("foodIds") List<Integer> foodIds);
