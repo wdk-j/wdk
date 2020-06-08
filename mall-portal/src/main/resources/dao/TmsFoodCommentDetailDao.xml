@@ -4,22 +4,29 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.commerce.mall.portal.dao.TmsFoodCommentDetailDao">
     <resultMap id="BaseResultMap" type="com.commerce.mall.portal.domain.TmsFoodCommentDetail">
-        <id column="comm_id" jdbcType="INTEGER" property="commId" />
-        <result column="post_time" jdbcType="TIMESTAMP" property="postTime" />
-        <result column="user_id" jdbcType="INTEGER" property="userId" />
-        <result column="food_id" jdbcType="INTEGER" property="foodId" />
-        <result column="reply" jdbcType="VARCHAR" property="reply" />
+        <id column="comm_id" jdbcType="INTEGER" property="commId"/>
+        <result column="post_time" jdbcType="TIMESTAMP" property="postTime"/>
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="food_id" jdbcType="INTEGER" property="foodId"/>
+        <result column="nice" jdbcType="VARCHAR" property="nice"/>
+        <result column="reply" jdbcType="VARCHAR" property="reply"/>
         <result column="nickname" jdbcType="VARCHAR" property="nickname"/>
         <result column="icon" jdbcType="VARCHAR" property="icon"/>
         <collection property="commPics" column="{commId=comm_id}"
                     select="com.commerce.mall.mapper.TmsFoodCommentsPicsMapper.selectByCommId"/>
     </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.commerce.mall.portal.domain.TmsFoodCommentDetail">
+        <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    </resultMap>
     <sql id="Base_Column_List">
-        comm_id, content, post_time, user_id, food_id, reply
+        comm_id, nice, post_time, user_id, food_id, reply
     </sql>
-    <select id="selectCommentsDetailed" parameterType="integer" resultMap="BaseResultMap">
+    <sql id="Blob_Column_List">
+        content
+    </sql>
+    <select id="selectCommentsDetailed" resultMap="ResultMapWithBLOBs">
         select
-        <include refid="Base_Column_List"/>, m.nickname, m.icon
+        <include refid="Base_Column_List"/>,<include refid="Blob_Column_List"/>, m.nickname, m.icon
         from tms_food_comments f left join ums_member m on f.user_id=m.id
         where food_id=#{foodId} order by post_time desc
     </select>
