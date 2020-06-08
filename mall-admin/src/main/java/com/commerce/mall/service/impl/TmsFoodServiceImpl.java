@@ -7,12 +7,14 @@ import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
 import com.commerce.mall.custom.dto.TmsFoodWithPics;
 import com.commerce.mall.dao.TmsFoodPicsDao;
 import com.commerce.mall.mapper.TmsFoodMapper;
+import com.commerce.mall.mapper.TmsFoodPicsMapper;
 import com.commerce.mall.model.TmsFood;
 import com.commerce.mall.model.TmsFoodPics;
 import com.commerce.mall.service.TmsFoodService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,6 +34,9 @@ public class TmsFoodServiceImpl implements TmsFoodService {
 
     @Autowired
     private TmsFoodMapper tmsFoodMapper;
+
+    @Autowired
+    private TmsFoodPicsMapper tmsFoodPicsMapper;
 
     @Autowired
     private TmsFoodAboutDao tmsFoodAboutDao;
@@ -134,11 +139,33 @@ public class TmsFoodServiceImpl implements TmsFoodService {
     /**
      * 更新食品
      *
-     * @param tmsFood food
+     * @param tmsFoodWithPics food
      * @return code status
      */
+    @Transactional(rollbackFor = Exception.class)
     @Override
-    public int update(TmsFood tmsFood) {
+    public int update(TmsFoodWithPics tmsFoodWithPics) {
+        TmsFood tmsFood = new TmsFood();
+        BeanUtils.copyProperties(tmsFoodWithPics, tmsFood);
+        List<TmsFoodPics> pics = tmsFoodWithPics.getPics();
+        boolean hasMainPic = false;
+
+        for (TmsFoodPics pic : pics) {
+            if ("1".equals(pic.getIsMain())) {
+                hasMainPic = true;
+                break;
+            }
+        }
+
+        for (TmsFoodPics pic : pics) {
+            if (pic.getPicId() == null) {
+                if (!hasMainPic) {
+                    pic.setIsMain("1");
+                }
+                pic.setFoodId(tmsFoodWithPics.getFoodId());
+                tmsFoodPicsMapper.insertSelective(pic);
+            }
+        }
         return tmsFoodMapper.updateByPrimaryKey(tmsFood);
     }
 }

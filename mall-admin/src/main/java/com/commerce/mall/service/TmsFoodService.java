@@ -57,10 +57,10 @@ public interface TmsFoodService {
     /**
      * 更新食品
      *
-     * @param tmsFood food
+     * @param tmsFoodWithPics food
      * @return code status
      */
-    int update(TmsFood tmsFood);
+    int update(TmsFoodWithPics tmsFoodWithPics);
 
     /**
      * 添加食品

@@ -27,11 +27,11 @@ public class TmsFoodCommentController {
     @ApiOperation("分页-以关键词获取某家店食物评论")
     @GetMapping("/comment/list")
     @ResponseBody
-    public CommonResult<Object> pagedList(@RequestParam(required = false,defaultValue = "1")Integer sellerId,
-                                          @RequestParam(required = false,defaultValue = "1")int pageNum,
-                                          @RequestParam(required = false,defaultValue = "1")int pageSize,
+    public CommonResult<Object> pagedList(@RequestParam(required = false, defaultValue = "1") Integer sellerId,
+                                          @RequestParam(required = false, defaultValue = "1") int pageNum,
+                                          @RequestParam(required = false, defaultValue = "1") int pageSize,
                                           @RequestParam(required = false) String keyword) {
-        sellerId=1;
+        sellerId = 1;
         PageInfo<TmsFoodCommentDetail> list = tmsFoodCommentsService.pagedList(pageNum, pageSize, keyword, sellerId);
         return CommonResult.success(list);
     }
@@ -45,5 +45,13 @@ public class TmsFoodCommentController {
             return CommonResult.success(null);
         }
         return CommonResult.failed("评论失败");
+    }
+
+    @ApiOperation("获取某评论详情")
+    @GetMapping("/comment/{commId}")
+    @ResponseBody
+    public CommonResult<Object> getComment(@PathVariable("commId") Integer commId) {
+        TmsFoodCommentDetail tmsFoodCommentDetail = tmsFoodCommentsService.get(commId);
+        return CommonResult.success(tmsFoodCommentDetail);
     }
 }

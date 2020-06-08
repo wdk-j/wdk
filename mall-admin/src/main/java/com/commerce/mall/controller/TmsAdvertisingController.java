@@ -49,7 +49,7 @@ public class TmsAdvertisingController {
     }
 
     @ApiOperation(value = "根据id获取广告信息")
-    @PostMapping("/{id}")
+    @GetMapping("/{id}")
     @ResponseBody
     public CommonResult<Object> getAdvertising(@PathVariable("id")Integer id){
         TmsAdvertising advertising = tmsAdvertisingService.get(id);

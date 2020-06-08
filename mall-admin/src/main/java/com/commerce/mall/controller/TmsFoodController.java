@@ -83,10 +83,9 @@ public class TmsFoodController {
     @ApiOperation(value = "更新商品")
     @PostMapping("/update/{foodId}")
     @ResponseBody
-    public CommonResult<Object> update(@PathVariable("foodId") Integer foodId, @RequestBody TmsFood tmsFood) {
-        tmsFood.setSellerId(1);
-        tmsFood.setFoodId(foodId);
-        int i = tmsFoodService.update(tmsFood);
+    public CommonResult<Object> update(@PathVariable("foodId") Integer foodId, @RequestBody TmsFoodWithPics tmsFoodWithPics) {
+        tmsFoodWithPics.setFoodId(foodId);
+        int i = tmsFoodService.update(tmsFoodWithPics);
         if (i > 0) {
             return CommonResult.success(i);
         }
@@ -97,10 +96,7 @@ public class TmsFoodController {
     @GetMapping("/{foodId}")
     @ResponseBody
     public CommonResult<Object> getOne(@PathVariable("foodId") Integer foodId) {
-        //todo 传所有图片
         TmsFoodWithPics food = tmsFoodService.get(foodId);
         return CommonResult.success(food);
     }
-
-
 }
