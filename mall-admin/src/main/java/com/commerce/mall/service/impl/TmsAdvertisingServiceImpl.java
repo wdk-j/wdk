@@ -18,10 +18,11 @@ public class TmsAdvertisingServiceImpl implements TmsAdvertisingService {
     private Logger log = LoggerFactory.getLogger(TmsAdvertisingServiceImpl.class);
 
     @Autowired
-    TmsAdvertisingMapper tmsAdvertisingMapper;
+    private TmsAdvertisingMapper tmsAdvertisingMapper;
 
     /**
      * 添加广告
+     *
      * @param tmsAdvertising
      * @return
      */
@@ -33,6 +34,7 @@ public class TmsAdvertisingServiceImpl implements TmsAdvertisingService {
 
     /**
      * 修改广告
+     *
      * @param tmsAdvertising
      * @return
      */
@@ -40,11 +42,12 @@ public class TmsAdvertisingServiceImpl implements TmsAdvertisingService {
     public int update(TmsAdvertising tmsAdvertising) {
         TmsAdvertisingExample tmsAdvertisingExample = new TmsAdvertisingExample();
         tmsAdvertisingExample.createCriteria().andIdEqualTo(tmsAdvertising.getId());
-        return tmsAdvertisingMapper.updateByExampleSelective(tmsAdvertising , tmsAdvertisingExample);
+        return tmsAdvertisingMapper.updateByExampleSelective(tmsAdvertising, tmsAdvertisingExample);
     }
 
     /**
      * 删除广告
+     *
      * @param id
      * @return
      */
@@ -55,6 +58,7 @@ public class TmsAdvertisingServiceImpl implements TmsAdvertisingService {
 
     /**
      * 根据id获取广告信息
+     *
      * @param id
      * @return
      */
@@ -65,28 +69,31 @@ public class TmsAdvertisingServiceImpl implements TmsAdvertisingService {
 
     /**
      * ，上下架广告，更新isDelete
+     *
      * @param isDelete
      * @param id
      * @return
      */
     @Override
     public int updateAdIsDelete(String isDelete, Integer id) {
-        return tmsAdvertisingMapper.updateIsDelete(isDelete , id);
+        return tmsAdvertisingMapper.updateIsDelete(isDelete, id);
     }
 
     /**
      * 批量上下架，更新isDelete
+     *
      * @param isDelete
      * @param ids
      * @return
      */
     @Override
     public int updateAdIsDeleteInBatch(String isDelete, List<Integer> ids) {
-        return tmsAdvertisingMapper.updateIsDeleteInBatch(isDelete , ids);
+        return tmsAdvertisingMapper.updateIsDeleteInBatch(isDelete, ids);
     }
 
     /**
      * 分页显示广告列表
+     *
      * @param pageNum
      * @param pageSize
      * @param keyWord
