@@ -2,6 +2,7 @@ package com.commerce.mall.portal.dao;
 
 
 import com.commerce.mall.portal.domain.TmsFoodCommentDetail;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -17,5 +18,5 @@ public interface TmsFoodCommentDetailDao {
      * @param foodId food id
      * @return comments
      */
-    List<TmsFoodCommentDetail> selectCommentsDetailed(Integer foodId);
+    List<TmsFoodCommentDetail> selectCommentsDetailed(@Param("foodId") Integer foodId, @Param("keyword") String keyword);
 }

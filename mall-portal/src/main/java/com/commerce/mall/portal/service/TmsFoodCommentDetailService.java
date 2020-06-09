@@ -28,5 +28,5 @@ public interface TmsFoodCommentDetailService {
      * @param foodId   food id
      * @return a page of comment
      */
-    PageInfo<TmsFoodCommentDetail> pagedFoodCommentsInDetail(int pageNum, int pageSize, Integer foodId);
+    PageInfo<TmsFoodCommentDetail> pagedFoodCommentsInDetail(int pageNum, int pageSize, Integer foodId,String keyword);
 }

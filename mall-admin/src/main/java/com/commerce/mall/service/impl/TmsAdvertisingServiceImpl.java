@@ -111,8 +111,11 @@ public class TmsAdvertisingServiceImpl implements TmsAdvertisingService {
             keyWord = null;
         }
         String orderByClause = "id asc";
+        TmsAdvertisingExample example = new TmsAdvertisingExample();
+        example.createCriteria().andAdDescLike(keyWord);
+        example.setOrderByClause(orderByClause);
         PageHelper.startPage(pageNum, pageSize);
-        List<TmsAdvertising> advertising = tmsAdvertisingMapper.selectByExample(new TmsAdvertisingExample());
+        List<TmsAdvertising> advertising = tmsAdvertisingMapper.selectByExample(example);
         return new PageInfo<>(advertising);
     }
 }

@@ -13,33 +13,39 @@
         <collection property="commPics" column="{commId=comm_id}"
                     select="com.commerce.mall.mapper.TmsFoodCommentsPicsMapper.selectByCommId"/>
     </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.commerce.mall.dto.TmsFoodCommentDetail">
+        <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    </resultMap>
     <sql id="Base_Column_List">
-        comm_id, content, post_time, user_id, food_id, reply
+        comm_id, nice, post_time, user_id, food_id, reply
+    </sql>
+    <sql id="Blob_Column_List">
+        content
     </sql>
     <update id="updateReplyByPrimaryKey">
         update tms_food_comments
         set reply=#{reply,jdbcType=VARCHAR}
         where comm_id = #{commId}
     </update>
-    <select id="selectCommentsDetailed" resultMap="BaseResultMap">
+    <select id="selectCommentsDetailed" resultMap="ResultMapWithBLOBs">
         select
-        <include refid="Base_Column_List"/>,f.seller_id,m.nickname
+        comm_id, content, post_time, user_id, fc.food_id, reply,f.seller_id,m.nickname
         from tms_food_comments fc
         left join tms_food f on fc.food_id=f.food_id
         left join ums_member m on fc.user_id=m.id
         <where>
-            <if test="keyword!=null">
-                <bind name="keyword" value="'%'+keyword+'%'"/>
-                and f.food_name like #{keyword}
-            </if>
+            and f.seller_id=#{sellerId}
             <if test="foodId!=null">
                 and fc.food_id=#{foodId}
             </if>
-            and f.seller_id=#{sellerId}
+            <if test="keyword!=null">
+            <bind name="keyword" value="'%'+keyword+'%'"/>
+            and f.food_name like #{keyword}
+        </if>
         </where>
         order by post_time desc
     </select>
-    <select id="selectByPrimaryKey" resultType="com.commerce.mall.dto.TmsFoodCommentDetail">
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs">
         select
         <include refid="Base_Column_List"/>, m.nickname
         from tms_food_comments f left join ums_member m on f.user_id=m.id

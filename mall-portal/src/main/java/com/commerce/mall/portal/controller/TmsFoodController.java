@@ -55,9 +55,10 @@ public class TmsFoodController {
     @GetMapping("/comment/page")
     @ResponseBody
     public CommonResult<Object> pagedComments(@RequestParam(required = false, defaultValue = "1") int pageNum,
-                                              @RequestParam Integer foodId) {
+                                              @RequestParam Integer foodId,
+                                              @RequestParam(required = false,defaultValue = "3") String keyword) {
         int pageSize = 6;
-        PageInfo<TmsFoodCommentDetail> list = tmsFoodCommentDetailService.pagedFoodCommentsInDetail(pageNum, pageSize, foodId);
+        PageInfo<TmsFoodCommentDetail> list = tmsFoodCommentDetailService.pagedFoodCommentsInDetail(pageNum, pageSize, foodId, keyword);
         return CommonResult.success(list);
     }
 

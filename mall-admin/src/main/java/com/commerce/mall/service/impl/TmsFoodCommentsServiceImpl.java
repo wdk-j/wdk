@@ -1,6 +1,7 @@
 package com.commerce.mall.service.impl;
 
 import cn.hutool.core.util.StrUtil;
+import com.commerce.mall.custom.dao.TmsFoodCommentAboutDao;
 import com.commerce.mall.dao.TmsFoodCommentDetailDao;
 import com.commerce.mall.dto.TmsFoodCommentDetail;
 import com.commerce.mall.mapper.TmsFoodCommentsMapper;
@@ -12,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -29,6 +31,9 @@ public class TmsFoodCommentsServiceImpl implements TmsFoodCommentsService {
     @Autowired
     private TmsFoodCommentDetailDao tmsFoodCommentDetailDao;
 
+    @Autowired
+    private TmsFoodCommentAboutDao tmsFoodCommentAboutDao;
+
     /**
      * 分页查询
      * 关键查询
@@ -41,10 +46,10 @@ public class TmsFoodCommentsServiceImpl implements TmsFoodCommentsService {
      */
     @Override
     public PageInfo<TmsFoodCommentDetail> pagedList(int pageNum, int pageSize, String keyword, Integer sellerId) {
-        PageHelper.startPage(pageNum, pageSize);
         if (StrUtil.isEmpty(keyword)) {
             keyword = null;
         }
+        PageHelper.startPage(pageNum, pageSize);
         List<TmsFoodCommentDetail> list = tmsFoodCommentDetailDao.selectCommentsDetailed(null, keyword, sellerId);
         return new PageInfo<>(list);
     }

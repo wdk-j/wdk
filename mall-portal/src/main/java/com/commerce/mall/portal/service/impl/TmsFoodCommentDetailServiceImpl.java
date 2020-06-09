@@ -1,6 +1,12 @@
 package com.commerce.mall.portal.service.impl;
 
+import cn.hutool.core.collection.CollUtil;
 import com.commerce.mall.custom.dao.TmsFoodCommentAboutDao;
+import com.commerce.mall.mapper.TmsFoodCommentsPicsMapper;
+import com.commerce.mall.mapper.TmsFoodPicsMapper;
+import com.commerce.mall.model.TmsFoodCommentsPics;
+import com.commerce.mall.model.TmsFoodCommentsPicsExample;
+import com.commerce.mall.model.TmsFoodPics;
 import com.commerce.mall.portal.dao.TmsFoodCommentDetailDao;
 import com.commerce.mall.portal.domain.TmsFoodCommentDetail;
 import com.commerce.mall.portal.service.TmsFoodCommentDetailService;
@@ -12,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.DecimalFormat;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -29,6 +36,8 @@ public class TmsFoodCommentDetailServiceImpl implements TmsFoodCommentDetailServ
     @Autowired
     private TmsFoodCommentAboutDao tmsFoodCommentAboutDao;
 
+    @Autowired
+    private TmsFoodCommentsPicsMapper tmsFoodCommentsPicsMapper;
 
     /**
      * 获取某食品的所有评论，评论时间降序
@@ -38,7 +47,7 @@ public class TmsFoodCommentDetailServiceImpl implements TmsFoodCommentDetailServ
      */
     @Override
     public List<TmsFoodCommentDetail> listFoodCommentsInDetail(Integer foodId) {
-        List<TmsFoodCommentDetail> foodCommentDetails = tmsFoodCommentDetailDao.selectCommentsDetailed(foodId);
+        List<TmsFoodCommentDetail> foodCommentDetails = tmsFoodCommentDetailDao.selectCommentsDetailed(foodId, null);
         foodCommentDetails.forEach(fc -> {
             fc.setPositiveRate(calculatePositiveRate(fc.getFoodId()));
         });
@@ -55,9 +64,26 @@ public class TmsFoodCommentDetailServiceImpl implements TmsFoodCommentDetailServ
      * @return a page of comment
      */
     @Override
-    public PageInfo<TmsFoodCommentDetail> pagedFoodCommentsInDetail(int pageNum, int pageSize, Integer foodId) {
+    public PageInfo<TmsFoodCommentDetail> pagedFoodCommentsInDetail(int pageNum, int pageSize, Integer foodId, String keyword) {
         PageHelper.startPage(pageNum, pageSize);
-        List<TmsFoodCommentDetail> foodCommentDetails = tmsFoodCommentDetailDao.selectCommentsDetailed(foodId);
+        List<TmsFoodCommentDetail> foodCommentDetails = null;
+        foodCommentDetails = tmsFoodCommentDetailDao.selectCommentsDetailed(foodId, keyword);
+
+        List<TmsFoodCommentsPics> pics;
+        TmsFoodCommentsPicsExample example;
+        if ("2".equals(keyword)) {
+            Iterator<TmsFoodCommentDetail> iterator = foodCommentDetails.iterator();
+            TmsFoodCommentDetail next;
+            while (iterator.hasNext()) {
+                next = iterator.next();
+                example = new TmsFoodCommentsPicsExample();
+                example.createCriteria().andCommIdEqualTo(next.getCommId());
+                pics = tmsFoodCommentsPicsMapper.selectByExample(example);
+                if (CollUtil.isEmpty(pics)) {
+                    iterator.remove();
+                }
+            }
+        }
         foodCommentDetails.forEach(fc -> {
             fc.setPositiveRate(calculatePositiveRate(fc.getFoodId()));
         });

@@ -28,6 +28,16 @@
         select
         <include refid="Base_Column_List"/>,<include refid="Blob_Column_List"/>, m.nickname, m.icon
         from tms_food_comments f left join ums_member m on f.user_id=m.id
-        where food_id=#{foodId} order by post_time desc
+        <where>
+            food_id=#{foodId}
+            <choose>
+                <when test="keyword!=null and keyword==0">
+                    and nice='1'
+                </when>
+                <when test="keyword!=null and keyword==1">
+                    and nice='0'
+                </when>
+            </choose>
+        </where>  order by post_time desc
     </select>
 </mapper>

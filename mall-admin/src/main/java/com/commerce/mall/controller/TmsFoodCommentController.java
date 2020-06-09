@@ -29,7 +29,7 @@ public class TmsFoodCommentController {
     @ResponseBody
     public CommonResult<Object> pagedList(@RequestParam(required = false, defaultValue = "1") Integer sellerId,
                                           @RequestParam(required = false, defaultValue = "1") int pageNum,
-                                          @RequestParam(required = false, defaultValue = "1") int pageSize,
+                                          @RequestParam(required = false, defaultValue = "3") int pageSize,
                                           @RequestParam(required = false) String keyword) {
         sellerId = 1;
         PageInfo<TmsFoodCommentDetail> list = tmsFoodCommentsService.pagedList(pageNum, pageSize, keyword, sellerId);

@@ -26,6 +26,7 @@ public class TmsFoodCommentDetail extends TmsFoodComments {
         return super.toString()+"TmsFoodCommentDetail{" +
                 "nickname='" + nickname + '\'' +
                 ", icon='" + icon + '\'' +
+                ", positiveRate=" + positiveRate +
                 ", commPics=" + commPics +
                 '}';
     }
