@@ -102,17 +102,20 @@ public class TmsAdvertisingServiceImpl implements TmsAdvertisingService {
      *
      * @param pageNum
      * @param pageSize
-     * @param keyWord
+     * @param keyword
      * @return
      */
     @Override
-    public PageInfo<TmsAdvertising> listAdvertising(int pageNum, int pageSize, String keyWord) {
-        if (StrUtil.isEmpty(keyWord)) {
-            keyWord = null;
+    public PageInfo<TmsAdvertising> listAdvertising(int pageNum, int pageSize, String keyword) {
+        if (StrUtil.isEmpty(keyword)) {
+            keyword = null;
         }
         String orderByClause = "id asc";
         TmsAdvertisingExample example = new TmsAdvertisingExample();
-        example.createCriteria().andAdDescLike(keyWord);
+        TmsAdvertisingExample.Criteria criteria = example.createCriteria();
+        if (keyword != null) {
+            criteria.andAdDescLike('%' + keyword + '%');
+        }
         example.setOrderByClause(orderByClause);
         PageHelper.startPage(pageNum, pageSize);
         List<TmsAdvertising> advertising = tmsAdvertisingMapper.selectByExample(example);

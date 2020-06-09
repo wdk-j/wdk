@@ -8,13 +8,14 @@
         <result column="post_time" jdbcType="TIMESTAMP" property="postTime"/>
         <result column="user_id" jdbcType="INTEGER" property="userId"/>
         <result column="food_id" jdbcType="INTEGER" property="foodId"/>
+        <result column="food_name" jdbcType="VARCHAR" property="foodName"/>
         <result column="reply" jdbcType="VARCHAR" property="reply"/>
         <result column="nickname" jdbcType="VARCHAR" property="nickname"/>
         <collection property="commPics" column="{commId=comm_id}"
                     select="com.commerce.mall.mapper.TmsFoodCommentsPicsMapper.selectByCommId"/>
     </resultMap>
     <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.commerce.mall.dto.TmsFoodCommentDetail">
-        <result column="content" jdbcType="LONGVARCHAR" property="content" />
+        <result column="content" jdbcType="LONGVARCHAR" property="content"/>
     </resultMap>
     <sql id="Base_Column_List">
         comm_id, nice, post_time, user_id, food_id, reply
@@ -29,7 +30,7 @@
     </update>
     <select id="selectCommentsDetailed" resultMap="ResultMapWithBLOBs">
         select
-        comm_id, content, post_time, user_id, fc.food_id, reply,f.seller_id,m.nickname
+        comm_id, content, post_time, user_id, fc.food_id, reply,f.food_name,f.seller_id,m.nickname
         from tms_food_comments fc
         left join tms_food f on fc.food_id=f.food_id
         left join ums_member m on fc.user_id=m.id
@@ -39,9 +40,9 @@
                 and fc.food_id=#{foodId}
             </if>
             <if test="keyword!=null">
-            <bind name="keyword" value="'%'+keyword+'%'"/>
-            and f.food_name like #{keyword}
-        </if>
+                <bind name="keyword" value="'%'+keyword+'%'"/>
+                and f.food_name like #{keyword}
+            </if>
         </where>
         order by post_time desc
     </select>

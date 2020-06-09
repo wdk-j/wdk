@@ -13,6 +13,8 @@ public class TmsFoodCommentDetail extends TmsFoodComments {
 
     private String nickname;
 
+    private String foodName;
+
     private List<TmsFoodCommentsPics> commPics;
 
     private static final long serialVersionUID = -5850708712994633469L;
@@ -39,5 +41,13 @@ public class TmsFoodCommentDetail extends TmsFoodComments {
 
     public void setCommPics(List<TmsFoodCommentsPics> commPics) {
         this.commPics = commPics;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public void setFoodName(String foodName) {
+        this.foodName = foodName;
     }
 }
