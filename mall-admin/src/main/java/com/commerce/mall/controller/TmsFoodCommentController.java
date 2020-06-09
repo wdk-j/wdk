@@ -37,7 +37,7 @@ public class TmsFoodCommentController {
     }
 
     @ApiOperation("店家回复评论")
-    @GetMapping("/comment/update/{commId}")
+    @PostMapping("/comment/update/{commId}")
     @ResponseBody
     public CommonResult<Object> sellerReplyComment(@PathVariable("commId") Integer commId, String reply) {
         int i = tmsFoodCommentsService.reply(commId, reply);
