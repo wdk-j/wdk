@@ -46,7 +46,7 @@ public class TmsFoodServiceImpl implements TmsFoodService {
     /**
      * 添加食品
      *
-     * @param pics   pics
+     * @param pics    pics
      * @param tmsFood tms food
      * @return code
      */
@@ -56,7 +56,7 @@ public class TmsFoodServiceImpl implements TmsFoodService {
         int r = tmsFoodMapper.insertSelective(tmsFood);
         Integer foodId = tmsFood.getFoodId();
         pics.get(0).setIsMain("1");
-        pics.forEach(pic->{
+        pics.forEach(pic -> {
             pic.setFoodId(foodId);
         });
         tmsFoodPicsDao.insertSelectiveInBatch(pics);
@@ -122,7 +122,7 @@ public class TmsFoodServiceImpl implements TmsFoodService {
      * 批量更新isDelete字段
      *
      * @param isDelete is delete
-     * @param foodIds   food ids
+     * @param foodIds  food ids
      * @return code
      */
     @Override
@@ -144,24 +144,29 @@ public class TmsFoodServiceImpl implements TmsFoodService {
         BeanUtils.copyProperties(tmsFoodWithPics, tmsFood);
         List<TmsFoodPics> pics = tmsFoodWithPics.getPics();
         boolean hasMainPic = false;
+        log.info(pics.toString());
+        Integer foodId = pics.get(0).getFoodId();
+        TmsFoodPics mainPic;
+
 
         for (TmsFoodPics pic : pics) {
-            if ("1".equals(pic.getIsMain())) {
-                hasMainPic = true;
-                break;
-            }
-        }
-
-        for (TmsFoodPics pic : pics) {
-            if (pic.getPicId() == null) {
+            if (StrUtil.isEmpty(pic.getPicUrl())) {
+                tmsFoodPicsMapper.deleteByPrimaryKey(pic.getPicId());
+                mainPic = tmsFoodPicsMapper.selectMainPic(foodId);
+                hasMainPic = mainPic != null;
+            } else if (pic.getPicId() != null) {
                 if (!hasMainPic) {
                     pic.setIsMain("1");
+                    tmsFoodPicsMapper.updateByPrimaryKey(pic);
+                    hasMainPic = true;
                 }
-                pic.setFoodId(tmsFoodWithPics.getFoodId());
+            } else {
+                if (!hasMainPic) {
+                    pic.setIsMain("1");
+                    hasMainPic = true;
+                }
+                pic.setFoodId(foodId);
                 tmsFoodPicsMapper.insertSelective(pic);
-            }
-            else if (StrUtil.isEmpty(pic.getPicUrl())) {
-                tmsFoodPicsMapper.deleteByPrimaryKey(pic.getPicId());
             }
         }
         return tmsFoodMapper.updateByPrimaryKey(tmsFood);
