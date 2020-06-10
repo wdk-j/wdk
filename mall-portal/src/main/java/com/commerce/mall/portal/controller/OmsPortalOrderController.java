@@ -12,8 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -62,26 +60,28 @@ public class OmsPortalOrderController {
     @ApiOperation("查询全部订单")
     @RequestMapping(value = "/getAllList", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult<CommonPage<List<List<OmsOrder>>>> getAllList(Long userId, @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
-                                                                     @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
+    public CommonResult<CommonPage<OmsOrder>> getAllList(Long userId, @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
+                                                         @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
         List<OmsOrder> orderList = portalOrderService.getAllList(userId,pageSize, pageNum);
-        HashMap<Long,List<List<OmsOrder>>> map=new HashMap<>();
-        for (OmsOrder o:orderList) {
-            if(!map.containsKey(o.getId())){
-                List lists=new ArrayList<>();
-                lists.add(o);
-                map.put(o.getId(),lists);
-            }else {
-                List lists=map.get(o.getId());
-                lists.add(o);
-                map.put(o.getId(),lists);
-            }
-        }
-        List<List<List<OmsOrder>>> listList=new ArrayList<>();
-        for (Long key:map.keySet()) {
-            listList.add(map.get(key));
-        }
-        return CommonResult.success(CommonPage.restPage(listList));
+//        HashMap<Long,List<List<OmsOrder>>> map=new HashMap<>();
+//        for (OmsOrder o:orderList) {
+//            if(!map.containsKey(o.getId())){
+//                List lists=new ArrayList<>();
+//                lists.add(o);
+//                map.put(o.getId(),lists);
+//            }else {
+//                List lists=map.get(o.getId());
+//                lists.add(o);
+//                map.put(o.getId(),lists);
+//            }
+//        }
+//        List<List<List<OmsOrder>>> listList=new ArrayList<>();
+//        for (Long key:map.keySet()) {
+//            listList.add(map.get(key));
+//        }
+//        return CommonResult.success(CommonPage.restPage(listList));
+        return CommonResult.success(CommonPage.restPage(orderList));
+
     }
     @ApiOperation("查询待付款订单")
     @RequestMapping(value = "/getNoPayList", method = RequestMethod.GET)
