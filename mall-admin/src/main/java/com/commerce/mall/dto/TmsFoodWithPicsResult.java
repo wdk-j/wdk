@@ -39,7 +39,6 @@ public class TmsFoodWithPicsResult {
     @ApiModelProperty(value = "价格")
     private BigDecimal price;
 
-    @ApiModelProperty(value = "评分")
     private BigDecimal mark;
 
     @ApiModelProperty(value = "折扣")

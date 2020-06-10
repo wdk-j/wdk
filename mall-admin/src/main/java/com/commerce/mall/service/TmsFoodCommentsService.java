@@ -19,7 +19,7 @@ public interface TmsFoodCommentsService {
      * @param sellerId seller id
      * @return list
      */
-    PageInfo<TmsFoodCommentDetail> pagedList(int pageNum, int pageSize, String keyword,Integer sellerId);
+    PageInfo<TmsFoodCommentDetail> pagedList(int pageNum, int pageSize, String keyword, Integer sellerId);
 
     /**
      * 获取某条评论
@@ -37,4 +37,12 @@ public interface TmsFoodCommentsService {
      * @return code
      */
     int reply(Integer commId, String reply);
+
+    /**
+     * 删除某条评论
+     *
+     * @param commId comment id
+     * @return code
+     */
+    int delete(Integer commId);
 }

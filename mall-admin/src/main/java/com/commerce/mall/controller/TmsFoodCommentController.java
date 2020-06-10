@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Controller
 @Api(tags = "TmsFoodCommentController", description = "商品（食品）评论管理")
-@RequestMapping("/food")
+@RequestMapping("/food/comment")
 @Slf4j
 public class TmsFoodCommentController {
 
@@ -25,7 +25,7 @@ public class TmsFoodCommentController {
     private TmsFoodCommentsService tmsFoodCommentsService;
 
     @ApiOperation("分页-以关键词获取某家店食物评论")
-    @GetMapping("/comment/list")
+    @GetMapping("/list")
     @ResponseBody
     public CommonResult<Object> pagedList(@RequestParam(required = false, defaultValue = "1") Integer sellerId,
                                           @RequestParam(required = false, defaultValue = "1") int pageNum,
@@ -37,7 +37,7 @@ public class TmsFoodCommentController {
     }
 
     @ApiOperation("店家回复评论")
-    @PostMapping("/comment/update/{commId}")
+    @PostMapping("/update/{commId}")
     @ResponseBody
     public CommonResult<Object> sellerReplyComment(@PathVariable("commId") Integer commId, String reply) {
         int i = tmsFoodCommentsService.reply(commId, reply);
@@ -48,10 +48,18 @@ public class TmsFoodCommentController {
     }
 
     @ApiOperation("获取某评论详情")
-    @GetMapping("/comment/{commId}")
+    @GetMapping("/{commId}")
     @ResponseBody
     public CommonResult<Object> getComment(@PathVariable("commId") Integer commId) {
         TmsFoodCommentDetail tmsFoodCommentDetail = tmsFoodCommentsService.get(commId);
         return CommonResult.success(tmsFoodCommentDetail);
+    }
+
+    @ApiOperation("删除某条评论")
+    @PostMapping("/{commId}")
+    @ResponseBody
+    public CommonResult<Object> deleteComment(@PathVariable("commId") Integer commId) {
+        int i = tmsFoodCommentsService.delete(commId);
+        return CommonResult.success(i);
     }
 }

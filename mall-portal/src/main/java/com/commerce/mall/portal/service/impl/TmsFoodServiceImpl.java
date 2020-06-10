@@ -1,10 +1,12 @@
 package com.commerce.mall.portal.service.impl;
 
-import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
-import com.commerce.mall.custom.dto.TmsFoodWithPics;
+
 import com.commerce.mall.mapper.TmsFoodMapper;
 import com.commerce.mall.model.TmsFood;
 import com.commerce.mall.custom.dao.TmsFoodAboutDao;
+import com.commerce.mall.portal.dao.TmsFoodDetailDao;
+import com.commerce.mall.portal.domain.TmsFoodDetail;
+import com.commerce.mall.portal.domain.TmsFoodWithMainPic;
 import com.commerce.mall.portal.service.TmsFoodService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -22,13 +24,13 @@ import java.util.List;
 @Service
 public class TmsFoodServiceImpl implements TmsFoodService {
 
-    private Logger log = LoggerFactory.getLogger(TmsFoodServiceImpl.class);
+    private final Logger log = LoggerFactory.getLogger(TmsFoodServiceImpl.class);
 
     @Autowired
     private TmsFoodMapper tmsFoodMapper;
 
     @Autowired
-    private TmsFoodAboutDao tmsFoodAboutDao;
+    private TmsFoodDetailDao tmsFoodDetailDao;
 
 
     /**
@@ -38,8 +40,8 @@ public class TmsFoodServiceImpl implements TmsFoodService {
      * @return food in detail
      */
     @Override
-    public TmsFoodWithPics getFoodDetail(Integer foodId) {
-        return tmsFoodAboutDao.selectFoodWithPicsByPrimaryKey(foodId);
+    public TmsFoodDetail getFoodDetail(Integer foodId) {
+        return tmsFoodDetailDao.selectInDetailByPrimaryKey(foodId);
     }
 
     /**
@@ -53,7 +55,7 @@ public class TmsFoodServiceImpl implements TmsFoodService {
     @Override
     public PageInfo<TmsFoodWithMainPic> pagedHomeFoods(int pageNum, int pageSize, Integer sellerId) {
         PageHelper.startPage(pageNum, pageSize);
-        List<TmsFoodWithMainPic> foods = tmsFoodAboutDao.selectByKeyword(sellerId, null);
+        List<TmsFoodWithMainPic> foods = tmsFoodDetailDao.selectByKeyword(sellerId, null);
         return new PageInfo<>(foods);
     }
 }

@@ -100,6 +100,8 @@ public class TmsFoodServiceImpl implements TmsFoodService {
         // 如果为''算为null
         if (StrUtil.isEmpty(keyword)) {
             keyword = null;
+        } else {
+            keyword='%'+keyword+'%';
         }
         PageHelper.startPage(pageNum, pageSize);
         List<TmsFoodWithMainPic> foods = tmsFoodDao.selectByKeyword(sellerId, keyword);

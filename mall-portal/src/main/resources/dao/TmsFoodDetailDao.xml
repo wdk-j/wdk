@@ -8,6 +8,7 @@
         <result column="food_name" jdbcType="VARCHAR" property="foodName"/>
         <result column="price" jdbcType="DECIMAL" property="price"/>
         <result column="mark" jdbcType="DECIMAL" property="mark"/>
+        <result column="sales" jdbcType="INTEGER" property="sales"/>
         <result column="discount" jdbcType="DECIMAL" property="discount"/>
         <result column="packing_fee" jdbcType="DOUBLE" property="packingFee"/>
         <result column="seller_id" jdbcType="INTEGER" property="sellerId"/>
@@ -24,6 +25,7 @@
         <id column="food_id" jdbcType="INTEGER" property="foodId"/>
         <result column="food_name" jdbcType="VARCHAR" property="foodName"/>
         <result column="price" jdbcType="DECIMAL" property="price"/>
+        <result column="sales" jdbcType="INTEGER" property="sales"/>
         <result column="mark" jdbcType="DECIMAL" property="mark"/>
         <result column="discount" jdbcType="DECIMAL" property="discount"/>
         <result column="main_materials" jdbcType="VARCHAR" property="mainMaterials"/>
@@ -66,7 +68,7 @@
         where seller_id=1 and tfp.is_main = '1'
         and tf.is_delete = '0'
         <if test="keyword!=null">
-            food_name like #{keyword};
+            and food_name like #{keyword};
         </if>
     </select>
     <select id="selectInDetailByPrimaryKey" resultMap="WithPicsResultMap">

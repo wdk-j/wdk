@@ -47,6 +47,8 @@ public class TmsFoodCommentsServiceImpl implements TmsFoodCommentsService {
     public PageInfo<TmsFoodCommentDetail> pagedList(int pageNum, int pageSize, String keyword, Integer sellerId) {
         if (StrUtil.isEmpty(keyword)) {
             keyword = null;
+        }else {
+            keyword='%'+keyword+'%';
         }
         PageHelper.startPage(pageNum, pageSize);
         List<TmsFoodCommentDetail> list = tmsFoodCommentDetailDao.selectCommentsDetailed(null, keyword, sellerId);
@@ -74,5 +76,16 @@ public class TmsFoodCommentsServiceImpl implements TmsFoodCommentsService {
     @Override
     public int reply(Integer commId, String reply) {
         return tmsFoodCommentDetailDao.updateReplyByPrimaryKey(commId, reply);
+    }
+
+    /**
+     * 删除某条评论
+     *
+     * @param commId comment id
+     * @return code
+     */
+    @Override
+    public int delete(Integer commId) {
+        return tmsFoodCommentsMapper.deleteByPrimaryKey(commId);
     }
 }

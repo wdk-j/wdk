@@ -7,6 +7,7 @@
         <id column="food_id" jdbcType="INTEGER" property="foodId"/>
         <result column="food_name" jdbcType="VARCHAR" property="foodName"/>
         <result column="price" jdbcType="DECIMAL" property="price"/>
+        <result column="sales" jdbcType="INTEGER" property="sales"/>
         <result column="mark" jdbcType="DECIMAL" property="mark"/>
         <result column="discount" jdbcType="DECIMAL" property="discount"/>
         <result column="main_materials" jdbcType="VARCHAR" property="mainMaterials"/>
@@ -29,6 +30,7 @@
         <id column="food_id" jdbcType="INTEGER" property="foodId"/>
         <result column="food_name" jdbcType="VARCHAR" property="foodName"/>
         <result column="price" jdbcType="DECIMAL" property="price"/>
+        <result column="sales" jdbcType="INTEGER" property="sales"/>
         <result column="mark" jdbcType="DECIMAL" property="mark"/>
         <result column="discount" jdbcType="DECIMAL" property="discount"/>
         <result column="main_materials" jdbcType="VARCHAR" property="mainMaterials"/>
@@ -63,14 +65,14 @@
         (select count(*) from tms_food_comments tfc) * 100 as mark,
         (select sum(tod.amount) from tms_order o
         left join tms_order_detail tod on o.order_id = tod.od_id
-        where date_format(post_time, '%Y-%m-%d') >= date_format(DATE_SUB(curdate(), INTERVAL 1 MONTH), '%Y-%m-%d')
+        where date_format(post_time, '%Y-%m-%d') &gt;= date_format(DATE_SUB(curdate(), INTERVAL 1 MONTH), '%Y-%m-%d')
         and tod.food_id = tf.food_id)  as sales
         from tms_food tf
         left join tms_food_pics tfp on tf.food_id = tfp.food_id
         where seller_id=1 and tfp.is_main = '1'
         and tf.is_delete = '0'
         <if test="keyword!=null">
-            food_name like #{keyword};
+            and food_name like #{keyword}
         </if>
     </select>
     <select id="selectFoodWithPicsByPrimaryKey" resultMap="WithPicsResultMap">
@@ -82,7 +84,7 @@
         (select count(*) from tms_food_comments tfc) * 100 as mark,
         (select sum(tod.amount) from tms_order o
         left join tms_order_detail tod on o.order_id = tod.od_id
-        where date_format(post_time, '%Y-%m-%d') >= date_format(DATE_SUB(curdate(), INTERVAL 1 MONTH), '%Y-%m-%d')
+        where date_format(post_time, '%Y-%m-%d') &gt;= date_format(DATE_SUB(curdate(), INTERVAL 1 MONTH), '%Y-%m-%d')
         and tod.food_id = tf.food_id)  as sales
         from tms_food tf
         left join tms_food_pics tfp on tf.food_id = tfp.food_id

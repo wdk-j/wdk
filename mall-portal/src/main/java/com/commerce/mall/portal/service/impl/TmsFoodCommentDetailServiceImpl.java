@@ -47,11 +47,7 @@ public class TmsFoodCommentDetailServiceImpl implements TmsFoodCommentDetailServ
      */
     @Override
     public List<TmsFoodCommentDetail> listFoodCommentsInDetail(Integer foodId) {
-        List<TmsFoodCommentDetail> foodCommentDetails = tmsFoodCommentDetailDao.selectCommentsDetailed(foodId, null);
-        foodCommentDetails.forEach(fc -> {
-            fc.setPositiveRate(calculatePositiveRate(fc.getFoodId()));
-        });
-        return foodCommentDetails;
+        return tmsFoodCommentDetailDao.selectCommentsDetailed(foodId, null);
     }
 
     /**
@@ -84,17 +80,7 @@ public class TmsFoodCommentDetailServiceImpl implements TmsFoodCommentDetailServ
                 }
             }
         }
-        foodCommentDetails.forEach(fc -> {
-            fc.setPositiveRate(calculatePositiveRate(fc.getFoodId()));
-        });
         return new PageInfo<>(foodCommentDetails);
     }
 
-    private Double calculatePositiveRate(Integer foodId) {
-        int positive = tmsFoodCommentAboutDao.countNiceEqualTo("1", foodId);
-        int navigate = tmsFoodCommentAboutDao.countNiceEqualTo("0", foodId);
-        DecimalFormat df = new DecimalFormat("#.00");
-        String format = df.format(positive * 100 / (positive + navigate));
-        return Double.parseDouble(format);
-    }
 }
