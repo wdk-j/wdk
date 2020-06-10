@@ -15,6 +15,7 @@
         <result column="intro" jdbcType="VARCHAR" property="intro"/>
         <result column="packing_fee" jdbcType="DOUBLE" property="packingFee"/>
         <result column="seller_id" jdbcType="INTEGER" property="sellerId"/>
+        <result column="is_off" jdbcType="VARCHAR" property="isOff" />
         <result column="is_delete" jdbcType="VARCHAR" property="isDelete"/>
         <association property="sales" column="{foodId=food_id}"
                      select="com.commerce.mall.custom.dao.TmsOrderDetailAboutDao.countSales"/>

@@ -1,15 +1,22 @@
 package com.commerce.mall.dto;
 
-import com.commerce.mall.model.TmsFoodComments;
 import com.commerce.mall.model.TmsFoodCommentsPics;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
+import java.util.Date;
 import java.util.List;
 
 /**
  * @author jiangyong
  * @date 2020.06.04
  */
-public class TmsFoodCommentDetail extends TmsFoodComments {
+@Getter
+@Setter
+@ToString
+public class TmsFoodCommentDetail {
 
     private String nickname;
 
@@ -19,35 +26,23 @@ public class TmsFoodCommentDetail extends TmsFoodComments {
 
     private static final long serialVersionUID = -5850708712994633469L;
 
-    @Override
-    public String toString() {
-        return super.toString()+"TmsFoodCommentDetail{" +
-                "nickname='" + nickname + '\'' +
-                ", commPics=" + commPics +
-                '}';
-    }
+    private Integer commId;
 
-    public String getNickname() {
-        return nickname;
-    }
+    @ApiModelProperty(value = "是否好评，1为好评")
+    private String nice;
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
+    @ApiModelProperty(value = "评论时间")
+    private Date postTime;
 
-    public List<TmsFoodCommentsPics> getCommPics() {
-        return commPics;
-    }
+    @ApiModelProperty(value = "评论人ID")
+    private Integer userId;
 
-    public void setCommPics(List<TmsFoodCommentsPics> commPics) {
-        this.commPics = commPics;
-    }
+    @ApiModelProperty(value = "食物ID")
+    private Integer foodId;
 
-    public String getFoodName() {
-        return foodName;
-    }
+    @ApiModelProperty(value = "答复")
+    private String reply;
 
-    public void setFoodName(String foodName) {
-        this.foodName = foodName;
-    }
+    @ApiModelProperty(value = "评论内容")
+    private String content;
 }

@@ -295,66 +295,6 @@ public class TmsFoodExample {
             return (Criteria) this;
         }
 
-        public Criteria andMarkIsNull() {
-            addCriterion("mark is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andMarkIsNotNull() {
-            addCriterion("mark is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andMarkEqualTo(BigDecimal value) {
-            addCriterion("mark =", value, "mark");
-            return (Criteria) this;
-        }
-
-        public Criteria andMarkNotEqualTo(BigDecimal value) {
-            addCriterion("mark <>", value, "mark");
-            return (Criteria) this;
-        }
-
-        public Criteria andMarkGreaterThan(BigDecimal value) {
-            addCriterion("mark >", value, "mark");
-            return (Criteria) this;
-        }
-
-        public Criteria andMarkGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("mark >=", value, "mark");
-            return (Criteria) this;
-        }
-
-        public Criteria andMarkLessThan(BigDecimal value) {
-            addCriterion("mark <", value, "mark");
-            return (Criteria) this;
-        }
-
-        public Criteria andMarkLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("mark <=", value, "mark");
-            return (Criteria) this;
-        }
-
-        public Criteria andMarkIn(List<BigDecimal> values) {
-            addCriterion("mark in", values, "mark");
-            return (Criteria) this;
-        }
-
-        public Criteria andMarkNotIn(List<BigDecimal> values) {
-            addCriterion("mark not in", values, "mark");
-            return (Criteria) this;
-        }
-
-        public Criteria andMarkBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("mark between", value1, value2, "mark");
-            return (Criteria) this;
-        }
-
-        public Criteria andMarkNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("mark not between", value1, value2, "mark");
-            return (Criteria) this;
-        }
-
         public Criteria andDiscountIsNull() {
             addCriterion("discount is null");
             return (Criteria) this;
@@ -802,6 +742,76 @@ public class TmsFoodExample {
 
         public Criteria andSellerIdNotBetween(Integer value1, Integer value2) {
             addCriterion("seller_id not between", value1, value2, "sellerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsOffIsNull() {
+            addCriterion("is_off is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsOffIsNotNull() {
+            addCriterion("is_off is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsOffEqualTo(String value) {
+            addCriterion("is_off =", value, "isOff");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsOffNotEqualTo(String value) {
+            addCriterion("is_off <>", value, "isOff");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsOffGreaterThan(String value) {
+            addCriterion("is_off >", value, "isOff");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsOffGreaterThanOrEqualTo(String value) {
+            addCriterion("is_off >=", value, "isOff");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsOffLessThan(String value) {
+            addCriterion("is_off <", value, "isOff");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsOffLessThanOrEqualTo(String value) {
+            addCriterion("is_off <=", value, "isOff");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsOffLike(String value) {
+            addCriterion("is_off like", value, "isOff");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsOffNotLike(String value) {
+            addCriterion("is_off not like", value, "isOff");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsOffIn(List<String> values) {
+            addCriterion("is_off in", values, "isOff");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsOffNotIn(List<String> values) {
+            addCriterion("is_off not in", values, "isOff");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsOffBetween(String value1, String value2) {
+            addCriterion("is_off between", value1, value2, "isOff");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsOffNotBetween(String value1, String value2) {
+            addCriterion("is_off not between", value1, value2, "isOff");
             return (Criteria) this;
         }
 

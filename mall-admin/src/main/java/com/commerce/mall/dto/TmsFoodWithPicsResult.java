@@ -1,4 +1,4 @@
-package com.commerce.mall.custom.dto;
+package com.commerce.mall.dto;
 
 import com.commerce.mall.model.TmsFoodPics;
 import io.swagger.annotations.ApiModelProperty;
@@ -10,14 +10,17 @@ import java.math.BigDecimal;
 import java.util.List;
 
 /**
+ * 表示pc修改食品时的结果，
+ * 多图，有销量，
+ * 没有isOff和isDelete
+ *
  * @author jiangyong
  * @date 2020.06.04
  */
 @Getter
 @Setter
 @ToString
-@Deprecated
-public class TmsFoodWithPics{
+public class TmsFoodWithPicsResult {
 
     private static final long serialVersionUID = 5788675020116388439L;
 
@@ -25,7 +28,7 @@ public class TmsFoodWithPics{
 
     private Integer sales;
 
-    public TmsFoodWithPics() {
+    public TmsFoodWithPicsResult() {
     }
 
     private Integer foodId;

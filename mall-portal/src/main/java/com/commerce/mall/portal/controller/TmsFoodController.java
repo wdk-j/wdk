@@ -40,17 +40,6 @@ public class TmsFoodController {
         return CommonResult.success(food);
     }
 
-    @ApiOperation(value = "获取一家店的所有商品", notes = "what is notes?")
-    @GetMapping("/list")
-    @ResponseBody
-    public CommonResult<Object> getFoodsList(@RequestParam(required = false, defaultValue = "1") Integer sellerId) {
-        // 强制
-        sellerId = 1;
-        List<TmsFoodWithMainPic> homeFoodList = tmsFoodService.listHomeFoods(sellerId);
-        log.info("seller id: " + sellerId + homeFoodList.toString());
-        return CommonResult.success(homeFoodList);
-    }
-
     @ApiOperation("分页获取评论")
     @GetMapping("/comment/page")
     @ResponseBody

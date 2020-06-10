@@ -30,15 +30,6 @@ public class TmsFoodServiceImpl implements TmsFoodService {
     @Autowired
     private TmsFoodAboutDao tmsFoodAboutDao;
 
-    /**
-     * 添加食品
-     *
-     * @param tmsFood tms food
-     */
-    @Override
-    public void add(TmsFood tmsFood) {
-        tmsFoodMapper.insert(tmsFood);
-    }
 
     /**
      * 获取一个商品的详情
@@ -49,17 +40,6 @@ public class TmsFoodServiceImpl implements TmsFoodService {
     @Override
     public TmsFoodWithPics getFoodDetail(Integer foodId) {
         return tmsFoodAboutDao.selectFoodWithPicsByPrimaryKey(foodId);
-    }
-
-    /**
-     * 某卖家首页食品列表
-     *
-     * @param sellerId seller id
-     * @return list
-     */
-    @Override
-    public List<TmsFoodWithMainPic> listHomeFoods(Integer sellerId) {
-        return tmsFoodAboutDao.selectByKeyword(sellerId, null);
     }
 
     /**

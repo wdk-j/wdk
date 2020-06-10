@@ -57,12 +57,4 @@ public class TmsFoodPicsServiceImpl implements TmsFoodPicsService {
         }
         return null;
     }
-
-    /**
-     * @param tmsFoodPics tmsFoodPics
-     */
-    @Override
-    public void add(TmsFoodPics tmsFoodPics) {
-        tmsFoodPicsMapper.insert(tmsFoodPics);
-    }
 }

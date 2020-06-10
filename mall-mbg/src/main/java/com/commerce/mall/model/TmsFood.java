@@ -13,9 +13,6 @@ public class TmsFood implements Serializable {
     @ApiModelProperty(value = "价格")
     private BigDecimal price;
 
-    @ApiModelProperty(value = "评分")
-    private BigDecimal mark;
-
     @ApiModelProperty(value = "折扣")
     private BigDecimal discount;
 
@@ -37,7 +34,10 @@ public class TmsFood implements Serializable {
     @ApiModelProperty(value = "外键")
     private Integer sellerId;
 
-    @ApiModelProperty(value = "上下架 1为下架")
+    @ApiModelProperty(value = "是否上下架，1为下架")
+    private String isOff;
+
+    @ApiModelProperty(value = "是否删除 1为删除")
     private String isDelete;
 
     private static final long serialVersionUID = 1L;
@@ -64,14 +64,6 @@ public class TmsFood implements Serializable {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
-    }
-
-    public BigDecimal getMark() {
-        return mark;
-    }
-
-    public void setMark(BigDecimal mark) {
-        this.mark = mark;
     }
 
     public BigDecimal getDiscount() {
@@ -130,6 +122,14 @@ public class TmsFood implements Serializable {
         this.sellerId = sellerId;
     }
 
+    public String getIsOff() {
+        return isOff;
+    }
+
+    public void setIsOff(String isOff) {
+        this.isOff = isOff;
+    }
+
     public String getIsDelete() {
         return isDelete;
     }
@@ -147,7 +147,6 @@ public class TmsFood implements Serializable {
         sb.append(", foodId=").append(foodId);
         sb.append(", foodName=").append(foodName);
         sb.append(", price=").append(price);
-        sb.append(", mark=").append(mark);
         sb.append(", discount=").append(discount);
         sb.append(", mainMaterials=").append(mainMaterials);
         sb.append(", hasMeat=").append(hasMeat);
@@ -155,6 +154,7 @@ public class TmsFood implements Serializable {
         sb.append(", intro=").append(intro);
         sb.append(", packingFee=").append(packingFee);
         sb.append(", sellerId=").append(sellerId);
+        sb.append(", isOff=").append(isOff);
         sb.append(", isDelete=").append(isDelete);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

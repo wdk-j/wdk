@@ -2,25 +2,8 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.commerce.mall.portal.dao.TmsFoodDetailDao">
-    <resultMap id="BaseResultMap" type="com.commerce.mall.portal.domain.TmsFoodWithMainPic">
-        <id column="food_id" jdbcType="INTEGER" property="foodId"/>
-        <result column="food_name" jdbcType="VARCHAR" property="foodName"/>
-        <result column="price" jdbcType="DECIMAL" property="price"/>
-        <result column="mark" jdbcType="DECIMAL" property="mark"/>
-        <result column="discount" jdbcType="DECIMAL" property="discount"/>
-        <result column="packing_fee" jdbcType="DOUBLE" property="packingFee"/>
-        <result column="seller_id" jdbcType="INTEGER" property="sellerId"/>
-        <result column="is_off" jdbcType="VARCHAR" property="isOff"/>
-        <association property="mainPic" javaType="com.commerce.mall.model.TmsFoodPics">
-            <id column="pic_id" jdbcType="INTEGER" property="picId"/>
-            <result column="pic_url" jdbcType="VARCHAR" property="picUrl"/>
-            <result column="pic_desc" jdbcType="VARCHAR" property="picDesc"/>
-            <result column="is_main" jdbcType="VARCHAR" property="isMain"/>
-            <result column="food_id" jdbcType="INTEGER" property="foodId"/>
-        </association>
-    </resultMap>
-    <resultMap id="WithPicsResultMap" type="com.commerce.mall.portal.domain.TmsFoodDetail">
+<mapper namespace="com.commerce.mall.dao.TmsFoodDao">
+    <resultMap id="BaseResultMap" type="com.commerce.mall.dto.TmsFoodWithMainPic">
         <id column="food_id" jdbcType="INTEGER" property="foodId"/>
         <result column="food_name" jdbcType="VARCHAR" property="foodName"/>
         <result column="price" jdbcType="DECIMAL" property="price"/>
@@ -33,7 +16,29 @@
         <result column="packing_fee" jdbcType="DOUBLE" property="packingFee"/>
         <result column="seller_id" jdbcType="INTEGER" property="sellerId"/>
         <result column="is_off" jdbcType="VARCHAR" property="isOff"/>
-        <!--        <result column="is_delete" jdbcType="VARCHAR" property="isDelete"/>-->
+        <result column="is_delete" jdbcType="VARCHAR" property="isDelete"/>
+        <association property="mainPic" javaType="com.commerce.mall.model.TmsFoodPics">
+            <id column="pic_id" jdbcType="INTEGER" property="picId"/>
+            <result column="pic_url" jdbcType="VARCHAR" property="picUrl"/>
+            <result column="pic_desc" jdbcType="VARCHAR" property="picDesc"/>
+            <result column="is_main" jdbcType="VARCHAR" property="isMain"/>
+            <result column="food_id" jdbcType="INTEGER" property="foodId"/>
+        </association>
+    </resultMap>
+    <resultMap id="WithPicsResultMap" type="com.commerce.mall.dto.TmsFoodWithPicsResult">
+        <id column="food_id" jdbcType="INTEGER" property="foodId"/>
+        <result column="food_name" jdbcType="VARCHAR" property="foodName"/>
+        <result column="price" jdbcType="DECIMAL" property="price"/>
+        <result column="mark" jdbcType="DECIMAL" property="mark"/>
+        <result column="discount" jdbcType="DECIMAL" property="discount"/>
+        <result column="main_materials" jdbcType="VARCHAR" property="mainMaterials"/>
+        <result column="has_meat" jdbcType="VARCHAR" property="hasMeat"/>
+        <result column="weight" jdbcType="DOUBLE" property="weight"/>
+        <result column="intro" jdbcType="VARCHAR" property="intro"/>
+        <result column="packing_fee" jdbcType="DOUBLE" property="packingFee"/>
+        <result column="seller_id" jdbcType="INTEGER" property="sellerId"/>
+<!--        <result column="is_off" jdbcType="VARCHAR" property="isOff"/>-->
+<!--        <result column="is_delete" jdbcType="VARCHAR" property="isDelete"/>-->
         <collection property="pics" javaType="arrayList" ofType="com.commerce.mall.model.TmsFoodPics">
             <id column="pic_id" jdbcType="INTEGER" property="picId"/>
             <result column="pic_url" jdbcType="VARCHAR" property="picUrl"/>
@@ -45,22 +50,21 @@
 
     <sql id="Base_Column_List">
         food_id, food_name, price, mark, discount, main_materials, has_meat, weight, intro,
-        packing_fee, seller_id, is_off, is_delete
+    packing_fee, seller_id, is_off, is_delete
     </sql>
     <sql id="Base_Column_List_Food_Pics">
         pic_id, pic_url, pic_desc, is_main, food_id
     </sql>
     <select id="selectByKeyword" resultMap="BaseResultMap">
-        select tf.food_id, food_name, price, discount,
-        packing_fee, seller_id, is_off,
+        select tf.food_id, food_name, price, discount, main_materials, has_meat, weight, intro,
+        packing_fee, seller_id, is_off,is_delete,
         pic_id, pic_url, pic_desc, is_main,
-        (select count(*) from tms_food_comments tfc where tfc.nice = '1' or (date_format(post_time, '%Y-%m-%d') &lt;=
-        date_format(DATE_SUB(curdate(), INTERVAL 7 DAY ), '%Y-%m-%d'))) /
+        (select count(*) from tms_food_comments tfc where tfc.nice = '1' or (date_format(post_time, '%Y-%m-%d') &lt;= date_format(DATE_SUB(curdate(), INTERVAL 7 DAY ), '%Y-%m-%d'))) /
         (select count(*) from tms_food_comments tfc) * 100 as mark,
         (select sum(tod.amount) from tms_order o
         left join tms_order_detail tod on o.order_id = tod.od_id
         where date_format(post_time, '%Y-%m-%d') >= date_format(DATE_SUB(curdate(), INTERVAL 1 MONTH), '%Y-%m-%d')
-        and tod.food_id = tf.food_id) as sales
+        and tod.food_id = tf.food_id)  as sales
         from tms_food tf
         left join tms_food_pics tfp on tf.food_id = tfp.food_id
         where seller_id=1 and tfp.is_main = '1'
@@ -69,25 +73,45 @@
             food_name like #{keyword};
         </if>
     </select>
-    <select id="selectInDetailByPrimaryKey" resultMap="WithPicsResultMap">
+    <select id="selectFoodWithPicsByPrimaryKey" resultMap="WithPicsResultMap">
         select tf.food_id, food_name, price, discount, main_materials, has_meat, weight, intro,
-               packing_fee, seller_id, is_off,
+               packing_fee, seller_id,
                pic_id, pic_url, pic_desc, is_main,
-               (select count(*)
-                from tms_food_comments tfc
-                where tfc.nice = '1'
-                   or date_format(post_time, '%Y-%m-%d') &lt;=
-                      date_format(DATE_SUB(curdate(), INTERVAL 7 DAY), '%Y-%m-%d')) /
-               (select count(*) from tms_food_comments tfc) * 100 as mark,
-               (select sum(tod.amount)
-                from tms_order o
-                         left join tms_order_detail tod on o.order_id = tod.od_id
-                where date_format(post_time, '%Y-%m-%d') >=
-                      date_format(DATE_SUB(curdate(), INTERVAL 1 MONTH), '%Y-%m-%d')
-                  and tod.food_id = tf.food_id)                   as sales
+        (select count(*) from tms_food_comments tfc where tfc.nice = '1' or
+        date_format(post_time, '%Y-%m-%d') &lt;= date_format(DATE_SUB(curdate(), INTERVAL 7 DAY ), '%Y-%m-%d')) /
+        (select count(*) from tms_food_comments tfc) * 100 as mark,
+        (select sum(tod.amount) from tms_order o
+        left join tms_order_detail tod on o.order_id = tod.od_id
+        where date_format(post_time, '%Y-%m-%d') >= date_format(DATE_SUB(curdate(), INTERVAL 1 MONTH), '%Y-%m-%d')
+        and tod.food_id = tf.food_id)  as sales
         from tms_food tf
-                 left join tms_food_pics tfp on tf.food_id = tfp.food_id
-        where tf.food_id = #{foodId}
-          and is_delete = '0'
+        left join tms_food_pics tfp on tf.food_id = tfp.food_id
+        where tf.food_id=#{foodId}  and is_delete='0'
     </select>
+    <update id="updateIsDelete">
+        update tms_food
+        set is_delete=#{isDelete}
+        where food_id = #{foodId}
+    </update>
+    <update id="updateIsDeleteInBatch">
+        update tms_food
+        set is_delete=#{isDelete}
+        where food_id in
+        <foreach collection="foodIds" item="id" index="idx" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </update>
+    <update id="updateIsOff">
+        update tms_food
+        set is_off=#{isOff}
+        where food_id = #{foodId}
+    </update>
+    <update id="updateIsOffInBatch">
+        update tms_food
+        set is_off=#{isOff}
+        where food_id in
+        <foreach collection="foodIds" item="id" index="idx" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </update>
 </mapper>

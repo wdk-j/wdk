@@ -9,7 +9,6 @@ import java.util.List;
  * @author jiangyong
  * @date 2020.06.04
  */
-@Deprecated
 public interface TmsFoodAttributeDao {
 
     /**

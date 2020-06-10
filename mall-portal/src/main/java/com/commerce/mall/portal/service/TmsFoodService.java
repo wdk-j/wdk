@@ -17,27 +17,12 @@ import java.util.List;
 public interface TmsFoodService {
 
     /**
-     * 添加食品
-     *
-     * @param tmsFood tms food
-     */
-    void add(TmsFood tmsFood);
-
-    /**
      * 获取一个商品的详情
      *
      * @param foodId food id
      * @return food in detail
      */
     TmsFoodWithPics getFoodDetail(Integer foodId);
-
-    /**
-     * 某卖家首页食品列表
-     *
-     * @param sellerId seller id
-     * @return list
-     */
-    List<TmsFoodWithMainPic> listHomeFoods(Integer sellerId);
 
     /**
      * 分页查首页食品
