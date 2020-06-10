@@ -12,7 +12,7 @@
         WHERE
         delete_status = 0
         <if test="queryParam.orderSn!=null and queryParam.orderSn!=''">
-            AND order_sn = #{queryParam.orderSn}
+            AND order_sn LIKE concat("%",#{queryParam.orderSn},"%")
         </if>
         <if test="queryParam.status!=null">
             AND `status` = #{queryParam.status}
