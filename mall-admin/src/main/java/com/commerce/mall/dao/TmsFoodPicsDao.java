@@ -18,4 +18,12 @@ public interface TmsFoodPicsDao {
      * @return effected rows
      */
     int insertSelectiveInBatch(@Param("pics") List<TmsFoodPics> pics);
+
+    /**
+     * 查找一个商品的主图
+     *
+     * @param foodId food id
+     * @return main pic
+     */
+    TmsFoodPics selectMainPic(Integer foodId);
 }

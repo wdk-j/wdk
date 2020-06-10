@@ -1,11 +1,10 @@
 package com.commerce.mall.service.impl;
 
 import cn.hutool.core.util.StrUtil;
-import com.commerce.mall.common.utils.FileUtil;
-import com.commerce.mall.custom.dao.TmsFoodAboutDao;
-import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
-import com.commerce.mall.custom.dto.TmsFoodWithPics;
+import com.commerce.mall.dao.TmsFoodDao;
 import com.commerce.mall.dao.TmsFoodPicsDao;
+import com.commerce.mall.dto.TmsFoodWithMainPic;
+import com.commerce.mall.dto.TmsFoodWithPicsResult;
 import com.commerce.mall.mapper.TmsFoodMapper;
 import com.commerce.mall.mapper.TmsFoodPicsMapper;
 import com.commerce.mall.model.TmsFood;
@@ -19,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,28 +36,41 @@ public class TmsFoodServiceImpl implements TmsFoodService {
     private TmsFoodPicsMapper tmsFoodPicsMapper;
 
     @Autowired
-    private TmsFoodAboutDao tmsFoodAboutDao;
+    private TmsFoodPicsDao tmsFoodPicsDao;
 
     @Autowired
-    private TmsFoodPicsDao tmsFoodPicsDao;
+    private TmsFoodDao tmsFoodDao;
+
 
     /**
      * 添加食品
      *
-     * @param pics    pics
-     * @param tmsFood tms food
+     * @param tmsFoodWithPicsResult    pics
      * @return code
      */
     @Transactional(rollbackFor = {Exception.class})
     @Override
-    public int add(List<TmsFoodPics> pics, TmsFood tmsFood) {
+    public int add(TmsFoodWithPicsResult tmsFoodWithPicsResult) {
+
+        TmsFood tmsFood = new TmsFood();
+        BeanUtils.copyProperties(tmsFoodWithPicsResult, tmsFood);
+
+        // already default
+        //tmsFood.setIsDelete("0");
+        //tmsFood.setIsOff("0");
         int r = tmsFoodMapper.insertSelective(tmsFood);
         Integer foodId = tmsFood.getFoodId();
-        pics.get(0).setIsMain("1");
-        pics.forEach(pic -> {
-            pic.setFoodId(foodId);
+
+        List<TmsFoodPics> pics = tmsFoodWithPicsResult.getPics();
+        pics.forEach(p->{
+            p.setFoodId(foodId);
         });
-        tmsFoodPicsDao.insertSelectiveInBatch(pics);
+        pics.get(0).setIsMain("1");
+
+        for (TmsFoodPics pic : pics) {
+            tmsFoodPicsMapper.insertSelective(pic);
+        }
+
         return r;
     }
 
@@ -91,7 +102,7 @@ public class TmsFoodServiceImpl implements TmsFoodService {
             keyword = null;
         }
         PageHelper.startPage(pageNum, pageSize);
-        List<TmsFoodWithMainPic> foods = tmsFoodAboutDao.selectByKeyword(sellerId, keyword);
+        List<TmsFoodWithMainPic> foods = tmsFoodDao.selectByKeyword(sellerId, keyword);
         return new PageInfo<>(foods);
     }
 
@@ -102,8 +113,8 @@ public class TmsFoodServiceImpl implements TmsFoodService {
      * @return food
      */
     @Override
-    public TmsFoodWithPics get(Integer foodId) {
-        return tmsFoodAboutDao.selectFoodWithPicsByPrimaryKey(foodId);
+    public TmsFoodWithPicsResult get(Integer foodId) {
+        return tmsFoodDao.selectFoodWithPicsByPrimaryKey(foodId);
     }
 
     /**
@@ -115,7 +126,7 @@ public class TmsFoodServiceImpl implements TmsFoodService {
      */
     @Override
     public int updateAttrIsDelete(String isDelete, Integer foodId) {
-        return tmsFoodAboutDao.updateIsDelete(isDelete, foodId);
+        return tmsFoodDao.updateIsDelete(isDelete, foodId);
     }
 
     /**
@@ -127,22 +138,45 @@ public class TmsFoodServiceImpl implements TmsFoodService {
      */
     @Override
     public int updateAttrIsDeleteInBatch(String isDelete, List<Integer> foodIds) {
+        return tmsFoodDao.updateIsDeleteInBatch(isDelete, foodIds);
+    }
 
-        return tmsFoodAboutDao.updateIsDeleteInBatch(isDelete, foodIds);
+    /**
+     * 更新isOff字段
+     *
+     * @param isOff  is off
+     * @param foodId food id
+     * @return code
+     */
+    @Override
+    public int updateAttrIsOff(String isOff, Integer foodId) {
+        return tmsFoodDao.updateIsOff(isOff, foodId);
+    }
+
+    /**
+     * 批量更新isOff字段
+     *
+     * @param isOff   is off
+     * @param foodIds food id
+     * @return code
+     */
+    @Override
+    public int updateAttrIsOffInBatch(String isOff, List<Integer> foodIds) {
+        return tmsFoodDao.updateIsOffInBatch(isOff, foodIds);
     }
 
     /**
      * 更新食品
      *
-     * @param tmsFoodWithPics food
+     * @param tmsFoodWithPicsResult food
      * @return code status
      */
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public int update(TmsFoodWithPics tmsFoodWithPics) {
+    public int update(TmsFoodWithPicsResult tmsFoodWithPicsResult) {
         TmsFood tmsFood = new TmsFood();
-        BeanUtils.copyProperties(tmsFoodWithPics, tmsFood);
-        List<TmsFoodPics> pics = tmsFoodWithPics.getPics();
+        BeanUtils.copyProperties(tmsFoodWithPicsResult, tmsFood);
+        List<TmsFoodPics> pics = tmsFoodWithPicsResult.getPics();
         boolean hasMainPic = false;
         log.info(pics.toString());
         Integer foodId = pics.get(0).getFoodId();
@@ -152,7 +186,7 @@ public class TmsFoodServiceImpl implements TmsFoodService {
         for (TmsFoodPics pic : pics) {
             if (StrUtil.isEmpty(pic.getPicUrl())) {
                 tmsFoodPicsMapper.deleteByPrimaryKey(pic.getPicId());
-                mainPic = tmsFoodPicsMapper.selectMainPic(foodId);
+                mainPic = tmsFoodPicsDao.selectMainPic(foodId);
                 hasMainPic = mainPic != null;
             } else if (pic.getPicId() != null) {
                 if (!hasMainPic) {

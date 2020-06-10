@@ -10,12 +10,13 @@
         <result column="food_id" jdbcType="INTEGER" property="foodId"/>
         <result column="food_name" jdbcType="VARCHAR" property="foodName"/>
         <result column="reply" jdbcType="VARCHAR" property="reply"/>
+        <result column="nice" jdbcType="VARCHAR" property="nice"/>
         <result column="nickname" jdbcType="VARCHAR" property="nickname"/>
         <collection property="commPics" ofType="com.commerce.mall.model.TmsFoodCommentsPics">
-            <id column="pic_id" jdbcType="INTEGER" property="picId" />
-            <result column="pic_url" jdbcType="VARCHAR" property="picUrl" />
-            <result column="pic_desc" jdbcType="VARCHAR" property="picDesc" />
-            <result column="comm_id" jdbcType="INTEGER" property="commId" />
+            <id column="pic_id" jdbcType="INTEGER" property="picId"/>
+            <result column="pic_url" jdbcType="VARCHAR" property="picUrl"/>
+            <result column="pic_desc" jdbcType="VARCHAR" property="picDesc"/>
+            <result column="comm_id" jdbcType="INTEGER" property="commId"/>
         </collection>
     </resultMap>
     <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.commerce.mall.dto.TmsFoodCommentDetail">
@@ -37,9 +38,11 @@
     </update>
     <select id="selectCommentsDetailed" resultMap="ResultMapWithBLOBs">
         select
-        comm_id, content, post_time, user_id, fc.food_id, reply,f.food_name,f.seller_id,m.nickname
+        comm_id,nice, content, post_time, user_id, fc.food_id, reply,f.food_name,m.nickname,
+        pic_id, pic_url, pic_desc,
         from tms_food_comments fc
         left join tms_food f on fc.food_id=f.food_id
+        left join tms_food_comments_pics fcp on fc.comm_id=fcp.comm_id
         left join ums_member m on fc.user_id=m.id
         <where>
             and f.seller_id=#{sellerId}
@@ -47,16 +50,20 @@
                 and fc.food_id=#{foodId}
             </if>
             <if test="keyword!=null">
-                <bind name="keyword" value="'%'+keyword+'%'"/>
                 and f.food_name like #{keyword}
             </if>
         </where>
         order by post_time desc
     </select>
     <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs">
-        select
-        <include refid="Base_Column_List"/>, m.nickname
-        from tms_food_comments f left join ums_member m on f.user_id=m.id
-        where comm_id=#{commId}
+        select comm_id,
+               content,
+               post_time,
+               user_id,
+               reply,
+               m.nickname
+        from tms_food_comments f
+                 left join ums_member m on f.user_id = m.id
+        where comm_id = #{commId}
     </select>
 </mapper>

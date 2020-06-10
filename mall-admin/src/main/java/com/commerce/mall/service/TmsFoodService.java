@@ -1,8 +1,8 @@
 package com.commerce.mall.service;
 
 
-import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
-import com.commerce.mall.custom.dto.TmsFoodWithPics;
+import com.commerce.mall.dto.TmsFoodWithMainPic;
+import com.commerce.mall.dto.TmsFoodWithPicsResult;
 import com.commerce.mall.model.TmsFood;
 import com.commerce.mall.model.TmsFoodPics;
 import com.github.pagehelper.PageInfo;
@@ -27,7 +27,7 @@ public interface TmsFoodService {
      * @param keyword  keyword
      * @return a page of food
      */
-    PageInfo<TmsFoodWithMainPic> listFoods(int pageNum, int pageSize,Integer sellerId, String keyword);
+    PageInfo<TmsFoodWithMainPic> listFoods(int pageNum, int pageSize, Integer sellerId, String keyword);
 
     /**
      * 获取一个商品
@@ -35,7 +35,7 @@ public interface TmsFoodService {
      * @param foodId foodId
      * @return food
      */
-    TmsFoodWithPics get(Integer foodId);
+    TmsFoodWithPicsResult get(Integer foodId);
 
     /**
      * 更新isDelete字段
@@ -50,28 +50,44 @@ public interface TmsFoodService {
      * 批量更新isDelete字段
      *
      * @param isDelete is delete
-     * @param foodIds   food id
+     * @param foodIds  food id
      * @return code
      */
     int updateAttrIsDeleteInBatch(String isDelete, List<Integer> foodIds);
 
     /**
+     * 更新isOff字段
+     *
+     * @param isOff is off
+     * @param foodId   food id
+     * @return code
+     */
+    int updateAttrIsOff(String isOff, Integer foodId);
+
+    /**
+     * 批量更新isOff字段
+     *
+     * @param isOff is off
+     * @param foodIds  food id
+     * @return code
+     */
+    int updateAttrIsOffInBatch(String isOff, List<Integer> foodIds);
+
+    /**
      * 更新食品
      *
-     * @param tmsFoodWithPics food
+     * @param tmsFoodWithPicsResult food
      * @return code status
      */
-    int update(TmsFoodWithPics tmsFoodWithPics);
+    int update(TmsFoodWithPicsResult tmsFoodWithPicsResult);
 
     /**
      * 添加食品
      *
-     *
-     * @param pics images
-     * @param tmsFood food
+     * @param tmsFoodWithPicsResult tmsFoodWithPicsResult
      * @return code
      */
-    int add(List<TmsFoodPics> pics, TmsFood tmsFood);
+    int add(TmsFoodWithPicsResult tmsFoodWithPicsResult);
 
     /**
      * 删除商品

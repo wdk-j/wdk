@@ -24,21 +24,6 @@ public interface TmsFoodPicsMapper {
 
     TmsFoodPics selectByPrimaryKey(Integer picId);
 
-    /**
-     * 查找一个商品的主图
-     *
-     * @param foodId food id
-     * @return main pic
-     */
-    TmsFoodPics selectMainPic(Integer foodId);
-
-    /**
-     * 查一个商品的所有图
-     * @param foodId food id
-     * @return all pictures
-     */
-    List<TmsFoodPics> selectAllPics(Integer foodId);
-
     int updateByExampleSelective(@Param("record") TmsFoodPics record, @Param("example") TmsFoodPicsExample example);
 
     int updateByExample(@Param("record") TmsFoodPics record, @Param("example") TmsFoodPicsExample example);

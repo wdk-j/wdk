@@ -1,6 +1,6 @@
 package com.commerce.mall.portal.dao;
 
-import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
+import com.commerce.mall.portal.domain.TmsFoodWithMainPic;
 import com.commerce.mall.portal.domain.TmsFoodDetail;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,5 +27,5 @@ public interface TmsFoodDetailDao {
      * @param foodId foodId
      * @return food
      */
-    TmsFoodWithMainPic selectInDetailByPrimaryKey(Integer foodId);
+    TmsFoodDetail selectInDetailByPrimaryKey(Integer foodId);
 }

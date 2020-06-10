@@ -89,18 +89,6 @@
     from tms_food_pics
     where pic_id = #{picId,jdbcType=INTEGER}
   </select>
-  <select id="selectMainPic" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from tms_food_pics
-    where food_id = #{foodId,jdbcType=INTEGER} and is_main='1'
-  </select>
-  <select id="selectAllPics" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from tms_food_pics
-    where food_id = #{foodId,jdbcType=INTEGER}
-  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from tms_food_pics
     where pic_id = #{picId,jdbcType=INTEGER}

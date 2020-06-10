@@ -10,7 +10,15 @@
         <result column="is_main" jdbcType="VARCHAR" property="isMain"/>
         <result column="food_id" jdbcType="INTEGER" property="foodId"/>
     </resultMap>
-
+    <sql id="Base_Column_List">
+        pic_id, pic_url, pic_desc, is_main, food_id
+    </sql>
+    <select id="selectMainPic" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tms_food_pics
+        where food_id = #{foodId,jdbcType=INTEGER} and is_main='1'
+    </select>
     <insert id="insertSelectiveInBatch" parameterType="java.util.List">
         <!-- <selectKey keyProperty="picId" order="AFTER" resultType="java.lang.Integer"> -->
         <!-- SELECT LAST_INSERT_ID() -->

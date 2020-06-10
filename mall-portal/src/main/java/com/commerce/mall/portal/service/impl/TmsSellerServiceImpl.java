@@ -3,7 +3,6 @@ package com.commerce.mall.portal.service.impl;
 
 import com.commerce.mall.custom.dao.TmsFoodAboutDao;
 import com.commerce.mall.mapper.TmsSellerMapper;
-import com.commerce.mall.portal.dao.TmsFoodInHomeDao;
 import com.commerce.mall.custom.dto.TmsFoodWithMainPic;
 import com.commerce.mall.portal.service.TmsSellerService;
 import org.slf4j.Logger;

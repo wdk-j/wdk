@@ -1,6 +1,5 @@
 package com.commerce.mall.portal.domain;
 
-import com.commerce.mall.model.TmsFood;
 import com.commerce.mall.model.TmsFoodPics;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
