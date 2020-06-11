@@ -30,9 +30,6 @@ public class TmsFoodCommentsServiceImpl implements TmsFoodCommentsService {
     @Autowired
     private TmsFoodCommentDetailDao tmsFoodCommentDetailDao;
 
-    @Autowired
-    private TmsFoodCommentAboutDao tmsFoodCommentAboutDao;
-
     /**
      * 分页查询
      * 关键查询

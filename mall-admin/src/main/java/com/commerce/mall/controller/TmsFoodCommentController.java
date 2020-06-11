@@ -56,7 +56,7 @@ public class TmsFoodCommentController {
     }
 
     @ApiOperation("删除某条评论")
-    @PostMapping("/{commId}")
+    @PostMapping("/delete/{commId}")
     @ResponseBody
     public CommonResult<Object> deleteComment(@PathVariable("commId") Integer commId) {
         int i = tmsFoodCommentsService.delete(commId);

@@ -38,8 +38,8 @@
     </update>
     <select id="selectCommentsDetailed" resultMap="ResultMapWithBLOBs">
         select
-        comm_id,nice, content, post_time, user_id, fc.food_id, reply,f.food_name,m.nickname,
-        pic_id, pic_url, pic_desc,
+        fc.comm_id,nice, content, post_time, user_id, fc.food_id, reply,f.food_name,m.nickname,
+        pic_id, pic_url, pic_desc
         from tms_food_comments fc
         left join tms_food f on fc.food_id=f.food_id
         left join tms_food_comments_pics fcp on fc.comm_id=fcp.comm_id

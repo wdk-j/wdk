@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.commerce.mall.custom.dao.TmsAdvertisingAboutDao">
+<mapper namespace="com.commerce.mall.dao.TmsAdvertisingAboutDao">
     <update id="updateIsDelete">
         update tms_advertising
         set is_delete=#{isDelete}
@@ -15,5 +15,10 @@
         <foreach collection="ids" item="id" index="idx" open="(" separator="," close=")">
             #{id}
         </foreach>
+    </update>
+    <update id="updateSort">
+        update tms_advertising
+        set sort=#{sort}
+        where id = #{id}
     </update>
 </mapper>

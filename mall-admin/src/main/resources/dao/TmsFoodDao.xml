@@ -39,8 +39,8 @@
         <result column="intro" jdbcType="VARCHAR" property="intro"/>
         <result column="packing_fee" jdbcType="DOUBLE" property="packingFee"/>
         <result column="seller_id" jdbcType="INTEGER" property="sellerId"/>
-<!--        <result column="is_off" jdbcType="VARCHAR" property="isOff"/>-->
-<!--        <result column="is_delete" jdbcType="VARCHAR" property="isDelete"/>-->
+        <!--        <result column="is_off" jdbcType="VARCHAR" property="isOff"/>-->
+        <!--        <result column="is_delete" jdbcType="VARCHAR" property="isDelete"/>-->
         <collection property="pics" javaType="arrayList" ofType="com.commerce.mall.model.TmsFoodPics">
             <id column="pic_id" jdbcType="INTEGER" property="picId"/>
             <result column="pic_url" jdbcType="VARCHAR" property="picUrl"/>
@@ -61,12 +61,13 @@
         select tf.food_id, food_name, price, discount, main_materials, has_meat, weight, intro,
         packing_fee, seller_id, is_off,is_delete,
         pic_id, pic_url, pic_desc, is_main,
-        (select count(*) from tms_food_comments tfc where tfc.nice = '1' or (date_format(post_time, '%Y-%m-%d') &lt;= date_format(DATE_SUB(curdate(), INTERVAL 7 DAY ), '%Y-%m-%d'))) /
+        (select count(*) from tms_food_comments tfc where tfc.nice = '1' or (date_format(post_time, '%Y-%m-%d') &lt;=
+        date_format(DATE_SUB(curdate(), INTERVAL 7 DAY ), '%Y-%m-%d'))) /
         (select count(*) from tms_food_comments tfc) * 100 as mark,
         (select sum(tod.amount) from tms_order o
         left join tms_order_detail tod on o.order_id = tod.od_id
         where date_format(post_time, '%Y-%m-%d') &gt;= date_format(DATE_SUB(curdate(), INTERVAL 1 MONTH), '%Y-%m-%d')
-        and tod.food_id = tf.food_id)  as sales
+        and tod.food_id = tf.food_id) as sales
         from tms_food tf
         left join tms_food_pics tfp on tf.food_id = tfp.food_id
         where seller_id=1 and tfp.is_main = '1'
@@ -76,19 +77,36 @@
         </if>
     </select>
     <select id="selectFoodWithPicsByPrimaryKey" resultMap="WithPicsResultMap">
-        select tf.food_id, food_name, price, discount, main_materials, has_meat, weight, intro,
-               packing_fee, seller_id,
-               pic_id, pic_url, pic_desc, is_main,
-        (select count(*) from tms_food_comments tfc where tfc.nice = '1' or
-        date_format(post_time, '%Y-%m-%d') &lt;= date_format(DATE_SUB(curdate(), INTERVAL 7 DAY ), '%Y-%m-%d')) /
-        (select count(*) from tms_food_comments tfc) * 100 as mark,
-        (select sum(tod.amount) from tms_order o
-        left join tms_order_detail tod on o.order_id = tod.od_id
-        where date_format(post_time, '%Y-%m-%d') &gt;= date_format(DATE_SUB(curdate(), INTERVAL 1 MONTH), '%Y-%m-%d')
-        and tod.food_id = tf.food_id)  as sales
+        select tf.food_id,
+               food_name,
+               price,
+               discount,
+               main_materials,
+               has_meat,
+               weight,
+               intro,
+               packing_fee,
+               seller_id,
+               pic_id,
+               pic_url,
+               pic_desc,
+               is_main,
+               (select count(*)
+                from tms_food_comments tfc
+                where tfc.nice = '1'
+                   or date_format(post_time, '%Y-%m-%d') &lt;=
+                      date_format(DATE_SUB(curdate(), INTERVAL 7 DAY), '%Y-%m-%d')) /
+               (select count(*) from tms_food_comments tfc) * 100 as mark,
+               (select sum(tod.amount)
+                from tms_order o
+                         left join tms_order_detail tod on o.order_id = tod.od_id
+                where date_format(post_time, '%Y-%m-%d') &gt;=
+                      date_format(DATE_SUB(curdate(), INTERVAL 1 MONTH), '%Y-%m-%d')
+                  and tod.food_id = tf.food_id) as sales
         from tms_food tf
-        left join tms_food_pics tfp on tf.food_id = tfp.food_id
-        where tf.food_id=#{foodId}  and is_delete='0'
+                 left join tms_food_pics tfp on tf.food_id = tfp.food_id
+        where tf.food_id = #{foodId}
+          and is_delete = '0'
     </select>
     <update id="updateIsDelete">
         update tms_food

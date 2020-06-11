@@ -2,13 +2,10 @@ package com.commerce.mall.mapper;
 
 import com.commerce.mall.model.TmsAdvertising;
 import com.commerce.mall.model.TmsAdvertisingExample;
-
 import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
 
 public interface TmsAdvertisingMapper {
-
     long countByExample(TmsAdvertisingExample example);
 
     int deleteByExample(TmsAdvertisingExample example);

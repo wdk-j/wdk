@@ -1,12 +1,9 @@
 package com.commerce.mall.portal.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
-import com.commerce.mall.custom.dao.TmsFoodCommentAboutDao;
 import com.commerce.mall.mapper.TmsFoodCommentsPicsMapper;
-import com.commerce.mall.mapper.TmsFoodPicsMapper;
 import com.commerce.mall.model.TmsFoodCommentsPics;
 import com.commerce.mall.model.TmsFoodCommentsPicsExample;
-import com.commerce.mall.model.TmsFoodPics;
 import com.commerce.mall.portal.dao.TmsFoodCommentDetailDao;
 import com.commerce.mall.portal.domain.TmsFoodCommentDetail;
 import com.commerce.mall.portal.service.TmsFoodCommentDetailService;
@@ -17,7 +14,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.List;
 
@@ -32,9 +28,6 @@ public class TmsFoodCommentDetailServiceImpl implements TmsFoodCommentDetailServ
 
     @Autowired
     private TmsFoodCommentDetailDao tmsFoodCommentDetailDao;
-
-    @Autowired
-    private TmsFoodCommentAboutDao tmsFoodCommentAboutDao;
 
     @Autowired
     private TmsFoodCommentsPicsMapper tmsFoodCommentsPicsMapper;

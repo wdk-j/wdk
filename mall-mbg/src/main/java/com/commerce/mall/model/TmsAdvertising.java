@@ -12,6 +12,9 @@ public class TmsAdvertising implements Serializable {
     @ApiModelProperty(value = "图片url")
     private String picUrl;
 
+    @ApiModelProperty(value = "排序权重，值大靠前")
+    private Integer sort;
+
     @ApiModelProperty(value = "是否删除，1为删除")
     private String isDelete;
 
@@ -41,6 +44,14 @@ public class TmsAdvertising implements Serializable {
         this.picUrl = picUrl;
     }
 
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
+    }
+
     public String getIsDelete() {
         return isDelete;
     }
@@ -58,6 +69,7 @@ public class TmsAdvertising implements Serializable {
         sb.append(", id=").append(id);
         sb.append(", adDesc=").append(adDesc);
         sb.append(", picUrl=").append(picUrl);
+        sb.append(", sort=").append(sort);
         sb.append(", isDelete=").append(isDelete);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

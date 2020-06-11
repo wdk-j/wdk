@@ -2,8 +2,6 @@ package com.commerce.mall.portal.service.impl;
 
 
 import com.commerce.mall.mapper.TmsFoodMapper;
-import com.commerce.mall.model.TmsFood;
-import com.commerce.mall.custom.dao.TmsFoodAboutDao;
 import com.commerce.mall.portal.dao.TmsFoodDetailDao;
 import com.commerce.mall.portal.domain.TmsFoodDetail;
 import com.commerce.mall.portal.domain.TmsFoodWithMainPic;

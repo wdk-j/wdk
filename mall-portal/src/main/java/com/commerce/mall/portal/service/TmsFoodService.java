@@ -1,12 +1,8 @@
 package com.commerce.mall.portal.service;
 
-import com.commerce.mall.custom.dto.TmsFoodWithPics;
-import com.commerce.mall.model.TmsFood;
 import com.commerce.mall.portal.domain.TmsFoodDetail;
 import com.commerce.mall.portal.domain.TmsFoodWithMainPic;
 import com.github.pagehelper.PageInfo;
-
-import java.util.List;
 
 /**
  * food 以及 food detail

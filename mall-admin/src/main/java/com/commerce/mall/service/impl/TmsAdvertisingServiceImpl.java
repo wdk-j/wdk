@@ -1,7 +1,7 @@
 package com.commerce.mall.service.impl;
 
 import cn.hutool.core.util.StrUtil;
-import com.commerce.mall.custom.dao.TmsAdvertisingAboutDao;
+import com.commerce.mall.dao.TmsAdvertisingAboutDao;
 import com.commerce.mall.mapper.TmsAdvertisingMapper;
 import com.commerce.mall.model.TmsAdvertising;
 import com.commerce.mall.model.TmsAdvertisingExample;
@@ -73,6 +73,11 @@ public class TmsAdvertisingServiceImpl implements TmsAdvertisingService {
         return tmsAdvertisingMapper.selectByPrimaryKey(id);
     }
 
+    @Override
+    public int updateAdSort(Integer sort, Integer id) {
+        return tmsAdvertisingAboutDao.updateSort(sort, id);
+    }
+
     /**
      * ，上下架广告，更新isDelete
      *
@@ -110,7 +115,8 @@ public class TmsAdvertisingServiceImpl implements TmsAdvertisingService {
         if (StrUtil.isEmpty(keyword)) {
             keyword = null;
         }
-        String orderByClause = "id asc";
+        // sort排
+        String orderByClause = "sort desc";
         TmsAdvertisingExample example = new TmsAdvertisingExample();
         TmsAdvertisingExample.Criteria criteria = example.createCriteria();
         if (keyword != null) {

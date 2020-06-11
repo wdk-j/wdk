@@ -17,6 +17,8 @@ public interface TmsAdvertisingService {
 
     TmsAdvertising get(Integer id);
 
+    int updateAdSort(Integer sort, Integer id);
+
     int updateAdIsDelete(String isDelete, Integer id);
 
     int updateAdIsDeleteInBatch(String isDelete, List<Integer> ids);

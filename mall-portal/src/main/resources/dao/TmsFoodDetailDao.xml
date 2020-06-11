@@ -72,9 +72,21 @@
         </if>
     </select>
     <select id="selectInDetailByPrimaryKey" resultMap="WithPicsResultMap">
-        select tf.food_id, food_name, price, discount, main_materials, has_meat, weight, intro,
-               packing_fee, seller_id, is_off,
-               pic_id, pic_url, pic_desc, is_main,
+        select tf.food_id,
+               food_name,
+               price,
+               discount,
+               main_materials,
+               has_meat,
+               weight,
+               intro,
+               packing_fee,
+               seller_id,
+               is_off,
+               pic_id,
+               pic_url,
+               pic_desc,
+               is_main,
                (select count(*)
                 from tms_food_comments tfc
                 where tfc.nice = '1'

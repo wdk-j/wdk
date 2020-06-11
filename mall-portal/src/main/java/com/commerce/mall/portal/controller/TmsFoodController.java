@@ -1,11 +1,8 @@
 package com.commerce.mall.portal.controller;
 
 import com.commerce.mall.common.api.CommonResult;
-import com.commerce.mall.custom.dto.TmsFoodWithPics;
-import com.commerce.mall.portal.domain.TmsFoodCommentDetail;
 import com.commerce.mall.portal.domain.TmsFoodDetail;
 import com.commerce.mall.portal.domain.TmsFoodWithMainPic;
-import com.commerce.mall.portal.service.TmsFoodCommentDetailService;
 import com.commerce.mall.portal.service.TmsFoodService;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
@@ -14,8 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.*;
 
 /**
  * @author jiangyong

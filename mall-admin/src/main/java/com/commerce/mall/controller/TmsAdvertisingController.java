@@ -70,6 +70,14 @@ public class TmsAdvertisingController {
         return CommonResult.success(pagedAdvertising);
     }
 
+    @ApiOperation(value = "真的删除某广告")
+    @PostMapping("/delete/{id}")
+    @ResponseBody
+    public CommonResult<Object> updateAttrIsDelete(@PathVariable("id") Integer id) {
+        int i = tmsAdvertisingService.delete(id);
+        return CommonResult.success(i);
+    }
+
     @ApiOperation(value = "更新isDelete")
     @PostMapping("/update/isDelete")
     @ResponseBody

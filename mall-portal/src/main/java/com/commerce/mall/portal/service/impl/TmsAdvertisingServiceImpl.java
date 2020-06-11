@@ -1,6 +1,5 @@
 package com.commerce.mall.portal.service.impl;
 
-import com.commerce.mall.custom.dao.TmsAdvertisingAboutDao;
 import com.commerce.mall.mapper.TmsAdvertisingMapper;
 import com.commerce.mall.model.TmsAdvertising;
 import com.commerce.mall.model.TmsAdvertisingExample;

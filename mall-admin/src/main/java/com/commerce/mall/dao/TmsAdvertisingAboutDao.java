@@ -1,4 +1,4 @@
-package com.commerce.mall.custom.dao;
+package com.commerce.mall.dao;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -9,6 +9,16 @@ import java.util.List;
  * @date 2020.06.08
  */
 public interface TmsAdvertisingAboutDao {
+
+    /**
+     * 更新sort
+     *
+     * @param sort
+     * @param id
+     * @return
+     */
+    int updateSort(@Param("sort") Integer sort, @Param("id") Integer id);
+
     /**
      * 单独修改is_delete字段
      *
