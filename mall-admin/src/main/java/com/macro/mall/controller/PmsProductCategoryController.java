@@ -16,6 +16,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -82,7 +83,20 @@ public class PmsProductCategoryController {
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult delete(@PathVariable Long id) {
-        int count = productCategoryService.delete(id);
+//        int count = productCategoryService.delete(id);
+//        if (count > 0) {
+//            return CommonResult.success(count);
+//        } else {
+//            return CommonResult.failed();
+//        }
+        List<Long> ids = new ArrayList<>();
+        ids.add(id);
+        int count = productCategoryService.updateNavStatus(ids, 0);
+        if (count < 0) {
+            return CommonResult.failed();
+        }
+        ids = new ArrayList<>();
+        count = productCategoryService.updateShowStatus(ids, 0);
         if (count > 0) {
             return CommonResult.success(count);
         } else {
