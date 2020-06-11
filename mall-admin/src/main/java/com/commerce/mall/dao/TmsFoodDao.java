@@ -44,7 +44,7 @@ public interface TmsFoodDao {
      *
      * @param isDelete is_delete
      * @param foodIds  food id
-     * @return affect
+     * @return affectt
      */
     int updateIsDeleteInBatch(@Param("isDelete") String isDelete, @Param("foodIds") List<Integer> foodIds);
 

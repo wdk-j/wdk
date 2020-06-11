@@ -45,4 +45,7 @@ public class TmsFoodWithMainPic {
 
     @ApiModelProperty(value = "是否上下架，1为下架")
     private String isOff;
+
+    public TmsFoodWithMainPic() {
+    }
 }

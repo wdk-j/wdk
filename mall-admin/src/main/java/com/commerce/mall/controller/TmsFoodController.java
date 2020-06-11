@@ -64,7 +64,7 @@ public class TmsFoodController {
     @PostMapping("/update/isOff")
     @ResponseBody
     public CommonResult<Object> updateIsOff(@RequestParam("foodId") Integer foodId, @RequestParam("isOff") String isOff) {
-        int i = tmsFoodService.updateAttrIsDelete(isOff, foodId);
+        int i = tmsFoodService.updateAttrIsOff(isOff, foodId);
         if (i > 0) {
             return CommonResult.success(i);
         }
