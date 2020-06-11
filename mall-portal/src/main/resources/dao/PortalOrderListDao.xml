@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.commerce.mall.portal.dao.PortalOrderListDao">
+    <resultMap id="orderWithDetail" type="com.commerce.mall.portal.domain.OmsOrderDetail" >
+        <result column="id" jdbcType="BIGINT" property="id"/>
+        <result column="createTime" jdbcType="DATE" property="createTime"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <collection property="orderItemList"
+                    javaType="java.util.ArrayList" column="id"
+                    select="queryOrderDetailsByOrderId"
+                    ofType="com.commerce.mall.model.OmsOrderItem">
+            <result column="orderId" property="orderId" jdbcType="BIGINT"/>
+            <result column="productPic" property="productPic" jdbcType="VARCHAR" />
+            <result column="detailTitle" property="detailTitle" jdbcType="VARCHAR" />
+            <result column="productAttr" property="productAttr" jdbcType="VARCHAR" />
+            <result column="productPrice" property="productPrice" jdbcType="DECIMAL" />
+            <result column="productQuantity" property="productQuantity" jdbcType="VARCHAR" />
+        </collection>
+    </resultMap>
+    <select id="getList" resultMap="orderWithDetail">
+        SELECT
+	    o.create_time createTime,
+	    o.id id,
+	    o.`status` status
+        FROM
+	    oms_order o
+        WHERE
+        o.member_id = #{userId}
+        AND
+        o.`status` = #{status}
+        AND
+        o.delete_status = 0
+        ORDER BY
+	    createTime
+	    DESC
+    </select>
+    <select id="getAllList" resultMap="orderWithDetail">
+        SELECT
+	    o.create_time createTime,
+	    o.id id,
+	    o.`status` status
+        FROM
+	    oms_order o
+        WHERE
+        o.member_id = #{userId}
+        AND
+        o.delete_status = 0
+        ORDER BY
+	    createTime
+	    DESC
+    </select>
+    <select id="queryOrderDetailsByOrderId" resultType="com.commerce.mall.model.OmsOrderItem">
+        SELECT
+        ooi.order_id orderId,
+        ooi.product_pic productPic,
+	    ooi.detail_title detailTitle,
+	    ooi.product_attr productAttr,
+	    ooi.product_price productPrice,
+	    ooi.product_quantity productQuantity
+	    FROM
+	    oms_order_item ooi
+	    WHERE
+	    ooi.order_id = #{id}
+    </select>
+</mapper>
