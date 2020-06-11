@@ -26,9 +26,10 @@ public class TmsAdvertisingServiceImpl implements TmsAdvertisingService {
      */
     @Override
     public List<TmsAdvertising> list() {
+        String orderBy = "sort desc";
         TmsAdvertisingExample example = new TmsAdvertisingExample();
         example.createCriteria().andIsDeleteEqualTo("0");
-        example.setOrderByClause("id asc");
+        example.setOrderByClause(orderBy);
         return tmsAdvertisingMapper.selectByExample(example);
     }
 }
