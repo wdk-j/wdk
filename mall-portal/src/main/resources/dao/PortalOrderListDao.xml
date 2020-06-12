@@ -11,7 +11,7 @@
                     ofType="com.commerce.mall.model.OmsOrderItem">
             <result column="orderId" property="orderId" jdbcType="BIGINT"/>
             <result column="productPic" property="productPic" jdbcType="VARCHAR" />
-            <result column="detailTitle" property="detailTitle" jdbcType="VARCHAR" />
+            <result column="productName" property="productName" jdbcType="VARCHAR" />
             <result column="productAttr" property="productAttr" jdbcType="VARCHAR" />
             <result column="productPrice" property="productPrice" jdbcType="DECIMAL" />
             <result column="productQuantity" property="productQuantity" jdbcType="VARCHAR" />
@@ -53,7 +53,7 @@
         SELECT
         ooi.order_id orderId,
         ooi.product_pic productPic,
-	    ooi.detail_title detailTitle,
+	    ooi.product_name productName,
 	    ooi.product_attr productAttr,
 	    ooi.product_price productPrice,
 	    ooi.product_quantity productQuantity
