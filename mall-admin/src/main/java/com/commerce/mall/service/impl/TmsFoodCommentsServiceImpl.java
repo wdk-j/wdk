@@ -1,11 +1,10 @@
 package com.commerce.mall.service.impl;
 
 import cn.hutool.core.util.StrUtil;
+import com.commerce.mall.custom.dao.TmsFoodCommentAboutDao;
 import com.commerce.mall.dao.TmsFoodCommentDetailDao;
 import com.commerce.mall.dto.TmsFoodCommentDetail;
 import com.commerce.mall.mapper.TmsFoodCommentsMapper;
-import com.commerce.mall.mapper.TmsFoodCommentsPicsMapper;
-import com.commerce.mall.model.TmsFoodCommentsPicsExample;
 import com.commerce.mall.service.TmsFoodCommentsService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -30,9 +29,6 @@ public class TmsFoodCommentsServiceImpl implements TmsFoodCommentsService {
 
     @Autowired
     private TmsFoodCommentDetailDao tmsFoodCommentDetailDao;
-
-    @Autowired
-    private TmsFoodCommentsPicsMapper tmsFoodCommentsPicsMapper;
 
     /**
      * 分页查询
@@ -87,9 +83,6 @@ public class TmsFoodCommentsServiceImpl implements TmsFoodCommentsService {
      */
     @Override
     public int delete(Integer commId) {
-        TmsFoodCommentsPicsExample example = new TmsFoodCommentsPicsExample();
-        example.createCriteria().andCommIdEqualTo(commId);
-        tmsFoodCommentsPicsMapper.deleteByExample(example);
         return tmsFoodCommentsMapper.deleteByPrimaryKey(commId);
     }
 }

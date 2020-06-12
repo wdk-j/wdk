@@ -30,7 +30,7 @@
     </sql>
     <select id="selectCommentsDetailed" resultMap="ResultMapWithBLOBs">
         select
-        <include refid="Base_Column_List"/>,<include refid="Blob_Column_List"/>, m.nickname, m.icon,
+        fc.comm_id, nice, post_time, user_id, food_id, reply,content, m.nickname, m.icon,
         pic_id, pic_url, pic_desc
         from tms_food_comments fc
         left join tms_food_comments_pics fcp on fc.comm_id=fcp.comm_id
