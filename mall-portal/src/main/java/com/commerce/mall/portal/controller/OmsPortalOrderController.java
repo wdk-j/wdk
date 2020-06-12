@@ -57,55 +57,6 @@ public class OmsPortalOrderController {
         portalOrderService.cancelTimeOutOrder();
         return CommonResult.success(null);
     }
-    @ApiOperation("查询全部订单")
-    @RequestMapping(value = "/getAllList", method = RequestMethod.GET)
-    @ResponseBody
-    public CommonResult<CommonPage<OmsOrder>> getAllList(Long userId, @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
-                                                         @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-        List<OmsOrder> orderList = portalOrderService.getAllList(userId,pageSize, pageNum);
-//        HashMap<Long,List<List<OmsOrder>>> map=new HashMap<>();
-//        for (OmsOrder o:orderList) {
-//            if(!map.containsKey(o.getId())){
-//                List lists=new ArrayList<>();
-//                lists.add(o);
-//                map.put(o.getId(),lists);
-//            }else {
-//                List lists=map.get(o.getId());
-//                lists.add(o);
-//                map.put(o.getId(),lists);
-//            }
-//        }
-//        List<List<List<OmsOrder>>> listList=new ArrayList<>();
-//        for (Long key:map.keySet()) {
-//            listList.add(map.get(key));
-//        }
-//        return CommonResult.success(CommonPage.restPage(listList));
-        return CommonResult.success(CommonPage.restPage(orderList));
-
-    }
-    @ApiOperation("查询待付款订单")
-    @RequestMapping(value = "/getNoPayList", method = RequestMethod.GET)
-    @ResponseBody
-    public CommonResult<CommonPage<OmsOrder>> getNoPayList(Long userId,@RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
-                                                           @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-        List<OmsOrder> orderList = portalOrderService.getNoPayList(userId,pageSize, pageNum);
-        return CommonResult.success(CommonPage.restPage(orderList));
-    }
-    @ApiOperation("查询待收货订单")
-    @RequestMapping(value = "/getNoReceivedList", method = RequestMethod.GET)
-    @ResponseBody
-    public CommonResult<CommonPage<OmsOrder>> getNoReceived(Long userId,@RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize, @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-        List<OmsOrder> orderList = portalOrderService.getNoReceivedList(userId,pageSize, pageNum);
-        return CommonResult.success(CommonPage.restPage(orderList));
-    }
-    @ApiOperation("查询待评价订单")
-    @RequestMapping(value = "/getNoEvaluateList", method = RequestMethod.GET)
-    @ResponseBody
-    public CommonResult<CommonPage<OmsOrder>> getNoEvaluate(Long userId, @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
-                                                            @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-        List<OmsOrder> orderList = portalOrderService.getNoEvaluateList(userId,pageSize, pageNum);
-        return CommonResult.success(CommonPage.restPage(orderList));
-    }
     @ApiOperation("手动删除订单")
     @RequestMapping(value = "/deleteOrder", method = RequestMethod.POST)
     @ResponseBody

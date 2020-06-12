@@ -323,29 +323,6 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         portalOrderDao.deleteOrder(orderId);
     }
 
-    @Override
-    public List<OmsOrder> getNoPayList(Long userId, Integer pageSize, Integer pageNum) {
-        PageHelper.startPage(pageNum, pageSize);
-        return portalOrderDao.getNoPayList(userId);
-    }
-
-    @Override
-    public List<OmsOrder> getAllList(Long userId, Integer pageSize, Integer pageNum) {
-        PageHelper.startPage(pageNum, pageSize);
-        return portalOrderDao.getAllList(userId);
-    }
-
-    @Override
-    public List<OmsOrder> getNoReceivedList(Long userId, Integer pageSize, Integer pageNum) {
-        PageHelper.startPage(pageNum, pageSize);
-        return portalOrderDao.getNoReceivedList(userId);
-    }
-
-    @Override
-    public List<OmsOrder> getNoEvaluateList(Long userId, Integer pageSize, Integer pageNum) {
-        PageHelper.startPage(pageNum, pageSize);
-        return portalOrderDao.getNoEvaluateList(userId);
-    }
 
     @Override
     public void Received(Long orderId) {

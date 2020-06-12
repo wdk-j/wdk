@@ -51,16 +51,6 @@ public interface OmsPortalOrderService {
     * 删除订单
      */
     void deleteOrder(Long orderId);
-    /*
-     * 查询订单操做
-     */
-    List<OmsOrder> getNoPayList(Long userId, Integer pageSize, Integer pageNum);
-
-    List<OmsOrder> getAllList(Long userId, Integer pageSize, Integer pageNum);
-
-    List<OmsOrder> getNoReceivedList(Long userId, Integer pageSize, Integer pageNum);
-
-    List<OmsOrder> getNoEvaluateList(Long userId, Integer pageSize, Integer pageNum);
 
     /*
      * 确认收货

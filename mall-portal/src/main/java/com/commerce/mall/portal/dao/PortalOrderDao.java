@@ -44,16 +44,7 @@ public interface PortalOrderDao {
      */
     void deleteOrder(Long orderId);
 
-    /**
-     * 查询订单操作
-     */
-    List<OmsOrder> getNoPayList(Long user_id);
 
-    List<OmsOrder> getAllList(Long userId);
-
-    List<OmsOrder> getNoReceivedList(Long userId);
-
-    List<OmsOrder> getNoEvaluateList(Long userId);
 
     void Received(Long orderId);
 
