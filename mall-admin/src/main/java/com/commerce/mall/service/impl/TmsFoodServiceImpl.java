@@ -152,9 +152,6 @@ public class TmsFoodServiceImpl implements TmsFoodService {
     @Override
     public TmsFoodWithPicsResult get(Integer foodId) {
         TmsFoodWithPicsResult food = tmsFoodDao.selectFoodWithPicsByPrimaryKey(foodId);
-        BigDecimal mark;
-        mark = tmsFoodCommentAboutDao.selectPosiEval("1", foodId);
-        food.setMark(mark);
         return food;
     }
 
