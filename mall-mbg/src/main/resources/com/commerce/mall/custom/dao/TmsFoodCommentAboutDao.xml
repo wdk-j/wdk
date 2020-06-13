@@ -3,7 +3,14 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.commerce.mall.custom.dao.TmsFoodCommentAboutDao">
-    <select id="countNiceEqualTo" resultType="java.lang.Integer">
-        select count(*) sales from tms_food_comments where food_id= #{foodId} and nice= #{keyword}
+    <select id="selectPosiEval" resultType="java.lang.Integer">
+        select (
+        select count(*)
+        from tms_food_comments tfc
+        where (tfc.food_id = #{foodId})
+        and ((tfc.nice = '1') or (nice is null and date_format(post_time, '%Y-%m-%d') &lt;= date_format(DATE_SUB(curdate(), INTERVAL 7 DAY), '%Y-%m-%d')))) / (
+        select count(*)
+        from tms_food_comments tfc
+        where food_id = #{foodId}) * 100 as mark
     </select>
 </mapper>

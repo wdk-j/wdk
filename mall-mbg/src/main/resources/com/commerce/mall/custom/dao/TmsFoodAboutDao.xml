@@ -3,84 +3,16 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.commerce.mall.custom.dao.TmsFoodAboutDao">
-    <resultMap id="BaseResultMap" type="com.commerce.mall.custom.dto.TmsFoodWithMainPic">
-        <id column="food_id" jdbcType="INTEGER" property="foodId"/>
-        <result column="food_name" jdbcType="VARCHAR" property="foodName"/>
-        <result column="price" jdbcType="DECIMAL" property="price"/>
-        <result column="mark" jdbcType="DECIMAL" property="mark"/>
-        <result column="discount" jdbcType="DECIMAL" property="discount"/>
-        <result column="main_materials" jdbcType="VARCHAR" property="mainMaterials"/>
-        <result column="has_meat" jdbcType="VARCHAR" property="hasMeat"/>
-        <result column="weight" jdbcType="DOUBLE" property="weight"/>
-        <result column="intro" jdbcType="VARCHAR" property="intro"/>
-        <result column="packing_fee" jdbcType="DOUBLE" property="packingFee"/>
-        <result column="seller_id" jdbcType="INTEGER" property="sellerId"/>
-        <result column="is_off" jdbcType="VARCHAR" property="isOff" />
-        <result column="is_delete" jdbcType="VARCHAR" property="isDelete"/>
-        <association property="sales" column="{foodId=food_id}"
-                     select="com.commerce.mall.custom.dao.TmsOrderDetailAboutDao.countSales"/>
-        <association property="mainPic" column="{foodId=food_id}"
-                     select="com.commerce.mall.mapper.TmsFoodPicsMapper.selectMainPic"/>
-    </resultMap>
-    <resultMap id="BaseResultMap_pics" type="com.commerce.mall.custom.dto.TmsFoodWithPics">
-        <id column="food_id" jdbcType="INTEGER" property="foodId"/>
-        <result column="food_name" jdbcType="VARCHAR" property="foodName"/>
-        <result column="price" jdbcType="DECIMAL" property="price"/>
-        <result column="mark" jdbcType="DECIMAL" property="mark"/>
-        <result column="discount" jdbcType="DECIMAL" property="discount"/>
-        <result column="main_materials" jdbcType="VARCHAR" property="mainMaterials"/>
-        <result column="has_meat" jdbcType="VARCHAR" property="hasMeat"/>
-        <result column="weight" jdbcType="DOUBLE" property="weight"/>
-        <result column="intro" jdbcType="VARCHAR" property="intro"/>
-        <result column="packing_fee" jdbcType="DOUBLE" property="packingFee"/>
-        <result column="seller_id" jdbcType="INTEGER" property="sellerId"/>
-        <result column="is_delete" jdbcType="VARCHAR" property="isDelete"/>
-        <association property="sales" column="{foodId=food_id}"
-                     select="com.commerce.mall.custom.dao.TmsOrderDetailAboutDao.countSales"/>
-        <collection property="pics" column="{foodId=food_id}"
-                    select="com.commerce.mall.mapper.TmsFoodPicsMapper.selectAllPics"/>
-    </resultMap>
     <sql id="Base_Column_List">
         food_id, food_name, price, mark, discount, main_materials, has_meat, weight, intro,
         packing_fee, seller_id, is_delete
     </sql>
-    <select id="selectByKeyword" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from tms_food
-        <where>
-            <if test="keyword!=null">
-                <bind name="keyword" value="'%'+keyword+'%'"/>
-                and food_name like #{keyword}
-            </if>
-            and seller_id=#{sellerId}
-        </where>
-        order by mark desc
+    <select id="selectSales" resultType="java.lang.Integer">
+        select IFNULL((select sum(tod.amount)
+                       from tms_order o
+                                left join tms_order_detail tod on o.order_id = tod.od_id
+                       where tod.food_id = #{foodId}
+                         and date_format(post_time, '%Y-%m-%d') &gt;=
+                             date_format(DATE_SUB(curdate(), INTERVAL 1 MONTH), '%Y-%m-%d')), 0) as sales
     </select>
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from tms_food
-        where food_id=#{foodId}
-    </select>
-    <select id="selectFoodWithPicsByPrimaryKey" resultMap="BaseResultMap_pics">
-        select
-        <include refid="Base_Column_List"/>
-        from tms_food
-        where food_id=#{foodId}
-    </select>
-
-    <update id="updateIsDelete">
-        update tms_food
-        set is_delete=#{isDelete}
-        where food_id = #{foodId}
-    </update>
-    <update id="updateIsDeleteInBatch">
-        update tms_food
-        set is_delete=#{isDelete}
-        where food_id in
-        <foreach collection="foodIds" item="id" index="idx" open="(" separator="," close=")">
-            #{id}
-        </foreach>
-    </update>
 </mapper>

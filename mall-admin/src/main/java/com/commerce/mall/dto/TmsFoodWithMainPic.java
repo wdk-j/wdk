@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * @author jiangyong
@@ -21,6 +22,8 @@ public class TmsFoodWithMainPic {
     private TmsFoodPics mainPic;
 
     private Integer sales;
+
+    private Date createDate;
 
     /**
      * 下面是food表的字段

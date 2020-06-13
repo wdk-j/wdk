@@ -3,6 +3,7 @@ package com.commerce.mall.model;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class TmsFood implements Serializable {
     private Integer foodId;
@@ -39,6 +40,9 @@ public class TmsFood implements Serializable {
 
     @ApiModelProperty(value = "是否删除 1为删除")
     private String isDelete;
+
+    @ApiModelProperty(value = "上传时间")
+    private Date createDate;
 
     private static final long serialVersionUID = 1L;
 
@@ -138,6 +142,14 @@ public class TmsFood implements Serializable {
         this.isDelete = isDelete;
     }
 
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -156,6 +168,7 @@ public class TmsFood implements Serializable {
         sb.append(", sellerId=").append(sellerId);
         sb.append(", isOff=").append(isOff);
         sb.append(", isDelete=").append(isDelete);
+        sb.append(", createDate=").append(createDate);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

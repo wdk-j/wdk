@@ -12,12 +12,6 @@
         <result column="reply" jdbcType="VARCHAR" property="reply"/>
         <result column="nickname" jdbcType="VARCHAR" property="nickname"/>
         <result column="icon" jdbcType="VARCHAR" property="icon"/>
-        <collection property="commPics" ofType="com.commerce.mall.model.TmsFoodCommentsPics">
-            <id column="pic_id" jdbcType="INTEGER" property="picId"/>
-            <result column="pic_url" jdbcType="VARCHAR" property="picUrl"/>
-            <result column="pic_desc" jdbcType="VARCHAR" property="picDesc"/>
-            <result column="comm_id" jdbcType="INTEGER" property="commId"/>
-        </collection>
     </resultMap>
     <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.commerce.mall.portal.domain.TmsFoodCommentDetail">
         <result column="content" jdbcType="LONGVARCHAR" property="content" />
@@ -30,10 +24,8 @@
     </sql>
     <select id="selectCommentsDetailed" resultMap="ResultMapWithBLOBs">
         select
-        fc.comm_id, nice, post_time, user_id, food_id, reply,content, m.nickname, m.icon,
-        pic_id, pic_url, pic_desc
+        fc.comm_id, nice, post_time, user_id, food_id, reply,content, m.nickname, m.icon
         from tms_food_comments fc
-        left join tms_food_comments_pics fcp on fc.comm_id=fcp.comm_id
         left join ums_member m on fc.user_id=m.id
         <where>
             food_id=#{foodId}

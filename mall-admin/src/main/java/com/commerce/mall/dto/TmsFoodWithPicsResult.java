@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -27,6 +28,8 @@ public class TmsFoodWithPicsResult {
     private List<TmsFoodPics> pics;
 
     private Integer sales;
+
+    private Date createDate;
 
     public TmsFoodWithPicsResult() {
     }

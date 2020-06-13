@@ -1,6 +1,8 @@
 package com.commerce.mall.portal.service.impl;
 
 
+import com.commerce.mall.custom.dao.TmsFoodAboutDao;
+import com.commerce.mall.custom.dao.TmsFoodCommentAboutDao;
 import com.commerce.mall.mapper.TmsFoodMapper;
 import com.commerce.mall.portal.dao.TmsFoodDetailDao;
 import com.commerce.mall.portal.domain.TmsFoodDetail;
@@ -13,6 +15,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -30,6 +35,11 @@ public class TmsFoodServiceImpl implements TmsFoodService {
     @Autowired
     private TmsFoodDetailDao tmsFoodDetailDao;
 
+    @Autowired
+    private TmsFoodCommentAboutDao tmsFoodCommentAboutDao;
+
+    @Autowired
+    private TmsFoodAboutDao tmsFoodAboutDao;
 
     /**
      * 获取一个商品的详情

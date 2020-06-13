@@ -1,6 +1,10 @@
 package com.commerce.mall.service.impl;
 
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.StrUtil;
+import com.commerce.mall.common.utils.FileUtil;
+import com.commerce.mall.custom.dao.TmsFoodAboutDao;
+import com.commerce.mall.custom.dao.TmsFoodCommentAboutDao;
 import com.commerce.mall.dao.TmsFoodDao;
 import com.commerce.mall.dao.TmsFoodPicsDao;
 import com.commerce.mall.dto.TmsFoodWithMainPic;
@@ -9,6 +13,7 @@ import com.commerce.mall.mapper.TmsFoodMapper;
 import com.commerce.mall.mapper.TmsFoodPicsMapper;
 import com.commerce.mall.model.TmsFood;
 import com.commerce.mall.model.TmsFoodPics;
+import com.commerce.mall.model.TmsFoodPicsExample;
 import com.commerce.mall.service.TmsFoodService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -18,6 +23,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,13 +48,19 @@ public class TmsFoodServiceImpl implements TmsFoodService {
     private TmsFoodPicsDao tmsFoodPicsDao;
 
     @Autowired
+    private TmsFoodCommentAboutDao tmsFoodCommentAboutDao;
+
+    @Autowired
     private TmsFoodDao tmsFoodDao;
+
+    @Autowired
+    private TmsFoodAboutDao tmsFoodAboutDao;
 
 
     /**
      * 添加食品
      *
-     * @param tmsFoodWithPicsResult    pics
+     * @param tmsFoodWithPicsResult pics
      * @return code
      */
     @Transactional(rollbackFor = {Exception.class})
@@ -58,11 +73,13 @@ public class TmsFoodServiceImpl implements TmsFoodService {
         // already default
         //tmsFood.setIsDelete("0");
         //tmsFood.setIsOff("0");
+        Date date = new Date();
+        tmsFood.setCreateDate(date);
         int r = tmsFoodMapper.insertSelective(tmsFood);
         Integer foodId = tmsFood.getFoodId();
 
         List<TmsFoodPics> pics = tmsFoodWithPicsResult.getPics();
-        pics.forEach(p->{
+        pics.forEach(p -> {
             p.setFoodId(foodId);
         });
         pics.get(0).setIsMain("1");
@@ -82,6 +99,14 @@ public class TmsFoodServiceImpl implements TmsFoodService {
      */
     @Override
     public int delete(Integer foodId) {
+        TmsFoodPicsExample example = new TmsFoodPicsExample();
+        example.createCriteria().andFoodIdEqualTo(foodId);
+        // 删除原文件
+        List<TmsFoodPics> pics = tmsFoodPicsMapper.selectByExample(example);
+        pics.forEach(p->{
+            FileUtil.delete(p.getPicUrl());
+        });
+        tmsFoodPicsMapper.deleteByExample(example);
         return tmsFoodMapper.deleteByPrimaryKey(foodId);
     }
 
@@ -98,13 +123,23 @@ public class TmsFoodServiceImpl implements TmsFoodService {
     @Override
     public PageInfo<TmsFoodWithMainPic> listFoods(int pageNum, int pageSize, Integer sellerId, String keyword) {
         // 如果为''算为null
-        if (StrUtil.isEmpty(keyword)) {
+        if (!StrUtil.isEmpty(keyword)) {
+            keyword = '%' + keyword + '%';
+        }else{
             keyword = null;
-        } else {
-            keyword='%'+keyword+'%';
         }
         PageHelper.startPage(pageNum, pageSize);
         List<TmsFoodWithMainPic> foods = tmsFoodDao.selectByKeyword(sellerId, keyword);
+        //todo 封装评分、销量
+//        BigDecimal mark;
+//        int sales;
+//        for (TmsFoodWithMainPic food : foods) {
+//             mark = tmsFoodCommentAboutDao.selectPosiEval("1", food.getFoodId());
+//             sales = tmsFoodAboutDao.selectSales(food.getFoodId());
+//            food.setMark(mark);
+//            food.setSales(sales);
+//        }
+
         return new PageInfo<>(foods);
     }
 
@@ -116,7 +151,11 @@ public class TmsFoodServiceImpl implements TmsFoodService {
      */
     @Override
     public TmsFoodWithPicsResult get(Integer foodId) {
-        return tmsFoodDao.selectFoodWithPicsByPrimaryKey(foodId);
+        TmsFoodWithPicsResult food = tmsFoodDao.selectFoodWithPicsByPrimaryKey(foodId);
+        BigDecimal mark;
+        mark = tmsFoodCommentAboutDao.selectPosiEval("1", foodId);
+        food.setMark(mark);
+        return food;
     }
 
     /**
@@ -184,6 +223,8 @@ public class TmsFoodServiceImpl implements TmsFoodService {
         Integer foodId = pics.get(0).getFoodId();
         TmsFoodPics mainPic;
 
+        mainPic = tmsFoodPicsDao.selectMainPic(foodId);
+        hasMainPic = mainPic != null;
 
         for (TmsFoodPics pic : pics) {
             if (StrUtil.isEmpty(pic.getPicUrl())) {
@@ -205,6 +246,6 @@ public class TmsFoodServiceImpl implements TmsFoodService {
                 tmsFoodPicsMapper.insertSelective(pic);
             }
         }
-        return tmsFoodMapper.updateByPrimaryKey(tmsFood);
+        return tmsFoodMapper.updateByPrimaryKeySelective(tmsFood);
     }
 }

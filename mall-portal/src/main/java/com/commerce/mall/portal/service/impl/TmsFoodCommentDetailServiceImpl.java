@@ -60,17 +60,23 @@ public class TmsFoodCommentDetailServiceImpl implements TmsFoodCommentDetailServ
 
         List<TmsFoodCommentsPics> pics;
         TmsFoodCommentsPicsExample example;
-        if ("2".equals(keyword)) {
-            Iterator<TmsFoodCommentDetail> iterator = foodCommentDetails.iterator();
-            TmsFoodCommentDetail next;
-            while (iterator.hasNext()) {
-                next = iterator.next();
-                example = new TmsFoodCommentsPicsExample();
-                example.createCriteria().andCommIdEqualTo(next.getCommId());
-                pics = tmsFoodCommentsPicsMapper.selectByExample(example);
+
+        Iterator<TmsFoodCommentDetail> iterator = foodCommentDetails.iterator();
+        TmsFoodCommentDetail next;
+        while (iterator.hasNext()) {
+            next = iterator.next();
+            example = new TmsFoodCommentsPicsExample();
+            example.createCriteria().andCommIdEqualTo(next.getCommId());
+            pics = tmsFoodCommentsPicsMapper.selectByExample(example);
+
+            if ("2".equals(keyword)) {
                 if (CollUtil.isEmpty(pics)) {
                     iterator.remove();
+                } else {
+                    next.setCommPics(pics);
                 }
+            } else {
+                next.setCommPics(pics);
             }
         }
         return new PageInfo<>(foodCommentDetails);

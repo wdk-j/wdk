@@ -14,6 +14,7 @@
     <result column="seller_id" jdbcType="INTEGER" property="sellerId" />
     <result column="is_off" jdbcType="VARCHAR" property="isOff" />
     <result column="is_delete" jdbcType="VARCHAR" property="isDelete" />
+    <result column="create_date" jdbcType="DATE" property="createDate" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -75,7 +76,7 @@
   </sql>
   <sql id="Base_Column_List">
     food_id, food_name, price, discount, main_materials, has_meat, weight, intro, packing_fee, 
-    seller_id, is_off, is_delete
+    seller_id, is_off, is_delete, create_date
   </sql>
   <select id="selectByExample" parameterType="com.commerce.mall.model.TmsFoodExample" resultMap="BaseResultMap">
     select
@@ -114,11 +115,13 @@
     insert into tms_food (food_name, price, discount, 
       main_materials, has_meat, weight, 
       intro, packing_fee, seller_id, 
-      is_off, is_delete)
+      is_off, is_delete, create_date
+      )
     values (#{foodName,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{discount,jdbcType=DECIMAL}, 
       #{mainMaterials,jdbcType=VARCHAR}, #{hasMeat,jdbcType=VARCHAR}, #{weight,jdbcType=DOUBLE}, 
       #{intro,jdbcType=VARCHAR}, #{packingFee,jdbcType=DOUBLE}, #{sellerId,jdbcType=INTEGER}, 
-      #{isOff,jdbcType=VARCHAR}, #{isDelete,jdbcType=VARCHAR})
+      #{isOff,jdbcType=VARCHAR}, #{isDelete,jdbcType=VARCHAR}, #{createDate,jdbcType=DATE}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.commerce.mall.model.TmsFood">
     <selectKey keyProperty="foodId" order="AFTER" resultType="java.lang.Integer">
@@ -159,6 +162,9 @@
       <if test="isDelete != null">
         is_delete,
       </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="foodName != null">
@@ -193,6 +199,9 @@
       </if>
       <if test="isDelete != null">
         #{isDelete,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=DATE},
       </if>
     </trim>
   </insert>
@@ -241,6 +250,9 @@
       <if test="record.isDelete != null">
         is_delete = #{record.isDelete,jdbcType=VARCHAR},
       </if>
+      <if test="record.createDate != null">
+        create_date = #{record.createDate,jdbcType=DATE},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -259,7 +271,8 @@
       packing_fee = #{record.packingFee,jdbcType=DOUBLE},
       seller_id = #{record.sellerId,jdbcType=INTEGER},
       is_off = #{record.isOff,jdbcType=VARCHAR},
-      is_delete = #{record.isDelete,jdbcType=VARCHAR}
+      is_delete = #{record.isDelete,jdbcType=VARCHAR},
+      create_date = #{record.createDate,jdbcType=DATE}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -300,6 +313,9 @@
       <if test="isDelete != null">
         is_delete = #{isDelete,jdbcType=VARCHAR},
       </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=DATE},
+      </if>
     </set>
     where food_id = #{foodId,jdbcType=INTEGER}
   </update>
@@ -315,7 +331,8 @@
       packing_fee = #{packingFee,jdbcType=DOUBLE},
       seller_id = #{sellerId,jdbcType=INTEGER},
       is_off = #{isOff,jdbcType=VARCHAR},
-      is_delete = #{isDelete,jdbcType=VARCHAR}
+      is_delete = #{isDelete,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=DATE}
     where food_id = #{foodId,jdbcType=INTEGER}
   </update>
 </mapper>

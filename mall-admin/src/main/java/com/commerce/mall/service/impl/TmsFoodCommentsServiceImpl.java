@@ -1,11 +1,11 @@
 package com.commerce.mall.service.impl;
 
 import cn.hutool.core.util.StrUtil;
-import com.commerce.mall.custom.dao.TmsFoodCommentAboutDao;
 import com.commerce.mall.dao.TmsFoodCommentDetailDao;
 import com.commerce.mall.dto.TmsFoodCommentDetail;
 import com.commerce.mall.mapper.TmsFoodCommentsMapper;
 import com.commerce.mall.mapper.TmsFoodCommentsPicsMapper;
+import com.commerce.mall.model.TmsFoodCommentsPics;
 import com.commerce.mall.model.TmsFoodCommentsPicsExample;
 import com.commerce.mall.service.TmsFoodCommentsService;
 import com.github.pagehelper.PageHelper;
@@ -47,13 +47,23 @@ public class TmsFoodCommentsServiceImpl implements TmsFoodCommentsService {
      */
     @Override
     public PageInfo<TmsFoodCommentDetail> pagedList(int pageNum, int pageSize, String keyword, Integer sellerId) {
+        //关键词查
         if (StrUtil.isEmpty(keyword)) {
             keyword = null;
-        }else {
-            keyword='%'+keyword+'%';
+        } else {
+            keyword = '%' + keyword + '%';
         }
         PageHelper.startPage(pageNum, pageSize);
         List<TmsFoodCommentDetail> list = tmsFoodCommentDetailDao.selectCommentsDetailed(null, keyword, sellerId);
+        // 封装pics
+        TmsFoodCommentsPicsExample example;
+        List<TmsFoodCommentsPics> fcp;
+        for (TmsFoodCommentDetail fc : list) {
+            example = new TmsFoodCommentsPicsExample();
+            example.createCriteria().andCommIdEqualTo(fc.getCommId());
+            fcp = tmsFoodCommentsPicsMapper.selectByExample(example);
+            fc.setCommPics(fcp);
+        }
         return new PageInfo<>(list);
     }
 
@@ -65,7 +75,14 @@ public class TmsFoodCommentsServiceImpl implements TmsFoodCommentsService {
      */
     @Override
     public TmsFoodCommentDetail get(Integer commId) {
-        return tmsFoodCommentDetailDao.selectByPrimaryKey(commId);
+        TmsFoodCommentDetail fc = tmsFoodCommentDetailDao.selectByPrimaryKey(commId);
+
+        // 封装图片
+        TmsFoodCommentsPicsExample example = new TmsFoodCommentsPicsExample();
+        example.createCriteria().andCommIdEqualTo(fc.getCommId());
+        List<TmsFoodCommentsPics> fcp = tmsFoodCommentsPicsMapper.selectByExample(example);
+        fc.setCommPics(fcp);
+        return fc;
     }
 
     /**

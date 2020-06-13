@@ -100,8 +100,8 @@ public class TmsSellerServiceImpl implements TmsSellerService {
         receiveAddress.setId(tmsSellerParam.getAddrId());
         receiveAddress.setDetailAddress(address);
 
-        umsMemberReceiveAddressMapper.updateByPrimaryKey(receiveAddress);
-        return tmsSellerMapper.updateByPrimaryKey(tmsSeller);
+        umsMemberReceiveAddressMapper.updateByPrimaryKeySelective(receiveAddress);
+        return tmsSellerMapper.updateByPrimaryKeySelective(tmsSeller);
     }
 
     /**

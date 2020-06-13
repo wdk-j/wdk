@@ -112,14 +112,11 @@ public class TmsAdvertisingServiceImpl implements TmsAdvertisingService {
      */
     @Override
     public PageInfo<TmsAdvertising> listAdvertising(int pageNum, int pageSize, String keyword) {
-        if (StrUtil.isEmpty(keyword)) {
-            keyword = null;
-        }
         // sort排
         String orderByClause = "sort desc";
         TmsAdvertisingExample example = new TmsAdvertisingExample();
         TmsAdvertisingExample.Criteria criteria = example.createCriteria();
-        if (keyword != null) {
+        if (!StrUtil.isEmpty(keyword)) {
             criteria.andAdDescLike('%' + keyword + '%');
         }
         example.setOrderByClause(orderByClause);

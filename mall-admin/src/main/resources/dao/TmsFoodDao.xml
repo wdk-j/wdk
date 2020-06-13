@@ -7,15 +7,16 @@
         <id column="food_id" jdbcType="INTEGER" property="foodId"/>
         <result column="food_name" jdbcType="VARCHAR" property="foodName"/>
         <result column="price" jdbcType="DECIMAL" property="price"/>
-        <result column="sales" jdbcType="INTEGER" property="sales"/>
-        <result column="mark" jdbcType="DECIMAL" property="mark"/>
         <result column="discount" jdbcType="DECIMAL" property="discount"/>
         <result column="main_materials" jdbcType="VARCHAR" property="mainMaterials"/>
         <result column="has_meat" jdbcType="VARCHAR" property="hasMeat"/>
+        <result column="sales" jdbcType="INTEGER" property="sales"/>
+        <result column="mark" jdbcType="DECIMAL" property="mark"/>
         <result column="weight" jdbcType="DOUBLE" property="weight"/>
         <result column="intro" jdbcType="VARCHAR" property="intro"/>
         <result column="packing_fee" jdbcType="DOUBLE" property="packingFee"/>
         <result column="seller_id" jdbcType="INTEGER" property="sellerId"/>
+        <result column="create_date" jdbcType="DATE" property="createDate"/>
         <result column="is_off" jdbcType="VARCHAR" property="isOff"/>
         <result column="is_delete" jdbcType="VARCHAR" property="isDelete"/>
         <association property="mainPic" javaType="com.commerce.mall.model.TmsFoodPics">
@@ -23,21 +24,21 @@
             <result column="pic_url" jdbcType="VARCHAR" property="picUrl"/>
             <result column="pic_desc" jdbcType="VARCHAR" property="picDesc"/>
             <result column="is_main" jdbcType="VARCHAR" property="isMain"/>
-            <result column="food_id" jdbcType="INTEGER" property="foodId"/>
         </association>
     </resultMap>
     <resultMap id="WithPicsResultMap" type="com.commerce.mall.dto.TmsFoodWithPicsResult">
         <id column="food_id" jdbcType="INTEGER" property="foodId"/>
         <result column="food_name" jdbcType="VARCHAR" property="foodName"/>
         <result column="price" jdbcType="DECIMAL" property="price"/>
-        <result column="sales" jdbcType="INTEGER" property="sales"/>
-        <result column="mark" jdbcType="DECIMAL" property="mark"/>
         <result column="discount" jdbcType="DECIMAL" property="discount"/>
         <result column="main_materials" jdbcType="VARCHAR" property="mainMaterials"/>
         <result column="has_meat" jdbcType="VARCHAR" property="hasMeat"/>
         <result column="weight" jdbcType="DOUBLE" property="weight"/>
+        <result column="sales" jdbcType="INTEGER" property="sales"/>
+        <result column="mark" jdbcType="DECIMAL" property="mark"/>
         <result column="intro" jdbcType="VARCHAR" property="intro"/>
         <result column="packing_fee" jdbcType="DOUBLE" property="packingFee"/>
+        <result column="create_date" jdbcType="DATE" property="createDate"/>
         <result column="seller_id" jdbcType="INTEGER" property="sellerId"/>
         <!--        <result column="is_off" jdbcType="VARCHAR" property="isOff"/>-->
         <!--        <result column="is_delete" jdbcType="VARCHAR" property="isDelete"/>-->
@@ -46,28 +47,35 @@
             <result column="pic_url" jdbcType="VARCHAR" property="picUrl"/>
             <result column="pic_desc" jdbcType="VARCHAR" property="picDesc"/>
             <result column="is_main" jdbcType="VARCHAR" property="isMain"/>
-            <result column="food_id" jdbcType="INTEGER" property="foodId"/>
         </collection>
     </resultMap>
 
     <sql id="Base_Column_List">
         food_id, food_name, price, mark, discount, main_materials, has_meat, weight, intro,
-    packing_fee, seller_id, is_off, is_delete
+        packing_fee, seller_id, is_off, is_delete
     </sql>
     <sql id="Base_Column_List_Food_Pics">
         pic_id, pic_url, pic_desc, is_main, food_id
     </sql>
     <select id="selectByKeyword" resultMap="BaseResultMap">
         select tf.food_id, food_name, price, discount, main_materials, has_meat, weight, intro,
-        packing_fee, seller_id, is_off,is_delete,
+        packing_fee, seller_id, is_off,is_delete,create_date,
         pic_id, pic_url, pic_desc, is_main,
-        (select count(*) from tms_food_comments tfc where tfc.nice = '1' or (date_format(post_time, '%Y-%m-%d') &lt;=
-        date_format(DATE_SUB(curdate(), INTERVAL 7 DAY ), '%Y-%m-%d'))) /
-        (select count(*) from tms_food_comments tfc) * 100 as mark,
-        ifnull((select sum(tod.amount) from tms_order o
+        (select count(*)
+        from tms_food_comments tfc
+        where (tfc.food_id = tf.food_id)
+        and ((tfc.nice = '1') or (nice is null and date_format(post_time, '%Y-%m-%d') &lt;=
+        date_format(DATE_SUB(curdate(), INTERVAL 7 DAY), '%Y-%m-%d')))) /
+        (
+        select count(*)
+        from tms_food_comments tfc
+        where food_id = tf.food_id) * 100 as mark,
+        IFNULL((select sum(tod.amount)
+        from tms_order o
         left join tms_order_detail tod on o.order_id = tod.od_id
-        where date_format(post_time, '%Y-%m-%d') &gt;= date_format(DATE_SUB(curdate(), INTERVAL 1 MONTH), '%Y-%m-%d')
-        and tod.food_id = tf.food_id),0) as sales
+        where date_format(post_time, '%Y-%m-%d') &gt;=
+        date_format(DATE_SUB(curdate(), INTERVAL 1 MONTH), '%Y-%m-%d')
+        and tod.food_id = tf.food_id), 0) as sales
         from tms_food tf
         left join tms_food_pics tfp on tf.food_id = tfp.food_id
         where seller_id=1 and tfp.is_main = '1'
@@ -75,6 +83,7 @@
         <if test="keyword!=null">
             and food_name like #{keyword}
         </if>
+        order by create_date desc
     </select>
     <select id="selectFoodWithPicsByPrimaryKey" resultMap="WithPicsResultMap">
         select tf.food_id,
@@ -86,6 +95,7 @@
                weight,
                intro,
                packing_fee,
+               create_date,
                seller_id,
                pic_id,
                pic_url,
@@ -93,16 +103,19 @@
                is_main,
                (select count(*)
                 from tms_food_comments tfc
-                where tfc.nice = '1'
-                   or date_format(post_time, '%Y-%m-%d') &lt;=
-                      date_format(DATE_SUB(curdate(), INTERVAL 7 DAY), '%Y-%m-%d')) /
-               (select count(*) from tms_food_comments tfc) * 100 as mark,
+                where (tfc.food_id = tf.food_id)
+                  and ((tfc.nice = '1') or (nice is null and date_format(post_time, '%Y-%m-%d') &lt;=
+                                                             date_format(DATE_SUB(curdate(), INTERVAL 7 DAY), '%Y-%m-%d')))) /
+               (
+                   select count(*)
+                   from tms_food_comments tfc
+                   where food_id = tf.food_id) * 100       as mark,
                IFNULL((select sum(tod.amount)
-                from tms_order o
-                         left join tms_order_detail tod on o.order_id = tod.od_id
-                where date_format(post_time, '%Y-%m-%d') &gt;=
-                      date_format(DATE_SUB(curdate(), INTERVAL 1 MONTH), '%Y-%m-%d')
-                  and tod.food_id = tf.food_id),0) as sales
+                       from tms_order o
+                                left join tms_order_detail tod on o.order_id = tod.od_id
+                       where date_format(post_time, '%Y-%m-%d') &gt;=
+                             date_format(DATE_SUB(curdate(), INTERVAL 1 MONTH), '%Y-%m-%d')
+                         and tod.food_id = tf.food_id), 0) as sales
         from tms_food tf
                  left join tms_food_pics tfp on tf.food_id = tfp.food_id
         where tf.food_id = #{foodId}

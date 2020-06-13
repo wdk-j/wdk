@@ -1,6 +1,5 @@
 package com.commerce.mall.dao;
 
-import com.commerce.mall.custom.dto.TmsFoodWithPics;
 import com.commerce.mall.dto.TmsFoodWithMainPic;
 import com.commerce.mall.dto.TmsFoodWithPicsResult;
 import org.apache.ibatis.annotations.Param;
@@ -12,6 +11,7 @@ import java.util.List;
  * @date 2020.06.10
  */
 public interface TmsFoodDao {
+
     /**
      * 查找含有关键字的食品
      * sales降序
@@ -29,6 +29,7 @@ public interface TmsFoodDao {
      * @return food
      */
     TmsFoodWithPicsResult selectFoodWithPicsByPrimaryKey(Integer foodId);
+
 
     /**
      * 修改isDelete字段
@@ -51,8 +52,8 @@ public interface TmsFoodDao {
     /**
      * 修改isOff字段
      *
-     * @param isOff is_delete
-     * @param foodId   food id
+     * @param isOff  is_delete
+     * @param foodId food id
      * @return affect
      */
     int updateIsOff(@Param("isOff") String isOff, @Param("foodId") Integer foodId);
@@ -60,8 +61,8 @@ public interface TmsFoodDao {
     /**
      * 批量修改isOff字段
      *
-     * @param isOff is_delete
-     * @param foodIds  food id
+     * @param isOff   is_delete
+     * @param foodIds food id
      * @return affect
      */
     int updateIsOffInBatch(@Param("isOff") String isOff, @Param("foodIds") List<Integer> foodIds);
