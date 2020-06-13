@@ -14,7 +14,7 @@
     <result column="seller_id" jdbcType="INTEGER" property="sellerId" />
     <result column="is_off" jdbcType="VARCHAR" property="isOff" />
     <result column="is_delete" jdbcType="VARCHAR" property="isDelete" />
-    <result column="create_date" jdbcType="DATE" property="createDate" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -120,7 +120,7 @@
     values (#{foodName,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{discount,jdbcType=DECIMAL}, 
       #{mainMaterials,jdbcType=VARCHAR}, #{hasMeat,jdbcType=VARCHAR}, #{weight,jdbcType=DOUBLE}, 
       #{intro,jdbcType=VARCHAR}, #{packingFee,jdbcType=DOUBLE}, #{sellerId,jdbcType=INTEGER}, 
-      #{isOff,jdbcType=VARCHAR}, #{isDelete,jdbcType=VARCHAR}, #{createDate,jdbcType=DATE}
+      #{isOff,jdbcType=VARCHAR}, #{isDelete,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.commerce.mall.model.TmsFood">
@@ -201,7 +201,7 @@
         #{isDelete,jdbcType=VARCHAR},
       </if>
       <if test="createDate != null">
-        #{createDate,jdbcType=DATE},
+        #{createDate,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -251,7 +251,7 @@
         is_delete = #{record.isDelete,jdbcType=VARCHAR},
       </if>
       <if test="record.createDate != null">
-        create_date = #{record.createDate,jdbcType=DATE},
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -272,7 +272,7 @@
       seller_id = #{record.sellerId,jdbcType=INTEGER},
       is_off = #{record.isOff,jdbcType=VARCHAR},
       is_delete = #{record.isDelete,jdbcType=VARCHAR},
-      create_date = #{record.createDate,jdbcType=DATE}
+      create_date = #{record.createDate,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -314,7 +314,7 @@
         is_delete = #{isDelete,jdbcType=VARCHAR},
       </if>
       <if test="createDate != null">
-        create_date = #{createDate,jdbcType=DATE},
+        create_date = #{createDate,jdbcType=TIMESTAMP},
       </if>
     </set>
     where food_id = #{foodId,jdbcType=INTEGER}
@@ -332,7 +332,7 @@
       seller_id = #{sellerId,jdbcType=INTEGER},
       is_off = #{isOff,jdbcType=VARCHAR},
       is_delete = #{isDelete,jdbcType=VARCHAR},
-      create_date = #{createDate,jdbcType=DATE}
+      create_date = #{createDate,jdbcType=TIMESTAMP}
     where food_id = #{foodId,jdbcType=INTEGER}
   </update>
 </mapper>

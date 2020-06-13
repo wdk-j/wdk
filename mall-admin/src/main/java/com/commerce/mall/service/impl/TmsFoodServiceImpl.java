@@ -1,6 +1,6 @@
 package com.commerce.mall.service.impl;
 
-import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
 import com.commerce.mall.common.utils.FileUtil;
 import com.commerce.mall.custom.dao.TmsFoodAboutDao;
@@ -23,9 +23,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigDecimal;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -79,13 +76,14 @@ public class TmsFoodServiceImpl implements TmsFoodService {
         Integer foodId = tmsFood.getFoodId();
 
         List<TmsFoodPics> pics = tmsFoodWithPicsResult.getPics();
-        pics.forEach(p -> {
-            p.setFoodId(foodId);
-        });
-        pics.get(0).setIsMain("1");
-
-        for (TmsFoodPics pic : pics) {
-            tmsFoodPicsMapper.insertSelective(pic);
+        if (!CollUtil.isEmpty(pics)) {
+            pics.forEach(p -> {
+                p.setFoodId(foodId);
+            });
+            pics.get(0).setIsMain("1");
+            for (TmsFoodPics pic : pics) {
+                tmsFoodPicsMapper.insertSelective(pic);
+            }
         }
 
         return r;
@@ -215,34 +213,38 @@ public class TmsFoodServiceImpl implements TmsFoodService {
         TmsFood tmsFood = new TmsFood();
         BeanUtils.copyProperties(tmsFoodWithPicsResult, tmsFood);
         List<TmsFoodPics> pics = tmsFoodWithPicsResult.getPics();
-        boolean hasMainPic = false;
-        log.info(pics.toString());
-        Integer foodId = pics.get(0).getFoodId();
-        TmsFoodPics mainPic;
 
-        mainPic = tmsFoodPicsDao.selectMainPic(foodId);
-        hasMainPic = mainPic != null;
+        if (!CollUtil.isEmpty(pics)) {
+            boolean hasMainPic = false;
+            log.info(tmsFoodWithPicsResult.toString());
+            Integer foodId = pics.get(0).getFoodId();
+            TmsFoodPics mainPic;
+            mainPic = tmsFoodPicsDao.selectMainPic(foodId);
+            hasMainPic = mainPic != null;
 
-        for (TmsFoodPics pic : pics) {
-            if (StrUtil.isEmpty(pic.getPicUrl())) {
-                tmsFoodPicsMapper.deleteByPrimaryKey(pic.getPicId());
-                mainPic = tmsFoodPicsDao.selectMainPic(foodId);
-                hasMainPic = mainPic != null;
-            } else if (pic.getPicId() != null) {
-                if (!hasMainPic) {
-                    pic.setIsMain("1");
-                    tmsFoodPicsMapper.updateByPrimaryKey(pic);
-                    hasMainPic = true;
+            for (TmsFoodPics pic : pics) {
+                if (StrUtil.isEmpty(pic.getPicUrl())) {
+                    tmsFoodPicsMapper.deleteByPrimaryKey(pic.getPicId());
+                    mainPic = tmsFoodPicsDao.selectMainPic(foodId);
+                    hasMainPic = mainPic != null;
+                } else if (pic.getPicId() != null) {
+                    if (!hasMainPic) {
+                        pic.setIsMain("1");
+                        tmsFoodPicsMapper.updateByPrimaryKey(pic);
+                        hasMainPic = true;
+                    }
+                } else {
+                    if (!hasMainPic) {
+                        pic.setIsMain("1");
+                        hasMainPic = true;
+                    }
+                    pic.setFoodId(foodId);
+                    tmsFoodPicsMapper.insertSelective(pic);
                 }
-            } else {
-                if (!hasMainPic) {
-                    pic.setIsMain("1");
-                    hasMainPic = true;
-                }
-                pic.setFoodId(foodId);
-                tmsFoodPicsMapper.insertSelective(pic);
             }
         }
+
+        log.info(tmsFood.toString());
         return tmsFoodMapper.updateByPrimaryKeySelective(tmsFood);
     }
 }

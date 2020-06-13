@@ -47,6 +47,7 @@
             <result column="pic_url" jdbcType="VARCHAR" property="picUrl"/>
             <result column="pic_desc" jdbcType="VARCHAR" property="picDesc"/>
             <result column="is_main" jdbcType="VARCHAR" property="isMain"/>
+            <result column="food_id" jdbcType="INTEGER" property="foodId"/>
         </collection>
     </resultMap>
 
